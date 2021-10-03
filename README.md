@@ -24,7 +24,7 @@
 * [GNU Compiler Collection Internals](https://gcc.gnu.org/onlinedocs/gccint.pdf)
 * [GNU Fortran Compiler Internals](https://gcc.gnu.org/onlinedocs/gfc-internals/)
 * [GNU C Compiler Internals](https://en.wikibooks.org/wiki/GNU_C_Compiler_Internals)
-*[The Erlang Runtime System](https://blog.stenmans.org/theBeamBook/#_the_erlang_virtual_machine_beam)
+* [The Erlang Runtime System](http://blog.stenmans.org/theBeamBook/#_the_erlang_virtual_machine_beam)
 
 
 ## Library and books links
