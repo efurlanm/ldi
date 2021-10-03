@@ -29,6 +29,17 @@ My personal notes about design and implementation of programming languages, and 
 * [The Erlang Runtime System](http://blog.stenmans.org/theBeamBook/#_the_erlang_virtual_machine_beam)
 
 
+## Vintage computer interpreter internals
+
+Or "computer archeology"
+
+* Applesoft ROM internals: [[1]](http://www.txbobsc.com/scsc/scdocumentor/), [[2]](https://6502disassembly.com/a2-rom/)
+* [TRS-80 ROM internals](https://www.trs-80.com/wordpress/disassembled-rom/)
+* C64 ROM internals: [[1]](https://www.pagetable.com/c64ref/c64disasm/), [[2]](https://github.com/tgiphil/c64rom)
+* [The Complete Spectrum ROM Disassembly](https://archive.org/details/CompleteSpectrumROMDisassemblyThe)
+* [Spectrum ROM Disassemblies](https://github.com/ZXSpectrumVault/rom-disassemblies)
+
+
 ## Library and books links
 
 Random links to books and libraries that I found interesting
