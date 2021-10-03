@@ -1,4 +1,6 @@
-# My personal notes on programming language design and implementation
+# Language design and implementation
+
+My personal notes about design and implementation of programming languages, and related matters
 
 
 ## Wikibooks
@@ -15,7 +17,7 @@
 
 ## Reddit
 
-* [Programming Languages](http://www.reddit.com/r/ProgrammingLanguages/): dedicated to discussion of programming languages, programming language theory, design, their syntax and compilers
+* [Programming Languages](http://www.reddit.com/r/ProgrammingLanguages/): discussion of programming languages, programming language theory, design, their syntax and compilers
 * [Compilers](http://www.reddit.com/r/Compilers/): theory and development of compilers
 
 
@@ -31,5 +33,6 @@
 
 Random links to books and libraries that I found interesting
 
+* [SETZER, V. W.; MELO, I. S. H. *A construção de um compilador*]()
 * [Library with several books on compilers, computers, and programming](https://vdoc.pub/search/compiler)
 * [R G Loeliger. *Threaded Interpretive Languages: Their Design And Implementation*](https://vdoc.pub/documents/threaded-interpretive-languages-their-design-and-implementation-1seph9gct7uo)
