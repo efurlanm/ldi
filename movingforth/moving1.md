@@ -585,8 +585,8 @@ Here are the register assignments made by Forths for a number of different CPUs.
 
 |          | W     | IP    | PSP  | RSP   | UP     | TOS    |         |
 | -        | -     | -     | -    | -     | -      | -      | -       |
-| 8086 [¹] | BX    | SI    | SP   | BP    | memory | memory | [LAX84] |
-| 8086 [²] | AX    | SI    | SP   | BP    | none   | BX     | [SER90] | 
+| 8086 (¹) | BX    | SI    | SP   | BP    | memory | memory | [LAX84] |
+| 8086 (²) | AX    | SI    | SP   | BP    | none   | BX     | [SER90] | 
 | 68000    | A5    |A4     | A3   | A7=SP | A6     | memory | [CUR86] | 
 | PDP-11   | R2    | R4    | R5   | R6=SP | R3     | memory | [JAM80] | 
 | 6809     | X     | Y     | U    | S     | memory | memory | [TAL80] | 
@@ -596,8 +596,8 @@ Here are the register assignments made by Forths for a number of different CPUs.
 | 8051     | R0,1  | R2,3  | R4,5 | R6,7  | fixed  | memory | [PAY90] |
 
 <tfoot><tr><td>
-[¹] F83. &nbsp;&nbsp;
-[²] Pygmy Forth.
+(¹) F83. &nbsp;&nbsp;
+(²) Pygmy Forth.
 </td></tr></tfoot></table><br><br>
 
 "SP" refers to the hardware stack pointer. "Zpage" refers to values kept
