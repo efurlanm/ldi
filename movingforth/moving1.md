@@ -607,7 +607,6 @@ Here are the register assignments made by Forths for a number of different CPUs.
 
 <table>
 <caption>Figure 5. Register Assignments</caption>
-
 | Proc.     | W     | IP    | PSP   | RSP | UP | TOS | Ref. |
 | -         | -     | -     | -     | - | - | - | - |
 | 8086 [1]  | BX    | SI    | SP    | BP | memory | memory | [LAX84] |
@@ -619,8 +618,7 @@ Here are the register assignments made by Forths for a number of different CPUs.
 | Z80       | DE    | BC    | SP    | IX | none | memory | [LOE81] | 
 | Z8        | RR6   | RR12  | RR14  | SP | RR10 | RR8 | [MPE92] | 
 | 8051      | R0,1  | R2,3  | R4,5  | R6,7 | fixed | memory | [PAY90]  |
-
-<tfoot><tr><td colspan="8">[1] F83. &nbsp;[2] Pygmy Forth.</td></tr></tfoot>
+<tfoot><tr><td colspan="8">[1] F83. &nbsp;&nbsp;[2] Pygmy Forth.</td></tr></tfoot>
 </table>
 
 
