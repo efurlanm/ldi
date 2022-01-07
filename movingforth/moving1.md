@@ -607,15 +607,16 @@ Figure 5. Register Assignments
 
 | Proc. | W | IP | PSP | RSP | UP | TOS | Ref. |
 | - | - | - | - | - | - | - | - |
-| 8086[1] | BX | SI |SP | BP | memory | memory | [LAX84] |
-| 8086[2] | AX | SI |SP | BP | none | BX | [SER90] | 
+| 8086 [1] | BX | SI |SP | BP | memory | memory | [LAX84] |
+| 8086 [2] | AX | SI |SP | BP | none | BX | [SER90] | 
 | 68000 | A5 |A4 | A3 | A7=SP | A6 | memory | [CUR86] | 
 | PDP-11 | R2 | R4 | R5 | R6=SP | R3 | memory | [JAM80] | 
 | 6809 | X | Y | U | S | memory | memory | [TAL80] | 
 | 6502 | Zpage | Zpage | X | SP | Zpage | memory | [KUN81] | 
 | Z80 | DE | BC | SP | IX | none | memory | [LOE81] | 
 | Z8 | RR6 | RR12 | RR14 | SP | RR10 | RR8 | [MPE92] | 
-| 8051 | R0,1 | R2,3 | R4,5 | R6,7 | fixed | memory | [PAY90] <caption>###caption###</caption><tfoot><tr><td colspan="8">[1] F83. &nbsp&nbsp[2] Pygmy Forth.</td></tr></tfoot>|
+| 8051 | R0,1 | R2,3 | R4,5 | R6,7 | fixed | memory | [PAY90] \
+<caption>###caption###</caption><tfoot><tr><td colspan="8">[1] F83. &nbsp&nbsp[2] Pygmy Forth.</td></tr></tfoot>|
 
 
 <br>
