@@ -195,14 +195,18 @@ which have been published in TCJ.
 
 ## REFERENCES
 
-\[ROD91\] Rodriguez, B. J., "B.Y.O. Assembler," The Computer Journal
-\#52 (Sep/Oct 1991) and \#54 (Jan/Feb 1992).
+<a id="ROD91">\[ROD91\]</a>
+Rodriguez, B. J., "B.Y.O. Assembler", The Computer Journal
+[[\#52 (Sep/Oct 1991)]](tcj/tcj_52_September-October_1991_text.pdf) and 
+[[\#54 (Jan/Feb 1992)]](tcj/tcj_54_January-February_1992_text.pdf).
 
-\[ROD92\] Rodriguez, B. J., "Principles of Metacompilation," Forth
-Dimensions XIV:3 (Sep/Oct 1992), XIV:4 (Nov/Dec 1992), and XIV:5
-(Jan/Feb 1993). Describes the "Chromium 1" metacompiler.
+<a id="ROD92">\[ROD92\]</a>
+Rodriguez, B. J., "Principles of Metacompilation", Forth
+Dimensions
+[[XIV:3 (Sep/Oct 1992)]](fd/Forth_Dimension_Volume_14_Number_3.pdf),
+[[XIV:4 (Nov/Dec 1992)]](fd/Forth_Dimension_Volume_14_Number_4.pdf), and 
+[[XIV:5 (Jan/Feb 1993)]](fd/Forth_Dimension_Volume_14_Number_5.pdf).
+Describes the "Chromium 1" metacompiler.
 
 *Source code for 6809 CamelForth is available on this site at
 <http://www.camelforth.com/public_ftp/cam09-10.zip>.*
-
-Return to [publications](index.html) page
