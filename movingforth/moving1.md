@@ -95,7 +95,7 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1.
 (The header will be discussed in a future article; it holds housekeeping
 information used for compilation, and isn't involved in threading.)
 
-![Fig.1 Indirect Threaded Code](mov1-1.gif)
+![Fig.1 Indirect Threaded Code](img/mov1-1.gif)
 
 Assume SQUARE is encountered while executing some other Forth word.
 Forth's Interpreter Pointer (IP) will be pointing to a cell in memory --
@@ -199,7 +199,7 @@ will contain <span class="underline">a subroutine call</span>, as shown
 in Figure 2. Colon definitions, for instance, will contain a call to the
 ENTER routine.
 
-![Fig.2 Direct Threaded Code](mov1-2.gif)
+![Fig.2 Direct Threaded Code](img/mov1-2.gif)
 
 The NEXT pseudo-code for direct threading is simply:
 
@@ -273,7 +273,7 @@ See Figure 3. This representation of Forth words has been used as a
 starting point to explain Forth threading techniques to assembly
 language programmers \[KOG82\].
 
-![Fig.3 Subroutine Threaded Code](mov1-3.gif)
+![Fig.3 Subroutine Threaded Code](img/mov1-3.gif)
 
 STC is an elegant representation; colon definitions and CODE words are
 now identical. "Defined words" (VARIABLEs, CONSTANTs, and the like) are
@@ -380,7 +380,7 @@ table, to find the Forth word corresponding to a given token. This
 <span class="underline">adds</span> one level of indirection to the
 Forth interpreter, so it is slower than an "address-threaded" Forth.
 
-![Fig.4 Token Threaded Code](mov1-4.gif)
+![Fig.4 Token Threaded Code](img/mov1-4.gif)
 
 The principal advantage of token-threaded Forths is small size. TTC is
 most commonly seen in handheld computers and other severely
