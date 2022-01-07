@@ -42,7 +42,7 @@ interpreter and compiler, internals, and related topics
 
 ## Forth
 
-* [Moving Forth, by Brad Rodriguez](https://github.com/efurlanm/ml/tree/master/movingforth): Forth language internals
+* [Moving Forth, by Brad Rodriguez](https://github.com/efurlanm/ldi/tree/main/movingforth): Forth language internals
 
 
 
