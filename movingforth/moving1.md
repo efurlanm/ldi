@@ -598,7 +598,7 @@ Here are the register assignments made by Forths for a number of different CPUs.
 <tfoot><tr><td>
 [¹] F83. &nbsp;&nbsp;
 [²] Pygmy Forth.
-</td></tr></tfoot></table><br>
+</td></tr></tfoot></table><br><br>
 
 "SP" refers to the hardware stack pointer. "Zpage" refers to values kept
 in the 6502's memory page zero, which are almost as useful as --
