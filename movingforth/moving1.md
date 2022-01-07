@@ -615,8 +615,7 @@ Figure 5. Register Assignments
 | 6502 | Zpage | Zpage | X | SP | Zpage | memory | [KUN81] | 
 | Z80 | DE | BC | SP | IX | none | memory | [LOE81] | 
 | Z8 | RR6 | RR12 | RR14 | SP | RR10 | RR8 | [MPE92] | 
-| 8051 | R0,1 | R2,3 | R4,5 | R6,7 | fixed | memory | [PAY90] <tfoot>
-<tr><td colspan="8">[1] F83. &nbsp&nbsp[2] Pygmy Forth.</td></tr></tfoot>|
+| 8051 | R0,1 | R2,3 | R4,5 | R6,7 | fixed | memory | [PAY90] <tfoot><tr><td colspan="8">[1] F83. &nbsp&nbsp[2] Pygmy Forth.</td></tr></tfoot>|
 
 
 <br>
