@@ -605,7 +605,9 @@ Here are the register assignments made by Forths for a number of different CPUs.
 
 <br>
 
-<caption>Figure 5. Register Assignments</caption><tfoot><tr><td colspan="8">[1] F83. &nbsp;[2] Pygmy Forth.</td></tr></tfoot>
+<caption>Figure 5. Register Assignments</caption>
+
+<tfoot><tr><td colspan="8">[1] F83. &nbsp;[2] Pygmy Forth.</td></tr></tfoot>
 
 | Proc.     | W     | IP    | PSP   | RSP | UP | TOS | Ref. |
 | -         | -     | -     | -     | - | - | - | - |
