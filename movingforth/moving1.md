@@ -601,21 +601,23 @@ Here are the register assignments made by Forths for a number of different CPUs.
 <br>
 
 
-Figure 5. Register Assignments
+
 
 <br>
 
-| Proc. | W | IP | PSP | RSP | UP | TOS | Ref. |
-| - | - | - | - | - | - | - | - |
-| 8086 [1] | BX | SI |SP | BP | memory | memory | [LAX84] |
-| 8086 [2] | AX | SI |SP | BP | none | BX | [SER90] | 
-| 68000 | A5 |A4 | A3 | A7=SP | A6 | memory | [CUR86] | 
-| PDP-11 | R2 | R4 | R5 | R6=SP | R3 | memory | [JAM80] | 
-| 6809 | X | Y | U | S | memory | memory | [TAL80] | 
-| 6502 | Zpage | Zpage | X | SP | Zpage | memory | [KUN81] | 
-| Z80 | DE | BC | SP | IX | none | memory | [LOE81] | 
-| Z8 | RR6 | RR12 | RR14 | SP | RR10 | RR8 | [MPE92] | 
-| 8051 | R0,1 | R2,3 | R4,5 | R6,7 | fixed | memory | [PAY90] <caption>###caption###</caption><tfoot><tr><td colspan="8">[1] F83. &nbsp;[2] Pygmy Forth.</td></tr></tfoot> |
+<caption>Figure 5. Register Assignments</caption><tfoot><tr><td colspan="8">[1] F83. &nbsp;[2] Pygmy Forth.</td></tr></tfoot>
+
+| Proc.     | W     | IP    | PSP   | RSP | UP | TOS | Ref. |
+| -         | -     | -     | -     | - | - | - | - |
+| 8086 [1]  | BX    | SI    | SP    | BP | memory | memory | [LAX84] |
+| 8086 [2]  | AX    | SI    | SP    | BP | none | BX | [SER90] | 
+| 68000     | A5    |A4     | A3    | A7=SP | A6 | memory | [CUR86] | 
+| PDP-11    | R2    | R4    | R5    | R6=SP | R3 | memory | [JAM80] | 
+| 6809      | X     | Y     | U     | S | memory | memory | [TAL80] | 
+| 6502      | Zpage | Zpage | X     | SP | Zpage | memory | [KUN81] | 
+| Z80       | DE    | BC    | SP    | IX | none | memory | [LOE81] | 
+| Z8        | RR6   | RR12  | RR14  | SP | RR10 | RR8 | [MPE92] | 
+| 8051      | R0,1  | R2,3  | R4,5  | R6,7 | fixed | memory | [PAY90]  |
 
 
 <br>
@@ -629,106 +631,81 @@ Figure 5. Register Assignments
 <table>
 <caption>###caption###</caption>
 <thead><tr><td colspan="8">Figure 5. Register Assignments</td></tr></thead> <tbody>
-	<tr>
-		<th></th>
-		<th>W</th>
-		<th>IP</th>
-		<th>PSP</th>
-		<th>RSP</th>
-		<th>UP</th>
-		<th>TOS</th>
-		<th></th>
-	</tr>
-	<tr>
-		<td>8086 [1]</td>
-		<td>BX</td>
-		<td>SI</td>
-		<td>SP</td>
-		<td>BP</td>
-		<td>memory</td>
-		<td>memory</td>
-		<td>[LAX84]</td>
-	</tr>
-	<tr>
-		<td>8086 [2]</td>
-		<td>AX</td>
-		<td>SI</td>
-		<td>SP</td>
-		<td>BP</td>
-		<td>none</td>
-		<td>BX</td>
-		<td>[SER90]</td>
-	</tr>
-	<tr>
-		<td>68000</td>
-		<td>A5</td>
-		<td>A4</td>
-		<td>A3</td>
-		<td>A7=SP</td>
-		<td>A6</td>
-		<td>memory</td>
-		<td>[CUR86]</td>
-	</tr>
-	<tr>
-		<td>PDP-11</td>
-		<td>R2</td>
-		<td>R4</td>
-		<td>R5</td>
-		<td>R6=SP</td>
-		<td>R3</td>
-		<td>memory</td>
-		<td>[JAM80]</td>
-	</tr>
-	<tr>
-		<td>6809</td>
-		<td>X</td>
-		<td>Y</td>
-		<td>U</td>
-		<td>S</td>
-		<td>memory</td>
-		<td>memory</td>
-		<td>[TAL80]</td>
-	</tr>
-	<tr>
-		<td>6502</td>
-		<td>Zpage</td>
-		<td>Zpage</td>
-		<td>X</td>
-		<td>SP</td>
-		<td>Zpage</td>
-		<td>memory</td>
-		<td>[KUN81]</td>
-	</tr>
-	<tr>
-		<td>Z80</td>
-		<td>DE</td>
-		<td>BC</td>
-		<td>SP</td>
-		<td>IX</td>
-		<td>none</td>
-		<td>memory</td>
-		<td>[LOE81]</td>
-	</tr>
-	<tr>
-		<td>Z8</td>
-		<td>RR6</td>
-		<td>RR12</td>
-		<td>RR14</td>
-		<td>SP</td>
-		<td>RR10</td>
-		<td>RR8</td>
-		<td>[MPE92]</td>
-	</tr>
-	<tr>
-		<td>8051</td>
-		<td>R0,1</td>
-		<td>R2,3</td>
-		<td>R4,5</td>
-		<td>R6,7</td>
-		<td>fixed</td>
-		<td>memory</td>
-		<td>[PAY90]</td>
-	</tr>
+<tr><th></th><th>W</th><th>IP</th><th>PSP</th><th>RSP</th><th>UP</th><th>TOS</th><th></th></tr>
+<tr><td>8086 [1]</td><td>BX</td><td>SI</td><td>SP</td><td>BP</td><td>memory</td><td>memory</td><td>[LAX84]</td></tr>
+<tr><td>8086 [2]</td><td>AX</td><td>SI</td><td>SP</td><td>BP</td><td>none</td><td>BX</td><td>[SER90]</td></tr>
+
+<tr>
+<td>68000</td><td>A5</td><td>A4</td><td>A3</td><td>A7=SP</td><td>A6</td>
+<td>memory</td>
+<td>[CUR86]</td>
+</tr>
+
+<tr>
+<td>PDP-11</td>
+<td>R2</td>
+<td>R4</td>
+<td>R5</td>
+<td>R6=SP</td>
+<td>R3</td>
+<td>memory</td>
+<td>[JAM80]</td>
+</tr>
+
+<tr>
+<td>6809</td>
+<td>X</td>
+<td>Y</td>
+<td>U</td>
+<td>S</td>
+<td>memory</td>
+<td>memory</td>
+<td>[TAL80]</td>
+</tr>
+
+<tr>
+<td>6502</td>
+<td>Zpage</td>
+<td>Zpage</td>
+<td>X</td>
+<td>SP</td>
+<td>Zpage</td>
+<td>memory</td>
+<td>[KUN81]</td>
+</tr>
+
+<tr>
+<td>Z80</td>
+<td>DE</td>
+<td>BC</td>
+<td>SP</td>
+<td>IX</td>
+<td>none</td>
+<td>memory</td>
+<td>[LOE81]</td>
+</tr>
+
+<tr>
+<td>Z8</td>
+<td>RR6</td>
+<td>RR12</td>
+<td>RR14</td>
+<td>SP</td>
+<td>RR10</td>
+<td>RR8</td>
+<td>[MPE92]</td>
+</tr>
+
+<tr>
+<td>8051</td>
+<td>R0,1</td>
+<td>R2,3</td>
+<td>R4,5</td>
+<td>R6,7</td>
+<td>fixed</td>
+<td>memory</td>
+<td>[PAY90]</td>
+</tr>
 </tbody>
 <tfoot><tr><td colspan="8">[1] F83. &nbsp&nbsp[2] Pygmy Forth.</td></tr></tfoot>
 </table>
