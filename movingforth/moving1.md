@@ -621,19 +621,17 @@ Figure 5. Register Assignments
 
 
 <table>
-	<thead>
+        <caption>Figure 5. Register Assignments</caption>
 	<tr>
-		<td><</td>
-		<td>W</td>
-		<td>IP</td>
-		<td>PSP</td>
-		<td>RSP</td>
-		<td>UP</td>
-		<td>TOS</td>
-		<td><br></td>
+		<th></th>
+		<th>W</th>
+		<th>IP</th>
+		<th>PSP</th>
+		<th>RSP</th>
+		<th>UP</th>
+		<th>TOS</th>
+		<th><</th>
 	</tr>
-	</thead>
-	<tbody>
 	<tr>
 		<td>8086[1]</td>
 		<td>BX</td>
@@ -724,7 +722,6 @@ Figure 5. Register Assignments
 		<td>memory</td>
 		<td>[PAY90]</td>
 	</tr>
-	</tbody>
 </table>
 
 <br>
