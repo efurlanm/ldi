@@ -605,9 +605,8 @@ Here are the register assignments made by Forths for a number of different CPUs.
 
 <br>
 
+<table>
 <caption>Figure 5. Register Assignments</caption>
-
-<tfoot><tr><td colspan="8">[1] F83. &nbsp;[2] Pygmy Forth.</td></tr></tfoot>
 
 | Proc.     | W     | IP    | PSP   | RSP | UP | TOS | Ref. |
 | -         | -     | -     | -     | - | - | - | - |
@@ -621,8 +620,13 @@ Here are the register assignments made by Forths for a number of different CPUs.
 | Z8        | RR6   | RR12  | RR14  | SP | RR10 | RR8 | [MPE92] | 
 | 8051      | R0,1  | R2,3  | R4,5  | R6,7 | fixed | memory | [PAY90]  |
 
+<tfoot><tr><td colspan="8">[1] F83. &nbsp;[2] Pygmy Forth.</td></tr></tfoot>
+</table>
+
 
 <br>
+
+---
 
 [1] F83.  [2] Pygmy Forth.
 
