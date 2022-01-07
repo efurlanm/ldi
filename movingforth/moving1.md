@@ -609,7 +609,7 @@ a single, immovable user area, and UP is a hard-coded constant.
 ### Narrow Registers
 
 Notice anything odd in the previous list? The 6502 Forth -- a 16-bit
-model -- uses _8-bit_ stack pointers\!
+model -- uses <u>8-bit</u> stack pointers\!
 
 It is possible to make PSP, RSP, and UP smaller than the cell size of
 the Forth. This is because the stacks and user area are both relatively
@@ -645,15 +645,15 @@ base address of the user area.
 
 ## REFERENCES
 
-\[CUR93a\] Curley, Charles, "Life in the FastForth Lane," awaiting
+\[CUR93a\] Curley, Charles, "Life in the FastForth Lane", awaiting
 publication in Forth Dimensions. Description of a 68000
 subroutine-threaded Forth.
 
-\[CUR93b\] Curley, Charles, "Optimizing in a BSR/JSR Threaded Forth,"
+\[CUR93b\] Curley, Charles, "Optimizing in a BSR/JSR Threaded Forth", 
 awaiting publication in Forth Dimensions. Single-pass code optimization
 for FastForth, in only five screens of code\! Includes listing.
 
-\[KEL92\] Kelly, Guy M., "Forth Systems Comparisons," Forth Dimensions
+\[KEL92\] Kelly, Guy M., "Forth Systems Comparisons", Forth Dimensions
 XIII:6 (Mar/Apr 1992). Also published in the
 <u>1991 FORML Conference Proceedings</u>. Both
 available from the Forth Interest Group, P.O. Box 2154, Oakland, CA
@@ -661,16 +661,16 @@ available from the Forth Interest Group, P.O. Box 2154, Oakland, CA
 fragments and benchmarks -- highly recommended\!
 
 \[KOG82\] Kogge, Peter M., "An Architectural Trail to Threaded- Code
-Systems," IEEE Computer, vol. 15 no. 3 (Mar 1982). Remains the
+Systems", IEEE Computer, vol. 15 no. 3 (Mar 1982). Remains the
 definitive description of various threading techniques.
 
 <a id="ROD91">\[ROD91\]</a>
-Rodriguez, B.J., "B.Y.O. Assembler," Part 1, The Computer Journal 
+Rodriguez, B.J., "B.Y.O. Assembler", Part 1, The Computer Journal 
 [[\#52 (Sep/Oct 1991)]](tcj/tcj_52_September-October_1991_text.pdf).
 General principles of writing Forth assemblers.
 
 <a id="ROD92">\[ROD92\]</a>
-Rodriguez, B.J., "B.Y.O. Assembler," Part 2, The Computer Journal
+Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal
 [[\#54 (Jan/Feb 1992)]](tcj/tcj_54_January-February_1992_text.pdf).
 A 6809 assembler in Forth.
 
@@ -679,7 +679,7 @@ A 6809 assembler in Forth.
 Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a
 68000 optimizer; no code provided.
 
-**Forth Implementations**
+### Forth Implementations
 
 \[CUR86\] Curley, Charles, <u>real-Forth for the
 68000</u>, privately distributed (1986).

@@ -6,7 +6,7 @@ I decided to create this repo as it was difficult for me to read and study the o
 
 <br>
 
-<img align="right" src="http://github.com/efurlanm/hpc/raw/master/img/construction.gif"><br>
+<img align="right" src="http://raw.githubusercontent.com/efurlanm/hpc/master/img/construction.gif"><br>
 
 This repository is permanently under construction, so its content changes constantly.
 
