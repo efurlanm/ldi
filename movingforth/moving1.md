@@ -581,7 +581,7 @@ registers.
 
 Here are the register assignments made by Forths for a number of different CPUs. Try to deduce the design decisions of the authors from this list.
 
-<table><caption style="text-align:center">Figure 5. Register Assignments</caption>
+<table><caption style="align:center">Figure 5. Register Assignments</caption>
 
 |          | W     | IP    | PSP  | RSP   | UP     | TOS    |         |
 | -        | -     | -     | -    | -     | -      | -      | -       |
@@ -598,7 +598,7 @@ Here are the register assignments made by Forths for a number of different CPUs.
 <tfoot><tr><td>
 [¹] F83. &nbsp;&nbsp;
 [²] Pygmy Forth.
-</td></tr></tfoot></table>
+</td></tr></tfoot></table><br>
 
 "SP" refers to the hardware stack pointer. "Zpage" refers to values kept
 in the 6502's memory page zero, which are almost as useful as --
