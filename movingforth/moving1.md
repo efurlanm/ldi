@@ -595,11 +595,10 @@ Here are the register assignments made by Forths for a number of different CPUs.
 | Z8       | RR6   | RR12  | RR14 | SP    | RR10   | RR8    | [MPE92] | 
 | 8051     | R0,1  | R2,3  | R4,5 | R6,7  | fixed  | memory | [PAY90] |
 
-<tfoot><tr><td colspan="8">
+<tfoot><tr><td>
 [¹] F83. &nbsp;&nbsp;
 [²] Pygmy Forth.
-</td></tr></tfoot>
-</table>
+</td></tr></tfoot></table>
 
 "SP" refers to the hardware stack pointer. "Zpage" refers to values kept
 in the 6502's memory page zero, which are almost as useful as --
