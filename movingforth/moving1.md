@@ -603,6 +603,8 @@ Here are the register assignments made by Forths for a number of different CPUs.
 
 Figure 5. Register Assignments
 
+<caption>Figure 5. Register Assignments</caption>
+
 | Proc. | W | IP | PSP | RSP | UP | TOS | Ref. |
 | - | - | - | - | - | - | - | - |
 | 8086[1] | BX | SI |SP | BP | memory | memory | [LAX84] |
