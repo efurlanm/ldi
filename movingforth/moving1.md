@@ -4,8 +4,8 @@
 
 ### by Brad Rodriguez
 
-This article first appeared in [The Computer
-Journal](http://www.psyber.com/~tcj) \#59 (January/February 1993).
+This article first appeared in *The Computer
+Journal* [[1]](https://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/) [[2]](https://archive.org/details/the-computer-journal/) [[\#59 (January/February 1993)]](tcj/tcj_59_January-February_1993_text.pdf).
 
 ## INTRODUCTION
 
@@ -18,7 +18,7 @@ Forthwrights, and document the process in black and white.
 Over the course of these articles I will develop Forths for the 6809,
 8051, and Z80. I'm doing the 6809 to illustrate an easy and conventional
 Forth model; plus, I've already published a 6809 assembler
-\[ROD91,ROD92\], and I'll be needing a 6809 Forth for future TCJ
+\[[ROD91](#ROD91),ROD92\], and I'll be needing a 6809 Forth for future TCJ
 projects. I'm doing the 8051 Forth for a University project, but it also
 illustrates some rather different design decisions. The Z80 Forth is for
 all the CP/M readers of TCJ, and for some friends with TRS-80s gathering
@@ -3684,14 +3684,21 @@ which have been published in TCJ.
 
 ## REFERENCES
 
-\[ROD91\] Rodriguez, B. J., "B.Y.O. Assembler," The Computer Journal
-\#52 (Sep/Oct 1991) and \#54 (Jan/Feb 1992).
+<a id="ROD91">\[ROD91\]</a>
+Rodriguez, B. J., "B.Y.O. Assembler", The Computer Journal
+[[\#52 (Sep/Oct 1991)]](tcj/tcj_52_September-October_1991_text.pdf) and [[\#54 (Jan/Feb 1992)]](tcj/tcj_54_January-February_1992_text.pdf).
 
-\[ROD92\] Rodriguez, B. J., "Principles of Metacompilation," Forth
-Dimensions XIV:3 (Sep/Oct 1992), XIV:4 (Nov/Dec 1992), and XIV:5
-(Jan/Feb 1993). Describes the "Chromium 1" metacompiler.
+\[ROD92\] Rodriguez, B. J., "Principles of Metacompilation", Forth
+Dimensions
+[[XIV:3 (Sep/Oct 1992)]](fd/Forth_Dimension_Volume_14_Number_3.pdf),
+[[XIV:4 (Nov/Dec 1992)]](fd/Forth_Dimension_Volume_14_Number_4.pdf), and 
+[[XIV:5 (Jan/Feb 1993)]](fd/Forth_Dimension_Volume_14_Number_5.pdf).
+Describes the "Chromium 1" metacompiler.
 
 *Source code for 6809 CamelForth is available on this site at
 <http://www.camelforth.com/public_ftp/cam09-10.zip>.*
 
-Return to [publications](index.html) page
+<br>
+
+---
+Return to [README](README.md) page
