@@ -5,6 +5,13 @@ Original sources: http://www.bradrodriguez.com/papers/
 I decided to create this repo as it was difficult for me to read and study the original documentation, there were broken links, bad formatting on the smartphone screen, files were scattered, and so on. So I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the MIT license, and all original sources are under the author's original license at https://www.bradrodriguez.com/.
 
 
+<br>
+
+<img align="right" src="http://github.com/efurlanm/hpc/raw/master/img/construction.gif"><br>
+
+This repository is permanently under construction, so its content changes constantly.
+
+<br>
 
 ## Moving Forth: a series on writing Forth kernels
 

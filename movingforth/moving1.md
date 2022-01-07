@@ -21,7 +21,7 @@ Forthwrights, and document the process in black and white.
 Over the course of these articles I will develop Forths for the 6809,
 8051, and Z80. I'm doing the 6809 to illustrate an easy and conventional
 Forth model; plus, I've already published a 6809 assembler
-\[[ROD91](#ROD91),[[ROD92]](#ROD92)\], and I'll be needing a 6809 Forth for future TCJ
+\[[ROD91](#ROD91),[ROD92](#ROD92)\], and I'll be needing a 6809 Forth for future TCJ
 projects. I'm doing the 8051 Forth for a University project, but it also
 illustrates some rather different design decisions. The Z80 Forth is for
 all the CP/M readers of TCJ, and for some friends with TRS-80s gathering
