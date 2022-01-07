@@ -621,7 +621,7 @@ Figure 5. Register Assignments
 
 
 <table>
-        <caption>Figure 5. Register Assignments</caption>
+        <caption style="text-align:center">Figure 5. Register Assignments</caption>
 	<tr>
 		<th></th>
 		<th>W</th>
