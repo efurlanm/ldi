@@ -637,7 +637,7 @@ Figure 5. Register Assignments
 		<th>RSP</th>
 		<th>UP</th>
 		<th>TOS</th>
-		<th><</th>
+		<th></th>
 	</tr>
 	<tr>
 		<td>8086[1]</td>
@@ -730,7 +730,7 @@ Figure 5. Register Assignments
 		<td>[PAY90]</td>
 	</tr>
 </tbody>
-<tfoot><tr><td colspan="5">[1] F83. [2] Pygmy Forth.</td></tr></tfoot>
+<tfoot><tr><td colspan="8">[1] F83. ~[2] Pygmy Forth.</td></tr></tfoot>
 </table>
 
 <br>
