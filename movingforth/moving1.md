@@ -730,7 +730,7 @@ Figure 5. Register Assignments
 		<td>[PAY90]</td>
 	</tr>
 </tbody>
-<tfoot><tr><td colspan="8">[1] F83. ~[2] Pygmy Forth.</td></tr></tfoot>
+<tfoot><tr><td colspan="8">[1] F83. &nbsp[2] Pygmy Forth.</td></tr></tfoot>
 </table>
 
 <br>
