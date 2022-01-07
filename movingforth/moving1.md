@@ -640,7 +640,7 @@ Figure 5. Register Assignments
 		<th></th>
 	</tr>
 	<tr>
-		<td>8086[1]</td>
+		<td>8086 [1]</td>
 		<td>BX</td>
 		<td>SI</td>
 		<td>SP</td>
@@ -650,7 +650,7 @@ Figure 5. Register Assignments
 		<td>[LAX84]</td>
 	</tr>
 	<tr>
-		<td>8086[2]</td>
+		<td>8086 [2]</td>
 		<td>AX</td>
 		<td>SI</td>
 		<td>SP</td>
@@ -730,7 +730,7 @@ Figure 5. Register Assignments
 		<td>[PAY90]</td>
 	</tr>
 </tbody>
-<tfoot><tr><td colspan="8">[1] F83. &nbsp[2] Pygmy Forth.</td></tr></tfoot>
+<tfoot><tr><td colspan="8">[1] F83. &nbsp&nbsp[2] Pygmy Forth.</td></tr></tfoot>
 </table>
 
 <br>
