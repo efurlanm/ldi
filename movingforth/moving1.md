@@ -289,23 +289,25 @@ Here are the register assignments made by Forths for a number of different CPUs.
 <!-- Do not edit this table. It is created in Libreoffice using a 
 template (see the aux directory). -->
 <!-- ---------------start-------------------- -->
-<table>                
-<caption> Figure 5. Register Assignments               </caption>
-<thead>                
+<table id="T5">
+<caption>Figure 5. Register Assignments</caption>
+<thead>
 <tr><th>  </th><th> W </th><th> IP </th><th> PSP </th><th> RSP </th><th> UP </th><th> TOS </th><th>  </th></tr>
-</thead>                
-<tbody>                
-<tr><td> 8086 (¹) </td><td> BX </td><td> SI </td><td> SP </td><td> BP </td><td> memory </td><td> memory </td><td> [LAX84] </td></tr>
-<tr><td> 8086 (²) </td><td> AX </td><td> SI </td><td> SP </td><td> BP </td><td> none </td><td> BX </td><td> [SER90] </td></tr>
+</thead>
+<tbody>
+
+
+<tr><td> 8086<sup>[1] </sup> </td><td> BX </td><td> SI </td><td> SP </td><td> BP </td><td> memory </td><td> memory </td><td> [LAX84] </td></tr>
+<tr><td> 8086<sup>[2] </sup> </td><td> AX </td><td> SI </td><td> SP </td><td> BP </td><td> none </td><td> BX </td><td> [SER90] </td></tr>
 <tr><td> 68000 </td><td> A5 </td><td> A4 </td><td> A3 </td><td> A7=SP </td><td> A6 </td><td> memory </td><td> [CUR86] </td></tr>
 <tr><td> PDP-11 </td><td> R2 </td><td> R4 </td><td> R5 </td><td> R6=SP </td><td> R3 </td><td> memory </td><td> [JAM80] </td></tr>
 <tr><td> 6809 </td><td> X </td><td> Y </td><td> U </td><td> S </td><td> memory </td><td> memory </td><td> [TAL80] </td></tr>
 <tr><td> 6502 </td><td> Zpage </td><td> Zpage </td><td> X </td><td> SP </td><td> Zpage </td><td> memory </td><td> [KUN81] </td></tr>
-<tr><td> Z80 </td><td> DE </td><td> BC </td><td> SP </td><td> IX </td><td> none </td><td> memory </td><td> [LOE81] </td></tr>
+<tr><td> Z80 </td><td> DE </td><td> BC </td><td> SP </td><td> IX </td><td> none </td><td> memory </td><td> <a href="#LOE81">[LOE81]</a> </td></tr>
 <tr><td> Z8 </td><td> RR6 </td><td> RR12 </td><td> RR14 </td><td> SP </td><td> RR10 </td><td> RR8 </td><td> [MPE92] </td></tr>
 <tr><td> 8051 </td><td> R0,1 </td><td> R2,3 </td><td> R4,5 </td><td> R6,7 </td><td> fixed </td><td> memory </td><td> [PAY90] </td></tr>
-</tbody>                
-<tfoot><tr><td colspan="8"> (¹) F83. &nbsp;&nbsp;(²) Pygmy Forth.               </td></tr></tfoot>
+</tbody>
+<tfoot><tr><td colspan="8"> <sup>[1]</sup>F83. &nbsp; <sup>[2]</sup>Pygmy Forth.</td></tr></tfoot>
 </table>
 <!-- ---------------end---------------------- -->
 
@@ -327,6 +329,7 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 ## REFERENCES
 
+<a
 \[CUR93a\] Curley, Charles, "Life in the FastForth Lane", awaiting publication in Forth Dimensions. Description of a 68000 subroutine-threaded Forth.
 
 \[CUR93b\] Curley, Charles, "Optimizing in a BSR/JSR Threaded Forth", awaiting publication in Forth Dimensions. Single-pass code optimization for FastForth, in only five screens of code\! Includes listing.
@@ -351,7 +354,8 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 \[LAX84\] Laxen, H. and Perry, M., _F83 for the IBM PC_, version 2.1.0 (1984). Distributed by the authors, available from the Forth Interest Group or GEnie.
 
-\[LOE81\] Loeliger, R. G., _Threaded Interpretive Languages_, BYTE Publications (1981), ISBN 0-07-038360-X. May be the only book ever written on the subject of creating a Forth-like kernel (the example used is the Z80). Worth it if you can find a copy.
+<span id="LOE81">[LOE81]</span>
+Loeliger, R. G., _Threaded Interpretive Languages_, BYTE Publications (1981), ISBN 0-07-038360-X. May be the only book ever written on the subject of creating a Forth-like kernel (the example used is the Z80). Worth it if you can find a copy.
 
 \[MPE92\] MicroProcessor Engineering Ltd., _MPE Z8/Super8 PowerForth Target_, MPE Ltd., 133 Hill Lane, Shirley, Southampton, S01 5AF, U.K. (June 1992). A commercial product.
 

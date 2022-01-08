@@ -4,15 +4,9 @@ Original sources: http://www.bradrodriguez.com/papers/
 
 I decided to create this repo because it was difficult for me to read, study, and learn in an easy way, using the original documentation. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on. So I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the MIT license, and all original sources are under the [author's original license](http://www.bradrodriguez.com).
 
-<br>
+![](img/construction.gif)
 
-<img align="right" src="img/construction.gif">
-
-<br>
-
-This repository is permanently under construction, so its content changes constantly.
-
-<br>
+This repository is permanently under construction, so its content changes constantly
 
 
 
@@ -28,7 +22,7 @@ This series originally appeared in [The Computer Journal](http://archive.org/det
 * [Part 6: The Z80 High-level Kernel](moving6.md)
 * [Part 7: CamelForth for the 8051](moving7.md)
 * [Part 8: CamelForth for the 6809](moving8.md)
-* [Multitasking 8051 CamelForth (23K PDF file)](8051task.pdf)
+* [Multitasking 8051 CamelForth (23 kB PDF file)](8051task.pdf)
 
 
 
@@ -49,17 +43,39 @@ These listings are part of Moving Forth and are described in the text.
 
 Source: http://archive.org/details/the-computer-journal (scanned PDF files)
 
-* [TCJ \#52](tcj/tcj_52_September-October_1991_text.pdf): B.Y.O. Assembler (1)
-* [TCJ \#54](tcj/tcj_54_January-February_1992_text.pdf): B.Y.O. Assembler (2)
-* [TCJ \#59](tcj/tcj_59_January-February_1993_text.pdf): Moving Forth
-* [TCJ \#60](tcj/tcj_60_March-April_1993_text.pdf): Moving Forth Part II
-* [TCJ \#62](tcj/tcj_62_July-August_1993_text.pdf): Moving Forth Part III
-* [TCJ \#64](tcj/tcj_64_November-December_1993_text.pdf): Moving Forth Part IV
-* [TCJ \#67](tcj/tcj_67_May-June_1994_text.pdf): Moving Forth Part 5
-* [TCJ \#69](tcj/tcj_69_September-October_1994_text.pdf): Moving Forth Part 6
-* [TCJ \#71](tcj/tcj_71_January-February_1995_text.pdf): Moving Forth Part 7
-* [TCJ \#72](tcj/tcj_72_March-April_1995_text.pdf): Moving Forth Part 7.5
-* [TCJ \#74](tcj/tcj_74_July-August_1995_text.pdf): Moving Forth Part 8
+* TCJ \#52: B.Y.O. Assembler (1) (3.9 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-52)
+[[2]](tcj/tcj_52_September-October_1991_text.pdf)
+* TCJ \#54: B.Y.O. Assembler (2) (2.7 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-54)
+[[2]](tcj/tcj_54_January-February_1992_text.pdf)
+* TCJ \#59: Moving Forth (2.6 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-59)
+[[2]](tcj/tcj_59_January-February_1993_text.pdf)
+* TCJ \#60: Moving Forth Part II (2.9 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-60)
+[[2]](tcj/tcj_60_March-April_1993_text.pdf)
+* TCJ \#62: Moving Forth Part III (3.0 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-62)
+[[2]](tcj/tcj_62_July-August_1993_text.pdf)
+* TCJ \#64: Moving Forth Part IV (3.4 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-64)
+[[2]](tcj/tcj_64_November-December_1993_text.pdf)
+* TCJ \#67: Moving Forth Part 5 (3.1 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-67)
+[[2]](tcj/tcj_67_May-June_1994_text.pdf)
+* TCJ \#69: Moving Forth Part 6 (3.7 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-69)
+[[2]](tcj/tcj_69_September-October_1994_text.pdf)
+* TCJ \#71: Moving Forth Part 7 (3.2 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-71)
+[[2]](tcj/tcj_71_January-February_1995_text.pdf)
+* TCJ \#72: Moving Forth Part 7.5 (3.1 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-72)
+[[2]](tcj/tcj_72_March-April_1995_text.pdf)
+* TCJ \#74: Moving Forth Part 8 (4.0 MB PDF file)
+[[1]](http://archive.org/details/the-computer-journal-74)
+[[2]](tcj/tcj_74_July-August_1995_text.pdf)
 
 
 
@@ -67,6 +83,12 @@ Source: http://archive.org/details/the-computer-journal (scanned PDF files)
 
 Source: http://archive.org/details/forthdimension (scanned PDF files)
 
-* [FD \#XIV:3](fd/Forth_Dimension_Volume_14_Number_3.pdf): Principles of Metacompilation (1)
-* [FD \#XIV:4](fd/Forth_Dimension_Volume_14_Number_4.pdf): Principles of Metacompilation (2)
-* [FD \#XIV:5](fd/Forth_Dimension_Volume_14_Number_5.pdf): Principles of Metacompilation (3)
+* FD \#XIV:3: Principles of Metacompilation (1) (21 MB PDF file)
+[[1]](https://archive.org/details/Forth_Dimension_Volume_14_Number_3)
+[[2]](fd/Forth_Dimension_Volume_14_Number_3.pdf)
+* FD \#XIV:4: Principles of Metacompilation (2) (21 MB PDF file)
+[[1]](https://archive.org/details/Forth_Dimension_Volume_14_Number_4)
+[[2]](fd/Forth_Dimension_Volume_14_Number_4.pdf)
+* FD \#XIV:5: Principles of Metacompilation (3) (22 MB PDF file)
+[[1]](https://archive.org/details/Forth_Dimension_Volume_14_Number_5)
+[[2]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
