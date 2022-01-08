@@ -47,9 +47,7 @@ These listings are part of Moving Forth and are described in the text.
 
 ## The Computer Journal (TCJ)
 
-Source: http://archive.org/details/the-computer-journal
-
-Scanned PDF files:
+Source: http://archive.org/details/the-computer-journal (scanned PDF files)
 
 * [TCJ \#52](tcj/tcj_52_September-October_1991_text.pdf): B.Y.O. Assembler (1)
 * [TCJ \#54](tcj/tcj_54_January-February_1992_text.pdf): B.Y.O. Assembler (2)
@@ -67,9 +65,7 @@ Scanned PDF files:
 
 ## Forth Dimensions (FD)
 
-Source: http://archive.org/details/forthdimension
-
-Scanned PDF files:
+Source: http://archive.org/details/forthdimension (scanned PDF files)
 
 * [FD \#XIV:3](fd/Forth_Dimension_Volume_14_Number_3.pdf): Principles of Metacompilation (1)
 * [FD \#XIV:4](fd/Forth_Dimension_Volume_14_Number_4.pdf): Principles of Metacompilation (2)
