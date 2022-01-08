@@ -355,7 +355,9 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 \[MPE92\] MicroProcessor Engineering Ltd., _MPE Z8/Super8 PowerForth Target_, MPE Ltd., 133 Hill Lane, Shirley, Southampton, S01 5AF, U.K. (June 1992). A commercial product.
 
-\[PAY90\] Payne, William H., [_Embedded Controller FORTH for the 8051 Family_](https://archive.org/details/WilliamH.PayneAuth.EmbeddedControllerFORTHForThe8051FamilyBostonAcademicPress1990), Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. <s>Hardcopy only; files can be downloaded from GEnie</s>. Not for the novice\!
+\[PAY90\] Payne, William H., _Embedded Controller FORTH for the 8051 Family_, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. <s>Hardcopy only; files can be downloaded from GEnie</s>. Not for the novice\!
+[[1]](http://archive.org/details/WilliamH.PayneAuth.EmbeddedControllerFORTHForThe8051FamilyBostonAcademicPress1990)
+[[2]](archiveorg/Embedded_Controller_FORTH_for_the_8051_Family_-_Payne.pdf)
 
 \[SER90\] Sergeant, Frank, _Pygmy Forth for the IBM PC_, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain.
 
