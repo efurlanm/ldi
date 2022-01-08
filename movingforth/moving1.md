@@ -582,7 +582,7 @@ registers.
 Here are the register assignments made by Forths for a number of different CPUs. Try to deduce the design decisions of the authors from this list.
 
 <table>
-<caption align="center">Figure 5. Register Assignments</caption>
+<caption style="text-align: center;">Figure 5. Register Assignments</caption>
 <thead>
 <tr><th></th><th>W</th><th>IP</th><th>PSP</th><th>RSP</th><th>UP</th><th>TOS</th><th></th></tr>
 </thead>
