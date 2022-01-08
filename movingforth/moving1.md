@@ -289,26 +289,24 @@ Here are the register assignments made by Forths for a number of different CPUs.
 <!-- Do not edit this table. It is created in Libreoffice using a 
 template (see the aux directory). -->
 <!-- ---------------start-------------------- -->
-<table id="T5">
-<caption>Figure 5. Register Assignments</caption>
-<thead>
+<table id="T5">                
+<caption> Figure 5. Register Assignments               </caption>
+<thead>                
 <tr><th>  </th><th> W </th><th> IP </th><th> PSP </th><th> RSP </th><th> UP </th><th> TOS </th><th>  </th></tr>
-</thead>
-<tbody>
-
-
-<tr><td> 8086<sup>[1] </sup> </td><td> BX </td><td> SI </td><td> SP </td><td> BP </td><td> memory </td><td> memory </td><td> [LAX84] </td></tr>
-<tr><td> 8086<sup>[2] </sup> </td><td> AX </td><td> SI </td><td> SP </td><td> BP </td><td> none </td><td> BX </td><td> [SER90] </td></tr>
-<tr><td> 68000 </td><td> A5 </td><td> A4 </td><td> A3 </td><td> A7=SP </td><td> A6 </td><td> memory </td><td> [CUR86] </td></tr>
-<tr><td> PDP-11 </td><td> R2 </td><td> R4 </td><td> R5 </td><td> R6=SP </td><td> R3 </td><td> memory </td><td> [JAM80] </td></tr>
-<tr><td> 6809 </td><td> X </td><td> Y </td><td> U </td><td> S </td><td> memory </td><td> memory </td><td> [TAL80] </td></tr>
-<tr><td> 6502 </td><td> Zpage </td><td> Zpage </td><td> X </td><td> SP </td><td> Zpage </td><td> memory </td><td> [KUN81] </td></tr>
-<tr><td> Z80 </td><td> DE </td><td> BC </td><td> SP </td><td> IX </td><td> none </td><td> memory </td><td> <a href="#LOE81">[LOE81]</a> </td></tr>
-<tr><td> Z8 </td><td> RR6 </td><td> RR12 </td><td> RR14 </td><td> SP </td><td> RR10 </td><td> RR8 </td><td> [MPE92] </td></tr>
-<tr><td> 8051 </td><td> R0,1 </td><td> R2,3 </td><td> R4,5 </td><td> R6,7 </td><td> fixed </td><td> memory </td><td> [PAY90] </td></tr>
-</tbody>
-<tfoot><tr><td colspan="8"> <sup>[1]</sup>F83. &nbsp; <sup>[2]</sup>Pygmy Forth.</td></tr></tfoot>
-</table>
+</thead>                
+<tbody>                
+<tr><td> 8086<sup>[1]</sup> </td><td> BX </td><td> SI </td><td> SP </td><td> BP </td><td> memory </td><td> memory </td><td> <a href="LAX84">[LAX84]</a> </td></tr>
+<tr><td> 8086<sup>[2]</sup> </td><td> AX </td><td> SI </td><td> SP </td><td> BP </td><td> none </td><td> BX </td><td> <a href="SER90">[SER90]</a> </td></tr>
+<tr><td> 68000 </td><td> A5 </td><td> A4 </td><td> A3 </td><td> A7=SP </td><td> A6 </td><td> memory </td><td> <a href="CUR86">[CUR86]</a> </td></tr>
+<tr><td> PDP-11 </td><td> R2 </td><td> R4 </td><td> R5 </td><td> R6=SP </td><td> R3 </td><td> memory </td><td> <a href="JAM80">[JAM80]</a> </td></tr>
+<tr><td> 6809 </td><td> X </td><td> Y </td><td> U </td><td> S </td><td> memory </td><td> memory </td><td> <a href="TAL80">[TAL80]</a> </td></tr>
+<tr><td> 6502 </td><td> Zpage </td><td> Zpage </td><td> X </td><td> SP </td><td> Zpage </td><td> memory </td><td> <a href="KUN81">[KUN81]</a> </td></tr>
+<tr><td> Z80 </td><td> DE </td><td> BC </td><td> SP </td><td> IX </td><td> none </td><td> memory </td><td> <a href="LOE81">[LOE81]</a> </td></tr>
+<tr><td> Z8 </td><td> RR6 </td><td> RR12 </td><td> RR14 </td><td> SP </td><td> RR10 </td><td> RR8 </td><td> <a href="MPE92">[MPE92]</a> </td></tr>
+<tr><td> 8051 </td><td> R0,1 </td><td> R2,3 </td><td> R4,5 </td><td> R6,7 </td><td> fixed </td><td> memory </td><td> <a href="PAY90">[PAY90]</a> </td></tr>
+</tbody>                
+<tfoot><tr><td colspan="8"> <sup>[1]</sup>F83. &nbsp; <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
+</table>                
 <!-- ---------------end---------------------- -->
 
 "SP" refers to the hardware stack pointer. "Zpage" refers to values kept in the 6502's memory page zero, which are almost as useful as -- sometimes more useful than -- values kept in registers; e.g., they can be used for memory addressing. "Fixed" means that Payne's 8051 Forth has a single, immovable user area, and UP is a hard-coded constant.
@@ -329,42 +327,94 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 ## REFERENCES
 
-<a
-\[CUR93a\] Curley, Charles, "Life in the FastForth Lane", awaiting publication in Forth Dimensions. Description of a 68000 subroutine-threaded Forth.
+<span id="CUR93a">[CUR93a]</span>
+Curley, Charles, "Life in the FastForth Lane", awaiting publication in Forth Dimensions. Description of a 68000 subroutine-threaded Forth.
+[[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5)
+[[2]](http://www.forth.org/fd/FD-V14N5.pdf)
+[[3]](http://www.forth.org/fd/curley2.html)
+[[4]](http://github.com/charlescurley/realforth)
+[[5]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
 
-\[CUR93b\] Curley, Charles, "Optimizing in a BSR/JSR Threaded Forth", awaiting publication in Forth Dimensions. Single-pass code optimization for FastForth, in only five screens of code\! Includes listing.
+<span id="CUR93b">[CUR93b]</span>
+Curley, Charles, "Optimizing in a BSR/JSR Threaded Forth", awaiting publication in Forth Dimensions. Single-pass code optimization for FastForth, in only five screens of code\! Includes listing.
+[[1]](http://www.forth.org/fd/curley1.html)
+[[2]](https://archive.org/details/Forth_Dimension_Volume_14_Number_6)
+[[3]](http://www.forth.org/fd/FD-V14N6.pdf)
+[[4]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
 
-\[KEL92\] Kelly, Guy M., "Forth Systems Comparisons", Forth Dimensions XIII:6 (Mar/Apr 1992). Also published in the _1991 FORML Conference Proceedings_. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design tradeoffs of many 8086 Forths with code fragments and benchmarks -- highly recommended\!
+<span id="KEL92">[KEL92]</span>
+Kelly, Guy M., "Forth Systems Comparisons", Forth Dimensions XIII:6 (Mar/Apr 1992). Also published in the _1991 FORML Conference Proceedings_. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design tradeoffs of many 8086 Forths with code fragments and benchmarks -- highly recommended\!
+[[1]](https://archive.org/details/Forth_Dimension_Volume_13_Number_6)
+[[2]](http://www.forth.org/fd/FD-V13N6.pdf)
+[[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
 
-\[KOG82\] Kogge, Peter M., "An Architectural Trail to Threaded- Code Systems", IEEE Computer, vol. 15 no. 3 (Mar 1982). Remains the definitive description of various threading techniques.
+<span id="KOG82">[KOG82]</span>
+Kogge, Peter M., "An Architectural Trail to Threaded-Code Systems", IEEE Computer, vol. 15 no. 3 (Mar 1982). Remains the definitive description of various threading techniques.
+[[1]](http://www.semanticscholar.org/paper/An-Architectural-Trail-to-Threaded-Code-Systems-Kogge/171f9d8fc050641d022116dafaf550debfc2a3f9)
+[[2]](ref/An_A_T_to_Threaded-Code_Systems_-_Kogge.pdf)
 
-<a id="ROD91">\[ROD91\]</a> Rodriguez, B.J., "B.Y.O. Assembler", Part 1, The Computer Journal [[\#52 (Sep/Oct 1991)]](tcj/tcj_52_September-October_1991_text.pdf). General principles of writing Forth assemblers.
+<span id="ROD91">[ROD91]</span>
+Rodriguez, B.J., "B.Y.O. Assembler", Part 1, The Computer Journal \#52 (Sep/Oct 1991). General principles of writing Forth assemblers.
+[[1]](http://archive.org/details/the-computer-journal-52)
+[[2]](tcj/tcj_52_September-October_1991_text.pdf)
 
-<a id="ROD92">\[ROD92\]</a> Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal [[\#54 (Jan/Feb 1992)]](tcj/tcj_54_January-February_1992_text.pdf). A 6809 assembler in Forth.
+<span id="ROD92">[ROD92]</span>
+Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal \#54 (Jan/Feb 1992). A 6809 assembler in Forth.
+[[1]](http://archive.org/details/the-computer-journal-54)
+[[2]](tcj/tcj_54_January-February_1992_text.pdf)
 
-\[SCO89\] Scott, Andrew, "An Extensible Optimizer for Compiling Forth," _1989 FORML Conference Proceedings_, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a 68000 optimizer; no code provided.
+<dl><dt id="SCO89">[SCO89]</dt><dd><ul>
+<li>Scott, Andrew, "An Extensible Optimizer for Compiling Forth", _1989 FORML Conference Proceedings_, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a 68000 optimizer; no code provided.</li>
+<li>"Extensible Optiming Compiler", Forth Dimensions</li>
+</ul></dd>
+
+<span id="SCO89">[SCO89]</span> Scott, Andrew:<br>
+1. "An Extensible Optimizer for Compiling Forth", _1989 FORML Conference Proceedings_, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a 68000 optimizer; no code provided.<br>
+2. "Extensible Optiming Compiler", Forth Dimensions XII:2 (Jul/Aug 1990).
+[[1]](https://archive.org/details/Forth_Dimension_Volume_12_Number_2)
+[[2]](http://www.forth.org/fd/FD-V12N2.pdf)
 
 ### Forth Implementations
 
-\[CUR86\] Curley, Charles, _real-Forth for the 68000_, privately distributed (1986).
+<span id="CUR86">[CUR86]</span>
+Curley, Charles, _real-Forth for the 68000_, <s>privately distributed (1986)</s>.
+[[1]](http://github.com/charlescurley/realforth)
 
-\[JAM80\] James, John S., _fig-Forth for the PDP-11_, Forth Interest Group (1980).
+<span id="JAM80">[JAM80]</span>
+James, John S., _fig-Forth for the PDP-11_, Forth Interest Group (1980).
+[[1]](http://www.forth.org/fig-forth/contents.html)
+[[2]](http://www.stackosaurus.com/figforth.html)
 
-\[KUN81\] Kuntze, Robert E., _MVP-Forth for the Apple II_, Mountain View Press (1981).
+<span id="KUN81">[KUN81]</span>
+Kuntze, Robert E., _MVP-Forth for the Apple II_, Mountain View Press (1981).
+[[1]](https://archive.org/details/haydon90_All_About_Forth_3rd_ed)
+[[2]](mvp/)
 
-\[LAX84\] Laxen, H. and Perry, M., _F83 for the IBM PC_, version 2.1.0 (1984). Distributed by the authors, available from the Forth Interest Group or GEnie.
+<span id="LAX84">[LAX84]</span>
+Laxen, H. and Perry, M., _F83 for the IBM PC_, version 2.1.0 (1984). Distributed by the authors, available from the Forth Interest Group or GEnie.
+[[1]](http://github.com/ForthHub/F83)
+[[2]](http://forth.org/OffeteStore/1003_InsideF83.pdf)
 
 <span id="LOE81">[LOE81]</span>
 Loeliger, R. G., _Threaded Interpretive Languages_, BYTE Publications (1981), ISBN 0-07-038360-X. May be the only book ever written on the subject of creating a Forth-like kernel (the example used is the Z80). Worth it if you can find a copy.
+[[1]](http://archive.org/details/R.G.LoeligerThreadedInterpretiveLanguagesTheirDesignAndImplementationByteBooks1981)
+[[2]](ref/Threaded_Interpretive_Languages_-_Loeliger.pdf)
 
-\[MPE92\] MicroProcessor Engineering Ltd., _MPE Z8/Super8 PowerForth Target_, MPE Ltd., 133 Hill Lane, Shirley, Southampton, S01 5AF, U.K. (June 1992). A commercial product.
+<span id="MPE92">[MPE92]</span>
+MicroProcessor Engineering Ltd., _MPE Z8/Super8 PowerForth Target_, MPE Ltd., 133 Hill Lane, Shirley, Southampton, S01 5AF, U.K. (June 1992). A commercial product.
+[[1]](https://www.mpeforth.com/)
 
-\[PAY90\] Payne, William H., _Embedded Controller FORTH for the 8051 Family_, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. <s>Hardcopy only; files can be downloaded from GEnie</s>. Not for the novice\!
+<span id="PAY90">[PAY90]</span>
+Payne, William H., _Embedded Controller FORTH for the 8051 Family_, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. <s>Hardcopy only; files can be downloaded from GEnie</s>. Not for the novice\!
 [[1]](http://archive.org/details/WilliamH.PayneAuth.EmbeddedControllerFORTHForThe8051FamilyBostonAcademicPress1990)
-[[2]](archiveorg/Embedded_Controller_FORTH_for_the_8051_Family_-_Payne.pdf)
+[[2]](ref/Embedded_Controller_FORTH_for_the_8051_Family_-_Payne.pdf)
 
-\[SER90\] Sergeant, Frank, _Pygmy Forth for the IBM PC_, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain.
+<span id="SER90">[SER90]</span>
+Sergeant, Frank, _Pygmy Forth for the IBM PC_, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain.
+[[1]](https://github.com/utoh/pygmy-forth)
 
-\[TAL80\] Talbot, R. J., _fig-Forth for the 6809_, Forth Interest Group (1980).
+<span id="TAL80">[TAL80]</span>
+Talbot, R. J., _fig-Forth for the 6809_, Forth Interest Group (1980).
+[[1]](http://www.forth.org/fig-forth/contents.html)
 
 *Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group <s>FTP</s> server, <s>ftp://ftp.forth.org/pub/Forth</s> http://www.forth.org/ .*

@@ -1,0 +1,631 @@
+*/ MVP/G  9/20/82
+*
+*    'ENCLOSE' ( ADDR1 C ---
+*                   ADDR1 N1 N2 N3 )
+*
+         HEX   87
+         DCI   'ENCLOSE'
+         DA    EMPTBUF-16
+ENCLOSE  DA    ENCLOSE+2
+         LDA   #2
+         JSR   SETUPN
+         TXA
+         SEC
+         SBC   #8
+         TAX
+         STY   $03,X
+         STY   $01,X
+         DEY
+         DEC   N+3
+         DEC   $1,X
+ENCLOS1  INY
+         BNE   ENCLOS2
+         INC   N+3
+         INC   $1,X
+ENCLOS2  LDA   (N+2),Y
+         CMP   N
+         BEQ   ENCLOS1
+         STY   $4,X
+         LDA   $1,X
+         STA   $5,X
+ENCLOS3  LDA   (N+2),Y
+         BNE   ENCLOS5
+         STY   $2,X
+         STY   $0,X
+         LDA   $1,X
+         STA   $3,X
+         TYA
+         CMP   $4,X
+         BNE   ENCLOS4
+         LDA   $1,X
+         CMP   $5,X
+         BNE   ENCLOS4
+         INC   $2,X
+         BNE   ENCLOS4
+         INC   $3,X
+ENCLOS4  JMP   NEXT
+ENCLOS5  PHA
+         STY   $2,X
+         LDA   $1,X
+         STA   $3,X
+         INY
+         BNE   ENCLOS6
+         INC   $1,X
+         INC   N+3
+ENCLOS6  PLA
+         CMP   N
+         BNE   ENCLOS3
+         STY   $0,X
+         JMP   NEXT
+*
+*    'EPRINT'  ( --- ADDR )
+*
+         HEX   86
+         DCI   'EPRINT'
+         DA    ENCLOSE-10
+EPRINT   DA    DOCREAT
+         HEX   0000
+*
+*    'EXECUTE' ( ADDR --- )
+*
+         HEX   87
+         DCI   'EXECUTE'
+         DA    EPRINT-9
+EXECUTE  DA    EXECUTE+2
+         LDA   0,X
+         STA   W
+         LDA   1,X
+         STA   W+1
+         INX
+         INX
+         JMP   W-1
+*
+*    'EXIT'
+*
+         HEX   84
+         DCI   'EXIT'
+         DA    EXECUTE-10
+EXIT     DA    EXIT+2
+         PLA
+         STA   IP
+         PLA
+         STA   IP+1
+         JMP   NEXT
+*
+*    'EXPECT'  ( ADDR N --- )
+*
+         HEX   86
+         DCI   'EXPECT'
+         DA    EXIT-7
+EXPECT   DA    DOCOLON
+         DA    TEXPECT
+         DA    AT
+         DA    EXECUTE
+         DA    EXIT
+*
+*    'FENCE'  ( --- ADDR )
+*
+         HEX   85
+         DCI   'FENCE'
+         DA    EXPECT-9
+FENCE    DA    DOUSER
+         HEX   1000
+*
+*    'FILL'  ( ADDR N B --- )
+*
+         HEX   84
+         DCI   'FILL'
+         DA    FENCE-8
+FILL     DA    DOCOLON
+         DA    OVER
+         DA    ZGREAT
+         DA    ZBRANCH
+         DFB   FILL1-*,00
+         DA    AFILLA
+         DA    BRANCH
+         DFB   FILL2-*,00
+FILL1    DA    DDROP
+         DA    DROP
+FILL2    DA    EXIT
+*
+*    'FIND'  ( --- ADDR )
+*
+         HEX   84
+         DCI   'FIND'
+         DA    FILL-7
+FIND     DA    DOCOLON
+         DA    DFIND
+         DA    ZBRANCH
+         DFB   FIND1-*,00
+         DA    DROP
+         DA    CFA
+         DA    BRANCH
+         DFB   FIND2-*,00
+FIND1    DA    ZERO
+FIND2    DA    EXIT
+*
+*    'FIRST'  ( --- N )
+*
+         HEX   85
+         DCI   'FIRST'
+         DA    FIND-7
+FIRST    DA    DOCONST
+         HEX   98AD
+*
+*    'FLD'  ( --- ADDR )
+*
+         HEX   83
+         DCI   'FLD'
+         DA    FIRST-8
+FLD      DA    DOUSER
+         HEX   44
+*
+*    'FORGET'
+*
+         HEX   86
+         DCI   'FORGET'
+         DA    FLD-6
+FORGET   DA    DOCOLON
+         DA    BL
+         DA    WORD
+         DA    CURRENT
+         DA    AT
+         DA    AT
+         DA    AFINDA
+         DA    ZEQUAL
+         DA    AABORTQ
+         HEX   19
+         ASC   'NOT IN CURRENT VOCABULARY'
+         DA    DROP
+         DA    NFA
+         DA    DUP
+         DA    FENCE
+         DA    AT
+         DA    ULESS
+         DA    AABORTQ
+         HEX   17
+         ASC   'IN PROTECTED DICTIONARY'
+         DA    TOR
+         DA    RAT
+         DA    CONTEXT
+         DA    AT
+         DA    ULESS
+         DA    ZBRANCH
+         DFB   FORGET1-*,00
+         DA    FORTH
+FORGET1  DA    RAT
+         DA    CURRENT
+         DA    AT
+         DA    ULESS
+         DA    ZBRANCH
+         DFB   FORGET2-*,00
+         DA    FORTH
+         DA    DEFINIT
+FORGET2  DA    VOCLINK
+         DA    AT
+FORGET3  DA    RAT
+         DA    OVER
+         DA    ULESS
+         DA    ZBRANCH
+         DFB   FORGET4-*,00
+         DA    AT
+         DA    BRANCH
+         DFB   FORGET3-*,>FORGET3-*
+FORGET4  DA    DUP
+         DA    VOCLINK
+         DA    STORE
+FORGET5  DA    DUP
+         DA    LIT
+         HEX   0400
+         DA    SUB
+FORGET6  DA    PFA
+         DA    LFA
+         DA    AT
+         DA    DUP
+         DA    RAT
+         DA    ULESS
+         DA    ZBRANCH
+         DFB   FORGET6-*,>FORGET6-*
+         DA    OVER
+         DA    TWOM
+         DA    STORE
+         DA    AT
+         DA    QDUP
+         DA    ZEQUAL
+         DA    ZBRANCH
+         DFB   FORGET5-*,>FORGET5-*
+         DA    RFROM
+         DA    DP
+         DA    STORE
+         DA    EXIT
+*
+*    'FORTH'
+*
+         HEX   C5
+         DCI   'FORTH'
+         DA    FORGET-9
+FORTH    DA    DOVOCAB
+         HEX   81A0
+         DA    RBRAC-4
+VL0      HEX   0000
+*
+*    'FREEZE'  ( --- )
+*
+         HEX   86
+         DCI   'FREEZE'
+         DA    FORTH-8
+FREEZE   DA    DOCOLON
+         DA    LIT
+         DA    UAP
+         DA    AT
+         DA    LIT
+         HEX   0600
+         DA    PLUS
+         DA    INTUSER
+         DA    LIT
+         HEX   3000
+         DA    CMOVE
+         DA    LIT
+         DA    FORTH+2
+         DA    TWOP
+         DA    AT
+         DA    INFORTH
+         DA    STORE
+         DA    EXIT
+*
+*    'GO'  ( --- )
+*
+         HEX   82
+         DCI   'GO'
+         DA    FREEZE-9
+GO       DA    *+2
+         JMP   $FF69
+*
+*    'HERE'  ( --- ADDR )
+*
+         HEX   84
+         DCI   'HERE'
+         DA    GO-5
+HERE     DA    DOCOLON
+         DA    DP
+         DA    AT
+         DA    EXIT
+*
+*    'HEX'  ( --- )
+*
+         HEX   83
+         DCI   'HEX'
+         DA    HERE-7
+HEX      DA    DOCOLON
+         DA    LIT
+         HEX   1000
+         DA    BASE
+         DA    STORE
+         DA    EXIT
+*
+*    'HLD'  ( --- ADDR )
+*
+         HEX   83
+         DCI   'HLD'
+         DA    HEX-6
+HLD      DA    DOUSER
+         HEX   46
+*
+*    'HOLD'  ( C --- )
+*
+         HEX   84
+         DCI   'HOLD'
+         DA    HLD-6
+HOLD     DA    DOCOLON
+         DA    LIT
+         HEX   FFFF
+         DA    HLD
+         DA    PSTORE
+         DA    HLD
+         DA    AT
+         DA    CSTORE
+         DA    EXIT
+*
+*    'I' ( --- N )
+*
+         HEX   81
+         ASC   "I"
+         DA    HOLD-7
+I        DA    RAT+2      SHARE CODE FOR 'R@'
+*
+*    'I''  ( --- N )
+*
+         HEX   82
+         DCI   /I'/
+         DA    I-4
+IPRIME   DA    IPRIME+2
+         STX   XSAVE
+         TSX
+         LDA   $0103,X
+         PHA
+         LDA   $0104,X
+         LDX   XSAVE
+         JMP   PUSH
+*
+*    'I/O-ERROR'  ( --- )
+*
+         HEX   89
+         DCI   'I/O-ERROR'
+         DA    IPRIME-5
+IOERR    DA    DOCOLON
+         DA    CR
+         DA    LIT
+         HEX   8700
+         DA    EMIT
+         DA    LIT
+         HEX   1000
+         DA    EQUAL
+         DA    ZBRANCH
+         DFB   IOERR1-*,00
+         DA    ADOTQA
+         HEX   0F
+         ASC   'WRITE PROTECTED'
+         DA    BRANCH
+         DFB   IOERR2-*,00
+IOERR1   DA    ADOTQA
+         HEX   0E
+         ASC   'DISK I/O ERROR'
+IOERR2   DA    CR
+         DA    RFROM
+         DA    RFROM
+         DA    RFROM
+         DA    SPSTORE
+         DA    QUIT
+         DA    EXIT
+*
+*    'IBSLOT'  ( --- ADDR )
+*
+         HEX   86
+         DCI   'IBSLOT'
+         DA    IOERR-12
+IBSLOT   DA    DOCONST
+         HEX   E9B7
+*
+*    'IF'  ( F --- )
+*
+         HEX   C2
+         DCI   'IF'
+         DA    IBSLOT-9
+IF       DA    DOCOLON
+         DA    COMPILE
+         DA    ZBRANCH
+         DA    HERE
+         DA    ZERO
+         DA    COMMA
+         DA    TWO
+         DA    EXIT
+*
+*    'IMMEDIATE'  ( --- )
+*
+         HEX   89
+         DCI   'IMMEDIATE'
+         DA    IF-5
+IMEDATE  DA    DOCOLON
+         DA    LATEST
+         DA    LIT
+         HEX   4000
+         DA    TOGGLE
+         DA    EXIT
+*
+*    'IN#'  ( N --- )
+*
+         HEX   83
+         DCI   'IN#'
+         DA    IMEDATE-12
+INSHARP  DA    DOCOLON
+         DA    DUP
+         DA    ZBRANCH
+         DFB   INSHAR1-*,00
+         DA    LIT
+         HEX   C000
+         DA    PLUS
+         DA    LIT
+         HEX   0001
+         DA    STAR
+         DA    BRANCH
+         DFB   INSHAR2-*,00
+INSHAR1  DA    DROP
+         DA    LIT
+         DA    KEYIN
+INSHAR2  DA    LIT
+         DA    KSW
+         DA    STORE
+         DA    EXIT
+*
+*    'INIT-FORTH'  ( --- ADDR )
+*
+         HEX   8A
+         DCI   'INIT-FORTH'
+         DA    INSHARP-6
+INFORTH  DA    DOCONST
+         DA    IFORTH
+*
+*    'INIT-USER'  ( --- ADDR )
+*
+         HEX   89
+         DCI   'INIT-USER'
+         DA    INFORTH-13
+INTUSER  DA    DOCONST
+         DA    IUSER
+*
+*    'INTERPRET'  ( --- )
+*
+         HEX   89
+         DCI   'INTERPRET'
+         DA    INTUSER-12
+INTRPRT  DA    DOCOLON
+         DA    TINTERP
+         DA    AT
+         DA    EXECUTE
+         DA    EXIT
+*
+*    'J'  ( --- N )
+*
+         HEX   81
+         ASC   "J"
+         DA    INTRPRT-12
+J        DA    J+2
+         STX   XSAVE
+         TSX
+         LDA   $0105,X
+         PHA
+         LDA   $0106,X
+         LDX   XSAVE
+         JMP   PUSH
+*
+*    'KEY'  ( --- C )
+*
+         HEX   83
+         DCI   'KEY'
+         DA    J-4
+KEY      DA    DOCOLON
+         DA    TKEY
+         DA    AT
+         DA    EXECUTE
+         DA    EXIT
+*
+*    'LATEST'  ( --- ADDR )
+*
+         HEX   86
+         DCI   'LATEST'
+         DA    KEY-6
+LATEST   DA    DOCOLON
+         DA    CURRENT
+         DA    AT
+         DA    AT
+         DA    EXIT
+*
+*    'LEAVE'
+*
+         HEX   85
+         DCI   'LEAVE'
+         DA    LATEST-9
+LEAVE    DA    LEAVE+2
+         STX   XSAVE
+         TSX
+         LDA   $0101,X
+         STA   $0103,X
+         LDA   $0102,X
+         STA   $0104,X
+         LDX   XSAVE
+         JMP   NEXT
+*
+*    'LFA'  ( PFA --- LFA )
+*
+         HEX   83
+         DCI   'LFA'
+         DA    LEAVE-8
+LFA      DA    DOCOLON
+         DA    LIT
+         HEX   0400
+         DA    SUB
+         DA    EXIT
+*
+*    'LIMIT'  ( --- N )
+*
+         HEX   85
+         DCI   'LIMIT'
+         DA    LFA-6
+LIMIT    DA    DOCONST
+         DA    UAREA
+*
+*    'LIST'  ( N --- )
+*
+         HEX   84
+         DCI   'LIST'
+         DA    LIMIT-8
+LIST     DA    DOCOLON
+         DA    CR
+         DA    DUP
+         DA    SCR
+         DA    STORE
+         DA    ADOTQA
+         HEX   05
+         ASC   'SCR #'
+         DA    UDOT
+         DA    LIT
+         HEX   1000
+         DA    ZERO
+         DA    ADOA
+LIST1    DA    CR
+         DA    I
+         DA    LIT
+         HEX   0300
+         DA    DOTR
+         DA    SPACE
+         DA    I
+         DA    SCR
+         DA    AT
+         DA    DOTLINE
+         DA    QTERM
+         DA    ZBRANCH
+         DFB   LIST2-*,00
+         DA    LEAVE
+LIST2    DA    ALOOPA
+         DFB   LIST1-*,>LIST1-*
+         DA    CR
+         DA    EXIT
+*
+*    'LIT'
+*
+         HEX   83
+         DCI   'LIT'
+         DA    LIST-7
+LIT      DA    LIT+2
+         LDA   (IP),Y
+         PHA
+         INC   IP
+         BNE   LIT1
+         INC   IP+1
+LIT1     LDA   (IP),Y
+         INC   IP
+         BNE   LIT2
+         INC   IP+1
+LIT2     JMP   PUSH
+*
+*    'LITERAL'  ( N --- )
+*
+         HEX   C7
+         DCI   'LITERAL'
+         DA    LIT-6
+LITERAL  DA    DOCOLON
+         DA    STATE
+         DA    AT
+         DA    ZBRANCH
+         DFB   LITERA1-*,00
+         DA    COMPILE
+         DA    LIT
+         DA    COMMA
+LITERA1  DA    EXIT
+*
+*    'LOAD'  ( N --- )
+*
+         HEX   84
+         DCI   'LOAD'
+         DA    LITERAL-10
+LOAD     DA    DOCOLON
+         DA    TLOAD
+         DA    AT
+         DA    EXECUTE
+         DA    EXIT
+*
+*    'LOOP'  ( --- )
+*
+         HEX   C4
+         DCI   'LOOP'
+         DA    LOAD-7
+LOOP     DA    DOCOLON
+         DA    LIT
+         HEX   0300
+         DA    QPAIRS
+         DA    COMPILE
+         DA    ALOOPA
+         DA    HERE
+         DA    SUB
+         DA    COMMA
+         DA    EXIT
