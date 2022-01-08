@@ -583,7 +583,7 @@ Here are the register assignments made by Forths for a number of different CPUs.
 
 <table>
 <caption>Figure 5. Register Assignments</caption>
-<thead>
+<thead style="text-align: center;">
 <tr><th></th><th>W</th><th>IP</th><th>PSP</th><th>RSP</th><th>UP</th><th>TOS</th><th></th></tr>
 </thead>
 <tbody>

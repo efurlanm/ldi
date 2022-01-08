@@ -16,15 +16,28 @@ This repository is permanently under construction, so its content changes consta
 
 This series originally appeared in [The Computer Journal](http://archive.org/details/the-computer-journal/). Accompanying source code can be found on the [CamelForth](http://www.camelforth.com/) page.
 
-* [Part 1: Design Decisions in the Forth Kernel](https://github.com/efurlanm/ldi/blob/main/movingforth/moving1.md)
-* [Part 2: Benchmarks and Case Studies of Forth Kernels](https://github.com/efurlanm/ldi/blob/main/movingforth/moving2.md)
-* [Part 3: Demystifying DOES>](https://github.com/efurlanm/ldi/blob/main/movingforth/moving3.md)
-* [Part 4: Assemble or Metacompile?](https://github.com/efurlanm/ldi/blob/main/movingforth/moving4.md)
-* [Part 5: The Z80 Primitives](https://github.com/efurlanm/ldi/blob/main/movingforth/moving5.md)
-* [Part 6: The Z80 High-level Kernel](https://github.com/efurlanm/ldi/blob/main/movingforth/moving6.md)
-* [Part 7: CamelForth for the 8051](https://github.com/efurlanm/ldi/blob/main/movingforth/moving7.md)
-* [Part 8: CamelForth for the 6809](https://github.com/efurlanm/ldi/blob/main/movingforth/moving8.md)
-* [Multitasking 8051 CamelForth (23K PDF file)](https://github.com/efurlanm/ldi/blob/main/movingforth/8051task.pdf)
+* [Part 1: Design Decisions in the Forth Kernel](moving1.md)
+* [Part 2: Benchmarks and Case Studies of Forth Kernels](moving2.md)
+* [Part 3: Demystifying DOES>](moving3.md)
+* [Part 4: Assemble or Metacompile?](moving4.md)
+* [Part 5: The Z80 Primitives](moving5.md)
+* [Part 6: The Z80 High-level Kernel](moving6.md)
+* [Part 7: CamelForth for the 8051](moving7.md)
+* [Part 8: CamelForth for the 6809](moving8.md)
+* [Multitasking 8051 CamelForth (23K PDF file)](8051task.pdf)
+
+
+
+## Listings
+
+These listings are part of Moving Forth and are described in the text.
+
+* [Table 1. Glossary](glosslo.txt): Glossary of words in CAMEL80.AZM
+* [Primitive testing code](cameltst.txt): The "minimal" test of the CamelForth kernel
+* [CAMEL80.AZM](camel80.txt): Code Primitives
+* [CAMEL80H.AZM](camel80h.txt): High Level Words
+* [CAMEL80D.AZM](camel80d.txt): CPU and Model Dependencies
+* [CAMEL09](camel09.txt): Direct-Threaded Forth model for Motorola 6809
 
 
 
@@ -34,17 +47,17 @@ Source: http://archive.org/details/the-computer-journal
 
 Scanned PDF files:
 
-* [TCJ \#52](tcj/tcj_52_September-October_1991_text.pdf) - B.Y.O. Assembler (1)
-* [TCJ \#54](tcj/tcj_54_January-February_1992_text.pdf) - B.Y.O. Assembler (2)
-* [TCJ \#59](tcj/tcj_59_January-February_1993_text.pdf) - Moving Forth
-* [TCJ \#60](tcj/tcj_60_March-April_1993_text.pdf) - Moving Forth Part II
-* [TCJ \#62](tcj/tcj_62_July-August_1993_text.pdf) - Moving Forth Part III
-* [TCJ \#64](tcj/tcj_64_November-December_1993_text.pdf) - Moving Forth Part IV
-* [TCJ \#67](tcj/tcj_67_May-June_1994_text.pdf) - Moving Forth Part 5
-* [TCJ \#69](tcj/tcj_69_September-October_1994_text.pdf) - Moving Forth Part 6
-* [TCJ \#71](tcj/tcj_71_January-February_1995_text.pdf) - Moving Forth Part 7
-* [TCJ \#72](tcj/tcj_72_March-April_1995_text.pdf) - Moving Forth Part 7.5
-* [TCJ \#74](tcj/tcj_74_July-August_1995_text.pdf) - Moving Forth Part 8
+* [TCJ \#52](tcj/tcj_52_September-October_1991_text.pdf): B.Y.O. Assembler (1)
+* [TCJ \#54](tcj/tcj_54_January-February_1992_text.pdf): B.Y.O. Assembler (2)
+* [TCJ \#59](tcj/tcj_59_January-February_1993_text.pdf): Moving Forth
+* [TCJ \#60](tcj/tcj_60_March-April_1993_text.pdf): Moving Forth Part II
+* [TCJ \#62](tcj/tcj_62_July-August_1993_text.pdf): Moving Forth Part III
+* [TCJ \#64](tcj/tcj_64_November-December_1993_text.pdf): Moving Forth Part IV
+* [TCJ \#67](tcj/tcj_67_May-June_1994_text.pdf): Moving Forth Part 5
+* [TCJ \#69](tcj/tcj_69_September-October_1994_text.pdf): Moving Forth Part 6
+* [TCJ \#71](tcj/tcj_71_January-February_1995_text.pdf): Moving Forth Part 7
+* [TCJ \#72](tcj/tcj_72_March-April_1995_text.pdf): Moving Forth Part 7.5
+* [TCJ \#74](tcj/tcj_74_July-August_1995_text.pdf): Moving Forth Part 8
 
 
 
@@ -54,6 +67,6 @@ Source: http://archive.org/details/forthdimension
 
 Scanned PDF files:
 
-* [FD \#XIV:3](fd/Forth_Dimension_Volume_14_Number_3.pdf) - Principles of Metacompilation (1)
-* [FD \#XIV:4](fd/Forth_Dimension_Volume_14_Number_4.pdf) - Principles of Metacompilation (2)
-* [FD \#XIV:5](fd/Forth_Dimension_Volume_14_Number_5.pdf) - Principles of Metacompilation (3)
+* [FD \#XIV:3](fd/Forth_Dimension_Volume_14_Number_3.pdf): Principles of Metacompilation (1)
+* [FD \#XIV:4](fd/Forth_Dimension_Volume_14_Number_4.pdf): Principles of Metacompilation (2)
+* [FD \#XIV:5](fd/Forth_Dimension_Volume_14_Number_5.pdf): Principles of Metacompilation (3)
