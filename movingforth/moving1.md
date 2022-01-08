@@ -29,11 +29,11 @@ dust.
 
 ## THE ESSENTIAL HARDWARE
 
-<u>You</u> must choose a CPU. I will not delve
+_You_ must choose a CPU. I will not delve
 into the merits of one CPU over another for Forth, since a CPU choice is
 usually forced upon you by other considerations. Besides, the object of
 this article is to show how to move Forth to
-<u>any</u> CPU.
+_any_ CPU.
 
 You can expect the usual 16-bit Forth kernel (see below) to occupy about
 8K bytes of program space. For a full kernel that can compile Forth
@@ -42,7 +42,7 @@ Forth's block-management system for disk storage, you should add 3
 Kbytes or more for buffers. For a 32-bit Forth model, double these
 numbers.
 
-These are the <u>minimums</u> to get a Forth
+These are the _minimums_ to get a Forth
 kernel up and running. To run an application on your hardware, you
 should increase PROM and RAM sizes to suit.
 
@@ -64,7 +64,7 @@ CPU. At least one 32-bit Forth has been written for the 8086/8088.
 32-bit CPUs normally run 32-bit Forths. A smaller Forth model rarely
 saves code length or processor time. However, I know of at least one
 16-bit Forth written for the 68000. This
-<u>does</u> shrink application code size by a
+_does_ shrink application code size by a
 factor of two, since high-level Forth definitions become a string of
 16-bit addresses rather than a string of 32-bit addresses. (This will
 become evident shortly.) Most 68000s, though, have plenty of RAM.
@@ -120,14 +120,14 @@ JP (X)     jump to the address in the X register
 ```
 
 This illustrates an important but rarely-elucidated principle:
-<u>the address of the Forth word just entered is
-kept in W.</u> CODE words don't need this information, but all other
+_the address of the Forth word just entered is
+kept in W._ CODE words don't need this information, but all other
 kinds of Forth words do.
 
 If SQUARE were written in machine code, this would be the end of the
 story: that bit of machine code would be executed, and then jump back to
 the Forth interpreter -- which, since IP was incremented, is pointing to
-the <u>next</u> word to be executed. This is why
+the _next_ word to be executed. This is why
 the Forth interpreter is usually called NEXT.
 
 But, SQUARE is a high-level "colon" definition -- it holds a "thread", a
@@ -167,17 +167,17 @@ JUMP to interpreter
 Walk through a couple of nested Forth definitions, just to assure
 yourself that this works.
 
-Note the characteristics of ITC: <u>every</u>
+Note the characteristics of ITC: _every_
 Forth word has a one-cell Code Field. Colon definitions compile one cell
 for each word used in the definition. And the Forth interpreter must
-actually perform a <u>double</u> indirection to
+actually perform a _double_ indirection to
 get the address of the next machine code to run (first through IP, then
 through W).
 
 ITC is neither the smallest nor the fastest threading technique. It may
 be the simplest; although DTC (described next) is really no more
 complex. So why are so many Forths indirect-threaded? Mainly because
-<u>previous</u> Forths, used as models, were
+_previous_ Forths, used as models, were
 indirect- threaded. These days, DTC is becoming more popular.
 
 So when should ITC be used? Of the various techniques, ITC produces the
@@ -193,12 +193,12 @@ often more efficient than DTC.
 
 Direct Threaded Code differs from ITC in only one respect: instead of
 the Code Field containing the address of some machine code,
-<u>the Code Field contains actual machine code
-itself.</u>
+_the Code Field contains actual machine code
+itself._
 
 I'm not saying that the complete code for ENTER is contained in each and
 every colon definition\! In "high-level" Forth words, the Code Field
-will contain <u>a subroutine call</u>, as shown
+will contain _a subroutine call_, as shown
 in Figure 2. Colon definitions, for instance, will contain a call to the
 ENTER routine.
 
@@ -213,18 +213,18 @@ JP (W)      jump to the address in the W register
 ```
 
 This gains speed: the interpreter now performs only a
-<u>single</u> indirection. On the Z80 this
+_single_ indirection. On the Z80 this
 reduces the NEXT routine -- the most-used code fragment in the Forth
 kernel -- from eleven instructions to seven\!
 
 This costs space: every high-level definition in a Z80 Forth (for
 example) is now one byte longer, since a 2-byte address has been
-replaced by a 3-byte call. But <u>this is not
-universally true.</u> A 32-bit 68000 Forth may replace a 4-byte
+replaced by a 3-byte call. But _this is not
+universally true._ A 32-bit 68000 Forth may replace a 4-byte
 address with a 4-byte BSR instruction, for no net loss. And on the Zilog
 Super8, which has machine instructions for DTC Forth, the 2-byte address
 is replaced by a 1-byte ENTER instruction, making a DTC Forth
-<u>smaller</u> on the Super8\!
+_smaller_ on the Super8\!
 
 Of course, DTC CODE definitions are two bytes shorter, since they no
 longer need a pointer at all\!
@@ -236,11 +236,11 @@ and will usually be faster.
 
 Guy Kelly has compiled a superb review of Forth implementations for the
 IBM PC \[KEL92\], which I strongly recommend to
-<u>all</u> Forth kernel writers. Of the 19
+_all_ Forth kernel writers. Of the 19
 Forths he studied, 10 used DTC, 7 used ITC, and 2 used subroutine
-threading (discussed next). <u>I recommend the use
+threading (discussed next). _I recommend the use
 of Direct-Threaded Code over Indirect-Threaded Code for all new Forth
-kernels.</u>
+kernels._
 
 ### Jump to NEXT, or code it in-line?
 
@@ -259,7 +259,7 @@ This is a simple speed vs. space decision: in-line NEXT is always
 faster, but almost always larger. The total size increase is the number
 of extra bytes required for in-line expansion, times the number of CODE
 words in the system. Sometimes there's no tradeoff at all: in a 6809 DTC
-Forth, an in-line NEXT is <u>shorter</u> than a
+Forth, an in-line NEXT is _shorter_ than a
 Jump instruction\!
 
 ### Subroutine Threaded Code (STC)
@@ -293,9 +293,9 @@ when 4-byte addresses are replaced with 4-byte BSRs. (But if your code
 size exceeds 64K, some of those addresses must be replaced with 6-byte
 JSRs.)
 
-Subroutine threading <u>may</u> be faster than
+Subroutine threading _may_ be faster than
 direct threading. You save time by not having an interpreter, but you
-lose time because <u>every</u> reference to a
+lose time because _every_ reference to a
 Forth word involves a push and pop of a return address. In a DTC Forth,
 only high-level words cause activity on the return stack. On the 6809 or
 Zilog Super8, DTC is faster than STC.
@@ -305,8 +305,8 @@ Some processors -- like the 8051 -- are desperately short of addressing
 registers. Eliminating the IP can really simplify and speed up the
 kernel\!
 
-<u>The only way to know for sure is to write sample
-code.</u> This is intimately involved with register selection,
+_The only way to know for sure is to write sample
+code._ This is intimately involved with register selection,
 discussed in the next section.
 
 ### STC with in-line expansion; optimization; direct compilation
@@ -357,7 +357,7 @@ BSR LIT
 BSR PLUS
 ```
 
-but could be expanded in-line as a <u>single</u>
+but could be expanded in-line as a _single_
 machine instruction\!
 
 Optimizing Forth compilers is too broad a topic for this article. This
@@ -369,7 +369,7 @@ compiler.
 ### Token Threaded Code (TTC)
 
 DTC and STC aim to improve the speed of Forth programs, at some cost in
-memory. Now let's move the <u>other</u>
+memory. Now let's move the _other_
 direction from ITC, toward something slower but smaller.
 
 The purpose of a Forth thread is to specify a list of Forth words
@@ -382,7 +382,7 @@ the colon definitions would be halved\!
 A token-threaded Forth keeps a table of addresses of all Forth words, as
 shown in Figure 4. The token value is then used to index into this
 table, to find the Forth word corresponding to a given token. This
-<u>adds</u> one level of indirection to the
+_adds_ one level of indirection to the
 Forth interpreter, so it is slower than an "address-threaded" Forth.
 
 ![Fig.4 Token Threaded Code](img/mov1-4.gif)
@@ -404,7 +404,7 @@ systems are size-constrained?
 
 Since there are so many 8086 derivatives in the world, segment threading
 deserves a brief mention. Instead of using "normal" byte addresses
-within a 64K segment, <u>paragraph</u> addresses
+within a 64K segment, _paragraph_ addresses
 are used. (A "paragraph" is 16 bytes in the 8086.) Then, the interpreter
 can load these addresses into segment registers, instead of into the
 usual address registers. This allows a 16- bit Forth model to
@@ -431,8 +431,8 @@ registers.
 
 Each of these is one cell wide -- i.e., in a 16-bit Forth, these are
 16-bit registers. (There are exceptions to this rule, as you will see
-later.) These <u>may not all be CPU
-registers.</u> If your CPU doesn't have enough registers, some of
+later.) These _may not all be CPU
+registers._ If your CPU doesn't have enough registers, some of
 these can be kept in memory. I'll describe them in the order of their
 importance; i.e., the bottom of this list are the best candidates to be
 stored in memory.
@@ -442,12 +442,12 @@ memory reference, so it should be an address register; i.e., you must be
 able to fetch and store memory using the contents of W as the address.
 You also need to be able to do arithmetic on W. (In DTC Forths, you must
 also be able to jump indirect using W.) W is used by the interpreter
-<u>in every Forth word</u>. In a CPU having only
+_in every Forth word_. In a CPU having only
 one register, you would use it for W and keep everything else in memory
 (and the system would be incredibly slow).
 
 **IP** is the Interpreter Pointer. This is used by
-<u>every Forth word</u> (through NEXT, ENTER, or
+_every Forth word_ (through NEXT, ENTER, or
 EXIT). IP must be an address register. You also need to be able to
 increment IP. Subroutine threaded Forths don't need this register.
 
@@ -460,16 +460,16 @@ addressing from PSP.
 
 **RSP** is the Return Stack Pointer, sometimes called simply RP. This is
 used by colon definitions in ITC and DTC Forths, and by
-<u>all</u> words in STC Forths. RSP must be a
+_all_ words in STC Forths. RSP must be a
 stack pointer, or an address register which can be incremented and
 decremented.
 
-If <u>at all possible</u>, put W, IP, PSP, and
+If _at all possible_, put W, IP, PSP, and
 RSP in registers. The virtual registers that follow can be kept in
 memory, but there is usually a speed advantage to keeping them in CPU
 registers.
 
-**X** is a working register, <u>not</u>
+**X** is a working register, _not_
 considered one of the "classical" Forth registers, even though the
 classical ITC Forths need it for the second indirection. In ITC you must
 be able to jump indirect using X. X may also be used by a few CODE words
@@ -499,7 +499,7 @@ Most CPUs have a stack pointer as part of their hardware, used by
 interrupts and subroutine calls. How does this map into the Forth
 registers? Should it be the PSP or the RSP?
 
-The short answer is, <u>it depends</u>. It is
+The short answer is, _it depends_. It is
 said that the PSP is used more than the RSP in ITC and DTC Forths. If
 your CPU has few address registers, and PUSH and POP are faster than
 explicit reference, use the hardware stack as the Parameter Stack.
@@ -511,7 +511,7 @@ as the Return Stack.
 
 Sometimes you do neither\! The TMS320C25's hardware stack is only eight
 cells deep -- all but useless for Forth. So its hardware stack is used
-<u>only</u> for interrupts, and both PSP and RSP
+_only_ for interrupts, and both PSP and RSP
 are general-purpose address registers. (ANS Forth specifies a minimum of
 32 cells of Parameter Stack and 24 cells of Return Stack; I prefer 64
 cells of each.)
@@ -529,7 +529,7 @@ are no test -- they're usually trivial.)
 
 Occasionally you reach strange conclusions\! Gary Bergstrom has pointed
 out that a 6809 DTC Forth can be made a few cycles faster by using the
-6809 user stack pointer as the <u>IP</u>; NEXT
+6809 user stack pointer as the _IP_; NEXT
 becomes a POP. He uses an index register for one of Forth's stacks.
 
 ### Top-Of-Stack in Register
@@ -544,15 +544,15 @@ register as well.
 
 There are a few rules when writing CODE words:
 
-A word which <u>removes</u> items from the stack
+A word which _removes_ items from the stack
 must pop the "new" TOS into its register.
 
-A word which <u>adds</u> items to the stack must
+A word which _adds_ items to the stack must
 push the "old" TOS onto the stack (unless, of course, it's consumed by
 the word).
 
-<u>If you have at least six cell-size CPU
-registers, I recommend keeping the TOS in a register.</u> I consider
+_If you have at least six cell-size CPU
+registers, I recommend keeping the TOS in a register._ I consider
 TOS more important than UP to have in register, but less important than
 W, IP, PSP, and RSP. (TOS in register performs many of the functions of
 the X register.) It's useful if this register can perform memory
@@ -566,12 +566,12 @@ that a) it adds instructions, and b) the top stack element must be
 accessible as memory. It turns out that even such words as PICK, ROLL,
 and DEPTH are trivially modified for TOS-in-register.
 
-What about buffering <u>two</u> stack elements
+What about buffering _two_ stack elements
 in registers? When you keep the top of stack in a register, the total
 number of operations performed remains essentially the same. A push
 remains a push, regardless of whether it is before or after the
 operation you're performing. On the other hand, buffering two stack
-elements in registers <u>adds</u> a large number
+elements in registers _adds_ a large number
 of instructions -- a push becomes a push followed by a move. Only
 dedicated Forth processors like the RTX2000 and fantastically clever
 optimizing compilers can benefit from buffering two stack elements in
@@ -582,7 +582,7 @@ registers.
 Here are the register assignments made by Forths for a number of different CPUs. Try to deduce the design decisions of the authors from this list.
 
 <table>
-<caption style="text-align: center;">Figure 5. Register Assignments</caption>
+<caption>Figure 5. Register Assignments</caption>
 <thead>
 <tr><th></th><th>W</th><th>IP</th><th>PSP</th><th>RSP</th><th>UP</th><th>TOS</th><th></th></tr>
 </thead>
@@ -601,8 +601,6 @@ Here are the register assignments made by Forths for a number of different CPUs.
 <tr><td colspan="8">(¹) F83. &nbsp;&nbsp;(²) Pygmy Forth.</td></tr>
 </tfoot>
 </table>
-</body>
-</html>
 
 "SP" refers to the hardware stack pointer. "Zpage" refers to values kept
 in the 6502's memory page zero, which are almost as useful as --
@@ -613,7 +611,7 @@ a single, immovable user area, and UP is a hard-coded constant.
 ### Narrow Registers
 
 Notice anything odd in the previous list? The 6502 Forth -- a 16-bit
-model -- uses <u>8-bit</u> stack pointers\!
+model -- uses _8-bit_ stack pointers\!
 
 It is possible to make PSP, RSP, and UP smaller than the cell size of
 the Forth. This is because the stacks and user area are both relatively
@@ -636,7 +634,7 @@ address to port 2. This allows a "page select" for two stacks.
 
 UP is different from PSP and RSP: it simply provides a base address; it
 is never incremented or decremented. So it's practical to supply only
-the <u>high</u> bits of this virtual register.
+the _high_ bits of this virtual register.
 The low bits must then be provided by whatever indexed addressing
 technique is used. For example, on the 6809, you can use the DP register
 to hold the high 8 bits of UP, and then use Direct Page addressing to
@@ -659,7 +657,7 @@ for FastForth, in only five screens of code\! Includes listing.
 
 \[KEL92\] Kelly, Guy M., "Forth Systems Comparisons", Forth Dimensions
 XIII:6 (Mar/Apr 1992). Also published in the
-<u>1991 FORML Conference Proceedings</u>. Both
+_1991 FORML Conference Proceedings_. Both
 available from the Forth Interest Group, P.O. Box 2154, Oakland, CA
 94621. Illustrates design tradeoffs of many 8086 Forths with code
 fragments and benchmarks -- highly recommended\!
@@ -679,47 +677,47 @@ Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal
 A 6809 assembler in Forth.
 
 \[SCO89\] Scott, Andrew, "An Extensible Optimizer for Compiling Forth,"
-<u>1989 FORML Conference Proceedings</u>, Forth
+_1989 FORML Conference Proceedings_, Forth
 Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a
 68000 optimizer; no code provided.
 
 ### Forth Implementations
 
-\[CUR86\] Curley, Charles, <u>real-Forth for the
-68000</u>, privately distributed (1986).
+\[CUR86\] Curley, Charles, _real-Forth for the
+68000_, privately distributed (1986).
 
-\[JAM80\] James, John S., <u>fig-Forth for the
-PDP-11</u>, Forth Interest Group (1980).
+\[JAM80\] James, John S., _fig-Forth for the
+PDP-11_, Forth Interest Group (1980).
 
-\[KUN81\] Kuntze, Robert E., <u>MVP-Forth for the
-Apple II</u>, Mountain View Press (1981).
+\[KUN81\] Kuntze, Robert E., _MVP-Forth for the
+Apple II_, Mountain View Press (1981).
 
-\[LAX84\] Laxen, H. and Perry, M., <u>F83 for the
-IBM PC</u>, version 2.1.0 (1984). Distributed by the authors,
+\[LAX84\] Laxen, H. and Perry, M., _F83 for the
+IBM PC_, version 2.1.0 (1984). Distributed by the authors,
 available from the Forth Interest Group or GEnie.
 
-\[LOE81\] Loeliger, R. G., <u>Threaded Interpretive
-Languages</u>, BYTE Publications (1981), ISBN 0-07-038360-X. May be
+\[LOE81\] Loeliger, R. G., _Threaded Interpretive
+Languages_, BYTE Publications (1981), ISBN 0-07-038360-X. May be
 the only book ever written on the subject of creating a Forth-like
 kernel (the example used is the Z80). Worth it if you can find a copy.
 
-\[MPE92\] MicroProcessor Engineering Ltd., <u>MPE
-Z8/Super8 PowerForth Target</u>, MPE Ltd., 133 Hill Lane, Shirley,
+\[MPE92\] MicroProcessor Engineering Ltd., _MPE
+Z8/Super8 PowerForth Target_, MPE Ltd., 133 Hill Lane, Shirley,
 Southampton, S01 5AF, U.K. (June 1992). A commercial product.
 
-\[PAY90\] Payne, William H., <u>Embedded Controller
-FORTH for the 8051 Family</u>, Academic Press (1990), ISBN
+\[PAY90\] Payne, William H., _Embedded Controller
+FORTH for the 8051 Family_, Academic Press (1990), ISBN
 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a
 metacompiler for the IBM PC. Hardcopy only; files can be downloaded from
 GEnie. Not for the novice\!
 
-\[SER90\] Sergeant, Frank, <u>Pygmy Forth for the
-IBM PC</u>, version 1.3 (1990). Distributed by the author, available
+\[SER90\] Sergeant, Frank, _Pygmy Forth for the
+IBM PC_, version 1.3 (1990). Distributed by the author, available
 from the Forth Interest Group. Version 1.4 is now available on GEnie,
 and worth the extra effort to obtain.
 
-\[TAL80\] Talbot, R. J., <u>fig-Forth for the
-6809</u>, Forth Interest Group (1980).
+\[TAL80\] Talbot, R. J., _fig-Forth for the
+6809_, Forth Interest Group (1980).
 
 *Author's note for web publication: the files formerly available on the
 GEnie online service are now available from the Forth Interest Group <s>FTP</s> server, <s>ftp://ftp.forth.org/pub/Forth</s> http://www.forth.org/ .*
