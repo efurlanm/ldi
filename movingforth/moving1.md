@@ -52,7 +52,7 @@ Let's look at the definition of a Forth word SQUARE:
 In a typical ITC Forth this would appear in memory as shown in Figure 1. (The header will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
 
 <figure>
-<figcaption style="font-size=.8em;">
+<figcaption style="font-size=.8em; color=teal">
 Figure 1. Indirect Threaded Code
 <br><br>
 </figcaption>
