@@ -53,7 +53,7 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1. (The he
 
 <figure>
 <figcaption>
-<font size=".9em">
+<font size=".8em">
 Figure 1. Indirect Threaded Code
 <br><br></font>
 </figcaption>
