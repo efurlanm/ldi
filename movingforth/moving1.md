@@ -4,12 +4,15 @@
 
 ### by Brad Rodriguez
 
-This article first appeared in *The Computer Journal* [[1]](https://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/) [[2]](https://archive.org/details/the-computer-journal/) 
-#59 (January/February 1993) [[3]](http://archive.org/details/the-computer-journal-59) [[4]](tcj/tcj_59_January-February_1993_text.pdf).
+This article first appeared in *The Computer Journal* 
+[[1]](https://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/)
+[[2]](https://archive.org/details/the-computer-journal/) 
+#59 (January/February 1993) 
+[[3]](http://archive.org/details/the-computer-journal-59)[[4]](tcj/tcj_59_January-February_1993_text.pdf).
 
 ## INTRODUCTION
 
-Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91]](#ROD91)[[ROD92]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](https://en.wikipedia.org/wiki/CP/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-8)s gathering dust.
+Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91]](#ROD91) [[ROD92]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](https://en.wikipedia.org/wiki/CP/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-8)s gathering dust.
 
 ## THE ESSENTIAL HARDWARE
 
