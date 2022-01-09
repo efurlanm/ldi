@@ -9,7 +9,7 @@ This article first appeared in *The Computer Journal* [[1]](https://web.archive.
 
 ## INTRODUCTION
 
-Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91](#ROD91),[ROD92](#ROD92)], and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](https://en.wikipedia.org/wiki/CP/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-8)s gathering dust.
+Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91]](#ROD91)[[ROD92]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](https://en.wikipedia.org/wiki/CP/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-8)s gathering dust.
 
 ## THE ESSENTIAL HARDWARE
 
@@ -122,9 +122,9 @@ This costs space: every high-level definition in a Z80 Forth (for example) is no
 
 Of course, DTC CODE definitions are two bytes shorter, since they no longer need a pointer at all\!
 
-I used to think that high-level definitions in DTC Forths required the use of a subroutine call in the Code Field. Frank Sergeant's Pygmy Forth [[SER90](#SER90)] demonstrates that a simple jump can be used just as easily, and will usually be faster.
+I used to think that high-level definitions in DTC Forths required the use of a subroutine call in the Code Field. Frank Sergeant's Pygmy Forth [[SER90]](#SER90) demonstrates that a simple jump can be used just as easily, and will usually be faster.
 
-Guy Kelly has compiled a superb review of Forth implementations for the IBM PC [[KEL92](#KEL92)], which I strongly recommend to _all_ Forth kernel writers. Of the 19 Forths he studied, 10 used DTC, 7 used ITC, and 2 used subroutine threading (discussed next). _I recommend the use of Direct-Threaded Code over Indirect-Threaded Code for all new Forth kernels._
+Guy Kelly has compiled a superb review of Forth implementations for the IBM PC [[KEL92]](#KEL92), which I strongly recommend to _all_ Forth kernel writers. Of the 19 Forths he studied, 10 used DTC, 7 used ITC, and 2 used subroutine threading (discussed next). _I recommend the use of Direct-Threaded Code over Indirect-Threaded Code for all new Forth kernels._
 
 ### Jump to NEXT, or code it in-line?
 
@@ -144,7 +144,7 @@ SQUARE: CALL DUP
         RET
 ```
 
-See Figure 3. This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers [[KOG82](#KOG82)].
+See Figure 3. This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers [[KOG82]](#KOG82).
 
 <figure>
 <figcaption>Figure 3. Subroutine Threaded Code<br><br></figcaption>
@@ -178,7 +178,7 @@ BSR DROP  ------->   DROP: ADDQ #4,An
 BSR ...   <-------         RTS
 ```
 
-ADDQ is a two-byte instruction. Why write a four-byte subroutine call to a two-byte instruction? No matter how many times DROP is used, there's no savings\! The code is smaller and faster if the ADDQ is coded directly into the stream of BSRs. Some Forth compilers do this "in-line expansion" of CODE words [[CUR93a](#CUR93a)].
+ADDQ is a two-byte instruction. Why write a four-byte subroutine call to a two-byte instruction? No matter how many times DROP is used, there's no savings\! The code is smaller and faster if the ADDQ is coded directly into the stream of BSRs. Some Forth compilers do this "in-line expansion" of CODE words [[CUR93a]](#CUR93a).
 
 The disadvantage of in-line expansion is that decompiling back to the original source code becomes very difficult. As long as subroutine calls are used, you still have pointers (the subroutine addresses) to the Forth words comprising the thread. With pointers to the words, you can obtain their names. But once a word is expanded into in-line code, all knowledge of where that code came from is lost.
 
@@ -198,7 +198,7 @@ BSR PLUS
 
 but could be expanded in-line as a _single_ machine instruction\!
 
-Optimizing Forth compilers is too broad a topic for this article. This is an active area of Forth language research; see, for instance, [[SCO89](#SCO89)] and [[CUR93b](#CUR93b)]. The final culmination of optimized STC is a Forth which compiles to "pure" machine code, just like a C or Fortran compiler.
+Optimizing Forth compilers is too broad a topic for this article. This is an active area of Forth language research; see, for instance, [[SCO89]](#SCO89) and [[CUR93b]](#CUR93b). The final culmination of optimized STC is a Forth which compiles to "pure" machine code, just like a C or Fortran compiler.
 
 ### Token Threaded Code (TTC)
 
@@ -290,7 +290,7 @@ A word which _adds_ items to the stack must push the "old" TOS onto the stack (u
 
 _If you have at least six cell-size CPU registers, I recommend keeping the TOS in a register._ I consider TOS more important than UP to have in register, but less important than W, IP, PSP, and RSP. (TOS in register performs many of the functions of the X register.) It's useful if this register can perform memory addressing. [PDP-11](http://en.wikipedia.org/wiki/PDP-11)s, [Z8](http://en.wikipedia.org/wiki/Zilog_Z8)s, and 68000s are good candidates.
 
-Nine of the 19 IBM PC Forths studied by Guy Kelly [[KEL92](#KEL92)] keep TOS in register.
+Nine of the 19 IBM PC Forths studied by Guy Kelly [[KEL92]](#KEL92) keep TOS in register.
 
 I think this innovation has been resisted because of the false beliefs that a) it adds instructions, and b) the top stack element must be accessible as memory. It turns out that even such words as PICK, ROLL, and DEPTH are trivially modified for TOS-in-register.
 
@@ -302,9 +302,7 @@ Here are the register assignments made by Forths for a number of different CPUs.
 
 <!-- Do not edit this table. It is created in Libreoffice using a 
 template (see the aux directory). -->
-
 <!-- ---------------start-------------------- -->
-
 <table id="T5">                
 <caption> Figure 5. Register Assignments               </caption>
 <thead>                
@@ -321,7 +319,7 @@ template (see the aux directory). -->
 <tr><td> Z8 </td><td> RR6 </td><td> RR12 </td><td> RR14 </td><td> SP </td><td> RR10 </td><td> RR8 </td><td> <a href="#MPE92">[MPE92]</a> </td></tr>
 <tr><td> 8051 </td><td> R0,1 </td><td> R2,3 </td><td> R4,5 </td><td> R6,7 </td><td> fixed </td><td> memory </td><td> <a href="#PAY90">[PAY90]</a> </td></tr>
 </tbody>                
-<tfoot><tr><td colspan="8"> <sup>[1]</sup>F83.   <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
+<tfoot><tr><td colspan="8"> <sup>[1]</sup>F83. &nbsp; <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
 </table>                
 <!-- ---------------end---------------------- -->
 
