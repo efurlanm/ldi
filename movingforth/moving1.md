@@ -214,7 +214,7 @@ A token-threaded Forth keeps a table of addresses of all Forth words, as shown i
 
 <figure>
 <figcaption>Figure 4. Token Threaded Code</figcaption>
-<br><br>
+<br>
 <img src="img/mov1-4.svg" alt="Figure 4. Token Threaded Code">
 </figure>
 
