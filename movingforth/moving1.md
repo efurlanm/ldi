@@ -53,7 +53,7 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1. (The he
 
 <figure>
 <figcaption><br>Figure 1. Indirect Threaded Code<br><br></figcaption>
-<img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code">
+<img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code"><br>
 </figure>
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's Code Field.) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
@@ -107,7 +107,7 @@ I'm not saying that the complete code for ENTER is contained in each and every c
 
 <figure>
 <figcaption><br>Figure 2. Direct Threaded Code<br><br></figcaption>
-<img src="img/mov1-2.svg" alt="Figure 2. Direct Threaded Code">
+<img src="img/mov1-2.svg" alt="Figure 2. Direct Threaded Code"><br>
 </figure>
 
 The NEXT pseudo-code for direct threading is simply:
@@ -150,7 +150,7 @@ See Figure 3. This representation of Forth words has been used as a starting poi
 
 <figure>
 <figcaption><br>Figure 3. Subroutine Threaded Code<br><br></figcaption>
-<img src="img/mov1-3.svg" alt="Figure 3. Subroutine Threaded Code">
+<img src="img/mov1-3.svg" alt="Figure 3. Subroutine Threaded Code"><br>
 </figure>
 
 STC is an elegant representation; colon definitions and CODE words are now identical. "Defined words" (VARIABLEs, CONSTANTs, and the like) are handled the same as in DTC -- the Code Field begins with a jump or call to some machine code elsewhere.
@@ -211,7 +211,7 @@ A token-threaded Forth keeps a table of addresses of all Forth words, as shown i
 
 <figure>
 <figcaption><br>Figure 4. Token Threaded Code<br><br></figcaption>
-<img src="img/mov1-4.svg" alt="Figure 4. Token Threaded Code">
+<img src="img/mov1-4.svg" alt="Figure 4. Token Threaded Code"><br>
 </figure>
 
 The principal advantage of token-threaded Forths is small size. TTC is most commonly seen in handheld computers and other severely size-constrained applications. Also, the table of "entry points" into all the Forth words can simplify linkage of separately-compiled modules.
