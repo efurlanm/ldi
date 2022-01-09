@@ -55,7 +55,6 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1. (The he
 <figcaption>Figure 1. Indirect Threaded Code<br><br></figcaption>
 <img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code">
 </figure>
-<br>
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's Code Field.) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
@@ -110,7 +109,6 @@ I'm not saying that the complete code for ENTER is contained in each and every c
 <figcaption>Figure 2. Direct Threaded Code<br><br></figcaption>
 <img src="img/mov1-2.svg" alt="Figure 2. Direct Threaded Code">
 </figure>
-<br>
 
 The NEXT pseudo-code for direct threading is simply:
 
@@ -154,7 +152,6 @@ See Figure 3. This representation of Forth words has been used as a starting poi
 <figcaption>Figure 3. Subroutine Threaded Code<br><br></figcaption>
 <img src="img/mov1-3.svg" alt="Figure 3. Subroutine Threaded Code">
 </figure>
-<br>
 
 STC is an elegant representation; colon definitions and CODE words are now identical. "Defined words" (VARIABLEs, CONSTANTs, and the like) are handled the same as in DTC -- the Code Field begins with a jump or call to some machine code elsewhere.
 
@@ -213,8 +210,7 @@ The purpose of a Forth thread is to specify a list of Forth words (subroutines) 
 A token-threaded Forth keeps a table of addresses of all Forth words, as shown in Figure 4. The token value is then used to index into this table, to find the Forth word corresponding to a given token. This _adds_ one level of indirection to the Forth interpreter, so it is slower than an "address-threaded" Forth.
 
 <figure>
-<figcaption>Figure 4. Token Threaded Code</figcaption>
-<br>
+<figcaption>Figure 4. Token Threaded Code<br><br></figcaption>
 <img src="img/mov1-4.svg" alt="Figure 4. Token Threaded Code">
 </figure>
 
@@ -306,7 +302,9 @@ Here are the register assignments made by Forths for a number of different CPUs.
 
 <!-- Do not edit this table. It is created in Libreoffice using a 
 template (see the aux directory). -->
+
 <!-- ---------------start-------------------- -->
+
 <table id="T5">                
 <caption> Figure 5. Register Assignments               </caption>
 <thead>                
@@ -323,7 +321,7 @@ template (see the aux directory). -->
 <tr><td> Z8 </td><td> RR6 </td><td> RR12 </td><td> RR14 </td><td> SP </td><td> RR10 </td><td> RR8 </td><td> <a href="#MPE92">[MPE92]</a> </td></tr>
 <tr><td> 8051 </td><td> R0,1 </td><td> R2,3 </td><td> R4,5 </td><td> R6,7 </td><td> fixed </td><td> memory </td><td> <a href="#PAY90">[PAY90]</a> </td></tr>
 </tbody>                
-<tfoot><tr><td colspan="8"> <sup>[1]</sup>F83. &nbsp; <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
+<tfoot><tr><td colspan="8"> <sup>[1]</sup>F83.   <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
 </table>                
 <!-- ---------------end---------------------- -->
 
