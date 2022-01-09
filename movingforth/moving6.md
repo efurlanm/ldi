@@ -215,8 +215,7 @@ b) how is the Code Field implemented? The value of these words becomes
 evident when you look at the differences between the direct-threaded Z80
 and the subroutine-threaded 8051:
 
-``` 
- 
+```
  word     compiles on Z80   compiles on 8051
 
  COMPILE, address           LCALL address
@@ -342,9 +341,9 @@ assuming CP/M BDOS starts at ED00 hex.
 
 ## <span id="FIGURE2"></span>FIGURE 2. HEADER STRUCTURES
 
-``` 
+```
     CamelForth        Fig-Forth          Pygmy Forth            F83
-                                                        
+
  D7           D0    D7           D0    D7           D0    D7           D0
 +---------------+  +-+-+-+---------+  +---------------+  +---------------+
 |               |  |1|P|S| length  |  |               |  |               |
@@ -380,6 +379,3 @@ the name are flagged with a 1 in the most significant bit (bit 7).
 
 **View** - in Pygmy Forth and F83, contains the block number of the
 source code for this word.
-
-[Continue with Part 7](moving7.htm) | [Back to publications
-page](index.html)

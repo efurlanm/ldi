@@ -34,7 +34,7 @@ TOS wasn't in register, EXECUTE could be done with simply JMP
 W will be pointing to its Code Field, which contains JMP ENTER. This
 does the following (described in the previous article):
 
-``` 
+```
         JMP ENTER
         ...
 ENTER:  PSHS IP
@@ -62,7 +62,7 @@ in Forth -- I'll complete the "exercise for the student" from the last
 article. Note what happens if you swap the registers assigned to RSP and
 PSP:
 
-``` 
+```
         with RSP=S,  with RSP=U,
         and PSP=U   and PSP=S
         (previous)  (new)
@@ -97,7 +97,7 @@ Carey Bloodworth of Van Buren, AR has pointed out a minor but
 embarassing mistake in my 6809 code in the previous installment. For the
 "TOS-in-memory" version of 0=, I showed the code fragment
 
-``` 
+```
    LDD ,PSP
    CMPD #0
 ```
@@ -150,8 +150,7 @@ the Parameter Field to contain a certain kind of data.
 
 A typical Forth kernel will have several Code Field routines predefined.
 
-``` 
- 
+```
     Code Field  Parameter Field
     routine     contents                          
 
@@ -248,7 +247,7 @@ implementation for the 6809, using Y=IP and X=W:
 
 Suppose that we're in a high-level thread
 
-``` 
+```
    ... SWAP DEUX + ...   
 ```
 
@@ -296,7 +295,7 @@ small change:
 This adds three clock cycles to NEXT, and leaves the Parameter Field
 Address in W. What does it do to the Code Field routines?
 
-``` 
+```
         W=CFA           W=PFA
 
 DOCON:  LDD 2,X (6)     LDD ,X (5)
@@ -867,7 +866,7 @@ simplified even further by "expanding JSR DODOES in-line," i.e.,
 replacing the JSR DODOES with the equivalent machine code instructions.
 Since there's one less JSR, this simplifies the stack manipulation to:
 
-``` 
+```
         PULS X      ; pop PFA from CPU stack
         PSHU X      ; and push it onto the Parameter Stack
         ...high level thread for DEUX...
@@ -1000,6 +999,3 @@ available from the Forth Interest Group or GEnie.
 *Author's note for web publication: the files formerly available on the
 GEnie online service are now available from the Forth Interest Group FTP
 server, <ftp://ftp.forth.org/pub/Forth>.*
-
-[Continue with Part 4](moving4.htm) | [Back to publications
-page](index.html)

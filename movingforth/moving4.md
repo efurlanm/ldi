@@ -19,14 +19,13 @@ assemblers were often the only programming tools available. This was
 fine for writing Forth CODE words, but high- level threads had to be
 written as a series of DW directives. For example, the Forth word
 
-``` 
- 
+```
 : MAX ( n n - n)   OVER OVER < IF SWAP THEN DROP ;
 ```
 
 would be written \[TAL80\]
 
-``` 
+```
       DW OVER,OVER,LESS,ZBRAN
       DW MAX2-$
       DW SWAP
@@ -49,26 +48,26 @@ Most PC Forths are now produced with metacompilers, but opinion is
 divided in the embedded systems arena \[TIN91,ROD91,SER91\]. The
 arguments for using assemblers to write Forth are:
 
-1.  Metacompilers are cryptic and hard to understand, and you must
-    thoroughly understand a metacompiler in order to use it.
-2.  Assemblers are understood by the average programmer.
-3.  An assembler is almost always available for a new CPU.
-4.  Assemblers handle many optimizations (e.g. short vs. long branch).
-5.  Assemblers handle forward references and peculiar address modes;
-    many metacompilers don't.
-6.  Assemblers use familiar editing and debugging tools.
-7.  The code generation is completely visible -- nothing is "hidden"
-    from the programmer.
-8.  It's easier to tweak the Forth model, since many design decisions
-    affect the internals of a metacompiler.
+1. Metacompilers are cryptic and hard to understand, and you must
+   thoroughly understand a metacompiler in order to use it.
+2. Assemblers are understood by the average programmer.
+3. An assembler is almost always available for a new CPU.
+4. Assemblers handle many optimizations (e.g. short vs. long branch).
+5. Assemblers handle forward references and peculiar address modes;
+   many metacompilers don't.
+6. Assemblers use familiar editing and debugging tools.
+7. The code generation is completely visible -- nothing is "hidden"
+   from the programmer.
+8. It's easier to tweak the Forth model, since many design decisions
+   affect the internals of a metacompiler.
 
 The arguments for metacompilers:
 
-1.  You write "normal" looking Forth code, which is easier to read and
-    debug.
-2.  Once you understand your metacompiler, you can port it easily to new
-    CPUs.
-3.  The only tool you need to acquire is a Forth for your computer.
+1. You write "normal" looking Forth code, which is easier to read and
+   debug.
+2. Once you understand your metacompiler, you can port it easily to new
+   CPUs.
+3. The only tool you need to acquire is a Forth for your computer.
 
 The last is particularly applicable to those who don't own PCs, since
 most cross-assemblers require PCs or workstations these days.
@@ -96,15 +95,15 @@ trend: Forths written in C. These have the advantage of being more
 portable than assembler -- in theory, all you have to do is recompile
 the same source code for any CPU. The disadvantages:
 
-1.  Less flexibility in the design decisions; e.g., direct-threaded code
-    is probably not possible, and you can't optimize register
-    assignments.
-2.  You have to recompile the C source to add new primitives.
-3.  Forth words carry the C call-and-return overhead.
-4.  Some C Forths use inefficient threading techniques, e.g. a CASE
-    statement.
-5.  Most C compilers produce less efficient code than a good
-    assembly-language programmer.
+1. Less flexibility in the design decisions; e.g., direct-threaded code
+   is probably not possible, and you can't optimize register
+   assignments.
+2. You have to recompile the C source to add new primitives.
+3. Forth words carry the C call-and-return overhead.
+4. Some C Forths use inefficient threading techniques, e.g. a CASE
+   statement.
+5. Most C compilers produce less efficient code than a good
+   assembly-language programmer.
 
 But for Unix systems and RISC workstations, which frown upon assembler,
 this may be the only way to get a Forth up and running. The most
@@ -171,6 +170,3 @@ server, <ftp://ftp.forth.org/pub/Forth>. Also, several new Forths-in-C
 have been published since this article was first written. Consult the
 "systems" FAQ at <ftp://ftp.forth.org/pub/Forth/FAQ> for a current
 list.*
-
-[Continue with Part 5](moving5.htm) | [Back to publications
-page](index.html)

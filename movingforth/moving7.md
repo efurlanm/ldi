@@ -22,13 +22,13 @@ assembler as file A51.ZIP. But first...
 
 In the file CAMEL80H.AZM, the definition of DO is given as
 
-``` 
+```
   ['] xdo ,BRANCH  . . . 
 ```
 
 It should be
 
-``` 
+```
   ['] xdo ,XT  . . . 
 ```
 
@@ -137,13 +137,13 @@ of the loop.
 In the assembly language source file I have manually replaced the
 sequence
 
-``` 
+```
   LCALL word   RET 
 ```
 
 with the shorter and faster
 
-``` 
+```
   LJMP word 
 ```
 
@@ -279,6 +279,3 @@ Considerations</span>, Forth Dimensions XIV:5 (Jan/Feb 1993), pp. 6-12.
 
 *Source code for 8051 CamelForth is available on this site at
 [http://www.camelforth.com/public\_ftp/cam51-15.zip](http://www.camelforth.com/public_ftp/cam80-12.zip).*
-
-[Continue with Part 8](moving8.htm) | [Back to publications
-page](index.html)

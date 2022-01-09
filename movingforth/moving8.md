@@ -21,7 +21,7 @@ Second, source code for a Forth metacompiler looks like ordinary Forth
 code (with a few changes, which I'll discuss shortly). Thus the
 definition of **1+** is given as
 
-``` 
+```
   CODE 1+   1 # ADDD,   NEXT   ;C  
 ```
 
@@ -53,7 +53,7 @@ Pointer (the low byte is assumed to be zero).
 The memory map for a Scroungemaster II with 8K of RAM and 8K of EPROM is
 as follows:
 
-``` 
+```
  6000-797Fh RAM dictionary (for new definitions)
  7980-79FFh Terminal Input Buffer
  7A00-7A7Fh User Area (USER variables)
@@ -91,7 +91,7 @@ which haven't been defined yet. (You must of course define them before
 you finish\!) Often this is automatic, but AKA requires you to
 explicitly declare a forward reference with PRESUME. Thus
 
-``` 
+```
   PRESUME WORD   AKA WORD IWORD   
 ```
 
@@ -100,7 +100,7 @@ are PRESUMEd by the metacompiler, so we don't have to do so here.
 
 The CODE definitions are conventional. Note that you can use
 
-``` 
+```
   HERE EQU labelname  
 ```
 
@@ -110,7 +110,7 @@ assembler code (i.e., not part of a CODE word).
 
 The phrase
 
-``` 
+```
   HERE RESOLVES name 
 ```
 
@@ -168,7 +168,7 @@ GEnie's Forth Roundtable in the file CAM09-10.ZIP. This file includes
 the Chromium 2 metacompiler, complete and ready to run. You'll need a
 copy of F83. Then you merely type
 
-``` 
+```
   F83 CHROMIUM.SCR
   1 LOAD
   BYE 

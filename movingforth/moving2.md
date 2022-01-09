@@ -161,7 +161,7 @@ NEXT is one instruction in a DTC 6809\! This means you can code it
 in-line in two bytes, making it both smaller and faster than JMP NEXT.
 For comparison, look at the "NEXT" logic for subrou\~ tine threading:
 
-``` 
+```
         RTS           (5) ...at the end of one CODE word 
         JSR nextword  (8) ...in the "thread"
         ...               ...start of the next CODE word
@@ -181,7 +181,7 @@ illustrated:
 
 using a JSR (Call):
 
-``` 
+```
         JSR ENTER   (8)
         ...
 ENTER:  PULS W      (7) get address following JSR into W reg
@@ -193,7 +193,7 @@ ENTER:  PULS W      (7) get address following JSR into W reg
 
 using a JMP:
 
-``` 
+```
         JMP ENTER   (4)
          ...
 ENTER:  PSHS IP     (7) save the old IP on the Return Stack
@@ -240,7 +240,7 @@ way. These illustrate the earlier comment that putting TOS in register
 often just changes <span class="underline">where</span> the push or pop
 takes place:
 
-``` 
+```
         TOS in D        TOS in memory   pseudo-code
 
 DOVAR:  PSHU TOS        LDD  -2,IP      address of CF -> D
@@ -265,8 +265,7 @@ OVER:   PSHU D          LDD  2,PSP      2nd on stack -> D
 SWAP, ROT, 0=, @, and especially + are all
 <span class="underline">faster</span> with TOS in register:
 
-``` 
- 
+```
         TOS in D        TOS in memory   pseudo-code
 
 SWAP:   LDX  ,PSP (5)   LDD  ,PSP (5)   TOS -> D
@@ -306,8 +305,7 @@ ROT:    LDX  ,PSP (5)   LDX  ,PSP (5)   TOS -> X
 \! and +\! are <span class="underline">slower</span> with TOS in
 register:
 
-``` 
- 
+```
         TOS in D        TOS in memory   pseudo-code
 
 !:      TFR TOS,W (6)   PULU W   (7)    pop adrs into W
@@ -385,7 +383,7 @@ will be implied to be zero.
 
 What is the programmer's model of the 8051 so far?
 
-``` 
+```
     reg 8051   Forth
    adrs name   usage
 
@@ -463,7 +461,7 @@ I want a "conventional" Forth, although I
 Ignoring the alternate register set, the Z80 has six address registers,
 with the following capabilities:
 
-``` 
+```
    BC,DE - LD A indirect, INC, DEC
            also exchange DE/HL
 
@@ -514,7 +512,7 @@ unused. IX and IY are equivalent, so let's assign IX=RSP, and IY=UP.
 
 Thus the Z80 Forth register assignments are:
 
-``` 
+```
    BC = TOS   IX = RSP
    DE = IP    IY = UP
    HL = W     SP = PSP
@@ -550,7 +548,7 @@ previously requires another temporary register "X", whose contents can
 be used for an indirect jump. Let DE=X, and BC=IP. TOS will have to be
 kept in memory.
 
-``` 
+```
 ITC-NEXT: LD A,(BC) (7) (IP)->W, increment IP
           LD L,A    (4)
           INC BC    (6)
@@ -583,7 +581,7 @@ so tight, that the prudent decision is to use a JMP NEXT.
 Now let's look at the code for ENTER. Using a CALL, the hardware stack
 is popped to get the Parameter Field address:
 
-``` 
+```
         CALL ENTER  (17)
         ...
 ENTER:  DEC IX      (10) push the old IP on the return stack
@@ -597,7 +595,7 @@ ENTER:  DEC IX      (10) push the old IP on the return stack
 Actually it's faster to POP HL, and then use the last six instructions
 of NEXT (omitting the EX DE,HL):
 
-``` 
+```
         CALL ENTER  (17)
         ...
 ENTER:  DEC IX      (10) push the old IP on the return stack
@@ -612,7 +610,7 @@ ENTER:  DEC IX      (10) push the old IP on the return stack
 When a JP is used, the W register (HL) is left pointing to the Code
 Field. The Parameter Field is 3 bytes after:
 
-``` 
+```
         JP ENTER    (10)
         ...
 ENTER:  DEC IX      (10) push the old IP on the return stack
@@ -643,7 +641,7 @@ Pygmy Forth \[SER90\].
 Pygmy is a direct-threaded Forth with the top-of-stack kept in register.
 The 8086 register assignments are:
 
-``` 
+```
    AX = W         DI = scratch
    BX = TOS       SI = IP
    CX = scratch   BP = RSP
@@ -747,6 +745,3 @@ Associates, 265 Scarboro Cres., Scarborough, Ontario M1M 2J7 Canada.
 *Author's note for web publication: the files formerly available on the
 GEnie online service are now available from the Forth Interest Group FTP
 server, <ftp://ftp.forth.org/pub/Forth>.*
-
-[Continue with Part 3](moving3.htm) | [Back to publications
-page](index.html)

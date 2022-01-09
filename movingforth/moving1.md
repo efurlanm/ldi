@@ -4,7 +4,7 @@
 
 ### by Brad Rodriguez
 
-This article first appeared in *The Computer Journal* [[1]](https://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/) [[2]](https://archive.org/details/the-computer-journal/) #59 (January/February 1993) [[3]](http://archive.org/details/the-computer-journal-59) [[4]](tcj/tcj_59_January-February_1993_text.pdf).
+This article first appeared in [The Computer Journal](http://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/) #59 [(January/February 1993)](REAME.md#the-computer-journal-tcj).
 
 ## INTRODUCTION
 
@@ -301,7 +301,7 @@ template (see the aux directory). -->
 <!-- ---------------start-------------------- -->
 
 <table id="T5">                
-<caption> Figure 5. Register Assignments               </caption>
+<caption> Register Assignments               </caption>
 <thead>                
 <tr><th>  </th><th> W </th><th> IP </th><th> PSP </th><th> RSP </th><th> UP </th><th> TOS </th><th>  </th></tr>
 </thead>                
