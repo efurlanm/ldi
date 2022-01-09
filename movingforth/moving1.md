@@ -8,7 +8,8 @@ This article first appeared in *The Computer Journal*
 [[1]](https://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/)
 [[2]](https://archive.org/details/the-computer-journal/) 
 #59 (January/February 1993) 
-[[3]](http://archive.org/details/the-computer-journal-59)[[4]](tcj/tcj_59_January-February_1993_text.pdf).
+[[3]](http://archive.org/details/the-computer-journal-59)
+[[4]](tcj/tcj_59_January-February_1993_text.pdf).
 
 ## INTRODUCTION
 
