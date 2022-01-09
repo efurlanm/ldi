@@ -9,7 +9,7 @@ This article first appeared in *The Computer Journal* [[1]](https://web.archive.
 
 ## INTRODUCTION
 
-Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the 6809, 8051, and Z80. I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler \[[ROD91](#ROD91),[ROD92](#ROD92)\], and I'll be needing a 6809 Forth for future TCJ projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the CP/M readers of TCJ, and for some friends with TRS-80s gathering dust.
+Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler \[[ROD91](#ROD91),[ROD92](#ROD92)\], and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](https://en.wikipedia.org/wiki/CP/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-8)s gathering dust.
 
 ## THE ESSENTIAL HARDWARE
 
@@ -27,7 +27,7 @@ The word size used by Forth is not necessarily the same as that of the CPU. The 
 
 16-bit CPUs commonly run 16-bit Forths, although the same double- precision techniques can be used to write a 32-bit Forth on a 16- bit CPU. At least one 32-bit Forth has been written for the 8086/8088.
 
-32-bit CPUs normally run 32-bit Forths. A smaller Forth model rarely saves code length or processor time. However, I know of at least one 16-bit Forth written for the 68000. This _does_ shrink application code size by a factor of two, since high-level Forth definitions become a string of 16-bit addresses rather than a string of 32-bit addresses. (This will become evident shortly.) Most 68000s, though, have plenty of RAM.
+32-bit CPUs normally run 32-bit Forths. A smaller Forth model rarely saves code length or processor time. However, I know of at least one 16-bit Forth written for the [68000](http://en.wikipedia.org/wiki/Motorola_68000). This _does_ shrink application code size by a factor of two, since high-level Forth definitions become a string of 16-bit addresses rather than a string of 32-bit addresses. (This will become evident shortly.) Most 68000s, though, have plenty of RAM.
 
 All of the examples described in this article are 16-bit Forths running on 8-bit CPUs.
 
@@ -37,11 +37,11 @@ All of the examples described in this article are 16-bit Forths running on 8-bit
 
 ### Indirect Threaded Code (ITC)
 
-This is the classical Forth threading technique, used in fig- Forth and F83, and described in most books on Forth. All the other threading schemes are "improvements" on this, so you need to understand ITC to appreciate the others.
+This is the classical Forth threading technique, used in [fig- Forth](http://www.forth.org/fig-forth/contents.html) and [F83](http://github.com/ForthHub/F83), and described in most books on Forth. All the other threading schemes are "improvements" on this, so you need to understand ITC to appreciate the others.
 
 Let's look at the definition of a Forth word SQUARE:
 
-```
+```forth
 : SQUARE  DUP * ;
 ```
 
@@ -55,23 +55,23 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1. (The he
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's Code Field.) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
-```
-(IP) -> W  fetch memory pointed by IP into "W" register
-           ...W now holds address of the Code Field
-IP+2 -> IP advance IP, just like a program counter
-           (assuming 2-byte addresses in the thread)
-(W) ->  X  fetch memory pointed by W into "X" register
-           ...X now holds address of the machine code 
-JP (X)     jump to the address in the X register
+```nasm
+(IP) -> W   fetch memory pointed by IP into "W" register
+            ...W now holds address of the Code Field
+IP+2 -> IP  advance IP, just like a program counter
+            (assuming 2-byte addresses in the thread)
+(W) ->  X   fetch memory pointed by W into "X" register
+            ...X now holds address of the machine code 
+JP (X)      jump to the address in the X register
 ```
 
 This illustrates an important but rarely-elucidated principle: _the address of the Forth word just entered is kept in W._ CODE words don't need this information, but all other kinds of Forth words do.
 
-If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the _next_ word to be executed. This is why the Forth interpreter is usually called NEXT.
+If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <abbr tittle="the word after SQUARE">_next_ word to be executed</abbr>. This is why the Forth interpreter is usually called NEXT.
 
 But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the Parameter Field of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth.) This is called DOCOLON or ENTER in various Forths:
 
-```
+```nasm
 PUSH IP     onto the "return address stack"
 W+2 -> IP   W still points to the Code Field, so W+2 is 
             the address of the Body!  (Assuming a 2-byte
@@ -83,7 +83,7 @@ This identical code fragment is used by all high-level (i.e., threaded) Forth de
 
 The "return from subroutine" is the word EXIT, which gets compiled when Forth sees ';'. (Some Forths call it ;S instead of EXIT.) EXIT just executes a machine language routine which does the following:
 
-```
+```nasm
 POP IP   from the "return address stack"
 JUMP to interpreter
 ```
@@ -94,7 +94,7 @@ Note the characteristics of ITC: _every_ Forth word has a one-cell Code Field. C
 
 ITC is neither the smallest nor the fastest threading technique. It may be the simplest; although DTC (described next) is really no more complex. So why are so many Forths indirect-threaded? Mainly because _previous_ Forths, used as models, were indirect- threaded. These days, DTC is becoming more popular.
 
-So when should ITC be used? Of the various techniques, ITC produces the cleanest and most elegant definitions -- nothing but addresses. If you're attuned to such considerations, ITC may appeal to you. If your code fiddles around with the insides of definitions, the simplicity and uniformity of the ITC representation may enhance portability. ITC is the classical Forth model, so it may be preferred for education. Finally, on CPUs lacking a subroutine call instruction -- such as the 1802 -- ITC is often more efficient than DTC.
+So when should ITC be used? Of the various techniques, ITC produces the cleanest and most elegant definitions -- nothing but addresses. If you're attuned to such considerations, ITC may appeal to you. If your code fiddles around with the insides of definitions, the simplicity and uniformity of the ITC representation may enhance portability. ITC is the classical Forth model, so it may be preferred for education. Finally, on CPUs lacking a subroutine call instruction -- such as the [1802](http://en.wikipedia.org/wiki/RCA_1802) -- ITC is often more efficient than DTC.
 
 ### Direct Threaded Code (DTC)
 
@@ -102,7 +102,11 @@ Direct Threaded Code differs from ITC in only one respect: instead of the Code F
 
 I'm not saying that the complete code for ENTER is contained in each and every colon definition\! In "high-level" Forth words, the Code Field will contain _a subroutine call_, as shown in Figure 2. Colon definitions, for instance, will contain a call to the ENTER routine.
 
-![Fig.2 Direct Threaded Code](img/mov1-2.gif)
+<figure>
+<figcaption>Figure 2. Direct Threaded Code<br><br></figcaption>
+<img src="img/mov1-2.svg" alt="Figure 2. Direct Threaded Code">
+</figure>
+<br>
 
 The NEXT pseudo-code for direct threading is simply:
 
@@ -114,13 +118,13 @@ JP (W)      jump to the address in the W register
 
 This gains speed: the interpreter now performs only a _single_ indirection. On the Z80 this reduces the NEXT routine -- the most-used code fragment in the Forth kernel -- from eleven instructions to seven\!
 
-This costs space: every high-level definition in a Z80 Forth (for example) is now one byte longer, since a 2-byte address has been replaced by a 3-byte call. But _this is not universally true._ A 32-bit 68000 Forth may replace a 4-byte address with a 4-byte BSR instruction, for no net loss. And on the Zilog Super8, which has machine instructions for DTC Forth, the 2-byte address is replaced by a 1-byte ENTER instruction, making a DTC Forth _smaller_ on the Super8\!
+This costs space: every high-level definition in a Z80 Forth (for example) is now one byte longer, since a 2-byte address has been replaced by a 3-byte call. But _this is not universally true._ A 32-bit 68000 Forth may replace a 4-byte address with a 4-byte BSR instruction, for no net loss. And on the [Zilog Super8](http://www.zilog.com/docs/ps0146.pdf), which has machine instructions for DTC Forth, the 2-byte address is replaced by a 1-byte ENTER instruction, making a DTC Forth _smaller_ on the Super8\!
 
 Of course, DTC CODE definitions are two bytes shorter, since they no longer need a pointer at all\!
 
-I used to think that high-level definitions in DTC Forths required the use of a subroutine call in the Code Field. Frank Sergeant's Pygmy Forth \[SER90\] demonstrates that a simple jump can be used just as easily, and will usually be faster.
+I used to think that high-level definitions in DTC Forths required the use of a subroutine call in the Code Field. Frank Sergeant's Pygmy Forth [[SER90](#SER90)] demonstrates that a simple jump can be used just as easily, and will usually be faster.
 
-Guy Kelly has compiled a superb review of Forth implementations for the IBM PC \[KEL92\], which I strongly recommend to _all_ Forth kernel writers. Of the 19 Forths he studied, 10 used DTC, 7 used ITC, and 2 used subroutine threading (discussed next). _I recommend the use of Direct-Threaded Code over Indirect-Threaded Code for all new Forth kernels._
+Guy Kelly has compiled a superb review of Forth implementations for the IBM PC [[KEL92](#KEL92)], which I strongly recommend to _all_ Forth kernel writers. Of the 19 Forths he studied, 10 used DTC, 7 used ITC, and 2 used subroutine threading (discussed next). _I recommend the use of Direct-Threaded Code over Indirect-Threaded Code for all new Forth kernels._
 
 ### Jump to NEXT, or code it in-line?
 
@@ -134,15 +138,21 @@ This is a simple speed vs. space decision: in-line NEXT is always faster, but al
 
 A high-level Forth definition is nothing but a list of subroutines to be executed. You don't need interpreters to accomplish this; you can get the same effect by simply stringing a list of subroutine calls together:
 
-```
+```nasm
 SQUARE: CALL DUP
         CALL *     ; or a suitable alphanumeric name
         RET
 ```
 
-See Figure 3. This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers \[KOG82\].
+See Figure 3. This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers [[KOG82](#KOG82)].
 
-![Fig.3 Subroutine Threaded Code](img/mov1-3.gif)
+
+
+<figure>
+<figcaption>Figure 3. Subroutine Threaded Code<br><br></figcaption>
+<img src="img/mov1-3.svg" alt="Figure 3. Subroutine Threaded Code">
+</figure>
+<br>
 
 STC is an elegant representation; colon definitions and CODE words are now identical. "Defined words" (VARIABLEs, CONSTANTs, and the like) are handled the same as in DTC -- the Code Field begins with a jump or call to some machine code elsewhere.
 
@@ -158,31 +168,31 @@ _The only way to know for sure is to write sample code._ This is intimately invo
 
 On older and 8-bit CPUs, almost every Forth primitive involves several machine instructions. But on more powerful CPUs, many Forth primitives are written in a single instruction. For example, on the 32-bit 68000, DROP is simply
 
-```
+```nasm
 ADDQ #4,An     where An is Forth's PSP register
 ```
 
 In a subroutine-threaded Forth, using DROP in a colon definition would result in the sequence
 
-```
+```nasm
 BSR ...
 BSR DROP  ------->   DROP: ADDQ #4,An
 BSR ...   <-------         RTS
 ```
 
-ADDQ is a two-byte instruction. Why write a four-byte subroutine call to a two-byte instruction? No matter how many times DROP is used, there's no savings\! The code is smaller and faster if the ADDQ is coded directly into the stream of BSRs. Some Forth compilers do this "in-line expansion" of CODE words \[CUR93a\].
+ADDQ is a two-byte instruction. Why write a four-byte subroutine call to a two-byte instruction? No matter how many times DROP is used, there's no savings\! The code is smaller and faster if the ADDQ is coded directly into the stream of BSRs. Some Forth compilers do this "in-line expansion" of CODE words [[CUR93a](CUR93a)].
 
 The disadvantage of in-line expansion is that decompiling back to the original source code becomes very difficult. As long as subroutine calls are used, you still have pointers (the subroutine addresses) to the Forth words comprising the thread. With pointers to the words, you can obtain their names. But once a word is expanded into in-line code, all knowledge of where that code came from is lost.
 
 The advantage of in-line expansion -- aside from speed and size -- is the potential for code optimization. For example, the Forth sequence
 
-```
+```forth
 3 +  
 ```
 
 would be compiled in 68000 STC as
 
-```
+```nasm
 BSR LIT
 .DW  3 
 BSR PLUS
@@ -190,7 +200,7 @@ BSR PLUS
 
 but could be expanded in-line as a _single_ machine instruction\!
 
-Optimizing Forth compilers is too broad a topic for this article. This is an active area of Forth language research; see, for instance, \[SCO89\] and \[CUR93b\]. The final culmination of optimized STC is a Forth which compiles to "pure" machine code, just like a C or Fortran compiler.
+Optimizing Forth compilers is too broad a topic for this article. This is an active area of Forth language research; see, for instance, [[SCO89](SCO89)] and [[CUR93b](CUR93b)]. The final culmination of optimized STC is a Forth which compiles to "pure" machine code, just like a C or Fortran compiler.
 
 ### Token Threaded Code (TTC)
 
@@ -200,7 +210,11 @@ The purpose of a Forth thread is to specify a list of Forth words (subroutines) 
 
 A token-threaded Forth keeps a table of addresses of all Forth words, as shown in Figure 4. The token value is then used to index into this table, to find the Forth word corresponding to a given token. This _adds_ one level of indirection to the Forth interpreter, so it is slower than an "address-threaded" Forth.
 
-![Fig.4 Token Threaded Code](img/mov1-4.gif)
+<figure>
+<figcaption>Figure 4. Token Threaded Code<br><br></figcaption>
+<img src="img/mov1-4.svg" alt="Figure 4. Token Threaded Code">
+</figure>
+<br>
 
 The principal advantage of token-threaded Forths is small size. TTC is most commonly seen in handheld computers and other severely size-constrained applications. Also, the table of "entry points" into all the Forth words can simplify linkage of separately-compiled modules.
 
@@ -236,7 +250,7 @@ If _at all possible_, put W, IP, PSP, and RSP in registers. The virtual register
 
 **X** is a working register, _not_ considered one of the "classical" Forth registers, even though the classical ITC Forths need it for the second indirection. In ITC you must be able to jump indirect using X. X may also be used by a few CODE words to do arithmetic and such. This is particularly important on processors that cannot use memory as an operand. For example, ADD on a Z80 might be (in pseudo-code)
 
-```
+```nasm
 POP W   POP X   X+W -> W   PUSH W 
 ```
 
@@ -244,7 +258,7 @@ Sometimes another working register, Y, is also defined.
 
 **UP** is the User Pointer, holding the base address of the task's user area. UP is usually added to an offset, and used by high-level Forth code, so it can be just stored somewhere. But if the CPU can do indexed addressing from the UP register, CODE words can more easily and quickly access user variables. If you have a surplus of address registers, use one for UP. Single-task Forths don't need UP.
 
-X -- if needed -- is more important to keep in register than UP. UP is the easiest of the Forth virtual registers to move into memory.
+**X** -- if needed -- is more important to keep in register than UP. UP is the easiest of the Forth virtual registers to move into memory.
 
 ### Use of the Hardware Stack
 
@@ -254,7 +268,7 @@ The short answer is, _it depends_. It is said that the PSP is used more than the
 
 On the other hand, if your CPU is rich in addressing modes -- and allows indexed addressing -- there's a plus in having the PSP as a general-purpose address register. In this case, use the hardware stack as the Return Stack.
 
-Sometimes you do neither\! The TMS320C25's hardware stack is only eight cells deep -- all but useless for Forth. So its hardware stack is used _only_ for interrupts, and both PSP and RSP are general-purpose address registers. (ANS Forth specifies a minimum of 32 cells of Parameter Stack and 24 cells of Return Stack; I prefer 64 cells of each.)
+Sometimes you do neither\! The [TMS320C25](http://en.wikipedia.org/wiki/Texas_Instruments_TMS320)'s hardware stack is only eight cells deep -- all but useless for Forth. So its hardware stack is used _only_ for interrupts, and both PSP and RSP are general-purpose address registers. (ANS Forth specifies a minimum of 32 cells of Parameter Stack and 24 cells of Return Stack; I prefer 64 cells of each.)
 
 You will occasionally encounter the dogma that the hardware stack "must be" the Parameter Stack, or "must be" the Return Stack. Instead, code some sample Forth primitives, such as
 
@@ -276,13 +290,13 @@ A word which _removes_ items from the stack must pop the "new" TOS into its regi
 
 A word which _adds_ items to the stack must push the "old" TOS onto the stack (unless, of course, it's consumed by the word).
 
-_If you have at least six cell-size CPU registers, I recommend keeping the TOS in a register._ I consider TOS more important than UP to have in register, but less important than W, IP, PSP, and RSP. (TOS in register performs many of the functions of the X register.) It's useful if this register can perform memory addressing. PDP-11s, Z8s, and 68000s are good candidates.
+_If you have at least six cell-size CPU registers, I recommend keeping the TOS in a register._ I consider TOS more important than UP to have in register, but less important than W, IP, PSP, and RSP. (TOS in register performs many of the functions of the X register.) It's useful if this register can perform memory addressing. [PDP-11](http://en.wikipedia.org/wiki/PDP-11)s, [Z8](http://en.wikipedia.org/wiki/Zilog_Z8)s, and 68000s are good candidates.
 
-Nine of the 19 IBM PC Forths studied by Guy Kelly \[KEL92\] keep TOS in register.
+Nine of the 19 IBM PC Forths studied by Guy Kelly [[KEL92](#KEL92)] keep TOS in register.
 
 I think this innovation has been resisted because of the false beliefs that a) it adds instructions, and b) the top stack element must be accessible as memory. It turns out that even such words as PICK, ROLL, and DEPTH are trivially modified for TOS-in-register.
 
-What about buffering _two_ stack elements in registers? When you keep the top of stack in a register, the total number of operations performed remains essentially the same. A push remains a push, regardless of whether it is before or after the operation you're performing. On the other hand, buffering two stack elements in registers _adds_ a large number of instructions -- a push becomes a push followed by a move. Only dedicated Forth processors like the RTX2000 and fantastically clever optimizing compilers can benefit from buffering two stack elements in registers.
+What about buffering _two_ stack elements in registers? When you keep the top of stack in a register, the total number of operations performed remains essentially the same. A push remains a push, regardless of whether it is before or after the operation you're performing. On the other hand, buffering two stack elements in registers _adds_ a large number of instructions -- a push becomes a push followed by a move. Only dedicated Forth processors like the [RTX2000](http://en.wikipedia.org/wiki/RTX2010) and fantastically clever optimizing compilers can benefit from buffering two stack elements in registers.
 
 ### Some examples
 

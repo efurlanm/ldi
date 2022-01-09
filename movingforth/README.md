@@ -2,7 +2,7 @@
 
 Original sources: http://www.bradrodriguez.com/papers/
 
-I decided to create this repo because it was difficult for me to read, study, and learn in an easy way, using the original documentation. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on. So I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the MIT license, and all original sources are under the [author's original license](http://www.bradrodriguez.com).
+I decided to create this repo because it was difficult for me to read, study and learn easily using the original documentation, plus the fact that I enjoy taking notes as I read. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on. So I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the MIT license, and all original sources are under the [author's original license](http://www.bradrodriguez.com).
 
 <table>
 <tr>
@@ -76,8 +76,7 @@ Source: http://archive.org/details/the-computer-journal (scanned PDF files)
 
 ## Forth Dimensions (FD)
 
-Source 1 : http://archive.org/details/forthdimension (scanned PDF files)<br>
-Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
+Source 1 : http://archive.org/details/forthdimension (scanned PDF files)<br>Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 
 * FD \#XIII:6 "Forth Systems Comparisons". (21 MB PDF file)
   [[1]](http://archive.org/details/Forth_Dimension_Volume_13_Number_6)
@@ -105,3 +104,5 @@ Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 - The documents were edited using the Mark Text editor (http://marktext.app/), and if you want them in PDF format, you can use Mark Text to export them.
 
 - To download the documents and obtain a local copy of this repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+
+- The Mark Text reader is also a good offline markdown document reader.
