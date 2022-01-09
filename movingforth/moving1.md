@@ -4,7 +4,7 @@
 
 ### by Brad Rodriguez
 
-This article first appeared in [The Computer Journal](movingforth#the-computer-journal-tcj) #59 (January/February 1993).
+This article first appeared in [The Computer Journal](http://github.com/efurlanm/ldi/tree/main/movingforth#the-computer-journal-tcj) #59 (January/February 1993).
 
 ## INTRODUCTION
 
