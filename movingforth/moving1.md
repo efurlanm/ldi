@@ -53,7 +53,7 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1. (The he
 <figcaption>Figure 1. Indirect Threaded Code</figcaption>
 <img src="img/mov1-1.svg" 
      alt="Figure 1. Indirect Threaded Code"
-     style="margin: 2em 0em;">
+     style="margin: 10em 0em;">
 </figure>
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's Code Field.) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
