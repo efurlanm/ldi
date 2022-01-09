@@ -38,7 +38,9 @@ These listings are part of Moving Forth and are described in the text.
 
 ## The Computer Journal (TCJ)
 
-Source: http://archive.org/details/the-computer-journal (scanned PDF files)
+[The Computer Journal Home Page](http://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/)
+
+Scanned PDF files source: http://archive.org/details/the-computer-journal
 
 * TCJ \#52: B.Y.O. Assembler (1) (3.9 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-52) [[2]](tcj/tcj_52_September-October_1991_text.pdf)
 * TCJ \#54: B.Y.O. Assembler (2) (2.7 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-54) [[2]](tcj/tcj_54_January-February_1992_text.pdf)
