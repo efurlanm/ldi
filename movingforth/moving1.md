@@ -5,11 +5,11 @@
 ### by Brad Rodriguez
 
 This article first appeared in *The Computer Journal* [[1]](https://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/) [[2]](https://archive.org/details/the-computer-journal/) 
-[[\#59 (January/February 1993)]](tcj/tcj_59_January-February_1993_text.pdf).
+#59 (January/February 1993) [[3]](http://archive.org/details/the-computer-journal-59) [[4]](tcj/tcj_59_January-February_1993_text.pdf).
 
 ## INTRODUCTION
 
-Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler \[[ROD91](#ROD91),[ROD92](#ROD92)\], and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](https://en.wikipedia.org/wiki/CP/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-8)s gathering dust.
+Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91](#ROD91),[ROD92](#ROD92)], and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](https://en.wikipedia.org/wiki/CP/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-8)s gathering dust.
 
 ## THE ESSENTIAL HARDWARE
 
@@ -55,7 +55,7 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1. (The he
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's Code Field.) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
-```nasm
+```
 (IP) -> W   fetch memory pointed by IP into "W" register
             ...W now holds address of the Code Field
 IP+2 -> IP  advance IP, just like a program counter
@@ -71,7 +71,7 @@ If SQUARE were written in machine code, this would be the end of the story: that
 
 But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the Parameter Field of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth.) This is called DOCOLON or ENTER in various Forths:
 
-```nasm
+```
 PUSH IP     onto the "return address stack"
 W+2 -> IP   W still points to the Code Field, so W+2 is 
             the address of the Body!  (Assuming a 2-byte
@@ -83,7 +83,7 @@ This identical code fragment is used by all high-level (i.e., threaded) Forth de
 
 The "return from subroutine" is the word EXIT, which gets compiled when Forth sees ';'. (Some Forths call it ;S instead of EXIT.) EXIT just executes a machine language routine which does the following:
 
-```nasm
+```
 POP IP   from the "return address stack"
 JUMP to interpreter
 ```
@@ -146,8 +146,6 @@ SQUARE: CALL DUP
 
 See Figure 3. This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers [[KOG82](#KOG82)].
 
-
-
 <figure>
 <figcaption>Figure 3. Subroutine Threaded Code<br><br></figcaption>
 <img src="img/mov1-3.svg" alt="Figure 3. Subroutine Threaded Code">
@@ -180,7 +178,7 @@ BSR DROP  ------->   DROP: ADDQ #4,An
 BSR ...   <-------         RTS
 ```
 
-ADDQ is a two-byte instruction. Why write a four-byte subroutine call to a two-byte instruction? No matter how many times DROP is used, there's no savings\! The code is smaller and faster if the ADDQ is coded directly into the stream of BSRs. Some Forth compilers do this "in-line expansion" of CODE words [[CUR93a](CUR93a)].
+ADDQ is a two-byte instruction. Why write a four-byte subroutine call to a two-byte instruction? No matter how many times DROP is used, there's no savings\! The code is smaller and faster if the ADDQ is coded directly into the stream of BSRs. Some Forth compilers do this "in-line expansion" of CODE words [[CUR93a](#CUR93a)].
 
 The disadvantage of in-line expansion is that decompiling back to the original source code becomes very difficult. As long as subroutine calls are used, you still have pointers (the subroutine addresses) to the Forth words comprising the thread. With pointers to the words, you can obtain their names. But once a word is expanded into in-line code, all knowledge of where that code came from is lost.
 
@@ -200,7 +198,7 @@ BSR PLUS
 
 but could be expanded in-line as a _single_ machine instruction\!
 
-Optimizing Forth compilers is too broad a topic for this article. This is an active area of Forth language research; see, for instance, [[SCO89](SCO89)] and [[CUR93b](CUR93b)]. The final culmination of optimized STC is a Forth which compiles to "pure" machine code, just like a C or Fortran compiler.
+Optimizing Forth compilers is too broad a topic for this article. This is an active area of Forth language research; see, for instance, [[SCO89](#SCO89)] and [[CUR93b](#CUR93b)]. The final culmination of optimized STC is a Forth which compiles to "pure" machine code, just like a C or Fortran compiler.
 
 ### Token Threaded Code (TTC)
 
@@ -272,7 +270,7 @@ Sometimes you do neither\! The [TMS320C25](http://en.wikipedia.org/wiki/Texas_In
 
 You will occasionally encounter the dogma that the hardware stack "must be" the Parameter Stack, or "must be" the Return Stack. Instead, code some sample Forth primitives, such as
 
-```
+```forth
 SWAP  OVER  @  !  +  0=  
 ```
 
@@ -313,15 +311,15 @@ template (see the aux directory). -->
 <tr><th>  </th><th> W </th><th> IP </th><th> PSP </th><th> RSP </th><th> UP </th><th> TOS </th><th>  </th></tr>
 </thead>                
 <tbody>                
-<tr><td> 8086<sup>[1]</sup> </td><td> BX </td><td> SI </td><td> SP </td><td> BP </td><td> memory </td><td> memory </td><td> <a href="LAX84">[LAX84]</a> </td></tr>
-<tr><td> 8086<sup>[2]</sup> </td><td> AX </td><td> SI </td><td> SP </td><td> BP </td><td> none </td><td> BX </td><td> <a href="SER90">[SER90]</a> </td></tr>
-<tr><td> 68000 </td><td> A5 </td><td> A4 </td><td> A3 </td><td> A7=SP </td><td> A6 </td><td> memory </td><td> <a href="CUR86">[CUR86]</a> </td></tr>
-<tr><td> PDP-11 </td><td> R2 </td><td> R4 </td><td> R5 </td><td> R6=SP </td><td> R3 </td><td> memory </td><td> <a href="JAM80">[JAM80]</a> </td></tr>
-<tr><td> 6809 </td><td> X </td><td> Y </td><td> U </td><td> S </td><td> memory </td><td> memory </td><td> <a href="TAL80">[TAL80]</a> </td></tr>
-<tr><td> 6502 </td><td> Zpage </td><td> Zpage </td><td> X </td><td> SP </td><td> Zpage </td><td> memory </td><td> <a href="KUN81">[KUN81]</a> </td></tr>
-<tr><td> Z80 </td><td> DE </td><td> BC </td><td> SP </td><td> IX </td><td> none </td><td> memory </td><td> <a href="LOE81">[LOE81]</a> </td></tr>
-<tr><td> Z8 </td><td> RR6 </td><td> RR12 </td><td> RR14 </td><td> SP </td><td> RR10 </td><td> RR8 </td><td> <a href="MPE92">[MPE92]</a> </td></tr>
-<tr><td> 8051 </td><td> R0,1 </td><td> R2,3 </td><td> R4,5 </td><td> R6,7 </td><td> fixed </td><td> memory </td><td> <a href="PAY90">[PAY90]</a> </td></tr>
+<tr><td> 8086<sup>[1]</sup> </td><td> BX </td><td> SI </td><td> SP </td><td> BP </td><td> memory </td><td> memory </td><td> <a href="#LAX84">[LAX84]</a> </td></tr>
+<tr><td> 8086<sup>[2]</sup> </td><td> AX </td><td> SI </td><td> SP </td><td> BP </td><td> none </td><td> BX </td><td> <a href="#SER90">[SER90]</a> </td></tr>
+<tr><td> 68000 </td><td> A5 </td><td> A4 </td><td> A3 </td><td> A7=SP </td><td> A6 </td><td> memory </td><td> <a href="#CUR86">[CUR86]</a> </td></tr>
+<tr><td> PDP-11 </td><td> R2 </td><td> R4 </td><td> R5 </td><td> R6=SP </td><td> R3 </td><td> memory </td><td> <a href="#JAM80">[JAM80]</a> </td></tr>
+<tr><td> 6809 </td><td> X </td><td> Y </td><td> U </td><td> S </td><td> memory </td><td> memory </td><td> <a href="#TAL80">[TAL80]</a> </td></tr>
+<tr><td> 6502 </td><td> Zpage </td><td> Zpage </td><td> X </td><td> SP </td><td> Zpage </td><td> memory </td><td> <a href="#KUN81">[KUN81]</a> </td></tr>
+<tr><td> Z80 </td><td> DE </td><td> BC </td><td> SP </td><td> IX </td><td> none </td><td> memory </td><td> <a href="#LOE81">[LOE81]</a> </td></tr>
+<tr><td> Z8 </td><td> RR6 </td><td> RR12 </td><td> RR14 </td><td> SP </td><td> RR10 </td><td> RR8 </td><td> <a href="#MPE92">[MPE92]</a> </td></tr>
+<tr><td> 8051 </td><td> R0,1 </td><td> R2,3 </td><td> R4,5 </td><td> R6,7 </td><td> fixed </td><td> memory </td><td> <a href="#PAY90">[PAY90]</a> </td></tr>
 </tbody>                
 <tfoot><tr><td colspan="8"> <sup>[1]</sup>F83.   <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
 </table>                
