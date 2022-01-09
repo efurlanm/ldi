@@ -51,14 +51,14 @@ Let's look at the definition of a Forth word SQUARE:
 
 In a typical ITC Forth this would appear in memory as shown in Figure 1. (The header will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
 
+<div>
 <figure>
-<figcaption><br>
-<div style="text-align:center">
-Figure 1. Indirect Threaded Code
-</div>
-<br><br></figcaption>
+<figcaption>Figure 1. Indirect Threaded Code</figcaption>
+<br>
 <img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code">
-</figure><br>
+</figure>
+<br>
+</div>
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's Code Field.) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
