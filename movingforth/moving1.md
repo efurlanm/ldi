@@ -49,7 +49,7 @@ Let's look at the definition of a Forth word SQUARE:
 
 In a typical ITC Forth this would appear in memory as shown in Figure 1. (The header will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
 
-![Fig.1 Indirect Threaded Code](img/mov1-1.gif)
+![Fig.1 Indirect Threaded Code](img/mov1-1.svg)
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's Code Field.) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
@@ -362,11 +362,6 @@ Rodriguez, B.J., "B.Y.O. Assembler", Part 1, The Computer Journal \#52 (Sep/Oct 
 Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal \#54 (Jan/Feb 1992). A 6809 assembler in Forth.
 [[1]](http://archive.org/details/the-computer-journal-54)
 [[2]](tcj/tcj_54_January-February_1992_text.pdf)
-
-<dl><dt id="SCO89">[SCO89]</dt><dd><ul>
-<li>Scott, Andrew, "An Extensible Optimizer for Compiling Forth", _1989 FORML Conference Proceedings_, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a 68000 optimizer; no code provided.</li>
-<li>"Extensible Optiming Compiler", Forth Dimensions</li>
-</ul></dd>
 
 <span id="SCO89">[SCO89]</span> Scott, Andrew:<br>
 1. "An Extensible Optimizer for Compiling Forth", _1989 FORML Conference Proceedings_, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a 68000 optimizer; no code provided.<br>
