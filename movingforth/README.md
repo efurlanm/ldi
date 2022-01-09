@@ -4,9 +4,12 @@ Original sources: http://www.bradrodriguez.com/papers/
 
 I decided to create this repo because it was difficult for me to read, study, and learn in an easy way, using the original documentation. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on. So I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the MIT license, and all original sources are under the [author's original license](http://www.bradrodriguez.com).
 
-![](img/construction.gif)
-
-This repository is permanently under construction, so its content changes constantly
+<table>
+<tr>
+<td><img src="img/construction.gif"></td>
+<td>This repository is permanently under construction, so its content changes constantly</td>
+</tr>
+</table>
 
 ## Moving Forth: a series on writing Forth kernels
 
@@ -76,29 +79,29 @@ Source: http://archive.org/details/the-computer-journal (scanned PDF files)
 Source 1 : http://archive.org/details/forthdimension (scanned PDF files)<br>
 Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 
-* FD \#XIII:6: "Forth Systems Comparisons" (21 MB PDF file)
+* FD \#XIII:6 "Forth Systems Comparisons". (21 MB PDF file)
   [[1]](http://archive.org/details/Forth_Dimension_Volume_13_Number_6)
   [[2]](http://www.forth.org/fd/FD-V13N6.pdf)
   [[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
-* FD \#XIV:3: "Principles of Metacompilation (1)" (21 MB PDF file)
+* FD \#XIV:3 "Principles of Metacompilation" (1). (21 MB PDF file)
   [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_3)
   [[2]](http://www.forth.org/fd/FD-V14N3.pdf)
   [[3]](fd/Forth_Dimension_Volume_14_Number_3.pdf)
-* FD \#XIV:4: "Principles of Metacompilation (2)" (21 MB PDF file)
+* FD \#XIV:4 "Principles of Metacompilation" (2). (21 MB PDF file)
   [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_4)
   [[2]](http://www.forth.org/fd/FD-V14N4.pdf)
   [[3]](fd/Forth_Dimension_Volume_14_Number_4.pdf)
-* FD \#XIV:5: "Principles of Metacompilation (3)", "Life in the FastForth Lane" (22 MB PDF file)
+* FD \#XIV:5 "Principles of Metacompilation" (3), "Life in the FastForth Lane". (22 MB PDF file)
   [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5)
   [[2]](http://www.forth.org/fd/FD-V14N5.pdf)
   [[3]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
-* FD \#XIV:5: "Principles of Metacompilation (3)", "Optimizing in a BSR/JSR Threaded Forth" (22 MB PDF file)
+* FD \#XIV:5 "Principles of Metacompilation" (3), "Optimizing in a BSR/JSR Threaded Forth". (22 MB PDF file)
   [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_6)
   [[2]](http://www.forth.org/fd/FD-V14N6.pdf)
   [[3]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
 
 ## Notes
 
-- The documents are in Markdown format and were edited using the Mark Text editor (http://marktext.app/), and you can also use it to export in PDF format, if desired.
+- The documents were edited using the Mark Text editor (http://marktext.app/), and if you want them in PDF format, you can use Mark Text to export them.
 
 - To download the documents and obtain a local copy of this repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
