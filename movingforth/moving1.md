@@ -53,7 +53,7 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1. (The he
 <figcaption>Figure 1. Indirect Threaded Code</figcaption>
 <img src="img/mov1-1.svg" 
      alt="Figure 1. Indirect Threaded Code"
-     style="margin-top:1em;">
+     style="margin-top:2em;">
 </figure>
 <br>
 
