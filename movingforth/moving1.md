@@ -51,14 +51,10 @@ Let's look at the definition of a Forth word SQUARE:
 
 In a typical ITC Forth this would appear in memory as shown in Figure 1. (The header will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
 
-<div>
 <figure>
-<figcaption>Figure 1. Indirect Threaded Code</figcaption>
-<br>
+<figcaption><br>Figure 1. Indirect Threaded Code<br><br></figcaption>
 <img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code">
 </figure>
-<br>
-</div>
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's Code Field.) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
@@ -110,7 +106,7 @@ Direct Threaded Code differs from ITC in only one respect: instead of the Code F
 I'm not saying that the complete code for ENTER is contained in each and every colon definition\! In "high-level" Forth words, the Code Field will contain _a subroutine call_, as shown in Figure 2. Colon definitions, for instance, will contain a call to the ENTER routine.
 
 <figure>
-<figcaption>Figure 2. Direct Threaded Code<br><br></figcaption>
+<figcaption><br>Figure 2. Direct Threaded Code<br><br></figcaption>
 <img src="img/mov1-2.svg" alt="Figure 2. Direct Threaded Code">
 </figure>
 
@@ -153,7 +149,7 @@ SQUARE: CALL DUP
 See Figure 3. This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers [[KOG82]](#KOG82).
 
 <figure>
-<figcaption>Figure 3. Subroutine Threaded Code<br><br></figcaption>
+<figcaption><br>Figure 3. Subroutine Threaded Code<br><br></figcaption>
 <img src="img/mov1-3.svg" alt="Figure 3. Subroutine Threaded Code">
 </figure>
 
@@ -214,7 +210,7 @@ The purpose of a Forth thread is to specify a list of Forth words (subroutines) 
 A token-threaded Forth keeps a table of addresses of all Forth words, as shown in Figure 4. The token value is then used to index into this table, to find the Forth word corresponding to a given token. This _adds_ one level of indirection to the Forth interpreter, so it is slower than an "address-threaded" Forth.
 
 <figure>
-<figcaption>Figure 4. Token Threaded Code<br><br></figcaption>
+<figcaption><br>Figure 4. Token Threaded Code<br><br></figcaption>
 <img src="img/mov1-4.svg" alt="Figure 4. Token Threaded Code">
 </figure>
 
