@@ -213,10 +213,9 @@ The purpose of a Forth thread is to specify a list of Forth words (subroutines) 
 A token-threaded Forth keeps a table of addresses of all Forth words, as shown in Figure 4. The token value is then used to index into this table, to find the Forth word corresponding to a given token. This _adds_ one level of indirection to the Forth interpreter, so it is slower than an "address-threaded" Forth.
 
 <figure>
-<figcaption>Figure 4. Token Threaded Code<br><br></figcaption>
+<figcaption>Figure 4. Token Threaded Code<br></figcaption>
 <img src="img/mov1-4.svg" alt="Figure 4. Token Threaded Code">
 </figure>
-<br>
 
 The principal advantage of token-threaded Forths is small size. TTC is most commonly seen in handheld computers and other severely size-constrained applications. Also, the table of "entry points" into all the Forth words can simplify linkage of separately-compiled modules.
 
