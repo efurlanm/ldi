@@ -4,7 +4,7 @@
 
 ### by Brad Rodriguez
 
-This article first appeared in [The Computer Journal](http://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/) #59 [(January/February 1993)](REAME.md#the-computer-journal-tcj).
+This article first appeared in [The Computer Journal](movingforth#the-computer-journal-tcj) #59 (January/February 1993).
 
 ## INTRODUCTION
 
