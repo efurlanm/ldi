@@ -8,9 +8,9 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.2"
-   width="210mm"
-   height="74mm"
-   viewBox="0 0 21000 7400"
+   width="177.8mm"
+   height="76.2mm"
+   viewBox="0 0 17780 7620"
    preserveAspectRatio="xMidYMid"
    fill-rule="evenodd"
    stroke-width="28.222"
@@ -30,13 +30,13 @@
    guidetolerance="10"
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
-   inkscape:window-width="669"
+   inkscape:window-width="667"
    inkscape:window-height="480"
    id="namedview694"
    showgrid="false"
-   inkscape:zoom="0.32883929"
-   inkscape:cx="396.85039"
-   inkscape:cy="139.84252"
+   inkscape:zoom="0.38839285"
+   inkscape:cx="336.00001"
+   inkscape:cy="143.99999"
    inkscape:window-x="0"
    inkscape:window-y="0"
    inkscape:window-maximized="0"
@@ -49,8 +49,8 @@
    <rect
    x="0"
    y="0"
-   width="21000"
-   height="7400"
+   width="17780"
+   height="7620"
    id="rect2" />
   </clipPath></defs>
  <defs
@@ -99,20 +99,20 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="7346"
-   y="126"
+   x="6002"
+   y="303"
    width="2289"
    height="1019"
    id="rect173" />
         <path
    fill="rgb(227,242,253)"
    stroke="none"
-   d="M 8490,127 L 9633,127 9633,1143 7347,1143 7347,127 8490,127 Z"
+   d="M 7146,304 L 8289,304 8289,1320 6003,1320 6003,304 7146,304 Z"
    id="path175" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 8490,127 L 9633,127 9633,1143 7347,1143 7347,127 8490,127 Z"
+   d="M 7146,304 L 8289,304 8289,1320 6003,1320 6003,304 7146,304 Z"
    id="path177" />
        </g>
       </g>
@@ -125,39 +125,39 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="9632"
-   y="126"
-   width="2289"
+   x="8287"
+   y="303"
+   width="2366"
    height="1019"
    id="rect182" />
         <path
    fill="rgb(227,242,253)"
    stroke="none"
-   d="M 10776,1143 L 9633,1143 9633,127 11919,127 11919,1143 10776,1143 Z"
+   d="M 9470,1320 L 8288,1320 8288,304 10651,304 10651,1320 9470,1320 Z"
    id="path184" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 10776,1143 L 9633,1143 9633,127 11919,127 11919,1143 10776,1143 Z"
+   d="M 9470,1320 L 8288,1320 8288,304 10651,304 10651,1320 9470,1320 Z"
    id="path186" />
         <text
    class="TextShape"
    id="text198"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan196"><tspan
        class="TextPosition"
-       x="9908"
-       y="533"
+       x="8602"
+       y="710"
        id="tspan190"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
          id="tspan188">address of </tspan></tspan><tspan
        class="TextPosition"
-       x="10095"
-       y="1012"
+       x="8788"
+       y="1189"
        id="tspan194"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -174,20 +174,20 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="11918"
-   y="126"
-   width="2289"
+   x="10650"
+   y="303"
+   width="2212"
    height="1019"
    id="rect203" />
         <path
    fill="rgb(227,242,253)"
    stroke="none"
-   d="M 13062,1143 L 11919,1143 11919,127 14205,127 14205,1143 13062,1143 Z"
+   d="M 11756,1320 L 10651,1320 10651,304 12860,304 12860,1320 11756,1320 Z"
    id="path205" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 13062,1143 L 11919,1143 11919,127 14205,127 14205,1143 13062,1143 Z"
+   d="M 11756,1320 L 10651,1320 10651,304 12860,304 12860,1320 11756,1320 Z"
    id="path207" />
        </g>
       </g>
@@ -200,39 +200,39 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="6857"
-   y="2031"
-   width="4067"
+   x="6382"
+   y="2234"
+   width="3736"
    height="1019"
    id="rect212" />
         <path
    fill="rgb(255,235,238)"
    stroke="none"
-   d="M 8890,3048 L 6858,3048 6858,2032 10922,2032 10922,3048 8890,3048 Z"
+   d="M 8250,3251 L 6383,3251 6383,2235 10116,2235 10116,3251 8250,3251 Z"
    id="path214" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 8890,3048 L 6858,3048 6858,2032 10922,2032 10922,3048 8890,3048 Z"
+   d="M 8250,3251 L 6383,3251 6383,2235 10116,2235 10116,3251 8250,3251 Z"
    id="path216" />
         <text
    class="TextShape"
    id="text228"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan226"><tspan
        class="TextPosition"
-       x="7267"
-       y="2438"
+       x="6626"
+       y="2641"
        id="tspan220"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
          id="tspan218">address of machine </tspan></tspan><tspan
        class="TextPosition"
-       x="7392"
-       y="2917"
+       x="6751"
+       y="3120"
        id="tspan224"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -249,32 +249,32 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="3935"
-   y="2031"
+   x="3459"
+   y="2234"
    width="2926"
    height="1019"
    id="rect233" />
         <path
    fill="rgb(255,253,231)"
    stroke="none"
-   d="M 5398,3048 L 3936,3048 3936,2032 6859,2032 6859,3048 5398,3048 Z"
+   d="M 4922,3251 L 3460,3251 3460,2235 6383,2235 6383,3251 4922,3251 Z"
    id="path235" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 5398,3048 L 3936,3048 3936,2032 6859,2032 6859,3048 5398,3048 Z"
+   d="M 4922,3251 L 3460,3251 3460,2235 6383,2235 6383,3251 4922,3251 Z"
    id="path237" />
         <text
    class="TextShape"
    id="text245"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan243"><tspan
        class="TextPosition"
-       x="4187"
-       y="2678"
+       x="3711"
+       y="2881"
        id="tspan241"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -291,39 +291,39 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="10920"
-   y="2031"
+   x="10115"
+   y="2234"
    width="2416"
    height="1019"
    id="rect250" />
         <path
    fill="rgb(227,242,253)"
    stroke="none"
-   d="M 12128,3048 L 10921,3048 10921,2032 13334,2032 13334,3048 12128,3048 Z"
+   d="M 11323,3251 L 10116,3251 10116,2235 12529,2235 12529,3251 11323,3251 Z"
    id="path252" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 12128,3048 L 10921,3048 10921,2032 13334,2032 13334,3048 12128,3048 Z"
+   d="M 11323,3251 L 10116,3251 10116,2235 12529,2235 12529,3251 11323,3251 Z"
    id="path254" />
         <text
    class="TextShape"
    id="text266"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan264"><tspan
        class="TextPosition"
-       x="11260"
-       y="2438"
+       x="10455"
+       y="2641"
        id="tspan258"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
          id="tspan256">address of </tspan></tspan><tspan
        class="TextPosition"
-       x="11764"
-       y="2917"
+       x="10959"
+       y="3120"
        id="tspan262"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -340,44 +340,44 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="13333"
-   y="2031"
+   x="12528"
+   y="2234"
    width="2416"
    height="1019"
    id="rect271" />
         <path
    fill="rgb(227,242,253)"
    stroke="none"
-   d="M 14541,3048 L 13334,3048 13334,2032 15747,2032 15747,3048 14541,3048 Z"
+   d="M 13736,3251 L 12529,3251 12529,2235 14942,2235 14942,3251 13736,3251 Z"
    id="path273" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 14541,3048 L 13334,3048 13334,2032 15747,2032 15747,3048 14541,3048 Z"
+   d="M 13736,3251 L 12529,3251 12529,2235 14942,2235 14942,3251 13736,3251 Z"
    id="path275" />
         <text
    class="TextShape"
    id="text289"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan281"><tspan
        class="TextPosition"
-       x="13673"
-       y="2438"
+       x="12868"
+       y="2641"
        id="tspan279"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
          id="tspan277">address of</tspan></tspan></tspan><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan287"><tspan
        class="TextPosition"
-       x="14443"
-       y="2917"
+       x="13638"
+       y="3120"
        id="tspan285"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -394,39 +394,39 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="15746"
-   y="2031"
+   x="14941"
+   y="2234"
    width="2416"
    height="1019"
    id="rect294" />
         <path
    fill="rgb(227,242,253)"
    stroke="none"
-   d="M 16954,3048 L 15747,3048 15747,2032 18160,2032 18160,3048 16954,3048 Z"
+   d="M 16149,3251 L 14942,3251 14942,2235 17355,2235 17355,3251 16149,3251 Z"
    id="path296" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 16954,3048 L 15747,3048 15747,2032 18160,2032 18160,3048 16954,3048 Z"
+   d="M 16149,3251 L 14942,3251 14942,2235 17355,2235 17355,3251 16149,3251 Z"
    id="path298" />
         <text
    class="TextShape"
    id="text310"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan308"><tspan
        class="TextPosition"
-       x="16086"
-       y="2438"
+       x="15281"
+       y="2641"
        id="tspan302"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
          id="tspan300">address of </tspan></tspan><tspan
        class="TextPosition"
-       x="16596"
-       y="2917"
+       x="15791"
+       y="3120"
        id="tspan306"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -443,39 +443,39 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="11193"
-   y="4444"
-   width="4048"
+   x="8467"
+   y="4622"
+   width="3761"
    height="1019"
    id="rect315" />
         <path
    fill="rgb(255,235,238)"
    stroke="none"
-   d="M 13217,5461 L 11194,5461 11194,4445 15239,4445 15239,5461 13217,5461 Z"
+   d="M 10347,5639 L 8468,5639 8468,4623 12226,4623 12226,5639 10347,5639 Z"
    id="path317" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 13217,5461 L 11194,5461 11194,4445 15239,4445 15239,5461 13217,5461 Z"
+   d="M 10347,5639 L 8468,5639 8468,4623 12226,4623 12226,5639 10347,5639 Z"
    id="path319" />
         <text
    class="TextShape"
    id="text331"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan329"><tspan
        class="TextPosition"
-       x="11593"
-       y="4851"
+       x="8724"
+       y="5029"
        id="tspan323"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
          id="tspan321">address of machine </tspan></tspan><tspan
        class="TextPosition"
-       x="11718"
-       y="5330"
+       x="8849"
+       y="5508"
        id="tspan327"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -492,32 +492,32 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="9015"
-   y="4444"
+   x="6051"
+   y="4621"
    width="2418"
    height="1019"
    id="rect336" />
         <path
    fill="rgb(255,253,231)"
    stroke="none"
-   d="M 10224,5461 L 9016,5461 9016,4445 11431,4445 11431,5461 10224,5461 Z"
+   d="M 7260,5638 L 6052,5638 6052,4622 8467,4622 8467,5638 7260,5638 Z"
    id="path338" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 10224,5461 L 9016,5461 9016,4445 11431,4445 11431,5461 10224,5461 Z"
+   d="M 7260,5638 L 6052,5638 6052,4622 8467,4622 8467,5638 7260,5638 Z"
    id="path340" />
         <text
    class="TextShape"
    id="text348"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan346"><tspan
        class="TextPosition"
-       x="9331"
-       y="5091"
+       x="6367"
+       y="5268"
        id="tspan344"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -534,32 +534,32 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="15238"
-   y="4444"
-   width="5718"
+   x="12225"
+   y="4622"
+   width="5091"
    height="1019"
    id="rect353" />
         <path
    fill="rgb(232,245,233)"
    stroke="none"
-   d="M 18097,5461 L 15239,5461 15239,4445 20954,4445 20954,5461 18097,5461 Z"
+   d="M 14770,5639 L 12226,5639 12226,4623 17314,4623 17314,5639 14770,5639 Z"
    id="path355" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 18097,5461 L 15239,5461 15239,4445 20954,4445 20954,5461 18097,5461 Z"
+   d="M 14770,5639 L 12226,5639 12226,4623 17314,4623 17314,5639 14770,5639 Z"
    id="path357" />
         <text
    class="TextShape"
    id="text365"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan363"><tspan
        class="TextPosition"
-       x="16200"
-       y="5091"
+       x="12874"
+       y="5269"
        id="tspan361"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -576,44 +576,44 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="4825"
-   y="6349"
-   width="8743"
+   x="3462"
+   y="6526"
+   width="7115"
    height="1019"
    id="rect370" />
         <path
    fill="rgb(232,245,233)"
    stroke="none"
-   d="M 9196,7366 L 4826,7366 4826,6350 13566,6350 13566,7366 9196,7366 Z"
+   d="M 7019,7543 L 3463,7543 3463,6527 10575,6527 10575,7543 7019,7543 Z"
    id="path372" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 9196,7366 L 4826,7366 4826,6350 13566,6350 13566,7366 9196,7366 Z"
+   d="M 7019,7543 L 3463,7543 3463,6527 10575,6527 10575,7543 7019,7543 Z"
    id="path374" />
         <text
    class="TextShape"
    id="text388"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan380"><tspan
        class="TextPosition"
-       x="6553"
-       y="6756"
+       x="4376"
+       y="6933"
        id="tspan378"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
          id="tspan376">common “ENTER” machine code</tspan></tspan></tspan><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan386"><tspan
        class="TextPosition"
-       x="7262"
-       y="7235"
+       x="5085"
+       y="7412"
        id="tspan384"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -630,9 +630,9 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="17107"
-   y="381"
-   width="2071"
+   x="16036"
+   y="508"
+   width="1745"
    height="581"
    id="rect393" />
         <text
@@ -640,12 +640,12 @@
    id="text401"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan399"><tspan
        class="TextPosition"
-       x="17321"
-       y="808"
+       x="16087"
+       y="935"
        id="tspan397"><tspan
          fill="rgb(128,0,128)"
          stroke="none"
@@ -662,9 +662,9 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="18523"
-   y="2286"
-   width="2179"
+   x="15993"
+   y="1651"
+   width="1745"
    height="581"
    id="rect406" />
         <text
@@ -672,12 +672,12 @@
    id="text414"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan412"><tspan
        class="TextPosition"
-       x="18791"
-       y="2713"
+       x="16044"
+       y="2078"
        id="tspan410"><tspan
          fill="rgb(128,0,128)"
          stroke="none"
@@ -695,7 +695,7 @@
    stroke="none"
    fill="none"
    x="0"
-   y="127"
+   y="271"
    width="3075"
    height="1060"
    id="rect419" />
@@ -704,24 +704,24 @@
    id="text433"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan425"><tspan
        class="TextPosition"
        x="51"
-       y="555"
+       y="699"
        id="tspan423"><tspan
          fill="rgb(128,0,128)"
          stroke="none"
          id="tspan421">some Forth word</tspan></tspan></tspan><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan431"><tspan
        class="TextPosition"
        x="51"
-       y="1034"
+       y="1178"
        id="tspan429"><tspan
          fill="rgb(128,0,128)"
          stroke="none"
@@ -739,7 +739,7 @@
    stroke="none"
    fill="none"
    x="0"
-   y="2032"
+   y="2235"
    width="2961"
    height="1060"
    id="rect438" />
@@ -748,24 +748,24 @@
    id="text452"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan444"><tspan
        class="TextPosition"
        x="51"
-       y="2460"
+       y="2663"
        id="tspan442"><tspan
          fill="rgb(128,0,128)"
          stroke="none"
          id="tspan440">SQUARE,</tspan></tspan></tspan><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan450"><tspan
        class="TextPosition"
        x="51"
-       y="2939"
+       y="3142"
        id="tspan448"><tspan
          fill="rgb(128,0,128)"
          stroke="none"
@@ -782,8 +782,8 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="42"
-   y="4445"
+   x="0"
+   y="4577"
    width="3007"
    height="1060"
    id="rect457" />
@@ -792,24 +792,24 @@
    id="text471"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan463"><tspan
        class="TextPosition"
-       x="93"
-       y="4873"
+       x="51"
+       y="5005"
        id="tspan461"><tspan
          fill="rgb(128,0,128)"
          stroke="none"
          id="tspan459">DUP,</tspan></tspan></tspan><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan469"><tspan
        class="TextPosition"
-       x="93"
-       y="5352"
+       x="51"
+       y="5484"
        id="tspan467"><tspan
          fill="rgb(128,0,128)"
          stroke="none"
@@ -827,8 +827,8 @@
    stroke="none"
    fill="none"
    x="0"
-   y="6300"
-   width="3508"
+   y="6503"
+   width="3252"
    height="1060"
    id="rect476" />
         <text
@@ -836,31 +836,31 @@
    id="text492"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan484"><tspan
        class="TextPosition"
-       x="83"
-       y="6728"
+       x="105"
+       y="6931"
        id="tspan482"><tspan
          fill="rgb(128,0,128)"
          stroke="none"
          id="tspan478">“</tspan><tspan
          fill="rgb(128,0,128)"
          stroke="none"
-         id="tspan480">headerless” code in</tspan></tspan></tspan><tspan
+         id="tspan480">headerless” code</tspan></tspan></tspan><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan490"><tspan
        class="TextPosition"
-       x="83"
-       y="7207"
+       x="105"
+       y="7410"
        id="tspan488"><tspan
          fill="rgb(128,0,128)"
          stroke="none"
-         id="tspan486">the Forth kernel</tspan></tspan></tspan></text>
+         id="tspan486">in the Forth kernel</tspan></tspan></tspan></text>
 
        </g>
       </g>
@@ -873,22 +873,22 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="6223"
-   y="2998"
-   width="1575"
-   height="3353"
+   x="3844"
+   y="3201"
+   width="3353"
+   height="3327"
    id="rect497" />
         <path
    fill="none"
    stroke="rgb(6,154,46)"
    stroke-width="100"
    stroke-linejoin="round"
-   d="M 7747,3048 L 6493,5764"
+   d="M 7146,3251 L 4302,6073"
    id="path499" />
         <path
    fill="rgb(6,154,46)"
    stroke="none"
-   d="M 6223,6350 L 6710,5831 6302,5643 6223,6350 Z"
+   d="M 3844,6527 L 4482,6211 4165,5892 3844,6527 Z"
    id="path501" />
        </g>
       </g>
@@ -901,8 +901,8 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="4779"
-   y="3230"
+   x="4304"
+   y="3407"
    width="1229"
    height="581"
    id="rect506" />
@@ -911,13 +911,13 @@
    id="text514"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-style="italic"
      font-weight="400"
      id="tspan512"><tspan
        class="TextPosition"
-       x="4830"
-       y="3658"
+       x="4355"
+       y="3835"
        id="tspan510"><tspan
          fill="rgb(191,0,65)"
          stroke="none"
@@ -934,8 +934,8 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="8077"
-   y="3230"
+   x="7272"
+   y="3407"
    width="1703"
    height="581"
    id="rect519" />
@@ -944,13 +944,13 @@
    id="text527"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-style="italic"
      font-weight="400"
      id="tspan525"><tspan
        class="TextPosition"
-       x="8128"
-       y="3658"
+       x="7323"
+       y="3835"
        id="tspan523"><tspan
          fill="rgb(191,0,65)"
          stroke="none"
@@ -967,8 +967,8 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="13208"
-   y="3230"
+   x="12403"
+   y="3407"
    width="2563"
    height="581"
    id="rect532" />
@@ -977,13 +977,13 @@
    id="text540"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-style="italic"
      font-weight="400"
      id="tspan538"><tspan
        class="TextPosition"
-       x="13259"
-       y="3658"
+       x="12454"
+       y="3835"
        id="tspan536"><tspan
          fill="rgb(191,0,65)"
          stroke="none"
@@ -1000,20 +1000,20 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="3937"
-   y="3456"
+   x="3462"
+   y="3633"
    width="764"
    height="201"
    id="rect545" />
         <path
    fill="none"
    stroke="rgb(191,0,65)"
-   d="M 4699,3556 L 4224,3556"
+   d="M 4224,3733 L 3749,3733"
    id="path547" />
         <path
    fill="rgb(191,0,65)"
    stroke="none"
-   d="M 3937,3556 L 4237,3656 4237,3456 3937,3556 Z"
+   d="M 3462,3733 L 3762,3833 3762,3633 3462,3733 Z"
    id="path549" />
        </g>
       </g>
@@ -1026,20 +1026,20 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="6095"
-   y="3456"
+   x="5620"
+   y="3633"
    width="765"
    height="201"
    id="rect554" />
         <path
    fill="none"
    stroke="rgb(191,0,65)"
-   d="M 6096,3556 L 6572,3556"
+   d="M 5621,3733 L 6097,3733"
    id="path556" />
         <path
    fill="rgb(191,0,65)"
    stroke="none"
-   d="M 6859,3556 L 6559,3456 6559,3656 6859,3556 Z"
+   d="M 6384,3733 L 6084,3633 6084,3833 6384,3733 Z"
    id="path558" />
        </g>
       </g>
@@ -1052,20 +1052,20 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="6858"
-   y="3456"
-   width="1145"
+   x="6384"
+   y="3633"
+   width="814"
    height="201"
    id="rect563" />
         <path
    fill="none"
    stroke="rgb(191,0,65)"
-   d="M 8001,3556 L 7145,3556"
+   d="M 7196,3733 L 6671,3733"
    id="path565" />
         <path
    fill="rgb(191,0,65)"
    stroke="none"
-   d="M 6858,3556 L 7158,3656 7158,3456 6858,3556 Z"
+   d="M 6384,3733 L 6684,3833 6684,3633 6384,3733 Z"
    id="path567" />
        </g>
       </g>
@@ -1078,20 +1078,20 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="10922"
-   y="3456"
+   x="10117"
+   y="3633"
    width="2161"
    height="201"
    id="rect572" />
         <path
    fill="none"
    stroke="rgb(191,0,65)"
-   d="M 13081,3556 L 11209,3556"
+   d="M 12276,3733 L 10404,3733"
    id="path574" />
         <path
    fill="rgb(191,0,65)"
    stroke="none"
-   d="M 10922,3556 L 11222,3656 11222,3456 10922,3556 Z"
+   d="M 10117,3733 L 10417,3833 10417,3633 10117,3733 Z"
    id="path576" />
        </g>
       </g>
@@ -1104,20 +1104,20 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="9905"
-   y="3452"
+   x="9100"
+   y="3629"
    width="1018"
    height="202"
    id="rect581" />
         <path
    fill="none"
    stroke="rgb(191,0,65)"
-   d="M 9906,3557 L 10635,3553"
+   d="M 9101,3734 L 9830,3730"
    id="path583" />
         <path
    fill="rgb(191,0,65)"
    stroke="none"
-   d="M 10922,3551 L 10621,3453 10623,3653 10922,3551 Z"
+   d="M 10117,3728 L 9816,3630 9818,3830 10117,3728 Z"
    id="path585" />
        </g>
       </g>
@@ -1130,20 +1130,20 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="15874"
-   y="3456"
+   x="15069"
+   y="3633"
    width="2288"
    height="202"
    id="rect590" />
         <path
    fill="none"
    stroke="rgb(191,0,65)"
-   d="M 15875,3561 L 17874,3557"
+   d="M 15070,3738 L 17069,3734"
    id="path592" />
         <path
    fill="rgb(191,0,65)"
    stroke="none"
-   d="M 18161,3556 L 17861,3457 17861,3657 18161,3556 Z"
+   d="M 17356,3733 L 17056,3634 17056,3834 17356,3733 Z"
    id="path594" />
        </g>
       </g>
@@ -1156,22 +1156,22 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="9779"
-   y="1093"
-   width="1067"
-   height="940"
+   x="8289"
+   y="1270"
+   width="1321"
+   height="966"
    id="rect599" />
         <path
    fill="none"
    stroke="rgb(6,154,46)"
    stroke-width="100"
    stroke-linejoin="round"
-   d="M 10795,1143 L 10264,1607"
+   d="M 9559,1320 L 8812,1858"
    id="path601" />
         <path
    fill="rgb(6,154,46)"
    stroke="none"
-   d="M 9779,2032 L 10435,1757 10139,1418 9779,2032 Z"
+   d="M 8289,2235 L 8968,2023 8705,1658 8289,2235 Z"
    id="path603" />
        </g>
       </g>
@@ -1184,8 +1184,8 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="12015"
-   y="2998"
+   x="11210"
+   y="3175"
    width="686"
    height="1448"
    id="rect608" />
@@ -1194,12 +1194,12 @@
    stroke="rgb(6,154,46)"
    stroke-width="100"
    stroke-linejoin="round"
-   d="M 12065,3048 L 12433,3858"
+   d="M 11260,3225 L 11628,4035"
    id="path610" />
         <path
    fill="rgb(6,154,46)"
    stroke="none"
-   d="M 12700,4445 L 12626,3737 12216,3924 12700,4445 Z"
+   d="M 11895,4622 L 11821,3914 11411,4101 11895,4622 Z"
    id="path612" />
        </g>
       </g>
@@ -1212,9 +1212,9 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="14301"
-   y="5411"
-   width="1830"
+   x="11337"
+   y="5588"
+   width="1829"
    height="736"
    id="rect617" />
         <path
@@ -1222,12 +1222,12 @@
    stroke="rgb(6,154,46)"
    stroke-width="100"
    stroke-linejoin="round"
-   d="M 14351,5461 L 14529,5697 14702,5871 14787,5938 14871,5992 14952,6034 15033,6064 15111,6084 15188,6094 15262,6096 15334,6089 15472,6055 15599,5997 15715,5923 15810,5846"
+   d="M 11387,5638 L 11565,5874 11738,6048 11823,6115 11907,6169 11988,6211 12069,6241 12147,6261 12224,6271 12298,6273 12370,6266 12508,6232 12635,6174 12751,6100 12846,6023"
    id="path619" />
         <path
    fill="rgb(6,154,46)"
    stroke="none"
-   d="M 16129,5461 L 15657,5749 15924,5975 16129,5461 Z"
+   d="M 13165,5638 L 12693,5926 12960,6152 13165,5638 Z"
    id="path621" />
        </g>
       </g>
@@ -1240,20 +1240,20 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="14204"
-   y="126"
+   x="12860"
+   y="303"
    width="2543"
    height="1019"
    id="rect626" />
         <path
    fill="rgb(227,242,253)"
    stroke="none"
-   d="M 14205,127 L 16491,127 16491,381 16237,508 16745,635 16491,762 16491,1143 14205,1143 14205,127 Z"
+   d="M 12861,304 L 15147,304 15147,558 14893,685 15401,812 15147,939 15147,1320 12861,1320 12861,304 Z"
    id="path628" />
         <path
    fill="none"
    stroke="rgb(222,230,239)"
-   d="M 14205,127 L 16491,127 16491,381 16237,508 16745,635 16491,762 16491,1143 14205,1143 14205,127 Z"
+   d="M 12861,304 L 15147,304 15147,558 14893,685 15401,812 15147,939 15147,1320 12861,1320 12861,304 Z"
    id="path630" />
        </g>
       </g>
@@ -1266,15 +1266,15 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="14204"
-   y="126"
+   x="12860"
+   y="303"
    width="2289"
    height="1019"
    id="rect635" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 16491,127 L 14205,127 14205,1143 16491,1143"
+   d="M 15147,304 L 12861,304 12861,1320 15147,1320"
    id="path637" />
        </g>
       </g>
@@ -1287,8 +1287,8 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="14840"
-   y="286"
+   x="13496"
+   y="463"
    width="890"
    height="731"
    id="rect642" />
@@ -1297,12 +1297,12 @@
    id="text650"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan648"><tspan
        class="TextPosition"
-       x="15090"
-       y="788"
+       x="13746"
+       y="965"
        id="tspan646"><tspan
          fill="rgb(0,0,0)"
          stroke="none"
@@ -1319,20 +1319,20 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="4806"
-   y="126"
+   x="3462"
+   y="303"
    width="2543"
    height="1019"
    id="rect655" />
         <path
    fill="rgb(227,242,253)"
    stroke="none"
-   d="M 7347,1143 L 5061,1143 5061,762 5315,635 4807,508 5061,381 5061,127 7347,127 7347,1143 Z"
+   d="M 6003,1320 L 3717,1320 3717,939 3971,812 3463,685 3717,558 3717,304 6003,304 6003,1320 Z"
    id="path657" />
         <path
    fill="none"
    stroke="rgb(222,230,239)"
-   d="M 7347,1143 L 5061,1143 5061,762 5315,635 4807,508 5061,381 5061,127 7347,127 7347,1143 Z"
+   d="M 6003,1320 L 3717,1320 3717,939 3971,812 3463,685 3717,558 3717,304 6003,304 6003,1320 Z"
    id="path659" />
        </g>
       </g>
@@ -1345,15 +1345,15 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="5060"
-   y="126"
+   x="3716"
+   y="303"
    width="2289"
    height="1019"
    id="rect664" />
         <path
    fill="none"
    stroke="rgb(0,0,0)"
-   d="M 5061,127 L 7347,127 7347,1143 5061,1143"
+   d="M 3717,304 L 6003,304 6003,1320 3717,1320"
    id="path666" />
        </g>
       </g>
@@ -1366,8 +1366,8 @@
    class="BoundingBox"
    stroke="none"
    fill="none"
-   x="5823"
-   y="286"
+   x="4479"
+   y="463"
    width="871"
    height="731"
    id="rect671" />
@@ -1376,12 +1376,12 @@
    id="text679"><tspan
      class="TextParagraph"
      font-family="Noto Sans, sans-serif"
-     font-size="352px"
+     font-size="353px"
      font-weight="400"
      id="tspan677"><tspan
        class="TextPosition"
-       x="6073"
-       y="788"
+       x="4729"
+       y="965"
        id="tspan675"><tspan
          fill="rgb(0,0,0)"
          stroke="none"

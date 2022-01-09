@@ -8,8 +8,6 @@ I decided to create this repo because it was difficult for me to read, study, an
 
 This repository is permanently under construction, so its content changes constantly
 
-
-
 ## Moving Forth: a series on writing Forth kernels
 
 This series originally appeared in [The Computer Journal](http://archive.org/details/the-computer-journal/). Accompanying source code can be found on the [CamelForth](http://www.camelforth.com/) page.
@@ -24,8 +22,6 @@ This series originally appeared in [The Computer Journal](http://archive.org/det
 * [Part 8: CamelForth for the 6809](moving8.md)
 * [Multitasking 8051 CamelForth (23 kB PDF file)](8051task.pdf)
 
-
-
 ## Listings
 
 These listings are part of Moving Forth and are described in the text.
@@ -37,47 +33,43 @@ These listings are part of Moving Forth and are described in the text.
 * [CAMEL80D.AZM](camel80d.txt): CPU and Model Dependencies
 * [CAMEL09](camel09.txt): Direct-Threaded Forth model for Motorola 6809
 
-
-
 ## The Computer Journal (TCJ)
 
 Source: http://archive.org/details/the-computer-journal (scanned PDF files)
 
 * TCJ \#52: B.Y.O. Assembler (1) (3.9 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-52)
-[[2]](tcj/tcj_52_September-October_1991_text.pdf)
+  [[1]](http://archive.org/details/the-computer-journal-52)
+  [[2]](tcj/tcj_52_September-October_1991_text.pdf)
 * TCJ \#54: B.Y.O. Assembler (2) (2.7 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-54)
-[[2]](tcj/tcj_54_January-February_1992_text.pdf)
+  [[1]](http://archive.org/details/the-computer-journal-54)
+  [[2]](tcj/tcj_54_January-February_1992_text.pdf)
 * TCJ \#59: Moving Forth (2.6 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-59)
-[[2]](tcj/tcj_59_January-February_1993_text.pdf)
+  [[1]](http://archive.org/details/the-computer-journal-59)
+  [[2]](tcj/tcj_59_January-February_1993_text.pdf)
 * TCJ \#60: Moving Forth Part II (2.9 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-60)
-[[2]](tcj/tcj_60_March-April_1993_text.pdf)
+  [[1]](http://archive.org/details/the-computer-journal-60)
+  [[2]](tcj/tcj_60_March-April_1993_text.pdf)
 * TCJ \#62: Moving Forth Part III (3.0 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-62)
-[[2]](tcj/tcj_62_July-August_1993_text.pdf)
+  [[1]](http://archive.org/details/the-computer-journal-62)
+  [[2]](tcj/tcj_62_July-August_1993_text.pdf)
 * TCJ \#64: Moving Forth Part IV (3.4 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-64)
-[[2]](tcj/tcj_64_November-December_1993_text.pdf)
+  [[1]](http://archive.org/details/the-computer-journal-64)
+  [[2]](tcj/tcj_64_November-December_1993_text.pdf)
 * TCJ \#67: Moving Forth Part 5 (3.1 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-67)
-[[2]](tcj/tcj_67_May-June_1994_text.pdf)
+  [[1]](http://archive.org/details/the-computer-journal-67)
+  [[2]](tcj/tcj_67_May-June_1994_text.pdf)
 * TCJ \#69: Moving Forth Part 6 (3.7 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-69)
-[[2]](tcj/tcj_69_September-October_1994_text.pdf)
+  [[1]](http://archive.org/details/the-computer-journal-69)
+  [[2]](tcj/tcj_69_September-October_1994_text.pdf)
 * TCJ \#71: Moving Forth Part 7 (3.2 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-71)
-[[2]](tcj/tcj_71_January-February_1995_text.pdf)
+  [[1]](http://archive.org/details/the-computer-journal-71)
+  [[2]](tcj/tcj_71_January-February_1995_text.pdf)
 * TCJ \#72: Moving Forth Part 7.5 (3.1 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-72)
-[[2]](tcj/tcj_72_March-April_1995_text.pdf)
+  [[1]](http://archive.org/details/the-computer-journal-72)
+  [[2]](tcj/tcj_72_March-April_1995_text.pdf)
 * TCJ \#74: Moving Forth Part 8 (4.0 MB PDF file)
-[[1]](http://archive.org/details/the-computer-journal-74)
-[[2]](tcj/tcj_74_July-August_1995_text.pdf)
-
-
+  [[1]](http://archive.org/details/the-computer-journal-74)
+  [[2]](tcj/tcj_74_July-August_1995_text.pdf)
 
 ## Forth Dimensions (FD)
 
@@ -85,22 +77,28 @@ Source 1 : http://archive.org/details/forthdimension (scanned PDF files)<br>
 Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 
 * FD \#XIII:6: "Forth Systems Comparisons" (21 MB PDF file)
-[[1]](http://archive.org/details/Forth_Dimension_Volume_13_Number_6)
-[[2]](http://www.forth.org/fd/FD-V13N6.pdf)
-[[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
+  [[1]](http://archive.org/details/Forth_Dimension_Volume_13_Number_6)
+  [[2]](http://www.forth.org/fd/FD-V13N6.pdf)
+  [[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
 * FD \#XIV:3: "Principles of Metacompilation (1)" (21 MB PDF file)
-[[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_3)
-[[2]](http://www.forth.org/fd/FD-V14N3.pdf)
-[[3]](fd/Forth_Dimension_Volume_14_Number_3.pdf)
+  [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_3)
+  [[2]](http://www.forth.org/fd/FD-V14N3.pdf)
+  [[3]](fd/Forth_Dimension_Volume_14_Number_3.pdf)
 * FD \#XIV:4: "Principles of Metacompilation (2)" (21 MB PDF file)
-[[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_4)
-[[2]](http://www.forth.org/fd/FD-V14N4.pdf)
-[[3]](fd/Forth_Dimension_Volume_14_Number_4.pdf)
+  [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_4)
+  [[2]](http://www.forth.org/fd/FD-V14N4.pdf)
+  [[3]](fd/Forth_Dimension_Volume_14_Number_4.pdf)
 * FD \#XIV:5: "Principles of Metacompilation (3)", "Life in the FastForth Lane" (22 MB PDF file)
-[[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5)
-[[2]](http://www.forth.org/fd/FD-V14N5.pdf)
-[[3]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
+  [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5)
+  [[2]](http://www.forth.org/fd/FD-V14N5.pdf)
+  [[3]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
 * FD \#XIV:5: "Principles of Metacompilation (3)", "Optimizing in a BSR/JSR Threaded Forth" (22 MB PDF file)
-[[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_6)
-[[2]](http://www.forth.org/fd/FD-V14N6.pdf)
-[[3]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
+  [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_6)
+  [[2]](http://www.forth.org/fd/FD-V14N6.pdf)
+  [[3]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
+
+## Notes
+
+- The documents are in Markdown format and were edited using the Mark Text editor (http://marktext.app/), and you can also use it to export in PDF format, if desired.
+
+- To download the documents and obtain a local copy of this repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository

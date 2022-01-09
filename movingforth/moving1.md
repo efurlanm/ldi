@@ -4,9 +4,7 @@
 
 ### by Brad Rodriguez
 
-This article first appeared in _The Computer Journal_
-[[1]](https://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/) 
-[[2]](https://archive.org/details/the-computer-journal/) 
+This article first appeared in *The Computer Journal* [[1]](https://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/) [[2]](https://archive.org/details/the-computer-journal/) 
 [[\#59 (January/February 1993)]](tcj/tcj_59_January-February_1993_text.pdf).
 
 ## INTRODUCTION
@@ -43,7 +41,7 @@ This is the classical Forth threading technique, used in fig- Forth and F83, and
 
 Let's look at the definition of a Forth word SQUARE:
 
-``` 
+```
 : SQUARE  DUP * ;
 ```
 
@@ -51,7 +49,7 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1. (The he
 
 <figure>
 <figcaption>Figure 1. Indirect Threaded Code<br><br></figcaption>
-<img src="img/mov1-1b.svg" alt="Figure 1. Indirect Threaded Code">
+<img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code">
 </figure>
 <br>
 
@@ -73,7 +71,7 @@ If SQUARE were written in machine code, this would be the end of the story: that
 
 But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the Parameter Field of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth.) This is called DOCOLON or ENTER in various Forths:
 
-``` 
+```
 PUSH IP     onto the "return address stack"
 W+2 -> IP   W still points to the Code Field, so W+2 is 
             the address of the Body!  (Assuming a 2-byte
@@ -85,7 +83,7 @@ This identical code fragment is used by all high-level (i.e., threaded) Forth de
 
 The "return from subroutine" is the word EXIT, which gets compiled when Forth sees ';'. (Some Forths call it ;S instead of EXIT.) EXIT just executes a machine language routine which does the following:
 
-``` 
+```
 POP IP   from the "return address stack"
 JUMP to interpreter
 ```
@@ -108,7 +106,7 @@ I'm not saying that the complete code for ENTER is contained in each and every c
 
 The NEXT pseudo-code for direct threading is simply:
 
-``` 
+```
 (IP) -> W   fetch memory pointed by IP into "W" register
 IP+2 -> IP  advance IP (assuming 2-byte addresses)
 JP (W)      jump to the address in the W register
@@ -160,13 +158,13 @@ _The only way to know for sure is to write sample code._ This is intimately invo
 
 On older and 8-bit CPUs, almost every Forth primitive involves several machine instructions. But on more powerful CPUs, many Forth primitives are written in a single instruction. For example, on the 32-bit 68000, DROP is simply
 
-``` 
+```
 ADDQ #4,An     where An is Forth's PSP register
 ```
 
 In a subroutine-threaded Forth, using DROP in a colon definition would result in the sequence
 
-``` 
+```
 BSR ...
 BSR DROP  ------->   DROP: ADDQ #4,An
 BSR ...   <-------         RTS
@@ -178,13 +176,13 @@ The disadvantage of in-line expansion is that decompiling back to the original s
 
 The advantage of in-line expansion -- aside from speed and size -- is the potential for code optimization. For example, the Forth sequence
 
-``` 
+```
 3 +  
 ```
 
 would be compiled in 68000 STC as
 
-``` 
+```
 BSR LIT
 .DW  3 
 BSR PLUS
@@ -238,7 +236,7 @@ If _at all possible_, put W, IP, PSP, and RSP in registers. The virtual register
 
 **X** is a working register, _not_ considered one of the "classical" Forth registers, even though the classical ITC Forths need it for the second indirection. In ITC you must be able to jump indirect using X. X may also be used by a few CODE words to do arithmetic and such. This is particularly important on processors that cannot use memory as an operand. For example, ADD on a Z80 might be (in pseudo-code)
 
-``` 
+```
 POP W   POP X   X+W -> W   PUSH W 
 ```
 
@@ -260,7 +258,7 @@ Sometimes you do neither\! The TMS320C25's hardware stack is only eight cells de
 
 You will occasionally encounter the dogma that the hardware stack "must be" the Parameter Stack, or "must be" the Return Stack. Instead, code some sample Forth primitives, such as
 
-``` 
+```
 SWAP  OVER  @  !  +  0=  
 ```
 
@@ -292,7 +290,9 @@ Here are the register assignments made by Forths for a number of different CPUs.
 
 <!-- Do not edit this table. It is created in Libreoffice using a 
 template (see the aux directory). -->
+
 <!-- ---------------start-------------------- -->
+
 <table id="T5">                
 <caption> Figure 5. Register Assignments               </caption>
 <thead>                
@@ -309,7 +309,7 @@ template (see the aux directory). -->
 <tr><td> Z8 </td><td> RR6 </td><td> RR12 </td><td> RR14 </td><td> SP </td><td> RR10 </td><td> RR8 </td><td> <a href="MPE92">[MPE92]</a> </td></tr>
 <tr><td> 8051 </td><td> R0,1 </td><td> R2,3 </td><td> R4,5 </td><td> R6,7 </td><td> fixed </td><td> memory </td><td> <a href="PAY90">[PAY90]</a> </td></tr>
 </tbody>                
-<tfoot><tr><td colspan="8"> <sup>[1]</sup>F83. &nbsp; <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
+<tfoot><tr><td colspan="8"> <sup>[1]</sup>F83.   <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
 </table>                
 <!-- ---------------end---------------------- -->
 
@@ -368,10 +368,11 @@ Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal \#54 (Jan/Feb 
 [[2]](tcj/tcj_54_January-February_1992_text.pdf)
 
 <span id="SCO89">[SCO89]</span> Scott, Andrew:<br>
+
 1. "An Extensible Optimizer for Compiling Forth", _1989 FORML Conference Proceedings_, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a 68000 optimizer; no code provided.<br>
 2. "Extensible Optiming Compiler", Forth Dimensions XII:2 (Jul/Aug 1990).
-[[1]](https://archive.org/details/Forth_Dimension_Volume_12_Number_2)
-[[2]](http://www.forth.org/fd/FD-V12N2.pdf)
+   [[1]](https://archive.org/details/Forth_Dimension_Volume_12_Number_2)
+   [[2]](http://www.forth.org/fd/FD-V12N2.pdf)
 
 ### Forth Implementations
 
