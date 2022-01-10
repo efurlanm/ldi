@@ -1,4 +1,4 @@
-[[teste]](./moving2.md)
+[[teste]](../REAME.md)
 
 # MOVING FORTH
 
