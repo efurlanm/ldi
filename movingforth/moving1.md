@@ -1,4 +1,4 @@
-[[teste]](../REAME.md)
+[[teste]](../../../REAME.md)
 
 # MOVING FORTH
 
