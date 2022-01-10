@@ -3,34 +3,24 @@
 My personal notes on language design and implementation, computer architecture,
 interpreter and compiler, internals, and related topics
 
-
-
 ## Wikibooks
 
 * [Compiler (from Introduction to Software Engineering)](https://en.wikibooks.org/wiki/Introduction_to_Software_Engineering/Tools/Compiler)
 * [Compiler Construction](https://en.wikibooks.org/wiki/Compiler_Construction)
-
-
 
 ## Wikipedia
 
 * [Compiler](https://en.wikipedia.org/wiki/Compiler)
 * [History of compiler construction](https://en.wikipedia.org/wiki/History_of_compiler_construction)
 
-
-
 ## Reddit
 
 * [Programming Languages](http://www.reddit.com/r/ProgrammingLanguages/): discussion of programming languages, programming language theory, design, their syntax and compilers
 * [Compilers](http://www.reddit.com/r/Compilers/): theory and development of compilers
 
-
-
 ## Usenet
 
 * [The comp.compilers newsgroup](https://compilers.iecc.com/)
-
-
 
 ## Internals
 
@@ -39,26 +29,21 @@ interpreter and compiler, internals, and related topics
 * [GNU C Compiler Internals](https://en.wikibooks.org/wiki/GNU_C_Compiler_Internals)
 * [The Erlang Runtime System](http://blog.stenmans.org/theBeamBook/#_the_erlang_virtual_machine_beam)
 
-
 ## Forth
 
 * [Moving Forth, by Brad Rodriguez](https://github.com/efurlanm/ldi/tree/main/movingforth): Forth language internals
-
-
 
 ## Vintage computer
 
 Vintage computer internals, or "computer archeology"
 
-* Applesoft ROM internals: [[1]](http://www.txbobsc.com/scsc/scdocumentor/), [[2]](https://6502disassembly.com/a2-rom/)
+* Applesoft ROM internals: [[1]](http://www.txbobsc.com/scsc/scdocumentor/) [[2]](https://6502disassembly.com/a2-rom/)
 * TRS-80 ROM internals: [[1]](https://www.trs-80.com/wordpress/disassembled-rom/)
-* C64 ROM internals: [[1]](https://www.pagetable.com/c64ref/c64disasm/), [[2]](https://github.com/tgiphil/c64rom)
+* C64 ROM internals: [[1]](https://www.pagetable.com/c64ref/c64disasm/) [[2]](https://github.com/tgiphil/c64rom)
 * The Complete Spectrum ROM Disassembly: [[1]](https://archive.org/details/CompleteSpectrumROMDisassemblyThe)
 * Spectrum ROM Disassemblies: [[1]](https://github.com/ZXSpectrumVault/rom-disassemblies)
 * Altair BASIC Annotated Disassembly: [[1]](http://altairbasic.org/)
 * HP-41 internals: [[1]](http://github.com/efurlanm/ml/tree/master/hp41)
-
-
 
 ## Library and books
 

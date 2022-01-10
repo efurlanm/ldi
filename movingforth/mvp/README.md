@@ -6,7 +6,7 @@ I downloaded these files from
 
 
 
-https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/programming/forth/)
+https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/programming/forth/
 
 
 
