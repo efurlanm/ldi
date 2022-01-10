@@ -1,4 +1,4 @@
-[[teste]](../../../REAME.md)
+[[teste]](../#the-computer-journal-tcj)
 
 # MOVING FORTH
 
