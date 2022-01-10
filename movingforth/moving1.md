@@ -1,4 +1,4 @@
-[[teste]](../#the-computer-journal-tcj)
+[[teste]](../movingforth#the-computer-journal-tcj)
 
 # MOVING FORTH
 
