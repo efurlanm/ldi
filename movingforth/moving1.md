@@ -115,9 +115,9 @@ The NEXT pseudo-code for direct threading is simply:
 
 This gains speed: the interpreter now performs only a _single_ indirection. On the Z80 this reduces the NEXT routine -- the most-used code fragment in the Forth kernel -- from eleven instructions to seven\!
 
-This costs space: every high-level definition in a Z80 Forth (for example) is now one byte longer, since a 2-byte address has been replaced by a 3-byte call. But _this is not universally true._ A 32-bit 68000 Forth may replace a 4-byte address with a 4-byte BSR instruction, for no net loss. And on the [Zilog Super8](http://www.zilog.com/docs/ps0146.pdf), which has machine instructions for DTC Forth, the 2-byte address is replaced by a 1-byte ENTER instruction, making a DTC Forth _smaller_ on the Super8\!
+This costs space: every high-level definition in a Z80 Forth (for example) is now one byte longer, since a 2-byte address has been replaced by a 3-byte call. But _this is not universally true._ A 32-bit 68000 Forth may replace a 4-byte address with a 4-byte BSR instruction, for no net loss. And on the [Zilog Super8](http://www.zilog.com/docs/ps0146.pdf), which has machine instructions for DTC Forth, the 2-byte address is replaced by a 1-byte ENTER instruction, making a DTC Forth _smaller_ on the Super8\! 
 
-Of course, DTC CODE definitions are two bytes shorter, since they no longer need a pointer at all\!
+Of course, DTC CODE definitions are two bytes shorter, since they no longer need a pointer at all\! 
 
 I used to think that high-level definitions in DTC Forths required the use of a subroutine call in the Code Field. Frank Sergeant's Pygmy Forth [[SER90]](#SER90) demonstrates that a simple jump can be used just as easily, and will usually be faster.
 
