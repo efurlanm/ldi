@@ -1,12 +1,10 @@
-[[teste]](../movingforth#the-computer-journal-tcj)
-
 # MOVING FORTH
 
 ## Part 1: Design Decisions in the Forth Kernel
 
 ### by Brad Rodriguez
 
-This article first appeared in [The Computer Journal](http://github.com/efurlanm/ldi/tree/main/movingforth#the-computer-journal-tcj) #59 (January/February 1993).
+This article first appeared in [The Computer Journal](../movingforth/#the-computer-journal-tcj) #59 (January/February 1993).
 
 ## INTRODUCTION
 
@@ -46,47 +44,45 @@ Let's look at the definition of a Forth word SQUARE:
 : SQUARE  DUP * ;
 ```
 
-In a typical ITC Forth this would appear in memory as shown in Figure 1. (The header will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
+In a typical ITC Forth this would appear in memory as shown in Figure 1. (The <font color="#BF0041">Header</font> Field will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading)
 
 <figure>
 <figcaption><br>Figure 1. Indirect Threaded Code<br><br></figcaption>
-<img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code"><br>
-</figure>
+<img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code">
+</figure><br>
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's Code Field.) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
-```
-(IP) -> W   fetch memory pointed by IP into "W" register
-            ...W now holds address of the Code Field
-IP+2 -> IP  advance IP, just like a program counter
-            (assuming 2-byte addresses in the thread)
-(W) ->  X   fetch memory pointed by W into "X" register
-            ...X now holds address of the machine code 
-JP (X)      jump to the address in the X register
-```
+<table>                
+<caption>    NEXT (interpreter)            </caption>
+<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register <br> ... W now holds address of the <font color="#BF0041">Code Field</font>    </td></tr>
+<tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread)    </td></tr>
+<tr><td><nobr>    (W) -> X    </nobr></td><td>    fetch memory pointed by W into "X" register <br> ... X now holds address of the machine code    </td></tr>
+<tr><td><nobr>    JP (X)    </nobr></td><td>    jump to the address in the X register    </td></tr>
+</table>
 
 This illustrates an important but rarely-elucidated principle: _the address of the Forth word just entered is kept in W._ CODE words don't need this information, but all other kinds of Forth words do.
 
 If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <abbr tittle="the word after SQUARE">_next_ word to be executed</abbr>. This is why the Forth interpreter is usually called NEXT.
 
-But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the Parameter Field of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth.) This is called DOCOLON or ENTER in various Forths:
+But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the <font color="#BF0041">Parameter Field</font> of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth) This is called DOCOLON or ENTER in various Forths:
 
-```
-PUSH IP     onto the "return address stack"
-W+2 -> IP   W still points to the Code Field, so W+2 is 
-            the address of the Body!  (Assuming a 2-byte
-            address -- other Forths may be different.)
-JUMP to interpreter ("NEXT")
-```
+<table>                
+<caption>    ENTER            </caption>
+<tr><td><nobr>    PUSH IP    </nobr></td><td>    onto the "return address stack"    </td></tr>
+<tr><td><nobr>    W+2 -> IP    </nobr></td><td>    W still points to the <font color="#BF0041">Code Field</font>, so W+2 is the address of the Body! (Assuming a 2-byte address -- other Forths may be different)    </td></tr>
+<tr><td><nobr>    JUMP    </nobr></td><td>    to interpreter ("NEXT")    </td></tr>
+</table>
 
 This identical code fragment is used by all high-level (i.e., threaded) Forth definitions\! That's why a pointer to this code fragment, not the fragment itself, is included in the Forth definition. Over hundreds of definitions, the savings add up\! And this is why it's called Indirect threading.
 
-The "return from subroutine" is the word EXIT, which gets compiled when Forth sees ';'. (Some Forths call it ;S instead of EXIT.) EXIT just executes a machine language routine which does the following:
+The "return from subroutine" is the word EXIT, which gets compiled when Forth sees ';'. (Some Forths call it ;S instead of EXIT) EXIT just executes a machine language routine which does the following:
 
-```
-POP IP   from the "return address stack"
-JUMP to interpreter
-```
+<table>
+<caption>    EXIT            </caption>                
+<tr><td><nobr>    POP IP    </nobr></td><td>    from the "return address stack"    </td></tr>
+<tr><td><nobr>    JUMP    </nobr></td><td>    to interpreter    </td></tr>
+</table>
 
 Walk through a couple of nested Forth definitions, just to assure yourself that this works.
 
@@ -104,16 +100,18 @@ I'm not saying that the complete code for ENTER is contained in each and every c
 
 <figure>
 <figcaption><br>Figure 2. Direct Threaded Code<br><br></figcaption>
-<img src="img/mov1-2.svg" alt="Figure 2. Direct Threaded Code"><br>
-</figure>
+<img src="img/mov1-2.svg" alt="Figure 2. Direct Threaded Code">
+</figure><br>
 
 The NEXT pseudo-code for direct threading is simply:
 
-```
-(IP) -> W   fetch memory pointed by IP into "W" register
-IP+2 -> IP  advance IP (assuming 2-byte addresses)
-JP (W)      jump to the address in the W register
-```
+<div>
+<table>                
+<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register    </td></tr>
+<tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP (assuming 2-byte addresses)    </td></tr>
+<tr><td><nobr>    JP (W)    </nobr></td><td>    jump to the address in the W register    </td></tr>
+</table>                
+</div>
 
 This gains speed: the interpreter now performs only a _single_ indirection. On the Z80 this reduces the NEXT routine -- the most-used code fragment in the Forth kernel -- from eleven instructions to seven\!
 
@@ -147,8 +145,8 @@ See Figure 3. This representation of Forth words has been used as a starting poi
 
 <figure>
 <figcaption><br>Figure 3. Subroutine Threaded Code<br><br></figcaption>
-<img src="img/mov1-3.svg" alt="Figure 3. Subroutine Threaded Code"><br>
-</figure>
+<img src="img/mov1-3.svg" alt="Figure 3. Subroutine Threaded Code">
+</figure><br>
 
 STC is an elegant representation; colon definitions and CODE words are now identical. "Defined words" (VARIABLEs, CONSTANTs, and the like) are handled the same as in DTC -- the Code Field begins with a jump or call to some machine code elsewhere.
 
@@ -208,8 +206,8 @@ A token-threaded Forth keeps a table of addresses of all Forth words, as shown i
 
 <figure>
 <figcaption><br>Figure 4. Token Threaded Code<br><br></figcaption>
-<img src="img/mov1-4.svg" alt="Figure 4. Token Threaded Code"><br>
-</figure>
+<img src="img/mov1-4.svg" alt="Figure 4. Token Threaded Code">
+</figure><br>
 
 The principal advantage of token-threaded Forths is small size. TTC is most commonly seen in handheld computers and other severely size-constrained applications. Also, the table of "entry points" into all the Forth words can simplify linkage of separately-compiled modules.
 

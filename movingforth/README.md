@@ -38,7 +38,7 @@ These listings are part of Moving Forth and are described in the text.
 
 ## The Computer Journal (TCJ)
 
-[The Computer Journal Home Page](http://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/)
+- [The Computer Journal Home Page](http://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/) (Wayback Machine link)
 
 Scanned PDF files source: http://archive.org/details/the-computer-journal
 

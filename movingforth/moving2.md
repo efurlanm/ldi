@@ -5,7 +5,7 @@
 ### by Brad Rodriguez
 
 This article first appeared in [The Computer
-Journal](http://www.psyber.com/~tcj) \#60 (March/April 1993).
+Journal](../movingforth/#the-computer-journal-tcj) \#60 (March/April 1993).
 
 ## BENCHMARKS
 
