@@ -1,14 +1,13 @@
 # MOVING FORTH
 
-## Part 1: Design Decisions in the Forth Kernel
-
-### by Brad Rodriguez
+Part 1: Design Decisions in the Forth Kernel  
+by Brad Rodriguez
 
 This article first appeared in [The Computer Journal](../movingforth/#the-computer-journal-tcj) #59 (January/February 1993).
 
 ## INTRODUCTION
 
-Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91]](#ROD91) [[ROD92]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](https://en.wikipedia.org/wiki/CP/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-8)s gathering dust.
+Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91]](#ROD91) [[ROD92]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](http://en.wikipedia.org/wiki/CP/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-80)s gathering dust.
 
 ## THE ESSENTIAL HARDWARE
 
@@ -51,7 +50,7 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1. (The <f
 <img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code">
 </figure><br>
 
-Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's Code Field.) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
+Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's <span style="color:#BF0041">Code Field</span>) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
 <table>                
 <caption>    NEXT (interpreter)            </caption>
@@ -65,7 +64,7 @@ This illustrates an important but rarely-elucidated principle: _the address of t
 
 If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <abbr tittle="the word after SQUARE">_next_ word to be executed</abbr>. This is why the Forth interpreter is usually called NEXT.
 
-But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the <font color="#BF0041">Parameter Field</font> of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth) This is called DOCOLON or ENTER in various Forths:
+But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the <span style="color:#BF0041">Parameter Field</span> of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth) This is called DOCOLON or ENTER in various Forths:
 
 <table>                
 <caption>    ENTER            </caption>
@@ -350,7 +349,7 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 <span id="ROD92">[ROD92]</span> Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal \#54 (Jan/Feb 1992). A 6809 assembler in Forth. [[1]](http://archive.org/details/the-computer-journal-54) [[2]](tcj/tcj_54_January-February_1992_text.pdf)
 
-<span id="SCO89">[SCO89]</span> Scott, Andrew:<br>
+<span id="SCO89">[SCO89]</span> Scott, Andrew:
 
 - "An Extensible Optimizer for Compiling Forth", _1989 FORML Conference Proceedings_, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a 68000 optimizer; no code provided.
 

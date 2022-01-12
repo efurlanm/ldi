@@ -1,7 +1,6 @@
 # Language design and implementation
 
-My personal notes on language design and implementation, computer architecture,
-interpreter and compiler, internals, and related topics
+My personal notes on language design and implementation, internals, computer architecture, and related topics
 
 ## Wikibooks
 

@@ -1,11 +1,10 @@
 # MOVING FORTH
 
-## Part 4: Assemble or Metacompile?
+Part 4: Assemble or Metacompile?
 
-### by Brad Rodriguez
+by Brad Rodriguez
 
-This article first appeared in [The Computer
-Journal](http://www.psyber.com/~tcj) \#64 (November/December 1993).
+This article first appeared in [The Computer Journal](http://www.psyber.com/~tcj) \#64 (November/December 1993).
 
 "Keep it SHORT\!" was the editorial directive for this installment. So I
 apologize for postponing the source listings to yet another issue. In

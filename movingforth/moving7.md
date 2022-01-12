@@ -1,11 +1,10 @@
-# MOVING FORTH
+MOVING FORTH
 
-## Part 7: CamelForth for the 8051
+Part 7: CamelForth for the 8051
 
-### by Brad Rodriguez
+by Brad Rodriguez
 
-This article first appeared in [The Computer
-Journal](http://www.psyber.com/~tcj) \#71 (January/February 1995).
+This article first appeared in [The Computer Journal](http://www.psyber.com/~tcj) \#71 (January/February 1995).
 
 Under the prodding of Our Esteemed Editor, I present CamelForth for the
 8051. CamelForth for the 6809 will follow soon\! This 8051 Forth

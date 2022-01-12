@@ -1,11 +1,10 @@
 # MOVING FORTH
 
-## Part 8: CamelForth for the 6809
+Part 8: CamelForth for the 6809
 
-### by Brad Rodriguez
+by Brad Rodriguez
 
-This article first appeared in [The Computer
-Journal](http://www.psyber.com/~tcj) \#74 (July/August 1995).
+This article first appeared in [The Computer Journal](http://www.psyber.com/~tcj) \#74 (July/August 1995).
 
 Finally, the last installment of "Moving Forth\!" Here is the long-
 promised ANSI CamelForth for the Motorola 6809, and specifically for the

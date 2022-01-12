@@ -1,8 +1,8 @@
 # MOVING FORTH
 
-## Part 3: Demystifying DOES\>
+Part 3: Demystifying DOES\>
 
-### by Brad Rodriguez
+by Brad Rodriguez
 
 This article first appeared in [The Computer
 Journal](http://www.psyber.com/~tcj) \#62 (July/August 1993).

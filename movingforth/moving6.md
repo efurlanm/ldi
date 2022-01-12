@@ -1,11 +1,10 @@
 # MOVING FORTH
 
-## Part 6: the Z80 high-level kernel
+Part 6: the Z80 high-level kernel
 
-### by Brad Rodriguez
+by Brad Rodriguez
 
-This article first appeared in [The Computer
-Journal](http://www.psyber.com/~tcj) \#69 (September/October 1994).
+This article first appeared in [The Computer Journal](http://www.psyber.com/~tcj) \#69 (September/October 1994).
 
 ## ERRATA
 
