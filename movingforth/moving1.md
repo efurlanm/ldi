@@ -43,18 +43,18 @@ Let's look at the definition of a Forth word SQUARE:
 : SQUARE  DUP * ;
 ```
 
-In a typical ITC Forth this would appear in memory as shown in Figure 1. (The <font color="#BF0041">Header</font> Field will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading)
+In a typical ITC Forth this would appear in memory as shown in Figure 1. (The <b>Header</b> Field will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading)
 
 <figure>
 <figcaption><br>Figure 1. Indirect Threaded Code<br><br></figcaption>
 <img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code">
 </figure><br>
 
-Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's <span style="color:#BF0041">Code Field</span>) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
+Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's <b>Code Field</b>) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
 <table>                
 <caption>    NEXT (interpreter)            </caption>
-<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register <br> ... W now holds address of the <font color="#BF0041">Code Field</font>    </td></tr>
+<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register <br> ... W now holds address of the Code Field  </td></tr>
 <tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread)    </td></tr>
 <tr><td><nobr>    (W) -> X    </nobr></td><td>    fetch memory pointed by W into "X" register <br> ... X now holds address of the machine code    </td></tr>
 <tr><td><nobr>    JP (X)    </nobr></td><td>    jump to the address in the X register    </td></tr>
@@ -64,12 +64,12 @@ This illustrates an important but rarely-elucidated principle: _the address of t
 
 If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <abbr tittle="the word after SQUARE">_next_ word to be executed</abbr>. This is why the Forth interpreter is usually called NEXT.
 
-But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the <span style="color:#BF0041">Parameter Field</span> of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth) This is called DOCOLON or ENTER in various Forths:
+But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the <b>Parameter Field</b> of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth) This is called DOCOLON or ENTER in various Forths:
 
 <table>                
 <caption>    ENTER            </caption>
 <tr><td><nobr>    PUSH IP    </nobr></td><td>    onto the "return address stack"    </td></tr>
-<tr><td><nobr>    W+2 -> IP    </nobr></td><td>    W still points to the <font color="#BF0041">Code Field</font>, so W+2 is the address of the Body! (Assuming a 2-byte address -- other Forths may be different)    </td></tr>
+<tr><td><nobr>    W+2 -> IP    </nobr></td><td>    W still points to the Code Field, so W+2 is the address of the Body! (Assuming a 2-byte address -- other Forths may be different)    </td></tr>
 <tr><td><nobr>    JUMP    </nobr></td><td>    to interpreter ("NEXT")    </td></tr>
 </table>
 
