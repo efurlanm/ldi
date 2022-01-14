@@ -362,7 +362,9 @@ The answer to (b) is a bit more difficult. Basically, we want to do something li
 
 Question (a) is the tricky one. Where to put the address of the high-level routine? Remember, the Code Field does <span class="underline">not</span> point to high-level code; it must point to machine code. Two approaches have been used in the past:
 
-1\. **The fig-Forth solution.** Fig-Forth reserved the first cell of the Parameter Field to hold the address of the high-level code. The DODOES routine then obtained the Parameter Field address, pushed the address of the actual data (typically PFA+2) onto the stack, fetched the address of the high-level routine, and EXECUTEd.
+### 1. The fig-Forth solution
+
+Fig-Forth reserved the first cell of the Parameter Field to hold the address of the high-level code. The DODOES routine then obtained the Parameter Field address, pushed the address of the actual data (typically PFA+2) onto the stack, fetched the address of the high-level routine, and EXECUTEd.
 
 There were two problems with this approach. First, the structure of the Parameter Field was different for machine- code actions and high-level actions. For example, a CONSTANT defined with a machine code action would have its data stored at PFA, but a CONSTANT defined with a high-level action would have its data stored at (typically) PFA+2.
 
@@ -370,7 +372,9 @@ Second, <span class="underline">every</span> instance of a high-level-action cla
 
 Fortunately, clever Forth programmers quickly devised a solution which overcame these problems, and the fig-Forth approach has fallen into disuse.
 
-**2. The modern solution.** Most Forths nowadays associate a <span class="underline">different</span> machine language fragment with <span class="underline">each</span> high-level action routine. So, a high-level constant would have its Code Field pointing to a machine language fragment whose sole function is to invoke the high-level action of CONSTANT. A high-level variable's Code Field would point to the "startup" routine for the high-level VARIABLE action, and so on.
+### 2. The modern solution
+
+Most Forths nowadays associate a <span class="underline">different</span> machine language fragment with <span class="underline">each</span> high-level action routine. So, a high-level constant would have its Code Field pointing to a machine language fragment whose sole function is to invoke the high-level action of CONSTANT. A high-level variable's Code Field would point to the "startup" routine for the high-level VARIABLE action, and so on.
 
 Is this excessive duplication of code? No, because each of these machine-language fragments is just a subroutine call to a common startup routine, DODOES. (This is different from the fig-Forth DODOES routine.) The address of the high-level code to DODOES is passed as an "inline" subroutine parameter. That is, the address of the high-level code is put immediately after the JSR/CALL instruction. DODOES can then pop the CPU stack and do a fetch to obtain this address.
 
