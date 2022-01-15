@@ -3,7 +3,7 @@
 Part 2: Benchmarks and Case Studies of Forth Kernels  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal](../movingforth/#the-computer-journal-tcj) \#60 (March/April 1993).
+This article first appeared in [The Computer Journal #60 (March/April 1993)](../movingforth/#the-computer-journal-tcj).
 
 ## BENCHMARKS
 
@@ -51,7 +51,7 @@ These are among the most-used words in the Forth kernel. It pays to optimize the
 
 ## CASE STUDY 1: THE 6809
 
-In the world of 8-bit CPUs, the 6809 is the Forth programmer's dream machine. It supports <span class="underline">two</span> stacks\! It also has two other address registers, and a wealth of orthogonal addressing modes second only to the PDP-11. ("Orthogonal" means they work the same way and have the same options for all address registers.) The two 8-bit accumulators can be treated as a single 16-bit accumulator, and there are many 16-bit operations.
+In the world of 8-bit CPUs, the 6809 is the Forth programmer's dream machine. It supports <span class="underline">two</span> stacks\! It also has two other address registers, and a wealth of orthogonal addressing modes second only to the PDP-11. ("Orthogonal" means they work the same way and have the same options for all address registers) The two 8-bit accumulators can be treated as a single 16-bit accumulator, and there are many 16-bit operations.
 
 The programmer's model of the 6809 is \[MOT83\]:
 
@@ -279,7 +279,7 @@ What about the top of stack? There are plenty of registers, and memory operation
 
 ### Harvard architectures
 
-The 8051 uses a "Harvard" architecture: program and data are kept in separate memories. (The Z8 and TMS320 are two other examples.) The 8051 is a degenerate case: there is physically no means to write to the program memory\! This means that a Forthwright can do one of two things:
+The 8051 uses a "Harvard" architecture: program and data are kept in separate memories. (The Z8 and TMS320 are two other examples) The 8051 is a degenerate case: there is physically no means to write to the program memory\! This means that a Forthwright can do one of two things:
 
 a) cross-compile everything, including the application, and give up all hope of putting an interactive Forth compiler on the 8051; or
 
@@ -472,7 +472,7 @@ EXIT:   XCHG SP,BP
 
 ### Segment model
 
-Pygmy Forth is a single-segment Forth; all code and data are contained within a single 64 Kbyte segment. (This is the "tiny model" in Turbo C lingo.) All of the Forth standards issued to date assume that everything is contained in a single memory space, accessible with the same fetch and store operators.
+Pygmy Forth is a single-segment Forth; all code and data are contained within a single 64 Kbyte segment. (This is the "tiny model" in Turbo C lingo) All of the Forth standards issued to date assume that everything is contained in a single memory space, accessible with the same fetch and store operators.
 
 Nevertheless, IBM PC Forths are beginning to appear that use multiple segments for up to five different kinds of data \[KEL92,SEY89\]. These are:
 

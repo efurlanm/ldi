@@ -25,7 +25,7 @@ This series originally appeared in [The Computer Journal](http://archive.org/det
 * [Part 6: The Z80 High-level Kernel](moving6.md)
 * [Part 7: CamelForth for the 8051](moving7.md)
 * [Part 8: CamelForth for the 6809](moving8.md)
-* [Multitasking 8051 CamelForth (23 kB PDF file)](8051task.pdf)
+* [Multitasking 8051 CamelForth](8051task.pdf) (23 kB PDF file)
 
 ## Listings
 
@@ -58,18 +58,19 @@ Scanned PDF files source: http://archive.org/details/the-computer-journal
 
 ## Forth Dimensions (FD)
 
-Source 1 : http://archive.org/details/forthdimension (scanned PDF files)<br>Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
+Source 1 : http://archive.org/details/forthdimension (scanned PDF files)  
+Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 
-* FD \#XIII:6 "Forth Systems Comparisons". (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_13_Number_6) [[2]](http://www.forth.org/fd/FD-V13N6.pdf) [[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
-* FD \#XIV:3 "Principles of Metacompilation" (1). (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_3) [[2]](http://www.forth.org/fd/FD-V14N3.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_3.pdf)
-* FD \#XIV:4 "Principles of Metacompilation" (2). (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_4) [[2]](http://www.forth.org/fd/FD-V14N4.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_4.pdf)
-* FD \#XIV:5 "Principles of Metacompilation" (3), "Life in the FastForth Lane". (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5) [[2]](http://www.forth.org/fd/FD-V14N5.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
-* FD \#XIV:5 "Principles of Metacompilation" (3), "Optimizing in a BSR/JSR Threaded Forth". (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_6) [[2]](http://www.forth.org/fd/FD-V14N6.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
+* FD \#XIII:6 "Forth Systems Comparisons" (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_13_Number_6) [[2]](http://www.forth.org/fd/FD-V13N6.pdf) [[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
+* FD \#XIV:3 "Principles of Metacompilation 1" (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_3) [[2]](http://www.forth.org/fd/FD-V14N3.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_3.pdf)
+* FD \#XIV:4 "Principles of Metacompilation 2" (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_4) [[2]](http://www.forth.org/fd/FD-V14N4.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_4.pdf)
+* FD \#XIV:5 "Principles of Metacompilation 3" & "Life in the FastForth Lane" (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5) [[2]](http://www.forth.org/fd/FD-V14N5.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
+* FD \#XIV:5 "Principles of Metacompilation 3" & "Optimizing in a BSR/JSR Threaded Forth" (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_6) [[2]](http://www.forth.org/fd/FD-V14N6.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
 
 ## Notes
 
-- The documents were edited using the Mark Text editor (http://marktext.app/), and if you want them in PDF format, you can use Mark Text to export them.
+- The documents were edited using the Mark Text editor ( http://github.com/marktext ), and if you want them in PDF format, you can use Mark Text to export them
 
 - To download the documents and obtain a local copy of this repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
-- The Mark Text reader is also a good offline markdown document reader.
+- The Mark Text reader is also a good offline markdown document reader

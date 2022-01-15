@@ -1,10 +1,9 @@
 # MOVING FORTH
 
-Part 7: CamelForth for the 8051
-
+Part 7: CamelForth for the 8051  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal](http://www.psyber.com/~tcj) \#71 (January/February 1995).
+This article first appeared in [The Computer Journal #71 (January/February 1995)](../movingforth/#the-computer-journal-tcj).
 
 Under the prodding of Our Esteemed Editor, I present CamelForth for the 8051. CamelForth for the 6809 will follow soon\! This 8051 Forth occupies about 6K of program memory. Alas, the full source listing would take 16 pages of TCJ, so this article includes only the significantly changed portions of the kernel. *\[Note for web publication: see the end of this page for a link to the 8051 source code.\]* These should illustrate how the high-level code is modified for the 8051 assembler, and for subroutine threading. The full source code is available in the Forth Roundtable on GEnie as file CAMEL51.ZIP, and the freeware 8051 assembler as file A51.ZIP. But first...
 
@@ -147,9 +146,10 @@ Since ." strings can never be accessed by the programmer, they *can* be stored i
 
 The 8051 can't actually write to Program memory. There's no hardware signal for this, and no machine instruction. Under these circumstances, the CamelForth *interpreter* will work, but new words can't be compiled. You can get around this by causing some memory to appear in *both* Program and Data space. Figure 1 shows the modification to my board, an MCB8031 from Blue Ridge Micros (2505 Plymouth Road, Johnson City, TN, 37601, USA, telephone 615-335-6696, fax 615-929-3164). U1A and U1B create a new read strobe which is active for *either* a Program or Data fetch. EPROM is selected only when A15 is low (lower 32K), and RAM when A15 is high (upper 32K). You still can't write to EPROM, of course, but you *can* execute programs out of RAM\! One disadvantage: this makes @ and I@ equivalent, so it's not immediately obvious if the wrong one was used somewhere.
 
-### Figure 1
-
-![Schematic of 8051 mod](img/mov7-1.gif)
+<figure>
+<figcaption><br>Figure 1<br><br></figcaption>
+<img src="img/mov7-1.svg" alt="Figure 1">
+</figure><br>
 
 ## NEXT ISSUE...
 

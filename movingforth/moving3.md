@@ -1,16 +1,15 @@
 # MOVING FORTH
 
-Part 3: Demystifying DOES\>
-
+Part 3: Demystifying DOES\>  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal](http://www.psyber.com/~tcj) \#62 (July/August 1993).
+This article first appeared in [The Computer Journal #62 (July/August 1993)](../movingforth/#the-computer-journal-tcj).
 
 ## **OOPS\!**
 
 There's a colossal mistake in one of my 6809 design decisions in the previous installment. It became evident when I started to code the Forth word EXECUTE.
 
-EXECUTE causes the execution of a single Forth word, whose address is given on the Parameter Stack. (To be precise: the compilation address, a.k.a. Code Field Address, is given on the stack.) This can be any kind of Forth word: CODE definition, colon definition, CONSTANT, VARIABLE, or defined word. This differs from the usual Forth interpretation process in that the address of the word-to-execute is given on the stack, and not taken from the "thread" (as pointed to by IP).
+EXECUTE causes the execution of a single Forth word, whose address is given on the Parameter Stack. (To be precise: the compilation address, a.k.a. Code Field Address, is given on the stack) This can be any kind of Forth word: CODE definition, colon definition, CONSTANT, VARIABLE, or defined word. This differs from the usual Forth interpretation process in that the address of the word-to-execute is given on the stack, and not taken from the "thread" (as pointed to by IP).
 
 In our direct-threaded 6809 code this can be easily coded:
 
@@ -20,7 +19,7 @@ EXECUTE:  TFR  TOS,W      put address of word in W
           JMP  ,W         jump to address given in W
 ```
 
-Note: this is JMP ,W and not JMP \[,W\], since we already have the code address of the word. We're not fetching from the high-level thread. (If TOS wasn't in register, EXECUTE could be done with simply JMP \[,PSP++\].) Now suppose that this EXECUTEd word is a colon definition. W will be pointing to its Code Field, which contains JMP ENTER. This does the following (described in the previous article):
+Note: this is JMP ,W and not JMP \[,W\], since we already have the code address of the word. We're not fetching from the high-level thread. (If TOS wasn't in register, EXECUTE could be done with simply JMP \[,PSP++\]) Now suppose that this EXECUTEd word is a colon definition. W will be pointing to its Code Field, which contains JMP ENTER. This does the following (described in the previous article):
 
 ```nasm
           JMP ENTER
@@ -31,7 +30,7 @@ ENTER:    PSHS IP
           NEXT
 ```
 
-This is the mistake\! We are <span class="underline">not</span> executing this word from within a thread, so IP was <span class="underline">not</span> pointing to a copy of its Code Field address\! (Remember, the address of the word-to-EXECUTE came from the <span class="underline">stack</span>.) This form of ENTER will not work with EXECUTE, because there is no way to find the address of the word being executed\!
+This is the mistake\! We are <span class="underline">not</span> executing this word from within a thread, so IP was <span class="underline">not</span> pointing to a copy of its Code Field address\! (Remember, the address of the word-to-EXECUTE came from the <span class="underline">stack</span>) This form of ENTER will not work with EXECUTE, because there is no way to find the address of the word being executed\!
 
 This suggests a new general rule for DTC Forths: <span class="underline">if NEXT does NOT leave the address of the word-being-executed in a register, you MUST use a Call in the code field.</span>
 
@@ -121,7 +120,7 @@ Forth CONSTANTs are probably the simplest example of a machine- code action. Let
 
 Executing the word UN will push the value 1 onto the Forth Parameter Stack. Executing DEUX will push a 2 onto the stack, and so on. (Don't confuse Parameter Stack with Parameter Field; they are entirely separate.)
 
-In the Forth kernel there is a single word called CONSTANT. This is <span class="underline">not</span> a constant-type word itself; it is a high-level Forth definition. CONSTANT is a "defining word": it creates <span class="underline">new</span> words in the Forth dictionary. Here we create the new "constant-type" words UN, DEUX, and TROIS. (You may think of these as "instances" of the "class" CONSTANT.) These three words will have their Code Fields pointing to a machine code fragment that does the action of CONSTANT.
+In the Forth kernel there is a single word called CONSTANT. This is <span class="underline">not</span> a constant-type word itself; it is a high-level Forth definition. CONSTANT is a "defining word": it creates <span class="underline">new</span> words in the Forth dictionary. Here we create the new "constant-type" words UN, DEUX, and TROIS. (You may think of these as "instances" of the "class" CONSTANT) These three words will have their Code Fields pointing to a machine code fragment that does the action of CONSTANT.
 
 What must this code fragment do? Figure 2 shows the memory representation of the three constants. All three words point to a common action routine. The difference in the words is entirely contained in their Parameter Fields, which, in this case, simply hold the constant values ("instance variables" in object lingo). So, the action of these three words should be <span class="underline">fetch the contents of the Parameter Field, and push this onto the stack.</span> The code understands implicitly that the parameter field contains a single-cell value.
 
@@ -142,7 +141,7 @@ Suppose that we're in a high-level thread
    ... SWAP DEUX + ...   
 ```
 
-with the Interpreter Pointer (IP) pointing to the DEUX "instruction," when NEXT is executed. (This would be at the very end of SWAP.) Figure 3 illustrates what happens. IP (register Y) is pointing within the high-level thread, at a memory cell that contains the address of the Forth word DEUX. To be precise, this cell contains the Code Field Address of DEUX. So, when we fetch a cell using Y, and autoincrement Y, we fetch the Code Field Address of DEUX. This goes into W (register X), so W is now pointing to the Code Field. The <span class="underline">contents</span> of this field is the address of some machine code. We can fetch the contents of this cell and jump to the machine code with a single 6809 instruction. This leaves register X unchanged, so W is <span class="underline">still</span> pointing to the CFA of DEUX. <span class="underline">This is how the Parameter Field Address is obtained,</span> since, in this case, it is simply two bytes past the Code Field.
+with the Interpreter Pointer (IP) pointing to the DEUX "instruction," when NEXT is executed. (This would be at the very end of SWAP) Figure 3 illustrates what happens. IP (register Y) is pointing within the high-level thread, at a memory cell that contains the address of the Forth word DEUX. To be precise, this cell contains the Code Field Address of DEUX. So, when we fetch a cell using Y, and autoincrement Y, we fetch the Code Field Address of DEUX. This goes into W (register X), so W is now pointing to the Code Field. The <span class="underline">contents</span> of this field is the address of some machine code. We can fetch the contents of this cell and jump to the machine code with a single 6809 instruction. This leaves register X unchanged, so W is <span class="underline">still</span> pointing to the CFA of DEUX. <span class="underline">This is how the Parameter Field Address is obtained,</span> since, in this case, it is simply two bytes past the Code Field.
 
 ![Fig.3 ITC Before and After](img/mov3-3.gif)
 
@@ -154,7 +153,7 @@ So, the machine code fragment has only to add 2 to W, fetch the cell value at th
             NEXT     ; (macro) do the next high-level word
 ```
 
-(For this example, TOS is kept in memory.) Note that the previous NEXT incremented IP by 2, so it is already pointing to the next cell in the thread ("CFA of +") when DOCON does NEXT.
+(For this example, TOS is kept in memory) Note that the previous NEXT incremented IP by 2, so it is already pointing to the next cell in the thread ("CFA of +") when DOCON does NEXT.
 
 In general, <span class="underline">ITC Forths leave the Parameter Field Address or some "nearby" address in the W register.</span> In this case, W contained the CFA, which in this Forth implementation is always PFA-2. Since every class of Forth word except CODE words needs to use the Parameter Field Address, many implementations of NEXT will increment W to leave it pointing to the PFA. We can do this on the 6809 with one small change:
 
@@ -198,7 +197,7 @@ The choice of a JUMP or a CALL instruction in the Code Field hinges upon <span c
            JMP ,X      ; JMP (W)
 ```
 
-(On the 8086, this can be done with LODSW, JMP AX.) The effect of this is illustrated in Figure 4 as "case 1". The Code Field Address of DEUX is fetched from the high-level thread, and IP is incremented. Then, instead of a fetch, a JUMP is made to the Code Field Address (i.e., the CPU jumps directly to the Code Field). The CFA is left in the W register, just like the first ITC example above. Since this address is already in a register, we can simply put a JUMP to DOCON in the Code Field, and the DOCON fragment will work the same as before.
+(On the 8086, this can be done with LODSW, JMP AX) The effect of this is illustrated in Figure 4 as "case 1". The Code Field Address of DEUX is fetched from the high-level thread, and IP is incremented. Then, instead of a fetch, a JUMP is made to the Code Field Address (i.e., the CPU jumps directly to the Code Field). The CFA is left in the W register, just like the first ITC example above. Since this address is already in a register, we can simply put a JUMP to DOCON in the Code Field, and the DOCON fragment will work the same as before.
 
 ![Fig.4 DTC Before and After](img/mov3-4.gif)
 
@@ -271,7 +270,7 @@ b. how do we change the Code Field of that word, to point to some machine code o
 
 c. how do we compile (assemble) this machine code fragment, which exists in isolation from the words using it?
 
-The answer to (a) is: we write a Forth word to do this. Since this word, when executed, will define (create) a new word in the Forth dictionary, it is called a "defining word." CONSTANT is one example of a defining word. All of the "hard work" of a defining word is done by a kernel word, CREATE, which parses a name from the input stream, builds the header and Code Field for a new word, and links it into the dictionary. (In fig-Forth this word is called \<BUILDS.) All that remains for the programmer is to build the Parameter Field.
+The answer to (a) is: we write a Forth word to do this. Since this word, when executed, will define (create) a new word in the Forth dictionary, it is called a "defining word." CONSTANT is one example of a defining word. All of the "hard work" of a defining word is done by a kernel word, CREATE, which parses a name from the input stream, builds the header and Code Field for a new word, and links it into the dictionary. (In fig-Forth this word is called \<BUILDS) All that remains for the programmer is to build the Parameter Field.
 
 The answer to (b) and (c) is embodied in two convoluted words called (;CODE) and ;CODE respectively. To understand how they work, let's look at how the defining word CONSTANT is actually written in Forth. Using the original ITC 6809 example:
 
@@ -376,7 +375,7 @@ Fortunately, clever Forth programmers quickly devised a solution which overcame 
 
 Most Forths nowadays associate a <span class="underline">different</span> machine language fragment with <span class="underline">each</span> high-level action routine. So, a high-level constant would have its Code Field pointing to a machine language fragment whose sole function is to invoke the high-level action of CONSTANT. A high-level variable's Code Field would point to the "startup" routine for the high-level VARIABLE action, and so on.
 
-Is this excessive duplication of code? No, because each of these machine-language fragments is just a subroutine call to a common startup routine, DODOES. (This is different from the fig-Forth DODOES routine.) The address of the high-level code to DODOES is passed as an "inline" subroutine parameter. That is, the address of the high-level code is put immediately after the JSR/CALL instruction. DODOES can then pop the CPU stack and do a fetch to obtain this address.
+Is this excessive duplication of code? No, because each of these machine-language fragments is just a subroutine call to a common startup routine, DODOES. (This is different from the fig-Forth DODOES routine) The address of the high-level code to DODOES is passed as an "inline" subroutine parameter. That is, the address of the high-level code is put immediately after the JSR/CALL instruction. DODOES can then pop the CPU stack and do a fetch to obtain this address.
 
 Actually, we make two more simplifications. The high-level code <span class="underline">itself</span> is put immediately after the JSR/CALL instruction. Then DODOES pops the CPU stack, and obtains this address directly. And since we know this is high-level Forth code, we dispense with its Code Field and just compile the high-level thread...essentially incorporating the action of ENTER into DODOES.
 
@@ -390,7 +389,7 @@ Figure 8 shows the constant DEUX implemented with a high-level action. When the 
 
 a. Push the address of DEUX's Parameter Field onto the Parameter Stack, for later use by the high-level action routine. Since the JSR instruction does not alter any registers, we expect to find the Parameter Field Address of DEUX (or a "nearby" address) still in the W register.
 
-b. Obtain the address of the high-level action routine, by popping the CPU stack. (Recall that popping the CPU stack will give the address of whatever immediately follows the JSR instruction.) This is a high-level <span class="underline">thread</span>, i.e., the Parameter Field part of a colon definition.
+b. Obtain the address of the high-level action routine, by popping the CPU stack. (Recall that popping the CPU stack will give the address of whatever immediately follows the JSR instruction) This is a high-level <span class="underline">thread</span>, i.e., the Parameter Field part of a colon definition.
 
 c. Save the old value of Forth's Instruction Pointer -- IP(2) -- on Forth's Return Stack, since the IP register will be used to execute the high-level fragment. Essentially, DODOES must "nest" the IP, just like ENTER does. Remember that Forth's Return Stack may not be the same as the CPU subroutine stack.
 
@@ -509,7 +508,7 @@ The answer lies in the two words DOES\> and (DOES\>), which are the high-level e
         ;
 ```
 
-Compare this with the previous ;CODE example, and observe that DOES\> performs a function analogous to ;CODE. Everything from **: CONSTANT** to **DOES\>** is executed when the word CONSTANT is invoked. This is the code which builds the Parameter Field of the "defined" word. Everything from **DOES\>** to **;** is the high-level code executed when the "children" of CONSTANT (such as DEUX) are invoked, i.e., the high-level fragment to which the Code Field will point. (We'll see that a JSR DODOES is included before this high-level fragment.) Just as with ;CODE, both the "create" and the "action" clauses are contained within the body of the Forth word CONSTANT, as shown in Figure 11.
+Compare this with the previous ;CODE example, and observe that DOES\> performs a function analogous to ;CODE. Everything from **: CONSTANT** to **DOES\>** is executed when the word CONSTANT is invoked. This is the code which builds the Parameter Field of the "defined" word. Everything from **DOES\>** to **;** is the high-level code executed when the "children" of CONSTANT (such as DEUX) are invoked, i.e., the high-level fragment to which the Code Field will point. (We'll see that a JSR DODOES is included before this high-level fragment) Just as with ;CODE, both the "create" and the "action" clauses are contained within the body of the Forth word CONSTANT, as shown in Figure 11.
 
 ![ITC DOES\>](img/mov3-11.gif)
 
@@ -542,7 +541,7 @@ You've already seen the workings of (;CODE). The F83 definition of DOES\> is
         ; IMMEDIATE
 ```
 
-where DODOES is a constant which holds the address of the DODOES routine. (The actual F83 source code is slightly different, due to the requirements of the F83 metacompiler.) DOES\> need not fiddle with CSP or the smudge bit, since the Forth compiler is left "on." In the case of the 8086, the CALL instruction expects a relative address...hence the arithmetic involving DODOES and HERE. In the 6809, DOES\> would look like
+where DODOES is a constant which holds the address of the DODOES routine. (The actual F83 source code is slightly different, due to the requirements of the F83 metacompiler) DOES\> need not fiddle with CSP or the smudge bit, since the Forth compiler is left "on." In the case of the 8086, the CALL instruction expects a relative address...hence the arithmetic involving DODOES and HERE. In the 6809, DOES\> would look like
 
 ```forth
     : DOES>

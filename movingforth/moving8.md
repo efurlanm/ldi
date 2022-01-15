@@ -1,10 +1,9 @@
 # MOVING FORTH
 
-Part 8: CamelForth for the 6809
-
+Part 8: CamelForth for the 6809  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal](http://www.psyber.com/~tcj) \#74 (July/August 1995).
+This article first appeared in [The Computer Journal #74 (July/August 1995)](../movingforth/#the-computer-journal-tcj).
 
 Finally, the last installment of "Moving Forth\!" Here is the long- promised ANSI CamelForth for the Motorola 6809, and specifically for the Scroungmaster II processor board.
 
@@ -12,17 +11,17 @@ Unlike the Z80 and 8051 CamelForth, the 6809 Forth was produced with my "Chromiu
 
 Second, source code for a Forth metacompiler looks like ordinary Forth code (with a few changes, which I'll discuss shortly). Thus the definition of **1+** is given as
 
-```
-  CODE 1+   1 # ADDD,   NEXT   ;C  
+```forth
+  CODE 1+   1 # ADDD,   NEXT   ;C
 ```
 
 The assembler used is the 6809 assembler I've described previously in TCJ \[ROD91\].
 
-I typed the [high-level source code](camel09.txt) directly from the already-published listings (converting to the Forth syntax in the process). Unfortunately, this was done over the space of a few days, and sometimes I worked from the Z80 listing, and sometimes the 8051...with the result that the Harvard-architecture constructs (such as I@ and IALLOT) are not consistently used in the 6809 code. This is of no consequence for the non-Harvard 6809, but I'll have to correct this before porting the Forth code to a Harvard CPU.
+I typed the high-level source code [camel09.txt](camel09.txt) directly from the already-published listings (converting to the Forth syntax in the process). Unfortunately, this was done over the space of a few days, and sometimes I worked from the Z80 listing, and sometimes the 8051... with the result that the Harvard-architecture constructs (such as I@ and IALLOT) are not consistently used in the 6809 code. This is of no consequence for the non-Harvard 6809, but I'll have to correct this before porting the Forth code to a Harvard CPU.
 
 Also, since I was working from published listings, I often neglected typing the detailed comments for the high-level words. For this I apologize. You can find how any word works by consulting the previous listings, but I shouldn't force you to do this.
 
-## [6809 CAMELFORTH SOURCE CODE](camel09.txt)
+**6809 CAMELFORTH SOURCE CODE [camel09.txt](camel09.txt)**
 
 The 6809 CamelForth model holds top-of-stack in D, and uses the S stack pointer for the Parameter Stack. The U stack pointer is the Return Stack Pointer, and Y is the Interpreter Pointer. X is the temporary register "W". The 6809 direct page pointer DPR holds the high byte of the User Pointer (the low byte is assumed to be zero).
 
@@ -40,7 +39,7 @@ The memory map for a Scroungemaster II with 8K of RAM and 8K of EPROM is as foll
  E000-FFFFh Forth kernel in EPROM
 ```
 
-All of the RAM data areas are referenced to the User Pointer, whose starting value is given by UP-INIT: in this case, 7A00h. (Note the use of UP-INIT-HI for the high byte of this value.) When CamelForth starts, it will set its Dictionary Pointer to DP-INIT, which must be in RAM so you can add new definitions to the Forth dictionary. These are all specified with the metacompiler's EQU directive. An EQU is like a CONSTANT, except that it is *only* known to the metacompiler. These EQUates take up no space in the 6809 kernel, and will not appear in the 6809 Forth's dictionary.
+All of the RAM data areas are referenced to the User Pointer, whose starting value is given by UP-INIT: in this case, 7A00h. (Note the use of UP-INIT-HI for the high byte of this value) When CamelForth starts, it will set its Dictionary Pointer to DP-INIT, which must be in RAM so you can add new definitions to the Forth dictionary. These are all specified with the metacompiler's EQU directive. An EQU is like a CONSTANT, except that it is *only* known to the metacompiler. These EQUates take up no space in the 6809 kernel, and will not appear in the 6809 Forth's dictionary.
 
 DICTIONARY tells the metacompiler where to compile the code, in this case for an 8K EPROM from E000-FFFFh. The new dictionary is named "ROM", and then ROM is specified to select that dictionary. (If you're familiar with Forth vocabularies, you'll see a strong resemblance.)
 
@@ -60,7 +59,7 @@ The CODE definitions are conventional. Note that you can use
   HERE EQU labelname  
 ```
 
-to generate a label when metacompiling. (This is a function of the metacompiler, not the assembler.) Also, ASM: begins a "fragment" of assembler code (i.e., not part of a CODE word).
+to generate a label when metacompiling. (This is a function of the metacompiler, not the assembler) Also, ASM: begins a "fragment" of assembler code (i.e., not part of a CODE word).
 
 The phrase
 

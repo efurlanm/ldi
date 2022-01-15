@@ -1,36 +1,35 @@
 # MOVING FORTH
 
-Part 6: the Z80 high-level kernel
-
+Part 6: the Z80 high-level kernel  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal](http://www.psyber.com/~tcj) \#69 (September/October 1994).
+This article first appeared in [The Computer Journal #69 (September/October 1994)](../movingforth/#the-computer-journal-tcj).
 
 ## ERRATA
 
 There are two goofs in the CAMEL80.AZM file I presented in TCJ\#67. The minor goof is that the name length specified in the HEAD macro for the Forth word **\>** was incorrectly typed as 2 instead of 1.
 
-The major goof results from a subtlety of CP/M console I/O. KEY must not echo the typed character, and so used BDOS function 6. KEY? used BDOS function 11 to test non-destructively for the presence of a keypress. Unfortunately, BDOS function 6 does not "clear" the keypress detected by function 11\! I have now rewritten KEY? to use BDOS function 6 (see [Listing 1](camel80.txt)). Since this is a "destructive" test, I had to add logic to save the "consumed" keypress and return it when KEY is next used. This new logic can be used whenever your hardware (or operating system) provides only a destructive test-for-keypress.
+The major goof results from a subtlety of CP/M console I/O. KEY must not echo the typed character, and so used BDOS function 6. KEY? used BDOS function 11 to test non-destructively for the presence of a keypress. Unfortunately, BDOS function 6 does not "clear" the keypress detected by function 11\! I have now rewritten KEY? to use BDOS function 6 (see Listing 1 [camel80.txt](camel80.txt)). Since this is a "destructive" test, I had to add logic to save the "consumed" keypress and return it when KEY is next used. This new logic can be used whenever your hardware (or operating system) provides only a destructive test-for-keypress.
 
 ## HIGH LEVEL DEFINITIONS
 
 In the last installment I did not expound greatly on the source code. Each Forth "primitive" performs a miniscule, sharply-defined function. It was almost all Z80 assembler code, and if it wasn't obvious *why* a particular word was included, I hope it was clear *what* each word did.
 
-In this installment I have no such luxury: I will present the high level definitions which embody the elegant (and tortuous) logic of the Forth language. Entire books have been written \[1,2,3\] describing Forth kernels, and if you want complete mastery I highly recommend you buy one of them. For TCJ I'll limit myself to some of the key words of the compiler and interpreter, given in [Listing 2](camel80h.txt).
+In this installment I have no such luxury: I will present the high level definitions which embody the elegant (and tortuous) logic of the Forth language. Entire books have been written \[1,2,3\] describing Forth kernels, and if you want complete mastery I highly recommend you buy one of them. For TCJ I'll limit myself to some of the key words of the compiler and interpreter, given in Listing 2 [camel80h.txt](camel80h.txt).
 
 ## TEXT INTERPRETER OPERATION
 
-The text or "outer" interpreter is the Forth code which accepts input from the keyboard and performs the desired Forth operations. (This is distinct from the address or "inner" interpreter, NEXT, which executes compiled threaded code.) The best way to understand it is to work through the startup of the Forth system.
+The text or "outer" interpreter is the Forth code which accepts input from the keyboard and performs the desired Forth operations. (This is distinct from the address or "inner" interpreter, NEXT, which executes compiled threaded code) The best way to understand it is to work through the startup of the Forth system.
 
-1\. The CP/M entry point (see [listing](camel80.txt) in previous installment) determines the top of available memory, set the stack pointers (PSP,RSP) and user pointer (UP), establishing the memory map shown in [Figure 1](#FIGURE1). It then sets the "inner" interpreter pointer (IP) to execute the Forth word **COLD**.
+1. The CP/M entry point (see listing [camel80.txt](camel80.txt) in previous installment) determines the top of available memory, set the stack pointers (PSP,RSP) and user pointer (UP), establishing the memory map shown in [Figure 1](#FIGURE1). It then sets the "inner" interpreter pointer (IP) to execute the Forth word **COLD**.
 
-2\. **COLD** initializes the user variables from a startup table, and then does **ABORT**. (**COLD** will also attempt to execute a Forth command from the CP/M command line.)
+2. **COLD** initializes the user variables from a startup table, and then does **ABORT**. (**COLD** will also attempt to execute a Forth command from the CP/M command line.)
 
-3\. **ABORT** resets the parameter stack pointer and does **QUIT**.
+3. **ABORT** resets the parameter stack pointer and does **QUIT**.
 
-4\. **QUIT** resets the return stack pointer, loop stack pointer, and interpret state, and then begins to interpret Forth commands. (The name is apt because **QUIT** can be used to abort an application and get back to the "top level" of Forth. Unlike **ABORT**, **QUIT** will leave the parameter stack contents alone.) **QUIT** is an infinite loop which will **ACCEPT** a line from the keyboard, and then **INTERPRET** it as Forth commands. When not compiling, **QUIT** will prompt "ok" after each line.
+4. **QUIT** resets the return stack pointer, loop stack pointer, and interpret state, and then begins to interpret Forth commands. (The name is apt because **QUIT** can be used to abort an application and get back to the "top level" of Forth. Unlike **ABORT**, **QUIT** will leave the parameter stack contents alone) **QUIT** is an infinite loop which will **ACCEPT** a line from the keyboard, and then **INTERPRET** it as Forth commands. When not compiling, **QUIT** will prompt "ok" after each line.
 
-5\. **INTERPRET** is an almost verbatim translation of the algorithm given in section 3.4 of the ANS Forth document. It parses one space-delimited string from the input, and tries to **FIND** the Forth word of that name. If the word is found, it will be either executed (if it is an IMMEDIATE word, or if in the "interpret" state, STATE=0) or compiled into the dictionary (if in the "compile" state, STATE\<\>0). If not found, Forth attempts to convert the string as a number. If successful, **LITERAL** will either place it on the parameter stack (if in "interpret" state) or compile it as an in-line literal value (if in "compile" state). If not a Forth word and not a valid number, the string is typed, an error message is displayed, and the interpreter **ABORT**s. This process is repeated, string by string, until the end of the input line is reached.
+5. **INTERPRET** is an almost verbatim translation of the algorithm given in section 3.4 of the ANS Forth document. It parses one space-delimited string from the input, and tries to **FIND** the Forth word of that name. If the word is found, it will be either executed (if it is an IMMEDIATE word, or if in the "interpret" state, STATE=0) or compiled into the dictionary (if in the "compile" state, STATE\<\>0). If not found, Forth attempts to convert the string as a number. If successful, **LITERAL** will either place it on the parameter stack (if in "interpret" state) or compile it as an in-line literal value (if in "compile" state). If not a Forth word and not a valid number, the string is typed, an error message is displayed, and the interpreter **ABORT**s. This process is repeated, string by string, until the end of the input line is reached.
 
 ## THE FORTH DICTIONARY
 
@@ -72,7 +71,7 @@ Thus we see that there is no distinct Forth "compiler", in the same sense that w
 
 ## THE DEPENDENCY WORD SET
 
-Most of the remaining high-level words are either a) necessary to implement the compiler and interpreter, or b) provided solely for your programming pleasure. But there is one set which deserves special mention: the words I have separated into the file CAMEL80D.AZM ([Listing 3](camel80d.txt)).
+Most of the remaining high-level words are either a) necessary to implement the compiler and interpreter, or b) provided solely for your programming pleasure. But there is one set which deserves special mention: the words I have separated into the file CAMEL80D.AZM (Listing 3 [camel80d.txt](camel80d.txt)).
 
 One of the goals of the ANSI Forth Standard was to hide CPU and model dependencies (Direct or Indirect Threaded? 16 or 32 bit?) from the application programmer. Several words were added to the Standard for this purpose. I have taken this one step further, attempting to encapsulate these dependencies *even within the kernel*. Ideally, the high-level Forth code in the file CAMEL80H.AZM should be the same for all CamelForth targets (although different assemblers will have different syntax).
 
@@ -104,19 +103,19 @@ I will probably present the 8051 kernel, and talk about how the Forth compiler a
 
 ## REFERENCES
 
-1\. Derick, Mitch and Baker, Linda, <span class="underline">Forth Encyclopedia</span>, Mountain View Press, Route 2 Box 429, La Honda, CA 94020 USA (1982). Word-by-word description of Fig-Forth.
+1. Derick, Mitch and Baker, Linda, <span class="underline">Forth Encyclopedia</span>, Mountain View Press, Route 2 Box 429, La Honda, CA 94020 USA (1982). Word-by-word description of Fig-Forth.
 
-2\. Ting, C. H., <span class="underline">Systems Guide to fig-Forth</span>, Offete Enterprises, 1306 South B Street, San Mateo, CA 94402 USA (1981).
+2. Ting, C. H., <span class="underline">Systems Guide to fig-Forth</span>, Offete Enterprises, 1306 South B Street, San Mateo, CA 94402 USA (1981).
 
-3\. Ting, C. H., <span class="underline">Inside F83</span>, Offete Enterprises (1986).
+3. Ting, C. H., <span class="underline">Inside F83</span>, Offete Enterprises (1986).
 
-4\. Ewing, Martin S., <span class="underline">The Caltech Forth Manual</span>, a Technical Report of the Owens Valley Radio Observatory (1978). This PDP-11 Forth stored a length, four characters, and a link in two 16-bit words.
+4. Ewing, Martin S., <span class="underline">The Caltech Forth Manual</span>, a Technical Report of the Owens Valley Radio Observatory (1978). This PDP-11 Forth stored a length, four characters, and a link in two 16-bit words.
 
-5\. Sergeant, Frank, <span class="underline">Pygmy Forth for the IBM PC</span>, version 1.4 (1992). Distributed by the author, available from the Forth Interest Group (P.O. Box 2154, Oakland CA 94621 USA) or on GEnie.
+5. Sergeant, Frank, <span class="underline">Pygmy Forth for the IBM PC</span>, version 1.4 (1992). Distributed by the author, available from the Forth Interest Group (P.O. Box 2154, Oakland CA 94621 USA) or on GEnie.
 
-6\. J. E. Thomas examined this issue thoroughly when converting Pygmy Forth to an ANSI Forth. No matter what tricks you play with relinking words, strict ANSI compliance is violated. A regrettable decision on the part of the ANS Forth team.
+6. J. E. Thomas examined this issue thoroughly when converting Pygmy Forth to an ANSI Forth. No matter what tricks you play with relinking words, strict ANSI compliance is violated. A regrettable decision on the part of the ANS Forth team.
 
-7\. In private communication.
+7. In private communication.
 
 The source code for Z80 CamelForth is *now* available on GEnie as CAMEL80.ARC in the CP/M and Forth Roundtables. Really. I just uploaded it. (Apologies to those who have been waiting.)
 

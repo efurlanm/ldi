@@ -3,7 +3,7 @@
 Part 1: Design Decisions in the Forth Kernel  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal](../movingforth/#the-computer-journal-tcj) #59 (January/February 1993).
+This article first appeared in [The Computer Journal #59 (January/February 1993)](../movingforth/#the-computer-journal-tcj).
 
 ## INTRODUCTION
 
@@ -25,7 +25,7 @@ The word size used by Forth is not necessarily the same as that of the CPU. The 
 
 16-bit CPUs commonly run 16-bit Forths, although the same double- precision techniques can be used to write a 32-bit Forth on a 16- bit CPU. At least one 32-bit Forth has been written for the 8086/8088.
 
-32-bit CPUs normally run 32-bit Forths. A smaller Forth model rarely saves code length or processor time. However, I know of at least one 16-bit Forth written for the [68000](http://en.wikipedia.org/wiki/Motorola_68000). This _does_ shrink application code size by a factor of two, since high-level Forth definitions become a string of 16-bit addresses rather than a string of 32-bit addresses. (This will become evident shortly.) Most 68000s, though, have plenty of RAM.
+32-bit CPUs normally run 32-bit Forths. A smaller Forth model rarely saves code length or processor time. However, I know of at least one 16-bit Forth written for the [68000](http://en.wikipedia.org/wiki/Motorola_68000). This _does_ shrink application code size by a factor of two, since high-level Forth definitions become a string of 16-bit addresses rather than a string of 32-bit addresses. (This will become evident shortly) Most 68000s, though, have plenty of RAM.
 
 All of the examples described in this article are 16-bit Forths running on 8-bit CPUs.
 
@@ -216,7 +216,7 @@ I can envision a 32-bit Forth using 16-bit tokens, but how many 32-bit systems a
 
 ### Segment Threaded Code
 
-Since there are so many 8086 derivatives in the world, segment threading deserves a brief mention. Instead of using "normal" byte addresses within a 64K segment, _paragraph_ addresses are used. (A "paragraph" is 16 bytes in the 8086.) Then, the interpreter can load these addresses into segment registers, instead of into the usual address registers. This allows a 16- bit Forth model to efficiently access the full megabyte of 8086 memory.
+Since there are so many 8086 derivatives in the world, segment threading deserves a brief mention. Instead of using "normal" byte addresses within a 64K segment, _paragraph_ addresses are used. (A "paragraph" is 16 bytes in the 8086) Then, the interpreter can load these addresses into segment registers, instead of into the usual address registers. This allows a 16- bit Forth model to efficiently access the full megabyte of 8086 memory.
 
 The principal disadvantage of segment threading is the 16-byte "granularity" of the memory space. Every Forth word must be aligned to a 16-byte boundary. If Forth words have random lengths, an average of 8 bytes will be wasted per Forth word.
 
@@ -228,9 +228,9 @@ Next to the threading technique, the usage of the CPU's registers is the most cr
 
 The classical Forth model has five "virtual registers." These are abstract entities which are used in the primitive operations of Forth. NEXT, ENTER, and EXIT were defined earlier in terms of these abstract registers.
 
-Each of these is one cell wide -- i.e., in a 16-bit Forth, these are 16-bit registers. (There are exceptions to this rule, as you will see later.) These _may not all be CPU registers._ If your CPU doesn't have enough registers, some of these can be kept in memory. I'll describe them in the order of their importance; i.e., the bottom of this list are the best candidates to be stored in memory.
+Each of these is one cell wide -- i.e., in a 16-bit Forth, these are 16-bit registers. (There are exceptions to this rule, as you will see later) These _may not all be CPU registers._ If your CPU doesn't have enough registers, some of these can be kept in memory. I'll describe them in the order of their importance; i.e., the bottom of this list are the best candidates to be stored in memory.
 
-**W** is the Working register. It is used for many things, including memory reference, so it should be an address register; i.e., you must be able to fetch and store memory using the contents of W as the address. You also need to be able to do arithmetic on W. (In DTC Forths, you must also be able to jump indirect using W.) W is used by the interpreter _in every Forth word_. In a CPU having only one register, you would use it for W and keep everything else in memory (and the system would be incredibly slow).
+**W** is the Working register. It is used for many things, including memory reference, so it should be an address register; i.e., you must be able to fetch and store memory using the contents of W as the address. You also need to be able to do arithmetic on W. (In DTC Forths, you must also be able to jump indirect using W) W is used by the interpreter _in every Forth word_. In a CPU having only one register, you would use it for W and keep everything else in memory (and the system would be incredibly slow).
 
 **IP** is the Interpreter Pointer. This is used by _every Forth word_ (through NEXT, ENTER, or EXIT). IP must be an address register. You also need to be able to increment IP. Subroutine threaded Forths don't need this register.
 
@@ -282,7 +282,7 @@ A word which _removes_ items from the stack must pop the "new" TOS into its regi
 
 A word which _adds_ items to the stack must push the "old" TOS onto the stack (unless, of course, it's consumed by the word).
 
-_If you have at least six cell-size CPU registers, I recommend keeping the TOS in a register._ I consider TOS more important than UP to have in register, but less important than W, IP, PSP, and RSP. (TOS in register performs many of the functions of the X register.) It's useful if this register can perform memory addressing. [PDP-11](http://en.wikipedia.org/wiki/PDP-11)s, [Z8](http://en.wikipedia.org/wiki/Zilog_Z8)s, and 68000s are good candidates.
+_If you have at least six cell-size CPU registers, I recommend keeping the TOS in a register._ I consider TOS more important than UP to have in register, but less important than W, IP, PSP, and RSP. (TOS in register performs many of the functions of the X register) It's useful if this register can perform memory addressing. [PDP-11](http://en.wikipedia.org/wiki/PDP-11)s, [Z8](http://en.wikipedia.org/wiki/Zilog_Z8)s, and 68000s are good candidates.
 
 Nine of the 19 IBM PC Forths studied by Guy Kelly [[KEL92]](#KEL92) keep TOS in register.
 
