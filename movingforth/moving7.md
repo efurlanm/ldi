@@ -166,6 +166,10 @@ In the next installment I shall modify the *8051* source code to work on the 680
 
 \[ANS93\] <span class="underline">dpANS-6 draft proposed American National Standard for Information Systems - Programming Languages - Forth</span>, June 30, 1993. "It is distributed solely for the purpose of review and comment and should not be used as a design document. It is inappropriate to claim compatibility with this draft standard." Nevertheless, for the last 16 months it's all we've had to go by.
 
+- http://www.forth.com/forth-books/
+
+- ftp://ftp.taygeta.com/pub/Forth/Literature/
+
 \[CUR93\] Curley, Charles, <span class="underline">Optimization Considerations</span>, Forth Dimensions XIV:5 (Jan/Feb 1993), pp. 6-12.
 
 *Source code for 8051 CamelForth is available on this site at [http://www.camelforth.com/public\_ftp/cam51-15.zip](http://www.camelforth.com/public_ftp/cam80-12.zip).*

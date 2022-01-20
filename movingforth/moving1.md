@@ -3,7 +3,9 @@
 Part 1: Design Decisions in the Forth Kernel  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal #59 (January/February 1993)](../movingforth/#the-computer-journal-tcj).
+This article first appeared in [The Computer Journal #59 (January/February 1993)](./README.md#the-computer-journal-tcj).
+
+xxx
 
 ## INTRODUCTION
 
