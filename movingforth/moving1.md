@@ -5,7 +5,7 @@ by Brad Rodriguez
 
 This article first appeared in [The Computer Journal #59 (January/February 1993)](./README.md#the-computer-journal-tcj).
 
-xxx
+
 
 ## INTRODUCTION
 
