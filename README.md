@@ -51,3 +51,7 @@ Random links to books and libraries that I found interesting
 * [SETZER, V. W.; MELO, I. S. H. *A construção de um compilador*]()
 * [Library with several books on compilers, computers, and programming](https://vdoc.pub/search/compiler)
 * [R G Loeliger. *Threaded Interpretive Languages: Their Design And Implementation*](https://vdoc.pub/documents/threaded-interpretive-languages-their-design-and-implementation-1seph9gct7uo)
+
+## License
+
+My work follows the CC0-BY-4.0 license. The works of other authors follow their licenses.
