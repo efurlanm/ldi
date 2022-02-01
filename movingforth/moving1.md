@@ -5,11 +5,9 @@ by Brad Rodriguez
 
 This article first appeared in [The Computer Journal #59 (January/February 1993)](./README.md#the-computer-journal-tcj).
 
-
-
 ## INTRODUCTION
 
-Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91]](#ROD91) [[ROD92]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](http://en.wikipedia.org/wiki/CP/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-80)s gathering dust.
+Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91]](#ROD91) [[ROD92]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](http://en.wikipedia.org/wiki/CP\/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-80)s gathering dust.
 
 ## THE ESSENTIAL HARDWARE
 
@@ -27,7 +25,7 @@ The word size used by Forth is not necessarily the same as that of the CPU. The 
 
 16-bit CPUs commonly run 16-bit Forths, although the same double- precision techniques can be used to write a 32-bit Forth on a 16- bit CPU. At least one 32-bit Forth has been written for the 8086/8088.
 
-32-bit CPUs normally run 32-bit Forths. A smaller Forth model rarely saves code length or processor time. However, I know of at least one 16-bit Forth written for the [68000](http://en.wikipedia.org/wiki/Motorola_68000). This _does_ shrink application code size by a factor of two, since high-level Forth definitions become a string of 16-bit addresses rather than a string of 32-bit addresses. (This will become evident shortly) Most 68000s, though, have plenty of RAM.
+32-bit CPUs normally run 32-bit Forths. A smaller Forth model rarely saves code length or processor time. However, I know of at least one 16-bit Forth written for the [68000](http://en.wikipedia.org/wiki/Motorola_68000). This _does_ shrink application code size by a factor of two, since high-level Forth definitions become a string of 16-bit addresses rather than a string of 32-bit addresses. (This will become evident shortly.) Most 68000s, though, have plenty of RAM.
 
 All of the examples described in this article are 16-bit Forths running on 8-bit CPUs.
 
@@ -45,14 +43,14 @@ Let's look at the definition of a Forth word SQUARE:
 : SQUARE  DUP * ;
 ```
 
-In a typical ITC Forth this would appear in memory as shown in Figure 1. (The <b>Header</b> Field will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading)
+In a typical ITC Forth this would appear in memory as shown in Figure 1. (The <b>Header</b> Field will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
 
 <figure>
 <figcaption><br>Figure 1. Indirect Threaded Code<br><br></figcaption>
 <img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code">
 </figure><br>
 
-Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's <b>Code Field</b>) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
+Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's <b>Code Field</b> .) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
 <table>                
 <caption>    NEXT (interpreter)            </caption>
@@ -66,18 +64,18 @@ This illustrates an important but rarely-elucidated principle: _the address of t
 
 If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <abbr tittle="the word after SQUARE">_next_ word to be executed</abbr>. This is why the Forth interpreter is usually called NEXT.
 
-But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the <b>Parameter Field</b> of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth) This is called DOCOLON or ENTER in various Forths:
+But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the <b>Parameter Field</b> of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth.) This is called DOCOLON or ENTER in various Forths:
 
 <table>                
 <caption>    ENTER            </caption>
 <tr><td><nobr>    PUSH IP    </nobr></td><td>    onto the "return address stack"    </td></tr>
-<tr><td><nobr>    W+2 -> IP    </nobr></td><td>    W still points to the Code Field, so W+2 is the address of the Body! (Assuming a 2-byte address -- other Forths may be different)    </td></tr>
+<tr><td><nobr>    W+2 -> IP    </nobr></td><td>    W still points to the Code Field, so W+2 is the address of the Body! (Assuming a 2-byte address -- other Forths may be different.)    </td></tr>
 <tr><td><nobr>    JUMP    </nobr></td><td>    to interpreter ("NEXT")    </td></tr>
 </table>
 
 This identical code fragment is used by all high-level (i.e., threaded) Forth definitions\! That's why a pointer to this code fragment, not the fragment itself, is included in the Forth definition. Over hundreds of definitions, the savings add up\! And this is why it's called Indirect threading.
 
-The "return from subroutine" is the word EXIT, which gets compiled when Forth sees ';'. (Some Forths call it ;S instead of EXIT) EXIT just executes a machine language routine which does the following:
+The "return from subroutine" is the word EXIT, which gets compiled when Forth sees ';'. (Some Forths call it ;S instead of EXIT.) EXIT just executes a machine language routine which does the following:
 
 <table>
 <caption>    EXIT            </caption>                
@@ -218,7 +216,7 @@ I can envision a 32-bit Forth using 16-bit tokens, but how many 32-bit systems a
 
 ### Segment Threaded Code
 
-Since there are so many 8086 derivatives in the world, segment threading deserves a brief mention. Instead of using "normal" byte addresses within a 64K segment, _paragraph_ addresses are used. (A "paragraph" is 16 bytes in the 8086) Then, the interpreter can load these addresses into segment registers, instead of into the usual address registers. This allows a 16- bit Forth model to efficiently access the full megabyte of 8086 memory.
+Since there are so many 8086 derivatives in the world, segment threading deserves a brief mention. Instead of using "normal" byte addresses within a 64K segment, _paragraph_ addresses are used. (A "paragraph" is 16 bytes in the 8086.) Then, the interpreter can load these addresses into segment registers, instead of into the usual address registers. This allows a 16- bit Forth model to efficiently access the full megabyte of 8086 memory.
 
 The principal disadvantage of segment threading is the 16-byte "granularity" of the memory space. Every Forth word must be aligned to a 16-byte boundary. If Forth words have random lengths, an average of 8 bytes will be wasted per Forth word.
 
@@ -230,9 +228,9 @@ Next to the threading technique, the usage of the CPU's registers is the most cr
 
 The classical Forth model has five "virtual registers." These are abstract entities which are used in the primitive operations of Forth. NEXT, ENTER, and EXIT were defined earlier in terms of these abstract registers.
 
-Each of these is one cell wide -- i.e., in a 16-bit Forth, these are 16-bit registers. (There are exceptions to this rule, as you will see later) These _may not all be CPU registers._ If your CPU doesn't have enough registers, some of these can be kept in memory. I'll describe them in the order of their importance; i.e., the bottom of this list are the best candidates to be stored in memory.
+Each of these is one cell wide -- i.e., in a 16-bit Forth, these are 16-bit registers. (There are exceptions to this rule, as you will see later.) These _may not all be CPU registers._ If your CPU doesn't have enough registers, some of these can be kept in memory. I'll describe them in the order of their importance; i.e., the bottom of this list are the best candidates to be stored in memory.
 
-**W** is the Working register. It is used for many things, including memory reference, so it should be an address register; i.e., you must be able to fetch and store memory using the contents of W as the address. You also need to be able to do arithmetic on W. (In DTC Forths, you must also be able to jump indirect using W) W is used by the interpreter _in every Forth word_. In a CPU having only one register, you would use it for W and keep everything else in memory (and the system would be incredibly slow).
+**W** is the Working register. It is used for many things, including memory reference, so it should be an address register; i.e., you must be able to fetch and store memory using the contents of W as the address. You also need to be able to do arithmetic on W. (In DTC Forths, you must also be able to jump indirect using W.) W is used by the interpreter _in every Forth word_. In a CPU having only one register, you would use it for W and keep everything else in memory (and the system would be incredibly slow).
 
 **IP** is the Interpreter Pointer. This is used by _every Forth word_ (through NEXT, ENTER, or EXIT). IP must be an address register. You also need to be able to increment IP. Subroutine threaded Forths don't need this register.
 
@@ -284,7 +282,7 @@ A word which _removes_ items from the stack must pop the "new" TOS into its regi
 
 A word which _adds_ items to the stack must push the "old" TOS onto the stack (unless, of course, it's consumed by the word).
 
-_If you have at least six cell-size CPU registers, I recommend keeping the TOS in a register._ I consider TOS more important than UP to have in register, but less important than W, IP, PSP, and RSP. (TOS in register performs many of the functions of the X register) It's useful if this register can perform memory addressing. [PDP-11](http://en.wikipedia.org/wiki/PDP-11)s, [Z8](http://en.wikipedia.org/wiki/Zilog_Z8)s, and 68000s are good candidates.
+_If you have at least six cell-size CPU registers, I recommend keeping the TOS in a register._ I consider TOS more important than UP to have in register, but less important than W, IP, PSP, and RSP. (TOS in register performs many of the functions of the X register.) It's useful if this register can perform memory addressing. [PDP-11](http://en.wikipedia.org/wiki/PDP-11)s, [Z8](http://en.wikipedia.org/wiki/Zilog_Z8)s, and 68000s are good candidates.
 
 Nine of the 19 IBM PC Forths studied by Guy Kelly [[KEL92]](#KEL92) keep TOS in register.
 
