@@ -25,7 +25,8 @@ This series originally appeared in [The Computer Journal](http://archive.org/det
 * [Part 6: The Z80 High-level Kernel](moving6.md)
 * [Part 7: CamelForth for the 8051](moving7.md)
 * [Part 8: CamelForth for the 6809](moving8.md)
-* [Multitasking 8051 CamelForth](8051task.pdf) (23 kB PDF file)
+* [Multitasking 8051 CamelForth](8051task.md)
+* [Multitasking 8051 CamelForth](8051task.pdf) (23 kB PDF original file)
 
 ## Listings
 
