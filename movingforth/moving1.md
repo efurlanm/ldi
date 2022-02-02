@@ -63,14 +63,25 @@ xxxx
 
 *NEXT (interpreter)*
 
-|||
-|---|---|
-| (IP) -> W  | fetch memory pointed by IP into "W" register <br> ... W now holds address of the Code Field |
-| IP+2 -> IP | advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread) |
+|            |                                                                                              |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| (IP) -> W  | fetch memory pointed by IP into "W" register <br> ... W now holds address of the Code Field  |
+| IP+2 -> IP | advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread)       |
 | (W) -> X   | fetch memory pointed by W into "X" register <br> ... X now holds address of the machine code |
-| JP (X)     | jump to the address in the X register |
+| JP (X)     | jump to the address in the X register                                                        |
 
 xxxx
+
+<span id="FIG00">*NEXT (interpreter)*</span>
+
+<table>                
+<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register <br> ... W now holds address of the <font color="#BF0041">Code Field</font>    </td></tr>
+<tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread)    </td></tr>
+<tr><td><nobr>    (W) -> X    </nobr></td><td>    fetch memory pointed by W into "X" register <br> ... X now holds address of the machine code    </td></tr>
+<tr><td><nobr>    JP (X)    </nobr></td><td>    jump to the address in the X register    </td></tr>
+</table>
+
+xxx
 
 This illustrates an important but rarely-elucidated principle: _the address of the Forth word just entered is kept in W._ CODE words don't need this information, but all other kinds of Forth words do.
 
@@ -388,4 +399,3 @@ On the 8086 you could conceivably use a segment register to specify the base add
 <span id="TAL80">[TAL80]</span> Talbot, R. J., _fig-Forth for the 6809_, Forth Interest Group (1980). [[1]](http://www.forth.org/fig-forth/contents.html)
 
 *Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group <s>FTP</s> server, <s>ftp://ftp.forth.org/pub/Forth</s> http://www.forth.org/ .*
-
