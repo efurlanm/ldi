@@ -377,62 +377,23 @@ On the 8086 you could conceivably use a segment register to specify the base add
 *Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group <s>FTP</s> server, <s>ftp://ftp.forth.org/pub/Forth</s> http://www.forth.org/ .*
 
 
-| <!-- -->    | <!-- -->    |
-|-------------|-------------|
-| Foo         | Bar         |
 
 
-[]()  | 
-------|------
-Row 1 | row 2
-
-
-
-|Regular | text | in header | turns bold |
-|-|-|-|-|
-| __So__ | __bold__ | __all__ | __table entries__ |
-| __and__ | __it looks__ | __like a__ | __"headerless table"__ |
+|||
+|---|---:|
+| **Name:**     | John Doe |
+| **Position:** | CEO      |
 
 xxxxx
 
 |||
-|-------------|--------|
-|**Name:**    |John Doe|
-|**Position:**|CEO     |
+|--- |---|
+|Foo |37   |
+|Bar |101  |
 
 xxxxx
-
-|     |     |
-|-----|-----|
-|Foo  |37   |
-|Bar  |101  |
-
-xxxxx
-
-|       |       |
-| ----- | ----- |
-| Foo   | 37    |
-| Bar   | 101   |
-
-xxxx
-
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-
-xxxx
-
-        |
----     |    ---
-Value   |  Value
-Value   |  Value
-
-xxx
 
 | Left-aligned | Center-aligned | Right-aligned |
 | :---         |     :---:      |          ---: |
 | git status   | git status     | git status    |
 | git diff     | git diff       | git diff      |
-
-xxx
