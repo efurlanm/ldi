@@ -51,7 +51,7 @@ These are among the most-used words in the Forth kernel. It pays to optimize the
 
 ## CASE STUDY 1: THE 6809
 
-In the world of 8-bit CPUs, the 6809 is the Forth programmer's dream machine. It supports <span class="underline">two</span> stacks\! It also has two other address registers, and a wealth of orthogonal addressing modes second only to the PDP-11. ("Orthogonal" means they work the same way and have the same options for all address registers) The two 8-bit accumulators can be treated as a single 16-bit accumulator, and there are many 16-bit operations.
+In the world of 8-bit CPUs, the 6809 is the Forth programmer's dream machine. It supports <u>two</u> stacks\! It also has two other address registers, and a wealth of orthogonal addressing modes second only to the PDP-11. ("Orthogonal" means they work the same way and have the same options for all address registers.) The two 8-bit accumulators can be treated as a single 16-bit accumulator, and there are many 16-bit operations.
 
 The programmer's model of the 6809 is \[MOT83\]:
 
@@ -71,7 +71,7 @@ PC - 16 bit program counter
 CC - 8 bit Condition Code register  
 DP - 8 bit Direct Page register
 
-The 6800 family's Direct addressing mode uses an 8-bit address to reach any location in memory page zero. The 6809 allows <span class="underline">any</span> page to be Direct-addressed; this register provides the high 8 bits of address.
+The 6800 family's Direct addressing mode uses an 8-bit address to reach any location in memory page zero. The 6809 allows <u>any</u> page to be Direct-addressed; this register provides the high 8 bits of address.
 
 Those two stack pointers are crying out for Forth use. They are equivalent, except that S is used for subroutine calls and interrupts. Let's be consistent and use S for return addresses, leaving U for the Parameter Stack.
 
@@ -98,7 +98,7 @@ NEXT is one instruction in a DTC 6809\! This means you can code it in-line in tw
 
 STC takes 13 clocks to thread to the next word, compared with 9 clocks for DTC. This is because subroutine threading has to pop and push a return address, while simple DTC or ITC threading between CODE words does not.
 
-Given the choice of DTC, you have to decide: does a high-level word have a Jump or Call in its Code Field? The driving consid\~ eration is <span class="underline">how quickly can you obtain the address of the parame\~ ter field which follows?</span> Let's look at the code to ENTER a colon definition, using symbolic Forth register names, to see this illustrated:
+Given the choice of DTC, you have to decide: does a high-level word have a Jump or Call in its Code Field? The driving consideration is <u>how quickly can you obtain the address of the parameter field which follows?</u> Let's look at the code to ENTER a colon definition, using symbolic Forth register names, to see this illustrated:
 
 using a JSR (Call):
 
@@ -135,16 +135,17 @@ EXIT:   PULS IP     pop "saved" IP from return stack
         NEXT        continue Forth interpretation
 ```
 
-Some registers remain to allocate. You could keep the User Pointer in memory, and this Forth would still be pretty fast. But the DP register would go to waste, and there's not much else it can do. Let's use the "trick" described above, and hold the high byte of UP in the DP register. (The low byte of UP is implied to be zero).
+Some registers remain to allocate. You could keep the User Pointer in memory, and this Forth would still be pretty fast. But the DP register would go to waste, and there's not much else it can do. Let's use the "trick" described above, and hold the high byte of UP in the DP register. (The low byte of UP is implied to be zero.)
 
 One 16-bit register is left: D. Most arithmetic operations need this register. Should it be left free as a scratch register, or used as the Top-Of-Stack? 6809 instructions use memory as one operand, so a second working register may be unnecessary. And if a scratch register is needed, it's easy to push and pop D. Let's write the benchmark primitives both ways, and see which is faster.
 
 NEXT, ENTER, and EXIT don't use the stack, and thus have identical code either way.
 
-DOVAR, DOCON, LIT, and OVER require the same number of CPU cycles either way. These illustrate the earlier comment that putting TOS in register often just changes <span class="underline">where</span> the push or pop takes place:
+DOVAR, DOCON, LIT, and OVER require the same number of CPU cycles either way. These illustrate the earlier comment that putting TOS in register often just changes <u>where</u> the push or pop takes place:
 
 ```nasm
         TOS in D        TOS in memory   pseudo-code
+        -------------   -------------   ---------------------
 
 DOVAR:  PSHU TOS        LDD  -2,IP      address of CF -> D
         LDD  -2,IP      ADDD #3         address of PF -> D
@@ -165,10 +166,11 @@ OVER:   PSHU D          LDD  2,PSP      2nd on stack -> D
         NEXT            NEXT
 ```
 
-SWAP, ROT, 0=, @, and especially + are all <span class="underline">faster</span> with TOS in register:
+SWAP, ROT, 0=, @, and especially + are all <u>faster</u> with TOS in register:
 
 ```nasm
         TOS in D        TOS in memory   pseudo-code
+        ------------    -------------   ----------------
 
 SWAP:   LDX  ,PSP (5)   LDD  ,PSP (5)   TOS -> D
         STD  ,PSP (5)   LDX 2,PSP (6)   2nd on stack -> X
@@ -204,10 +206,11 @@ ROT:    LDX  ,PSP (5)   LDX  ,PSP (5)   TOS -> X
                         NEXT
 ```
 
-\! and +\! are <span class="underline">slower</span> with TOS in register:
+\! and +\! are <u>slower</u> with TOS in register:
 
 ```nasm
         TOS in D        TOS in memory   pseudo-code
+        ------------    ------------    -----------------
 
 !:      TFR TOS,W (6)   PULU W   (7)    pop adrs into W
         PULU D    (7)   PULU D   (7)    pop data into D
@@ -245,7 +248,7 @@ Option (b) is slow\! Moving 128 bytes on every task switch is faster than moving
 
 The one-and-only "real" address register, DPTR, will have to do multiple duty. It becomes W, the multi-purpose working register.
 
-In truth, there are two other registers that can address external memory: R0 and R1. They provide only an <span class="underline">8-bit</span> address; the high 8 bits are explicitly output on port 2. But this is a tolerable restriction for stacks, since they can be limited to a 256-byte space. So let's use R0 as the PSP.
+In truth, there are two other registers that can address external memory: R0 and R1. They provide only an <u>8-bit</u> address; the high 8 bits are explicitly output on port 2. But this is a tolerable restriction for stacks, since they can be limited to a 256-byte space. So let's use R0 as the PSP.
 
 This same 256-byte space can be used for user data. This makes P2 (port 2) the high byte of the User Pointer, and, like the 6809, the low byte will be implied to be zero.
 
@@ -254,6 +257,7 @@ What is the programmer's model of the 8051 so far?
 ```
     reg 8051   Forth
    adrs name   usage
+   ---- ------ -----------------
 
       0  R0    low byte of PSP
       1  R1
@@ -275,7 +279,7 @@ Note that this uses only register bank 0. The additional three register banks fr
 
 The NEXT, ENTER, and EXIT routines aren't needed in a subroutine threaded Forth.
 
-What about the top of stack? There are plenty of registers, and memory operations on the 8051 are expensive. Let's put TOS in R3:R2 (with R3 as the high byte, in Intel fashion). Note that B:A can't be used -- the A register is the funnel through which <span class="underline">all</span> memory references must move\!
+What about the top of stack? There are plenty of registers, and memory operations on the 8051 are expensive. Let's put TOS in R3:R2 (with R3 as the high byte, in Intel fashion). Note that B:A can't be used -- the A register is the funnel through which <u>all</u> memory references must move\!
 
 ### Harvard architectures
 
@@ -289,47 +293,47 @@ The Z8 and TMS320C25 are more civilized: they allow write access to program memo
 
 ## CASE STUDY 3: THE Z80
 
-The Z80 is instructive because it is an extreme example of a non- orthogonal CPU. It has <span class="underline">four different kinds</span> of address registers\! Some operations use A as destination, some any 8-bit register, some HL, some any 16-bit register, and so on. Many operations (such as EX DE,HL) are only defined for one combination of registers.
+The Z80 is instructive because it is an extreme example of a non- orthogonal CPU. It has <u>four different kinds</u> of address registers\! Some operations use A as destination, some any 8-bit register, some HL, some any 16-bit register, and so on. Many operations (such as EX DE,HL) are only defined for one combination of registers.
 
 In a CPU such as the Z80 (or 8086\!), the assignment of Forth functions must be carefully matched to the capabilities of the CPU registers. Many more tradeoffs need to be evaluated, and often the only way is to write sample code for a number of different assignments. Rather than burden this article down endless permutations of Forth code, I'll present one register assignment based on many Z80 code experiments. It turns out that these choices can be rationalized in terms of the general principles outlined earlier.
 
-I want a "conventional" Forth, although I <span class="underline">will</span> use direct threading. All of the "classical" virtual registers will be needed.
+I want a "conventional" Forth, although I <u>will</u> use direct threading. All of the "classical" virtual registers will be needed.
 
 Ignoring the alternate register set, the Z80 has six address registers, with the following capabilities:
 
 ```
-   BC,DE - LD A indirect, INC, DEC
-           also exchange DE/HL
+BC,DE - LD A indirect, INC, DEC
+        also exchange DE/HL
 
-      HL - LD r indirect, ALU indirect, INC, DEC, ADD, ADC, 
-           SBC, exchange w/TOS, JP indirect
+    HL - LD r indirect, ALU indirect, INC, DEC, ADD, ADC, 
+        SBC, exchange w/TOS, JP indirect
 
-   IX,IY - LD r indexed, ALU indexed, INC, DEC, ADD, ADC,
-           SBC, exchange w/TOS, JP indirect  (all slow)
+IX,IY - LD r indexed, ALU indexed, INC, DEC, ADD, ADC,
+        SBC, exchange w/TOS, JP indirect  (all slow)
 
-      SP - PUSH/POP 16-bit, ADD/ADC/SUB to HL/IX/IY
+    SP - PUSH/POP 16-bit, ADD/ADC/SUB to HL/IX/IY
 ```
 
 BC, DE, and HL can also be manipulated in 8-bit pieces.
 
 The 8-bit register A must be left as a scratch register, since it's the destination for so many ALU and memory reference operations.
 
-HL is undoubtedly the most versatile register, and at one time or another it is tempting to use it for each of the Forth virtual registers. However, <span class="underline">because</span> of its versatility -- and because it is the only register which can be fetched byte-wise <span class="underline">and</span> used in an indirect jump -- HL should be used for W, Forth's all-purpose working register.
+HL is undoubtedly the most versatile register, and at one time or another it is tempting to use it for each of the Forth virtual registers. However, <u>because</u> of its versatility -- and because it is the only register which can be fetched byte-wise <u>and</u> used in an indirect jump -- HL should be used for W, Forth's all-purpose working register.
 
-IX and IY might be considered for the Forth stack pointers, because of their indexed addressing mode, which can be used in ALU operations. But there are two problems with this: it leaves SP without a job; and, IX/IY are too slow\! Most of the operations on either stack involve pushing or popping 16-bit quantities. This is one instruction using SP, but it requires <span class="underline">four</span> using IX or IY. One of the Forth stacks should use SP. And this should be the Parameter Stack, since it is used more heavily than the Return Stack.
+IX and IY might be considered for the Forth stack pointers, because of their indexed addressing mode, which can be used in ALU operations. But there are two problems with this: it leaves SP without a job; and, IX/IY are too slow\! Most of the operations on either stack involve pushing or popping 16-bit quantities. This is one instruction using SP, but it requires <u>four</u> using IX or IY. One of the Forth stacks should use SP. And this should be the Parameter Stack, since it is used more heavily than the Return Stack.
 
 What about Forth's IP? Mostly, IP fetches from memory and autoincrements, so there's no programming advantage to using IX/IY over BC/DE. But speed is of the essence with IP, and BC/DE are faster. Let's put IP in DE: it has the advantage of being able to swap with HL, which adds versatility.
 
-A second Z80 register pair (other than W) will be needed for 16- bit arithmetic. Only BC is left, and it can be used for addressing <span class="underline">or</span> for ALU operations with A. But should BC be a second working register "X", or the top-of-stack? Only code will tell; for now, let's optimistically assume that BC=TOS.
+A second Z80 register pair (other than W) will be needed for 16- bit arithmetic. Only BC is left, and it can be used for addressing <u>or</u> for ALU operations with A. But should BC be a second working register "X", or the top-of-stack? Only code will tell; for now, let's optimistically assume that BC=TOS.
 
 This leaves the RSP and UP functions, and the IX and IY registers unused. IX and IY are equivalent, so let's assign IX=RSP, and IY=UP.
 
 Thus the Z80 Forth register assignments are:
 
 ```
-   BC = TOS   IX = RSP
-   DE = IP    IY = UP
-   HL = W     SP = PSP
+BC = TOS   IX = RSP
+DE = IP    IY = UP
+HL = W     SP = PSP
 ```
 
 Now look at NEXT for the DTC Forth:
@@ -375,7 +379,7 @@ ITC-NEXT: LD A,(BC) (7) (IP)->W, increment IP
           JP (HL)   (4)  
 ```
 
-This leaves "W" incremented by one, and in the DE register. As long as this is done <span class="underline">consistently</span>, there's no problem -- code needing the contents of W knows where to find it, and how much to adjust it.
+This leaves "W" incremented by one, and in the DE register. As long as this is done <u>consistently</u>, there's no problem -- code needing the contents of W knows where to find it, and how much to adjust it.
 
 The ITC NEXT is 11 instructions, as compared to 7 for DTC. And ITC on the Z80 loses the ability to keep TOS in a register. My choice is DTC.
 
@@ -426,7 +430,7 @@ ENTER:  DEC IX      (10) push the old IP on the return stack
 
 Again, because of the alternate entry point for NEXT, the new value for IP doesn't actually have to be put into the DE register pair.
 
-The CALL version is one cycle faster. On an embedded Z80, a one- byte RST instruction could be used to gain speed <span class="underline">and</span> save space. This option is not available on many Z80-based personal computers.
+The CALL version is one cycle faster. On an embedded Z80, a one- byte RST instruction could be used to gain speed <u>and</u> save space. This option is not available on many Z80-based personal computers.
 
 ## CASE STUDY 4: THE 8086
 
@@ -435,10 +439,10 @@ The 8086 is another instructive CPU. Rather than go through the design process, 
 Pygmy is a direct-threaded Forth with the top-of-stack kept in register. The 8086 register assignments are:
 
 ```
-   AX = W         DI = scratch
-   BX = TOS       SI = IP
-   CX = scratch   BP = RSP
-   DX = scratch   SP = PSP
+AX = W         DI = scratch
+BX = TOS       SI = IP
+CX = scratch   BP = RSP
+DX = scratch   SP = PSP
 ```
 
 Most 8086 Forths use the SI register for IP, so that NEXT can be written with the LODSW instruction. In Pygmy the DTC NEXT is:
@@ -472,7 +476,7 @@ EXIT:   XCHG SP,BP
 
 ### Segment model
 
-Pygmy Forth is a single-segment Forth; all code and data are contained within a single 64 Kbyte segment. (This is the "tiny model" in Turbo C lingo) All of the Forth standards issued to date assume that everything is contained in a single memory space, accessible with the same fetch and store operators.
+Pygmy Forth is a single-segment Forth; all code and data are contained within a single 64 kByte segment. (This is the "tiny model" in Turbo C lingo) All of the Forth standards issued to date assume that everything is contained in a single memory space, accessible with the same fetch and store operators.
 
 Nevertheless, IBM PC Forths are beginning to appear that use multiple segments for up to five different kinds of data \[KEL92,SEY89\]. These are:
 
@@ -497,18 +501,18 @@ Subsequent articles will look at:
 
 ## REFERENCES
 
-\[KEL92\] Kelly, Guy M., "Forth Systems Comparisons," Forth Dimensions XIII:6 (Mar/Apr 1992). Also published in the <span class="underline">1991 FORML Conference Proceedings</span>. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design tradeoffs of many 8086 Forths with code fragments and benchmarks -- highly recommended\!
+\[KEL92\] Kelly, Guy M., "Forth Systems Comparisons," Forth Dimensions XIII:6 (Mar/Apr 1992). Also published in the <u>1991 FORML Conference Proceedings</u>. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design tradeoffs of many 8086 Forths with code fragments and benchmarks -- highly recommended\!
 
-\[MOT83\] Motorola Inc., <span class="underline">8-Bit Microprocessor and Peripheral Data</span>, Motorola data book (1983).
+\[MOT83\] Motorola Inc., <u>8-Bit Microprocessor and Peripheral Data</u>, Motorola data book (1983).
 
-\[SIG92\] Signetics Inc., <span class="underline">80C51-Based 8-Bit Microcontrollers</span>, Signetics data book (1992).
+\[SIG92\] Signetics Inc., <u>80C51-Based 8-Bit Microcontrollers</u>, Signetics data book (1992).
 
 ### Forth Implementations
 
-\[PAY90\] Payne, William H., <span class="underline">Embedded Controller FORTH for the 8051 Family</span>, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. Hardcopy only; files can be downloaded from GEnie. Not for the novice\!
+\[PAY90\] Payne, William H., <u>Embedded Controller FORTH for the 8051 Family</u>, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. Hardcopy only; files can be downloaded from GEnie. Not for the novice\!
 
-\[SER90\] Sergeant, Frank, <span class="underline">Pygmy Forth for the IBM PC</span>, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain.
+\[SER90\] Sergeant, Frank, <u>Pygmy Forth for the IBM PC</u>, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain.
 
-\[SEY89\] Seywerd, H., Elehew, W. R., and Caven, P., <span class="underline">LOVE-83Forth for the IBM PC</span>, version 1.20 (1989). A shareware Forth using a five-segment model. Contact Seywerd Associates, 265 Scarboro Cres., Scarborough, Ontario M1M 2J7 Canada.
+\[SEY89\] Seywerd, H., Elehew, W. R., and Caven, P., <u>LOVE-83Forth for the IBM PC</u>, version 1.20 (1989). A shareware Forth using a five-segment model. Contact Seywerd Associates, 265 Scarboro Cres., Scarborough, Ontario M1M 2J7 Canada.
 
 *Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group FTP server, <ftp://ftp.forth.org/pub/Forth>.*

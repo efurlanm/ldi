@@ -80,13 +80,13 @@ Differences in cell size and word alignment are managed by the ANS Forth words *
 The words **COMPILE, \!CF ,CF \!COLON** and **,EXIT** hide peculiarities of the threading model, such as a) how are the threads represented, and b) how is the Code Field implemented? The value of these words becomes evident when you look at the differences between the direct-threaded Z80 and the subroutine-threaded 8051:
 
 ```
- word     compiles on Z80   compiles on 8051
-
- COMPILE, address           LCALL address
- !CF      CALL address      LCALL address
- ,CF      !CF & allot       3 bytes !CF & allot 3 bytes
- !COLON   CALL docolon      nothing!
- ,EXIT    address of EXIT   RET
+word     compiles on Z80   compiles on 8051
+-------- ----------------- ---------------------------
+COMPILE, address           LCALL address
+!CF      CALL address      LCALL address
+,CF      !CF & allot       3 bytes !CF & allot 3 bytes
+!COLON   CALL docolon      nothing!
+,EXIT    address of EXIT   RET
 ```
 
 (**\!CF** and **,CF** are different for indirect-threaded Forths.)
@@ -103,15 +103,15 @@ I will probably present the 8051 kernel, and talk about how the Forth compiler a
 
 ## REFERENCES
 
-1. Derick, Mitch and Baker, Linda, <span class="underline">Forth Encyclopedia</span>, Mountain View Press, Route 2 Box 429, La Honda, CA 94020 USA (1982). Word-by-word description of Fig-Forth.
+1. Derick, Mitch and Baker, Linda, <u>Forth Encyclopedia</u>, Mountain View Press, Route 2 Box 429, La Honda, CA 94020 USA (1982). Word-by-word description of Fig-Forth.
 
-2. Ting, C. H., <span class="underline">Systems Guide to fig-Forth</span>, Offete Enterprises, 1306 South B Street, San Mateo, CA 94402 USA (1981).
+2. Ting, C. H., <u>Systems Guide to fig-Forth</u>, Offete Enterprises, 1306 South B Street, San Mateo, CA 94402 USA (1981).
 
-3. Ting, C. H., <span class="underline">Inside F83</span>, Offete Enterprises (1986).
+3. Ting, C. H., <u>Inside F83</u>, Offete Enterprises (1986).
 
-4. Ewing, Martin S., <span class="underline">The Caltech Forth Manual</span>, a Technical Report of the Owens Valley Radio Observatory (1978). This PDP-11 Forth stored a length, four characters, and a link in two 16-bit words.
+4. Ewing, Martin S., <u>The Caltech Forth Manual</u>, a Technical Report of the Owens Valley Radio Observatory (1978). This PDP-11 Forth stored a length, four characters, and a link in two 16-bit words.
 
-5. Sergeant, Frank, <span class="underline">Pygmy Forth for the IBM PC</span>, version 1.4 (1992). Distributed by the author, available from the Forth Interest Group (P.O. Box 2154, Oakland CA 94621 USA) or on GEnie.
+5. Sergeant, Frank, <u>Pygmy Forth for the IBM PC</u>, version 1.4 (1992). Distributed by the author, available from the Forth Interest Group (P.O. Box 2154, Oakland CA 94621 USA) or on GEnie.
 
 6. J. E. Thomas examined this issue thoroughly when converting Pygmy Forth to an ANSI Forth. No matter what tricks you play with relinking words, strict ANSI compliance is violated. A regrettable decision on the part of the ANS Forth team.
 
@@ -121,50 +121,56 @@ The source code for Z80 CamelForth is *now* available on GEnie as CAMEL80.ARC in
 
 *Source code for Z80 CamelForth is available on this site at <http://www.camelforth.com/public_ftp/cam80-12.zip>.*
 
-## <span id="FIGURE1"></span>FIGURE 1. Z80 CP/M CAMELFORTH MEMORY MAP
+<span id="FIGURE1"></span>
+
+## FIGURE 1. Z80 CP/M CAMELFORTH MEMORY MAP
 
 assuming CP/M BDOS starts at ED00 hex.
 
-    0000 +-----------------------+
-         |      CP/M stuff       |
-    0080 +-----------------------+
-         | Terminal Input Buffer |
-         |                       |
-    0100 +-----------------------+
-         |                       |
-         | CamelForth Z80 kernel |
-         |                       |
-    1700 +-----------------------+
-         | User definitions      |
-         |                       |
-         |                       |   / EB00 reserved     
-         ~~~~~~~~~~~~~~~~~~~~~~~~~  /  EB02 >IN          
-         |                       | /   EB04 BASE         
-    EB00 +-----------------------+/    EB06 STATE        
-         | User Area             |     EB08 DP           
-         |                       |\    EB0A,EB0C 'SOURCE
-         |                       | \   EB0E LATEST       
-         |       Parameter Stack |  \  EB10 HP           
-    EC00 +-----------------------+   \ EB12 LP           
-         |                       |
-         |   HOLD working buffer |
-    EC28 +-----------------------+
-         | PAD buffer            |
-         |                       |
-    EC80 +-----------------------+
-         | Leave stack*          |
-         |                       |
-         |                       |
-         |          Return stack |
-    ED00 +-----------------------+
-         |                       |
-         |         CP/M          |
-         |                       |
-    FFFF +-----------------------+
+```
+0000 +-----------------------+
+     |      CP/M stuff       |
+0080 +-----------------------+
+     | Terminal Input Buffer |
+     |                       |
+0100 +-----------------------+
+     |                       |
+     | CamelForth Z80 kernel |
+     |                       |
+1700 +-----------------------+
+     | User definitions      |
+     |                       |
+     |                       |   / EB00 reserved
+     ~~~~~~~~~~~~~~~~~~~~~~~~~  /  EB02 >IN
+     |                       | /   EB04 BASE
+EB00 +-----------------------+/    EB06 STATE
+     | User Area             |     EB08 DP
+     |                       |\    EB0A,EB0C 'SOURCE
+     |                       | \   EB0E LATEST
+     |       Parameter Stack |  \  EB10 HP
+EC00 +-----------------------+   \ EB12 LP
+     |                       |
+     |   HOLD working buffer |
+EC28 +-----------------------+
+     | PAD buffer            |
+     |                       |
+EC80 +-----------------------+
+     | Leave stack*          |
+     |                       |
+     |                       |
+     |          Return stack |
+ED00 +-----------------------+
+     |                       |
+     |         CP/M          |
+     |                       |
+FFFF +-----------------------+
+```
 
 \* used during compilation of DO..LOOPs.
 
-## <span id="FIGURE2"></span>FIGURE 2. HEADER STRUCTURES
+<span id="FIGURE2"></span>
+
+## FIGURE 2. HEADER STRUCTURES
 
 ```
     CamelForth        Fig-Forth          Pygmy Forth            F83

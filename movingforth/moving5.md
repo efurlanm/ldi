@@ -48,15 +48,19 @@ With this set of primitives you can begin writing Forth code. Sure, you have to 
 
 I've run out of abstractions for today. If you want to learn more about how a Forth kernel works and is written, study Listing 2 [camel80.txt](camel80.txt). It follows the Forth convention for documentation:
 
+```forth
     WORD-NAME    stack in -- stack out    description
+```
 
-<span class="underline">WORD-NAME</span> is the name by which *Forth* knows the word. Often these names include peculiar ASCII characters, so an approximation must be used when defining assembler labels (such as ONEPLUS for the Forth word 1+).
+<u>WORD-NAME</u> is the name by which *Forth* knows the word. Often these names include peculiar ASCII characters, so an approximation must be used when defining assembler labels (such as ONEPLUS for the Forth word 1+).
 
-<span class="underline">stack in</span> are the arguments this word expects to see on the stack, with the topmost stack item always on the right. <span class="underline">stack out</span> are the arguments this word will leave on the stack, likewise.
+<u>stack in</u> are the arguments this word expects to see on the stack, with the topmost stack item always on the right. <u>stack out</u> are the arguments this word will leave on the stack, likewise.
 
 If the word has a return stack effect (other than nesting, that is), an additional return stack comment will be added after "R:"
 
-    stack in -- stack out    R: stack in -- stack out 
+```forth
+    stack in -- stack out    R: stack in -- stack out
+```
 
 ANSI Forth defines a number of useful abbreviations for stack arguments, such as "n" for a signed single-cell number, "u" for an unsigned single-cell number, "c" for a character, and so on. See Table 1 [glosslo.txt](glosslo.txt).
 
@@ -64,7 +68,7 @@ ANSI Forth defines a number of useful abbreviations for stack arguments, such as
 
 \[1\] Definition of a camel: a horse designed by committee.
 
-\[2\] Ting, C. H., <span class="underline">eForth Implementation Guide</span>, July 1990, available from Offete Enterprises, 1306 South B Stret, San Mateo, CA 94402 USA.
+\[2\] Ting, C. H., <u>eForth Implementation Guide</u>, July 1990, available from Offete Enterprises, 1306 South B Stret, San Mateo, CA 94402 USA.
 
 \[3\] Z80MR, a Z80 Macro Assembler by Mike Rubenstein, is public-domain, available on the GEnie CP/M Roundtable as file Z80MR-A.LBR. Warning: do *not* use the supplied Z1.COM program, use only Z80MR and LOAD. Z1 has a problem with conditional jumps.
 

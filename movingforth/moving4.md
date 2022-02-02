@@ -26,7 +26,7 @@ MAX2: DW DROP,SEMIS
 
 Later, as working Forth systems became widespread, Forthwrights began modifying the Forth compilers into cross-compilers \[CAS80\]. Thus with Forth on your CP/M machine (or Apple II, or whatever), you could write Forth programs for some other CPU...up to and including an entirely new Forth system for that CPU.
 
-Because they create a new Forth from within Forth, these are often called metacompilers. Computer science purists object to this, so some Forthies use the terms "cross-compiler" and "recompiler." The difference is that a recompiler can only generate a new Forth for the <span class="underline">same</span> CPU.
+Because they create a new Forth from within Forth, these are often called metacompilers. Computer science purists object to this, so some Forthies use the terms "cross-compiler" and "recompiler." The difference is that a recompiler can only generate a new Forth for the <u>same</u> CPU.
 
 Most PC Forths are now produced with metacompilers, but opinion is divided in the embedded systems arena \[TIN91,ROD91,SER91\]. The arguments for using assemblers to write Forth are:
 
@@ -47,9 +47,9 @@ The arguments for metacompilers:
 
 The last is particularly applicable to those who don't own PCs, since most cross-assemblers require PCs or workstations these days.
 
-I've written several Forths each way, so I'm painfully aware of the tradeoffs. I admit a preference for metacompilers: I find the Forth code for MAX much easier to read and understand than its assembler equivalent. Most of the arguments against metacompilers have been overcome by modern "professional" compilers, and if you're using Forth for work I <span class="underline">strongly</span> recommend investing in a commercial product. Alas, public-domain metacompilers (including my own) are still behind the times, clunky, and arcane.
+I've written several Forths each way, so I'm painfully aware of the tradeoffs. I admit a preference for metacompilers: I find the Forth code for MAX much easier to read and understand than its assembler equivalent. Most of the arguments against metacompilers have been overcome by modern "professional" compilers, and if you're using Forth for work I <u>strongly</u> recommend investing in a commercial product. Alas, public-domain metacompilers (including my own) are still behind the times, clunky, and arcane.
 
-So I'm going to take a radical position for a Forth programmer, and tell you to <span class="underline">choose for yourself</span>. I'll publish the 6809 code in metacompiler form, and I'll supply a metacompiler for F83 (IBM PC, CP/M, or Atari ST) \[ROD92\]. The Z80 code will be written for a CP/M assembler. The 8051 code will be written for a public- domain PC cross-assembler.
+So I'm going to take a radical position for a Forth programmer, and tell you to <u>choose for yourself</u>. I'll publish the 6809 code in metacompiler form, and I'll supply a metacompiler for F83 (IBM PC, CP/M, or Atari ST) \[ROD92\]. The Z80 code will be written for a CP/M assembler. The 8051 code will be written for a public- domain PC cross-assembler.
 
 **Forth in C?**
 
@@ -65,16 +65,20 @@ But for Unix systems and RISC workstations, which frown upon assembler, this may
 
 To continue the previous comparison, here's the definition of MAX from HENCE4TH \[MIS90\]. I omit the dictionary headers for clarity:
 
-    _max() { 
-        OVER  OVER  LESS IF  SWAP  ENDIF  DROP }
+```c
+_max() {
+    OVER  OVER  LESS IF  SWAP  ENDIF  DROP }
+```
 
 Instead of assembler, C is used to write the CODE words in the kernel. For example, here is HENCE4TH's SWAP:
 
-    _swap() { 
-        register cell i = *(dsp);
-        *(dsp) = *(dsp + 1);
-        *(dsp + 1) = i;
-    }
+```c
+_swap() {
+    register cell i = *(dsp);
+    *(dsp) = *(dsp + 1);
+    *(dsp + 1) = i;
+}
+```
 
 (Please note: there is quite a variety of techniques for writing Forth words in C, so these words may appear radically different in CFORTH or TILE.)
 
@@ -82,9 +86,9 @@ On a 68000 or SPARC, this might produce quite good code. On a Z80 or 8051, quite
 
 **REFERENCES**
 
-\[CAS80\] Cassady, John J., <span class="underline">METAFORTH: A Metacompiler for Fig- Forth</span>, Forth Interest Group (1980).
+\[CAS80\] Cassady, John J., <u>METAFORTH: A Metacompiler for Fig- Forth</u>, Forth Interest Group (1980).
 
-\[MIS90\] <span class="underline">HenceFORTH in C</span>, Version 1.2, distributed by The Missing Link, 975 East Ave. Suite 112, Chico, CA 95926, USA (1990). This is a shareware product available from the GEnie Forth Roundtable.
+\[MIS90\] <u>HenceFORTH in C</u>, Version 1.2, distributed by The Missing Link, 975 East Ave. Suite 112, Chico, CA 95926, USA (1990). This is a shareware product available from the GEnie Forth Roundtable.
 
 \[ROD91\] Rodriguez, B.J., letter to the editor, Forth Dimensions XIII:3 (Sep/Oct 1991), p.5.
 
@@ -92,7 +96,7 @@ On a 68000 or SPARC, this might produce quite good code. On a Z80 or 8051, quite
 
 \[SER91\] Sergeant, Frank, "Metacompilation Made Easy," Forth Dimensions XII:6 (Mar/Apr 1991).
 
-\[TAL80\] Talbot, R.J., <span class="underline">fig-Forth for 6809</span>, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621 (1980).
+\[TAL80\] Talbot, R.J., <u>fig-Forth for 6809</u>, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621 (1980).
 
 \[TIN91\] Ting, C.H., "How Metacompilation Stops the Growth Rate of Forth Programmers," Forth Dimensions XIII:1 (May/Jun 1991), p.17.
 

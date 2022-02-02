@@ -12,13 +12,13 @@ Under the prodding of Our Esteemed Editor, I present CamelForth for the 8051. Ca
 In the file CAMEL80H.AZM, the definition of DO is given as
 
 ```
-  ['] xdo ,BRANCH  . . . 
+['] xdo ,BRANCH  . . .
 ```
 
 It should be
 
 ```
-  ['] xdo ,XT  . . . 
+['] xdo ,XT  . . .
 ```
 
 This is of no consequence on the Z80 (where ,BRANCH and ,XT are identical), but it became embarassingly obvious on the 8051.
@@ -89,21 +89,23 @@ Port 2 (P2) contains the high byte of the Parameter Stack Pointer (allowing R0 t
 
 I have a novel implementation of BRANCH and ?BRANCH. Since the 8051 model is subroutine-threaded, high-level Forth is compiled as true machine code. So BRANCH can be implemented with an SJMP (or AJMP or LJMP) instruction. ?BRANCH can be implemented with a JZ instruction, *if* the zero/nonzero status of the top-of-stack is put in the accumulator (A register). The subroutine ZEROSENSE does this. So, BRANCH and ?BRANCH become
 
-    BRANCH:   SJMP dest 
-    ?BRANCH:  LCALL ZEROSENSE JZ dest 
+```nasm
+BRANCH:   SJMP dest 
+?BRANCH:  LCALL ZEROSENSE JZ dest
+```
 
 Similar routines LOOPSENSE and PLUSLOOPSENSE allow a JZ instruction to be used for LOOP and +LOOP. For these, a call to UNLOOP must appear after the JZ, to clean up the Return Stack when the program "falls out" of the loop.
 
 In the assembly language source file I have manually replaced the sequence
 
-```
-  LCALL word   RET 
+```nasm
+LCALL word   RET
 ```
 
 with the shorter and faster
 
-```
-  LJMP word 
+```nasm
+LJMP word
 ```
 
 in many places \[CUR93\]. This works as long as "word" isn't a return-stack operator (such as R\> or \>R). LCALL and LJMP have also been replaced with ACALL and AJMP where possible. The CamelForth compiler does *not* attempt these optimizations.
@@ -157,21 +159,21 @@ The 8051 can't actually write to Program memory. There's no hardware signal for 
 
 These modifications to the CamelForth high-level code are intended to be portable to *either* Harvard or non-Harvard ("von Neumann") machines. For the latter, the new Program-space words are simply equated to their Data-space equivalents, e.g. on the Z80,
 
-IFETCH EQU FETCH  
-ISTORE EQU STORE  
-ITYPE EQU TYPE  
-etc.
+    IFETCH EQU FETCH  
+    ISTORE EQU STORE  
+    ITYPE EQU TYPE  
+    etc.
 
 In the next installment I shall modify the *8051* source code to work on the 6809...thus approaching a truly portable model by successive approximation.
 
 ## REFERENCES
 
-\[ANS93\] <span class="underline">dpANS-6 draft proposed American National Standard for Information Systems - Programming Languages - Forth</span>, June 30, 1993. "It is distributed solely for the purpose of review and comment and should not be used as a design document. It is inappropriate to claim compatibility with this draft standard." Nevertheless, for the last 16 months it's all we've had to go by.
+\[ANS93\] <u>dpANS-6 draft proposed American National Standard for Information Systems - Programming Languages - Forth</u>, June 30, 1993. "It is distributed solely for the purpose of review and comment and should not be used as a design document. It is inappropriate to claim compatibility with this draft standard." Nevertheless, for the last 16 months it's all we've had to go by.
 
 - http://www.forth.com/forth-books/
 
 - ftp://ftp.taygeta.com/pub/Forth/Literature/
 
-\[CUR93\] Curley, Charles, <span class="underline">Optimization Considerations</span>, Forth Dimensions XIV:5 (Jan/Feb 1993), pp. 6-12.
+\[CUR93\] Curley, Charles, <u>Optimization Considerations</u>, Forth Dimensions XIV:5 (Jan/Feb 1993), pp. 6-12.
 
 *Source code for 8051 CamelForth is available on this site at [http://www.camelforth.com/public\_ftp/cam51-15.zip](http://www.camelforth.com/public_ftp/cam80-12.zip).*
