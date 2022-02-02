@@ -43,18 +43,19 @@ Let's look at the definition of a Forth word SQUARE:
 : SQUARE  DUP * ;
 ```
 
-In a typical ITC Forth this would appear in memory as shown in Figure 1. (The **Header** Field will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
+In a typical ITC Forth this would appear in memory as shown in [Figure 1](#FIG01). (The **Header** Field will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
 
-<span id=FIG01>*Figure 1. Indirect Threaded Code*</span>
+<span id=FIG01></span>
+*Figure 1. Indirect Threaded Code*
 
-![Figure 1](img/mov1-1.svg)
+![](img/mov1-1.svg)
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's **Code Field** .) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
-<span id="FIG00">*NEXT (interpreter)*</span>
+*NEXT (interpreter)*
 
 <table>                
-<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register <br> ... W now holds address of the <i>Code Field</i>    </td></tr>
+<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register <br> ... W now holds address of the <b>Code Field</b>    </td></tr>
 <tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread)    </td></tr>
 <tr><td><nobr>    (W) -> X    </nobr></td><td>    fetch memory pointed by W into "X" register <br> ... X now holds address of the machine code    </td></tr>
 <tr><td><nobr>    JP (X)    </nobr></td><td>    jump to the address in the X register    </td></tr>
@@ -62,14 +63,15 @@ Assume SQUARE is encountered while executing some other Forth word. Forth's Inte
 
 This illustrates an important but rarely-elucidated principle: _the address of the Forth word just entered is kept in W._ CODE words don't need this information, but all other kinds of Forth words do.
 
-If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <abbr tittle="the word after SQUARE">_next_ word to be executed</abbr>. This is why the Forth interpreter is usually called NEXT.
+If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <abbr title="the word after SQUARE">_next_ word to be executed</abbr>. This is why the Forth interpreter is usually called NEXT.
 
 But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the **Parameter Field** of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth.) This is called DOCOLON or ENTER in various Forths:
 
+*ENTER*
+
 <table>                
-<caption>    ENTER            </caption>
 <tr><td><nobr>    PUSH IP    </nobr></td><td>    onto the "return address stack"    </td></tr>
-<tr><td><nobr>    W+2 -> IP    </nobr></td><td>    W still points to the Code Field, so W+2 is the address of the Body! (Assuming a 2-byte address -- other Forths may be different.)    </td></tr>
+<tr><td><nobr>    W+2 -> IP    </nobr></td><td>    W still points to the <b>Code Field</b>, so W+2 is the address of the Body! (Assuming a 2-byte address -- other Forths may be different.)    </td></tr>
 <tr><td><nobr>    JUMP    </nobr></td><td>    to interpreter ("NEXT")    </td></tr>
 </table>
 
@@ -77,8 +79,9 @@ This identical code fragment is used by all high-level (i.e., threaded) Forth de
 
 The "return from subroutine" is the word EXIT, which gets compiled when Forth sees ';'. (Some Forths call it ;S instead of EXIT.) EXIT just executes a machine language routine which does the following:
 
+*EXIT*
+
 <table>
-<caption>    EXIT            </caption>                
 <tr><td><nobr>    POP IP    </nobr></td><td>    from the "return address stack"    </td></tr>
 <tr><td><nobr>    JUMP    </nobr></td><td>    to interpreter    </td></tr>
 </table>
@@ -95,22 +98,20 @@ So when should ITC be used? Of the various techniques, ITC produces the cleanest
 
 Direct Threaded Code differs from ITC in only one respect: instead of the Code Field containing the address of some machine code, _the Code Field contains actual machine code itself._
 
-I'm not saying that the complete code for ENTER is contained in each and every colon definition\! In "high-level" Forth words, the Code Field will contain _a subroutine call_, as shown in Figure 2. Colon definitions, for instance, will contain a call to the ENTER routine.
+I'm not saying that the complete code for ENTER is contained in each and every colon definition\! In "high-level" Forth words, the Code Field will contain _a subroutine call_, as shown in [Figure 2](#FIG02). Colon definitions, for instance, will contain a call to the ENTER routine.
 
-<figure>
-<figcaption><br>Figure 2. Direct Threaded Code<br><br></figcaption>
-<img src="img/mov1-2.svg" alt="Figure 2. Direct Threaded Code">
-</figure><br>
+<span id=FIG02></span>
+*Figure 2. Direct Threaded Code*
+
+![](img/mov1-2.svg)
 
 The NEXT pseudo-code for direct threading is simply:
 
-<div>
 <table>                
 <tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register    </td></tr>
 <tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP (assuming 2-byte addresses)    </td></tr>
 <tr><td><nobr>    JP (W)    </nobr></td><td>    jump to the address in the W register    </td></tr>
 </table>                
-</div>
 
 This gains speed: the interpreter now performs only a _single_ indirection. On the Z80 this reduces the NEXT routine -- the most-used code fragment in the Forth kernel -- from eleven instructions to seven\!
 
@@ -140,12 +141,12 @@ SQUARE: CALL DUP
         RET
 ```
 
-See Figure 3. This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers [[KOG82]](#KOG82).
+See [Figure 3](#FIG03). This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers [[KOG82]](#KOG82).
 
-<figure>
-<figcaption><br>Figure 3. Subroutine Threaded Code<br><br></figcaption>
-<img src="img/mov1-3.svg" alt="Figure 3. Subroutine Threaded Code">
-</figure><br>
+<span id=FIG03></span>
+*Figure 3. Subroutine Threaded Code*
+
+![](img/mov1-3.svg)
 
 STC is an elegant representation; colon definitions and CODE words are now identical. "Defined words" (VARIABLEs, CONSTANTs, and the like) are handled the same as in DTC -- the Code Field begins with a jump or call to some machine code elsewhere.
 
@@ -201,12 +202,12 @@ DTC and STC aim to improve the speed of Forth programs, at some cost in memory. 
 
 The purpose of a Forth thread is to specify a list of Forth words (subroutines) to be performed. Suppose a 16-bit Forth system only had a maximum of 256 different words. Then each word could be uniquely identified by an 8-bit number. Instead of a list of 16-bit addresses, you would have a list of 8-bit identifiers or "tokens," and the size of the colon definitions would be halved\!
 
-A token-threaded Forth keeps a table of addresses of all Forth words, as shown in Figure 4. The token value is then used to index into this table, to find the Forth word corresponding to a given token. This _adds_ one level of indirection to the Forth interpreter, so it is slower than an "address-threaded" Forth.
+A token-threaded Forth keeps a table of addresses of all Forth words, as shown in [Figure 4](#FIG04). The token value is then used to index into this table, to find the Forth word corresponding to a given token. This _adds_ one level of indirection to the Forth interpreter, so it is slower than an "address-threaded" Forth.
 
-<figure>
-<figcaption><br>Figure 4. Token Threaded Code<br><br></figcaption>
-<img src="img/mov1-4.svg" alt="Figure 4. Token Threaded Code">
-</figure><br>
+<span id=FIG04></span>
+*Figure 4. Token Threaded Code*
+
+![](img/mov1-4.svg)
 
 The principal advantage of token-threaded Forths is small size. TTC is most commonly seen in handheld computers and other severely size-constrained applications. Also, the table of "entry points" into all the Forth words can simplify linkage of separately-compiled modules.
 
@@ -297,10 +298,9 @@ Here are the register assignments made by Forths for a number of different CPUs.
 <!-- Do not edit this table. It is created in Libreoffice using a 
 template (see the aux directory). -->
 
-<!-- ---------------start-------------------- -->
+*Register Assignments*
 
-<table id="T5">                
-<caption> Register Assignments               </caption>
+<table>                
 <thead>                
 <tr><th>  </th><th> W </th><th> IP </th><th> PSP </th><th> RSP </th><th> UP </th><th> TOS </th><th>  </th></tr>
 </thead>                
@@ -317,7 +317,7 @@ template (see the aux directory). -->
 </tbody>                
 <tfoot><tr><td colspan="8"> <sup>[1]</sup>F83.   <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
 </table>                
-<!-- ---------------end---------------------- -->
+
 
 "SP" refers to the hardware stack pointer. "Zpage" refers to values kept in the 6502's memory page zero, which are almost as useful as -- sometimes more useful than -- values kept in registers; e.g., they can be used for memory addressing. "Fixed" means that Payne's 8051 Forth has a single, immovable user area, and UP is a hard-coded constant.
 
@@ -357,7 +357,7 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 ### Forth Implementations
 
-<span id="CUR86">[CUR86]</span> Curley, Charles, _real-Forth for the 68000_, <s>privately distributed (1986)</s>. [[1]](http://github.com/charlescurley/realforth)
+<span id="CUR86">[CUR86]</span> Curley, Charles, _real-Forth for the 68000_, ~~privately distributed (1986)~~. [[1]](http://github.com/charlescurley/realforth)
 
 <span id="JAM80">[JAM80]</span> James, John S., _fig-Forth for the PDP-11_, Forth Interest Group (1980). [[1]](http://www.forth.org/fig-forth/contents.html) [[2]](http://www.stackosaurus.com/figforth.html)
 
@@ -369,10 +369,10 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 <span id="MPE92">[MPE92]</span> MicroProcessor Engineering Ltd., _MPE Z8/Super8 PowerForth Target_, MPE Ltd., 133 Hill Lane, Shirley, Southampton, S01 5AF, U.K. (June 1992). A commercial product. [[1]](https://www.mpeforth.com/)
 
-<span id="PAY90">[PAY90]</span> Payne, William H., _Embedded Controller FORTH for the 8051 Family_, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. <s>Hardcopy only; files can be downloaded from GEnie</s>. Not for the novice\! [[1]](http://archive.org/details/WilliamH.PayneAuth.EmbeddedControllerFORTHForThe8051FamilyBostonAcademicPress1990) [[2]](ref/Embedded_Controller_FORTH_for_the_8051_Family_-_Payne.pdf)
+<span id="PAY90">[PAY90]</span> Payne, William H., _Embedded Controller FORTH for the 8051 Family_, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. ~~Hardcopy only; files can be downloaded from GEnie~~. Not for the novice\! [[1]](http://archive.org/details/WilliamH.PayneAuth.EmbeddedControllerFORTHForThe8051FamilyBostonAcademicPress1990) [[2]](ref/Embedded_Controller_FORTH_for_the_8051_Family_-_Payne.pdf)
 
 <span id="SER90">[SER90]</span> Sergeant, Frank, _Pygmy Forth for the IBM PC_, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain. [[1]](https://github.com/utoh/pygmy-forth)
 
 <span id="TAL80">[TAL80]</span> Talbot, R. J., _fig-Forth for the 6809_, Forth Interest Group (1980). [[1]](http://www.forth.org/fig-forth/contents.html)
 
-*Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group <s>FTP</s> server, <s>ftp://ftp.forth.org/pub/Forth</s> http://www.forth.org/ .*
+*Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group ~~FTP~~ server, ~~ftp://ftp.forth.org/pub/Forth~~ http://www.forth.org/ .*
