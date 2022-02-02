@@ -51,37 +51,14 @@ In a typical ITC Forth this would appear in memory as shown in Figure 1. (The **
 
 Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's **Code Field** .) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
-<table>                
-<caption>    NEXT (interpreter)            </caption>
-<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register <br> ... W now holds address of the Code Field  </td></tr>
-<tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread)    </td></tr>
-<tr><td><nobr>    (W) -> X    </nobr></td><td>    fetch memory pointed by W into "X" register <br> ... X now holds address of the machine code    </td></tr>
-<tr><td><nobr>    JP (X)    </nobr></td><td>    jump to the address in the X register    </td></tr>
-</table>
-
-xxxx
-
-*NEXT (interpreter)*
-
-|            |                                                                                              |
-| ---------- | -------------------------------------------------------------------------------------------- |
-| (IP) -> W  | fetch memory pointed by IP into "W" register <br> ... W now holds address of the Code Field  |
-| IP+2 -> IP | advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread)       |
-| (W) -> X   | fetch memory pointed by W into "X" register <br> ... X now holds address of the machine code |
-| JP (X)     | jump to the address in the X register                                                        |
-
-xxxx
-
 <span id="FIG00">*NEXT (interpreter)*</span>
 
 <table>                
-<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register <br> ... W now holds address of the <font color="#BF0041">Code Field</font>    </td></tr>
+<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register <br> ... W now holds address of the <i>Code Field</i>    </td></tr>
 <tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread)    </td></tr>
 <tr><td><nobr>    (W) -> X    </nobr></td><td>    fetch memory pointed by W into "X" register <br> ... X now holds address of the machine code    </td></tr>
 <tr><td><nobr>    JP (X)    </nobr></td><td>    jump to the address in the X register    </td></tr>
 </table>
-
-xxx
 
 This illustrates an important but rarely-elucidated principle: _the address of the Forth word just entered is kept in W._ CODE words don't need this information, but all other kinds of Forth words do.
 
