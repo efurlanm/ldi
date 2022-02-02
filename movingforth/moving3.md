@@ -117,7 +117,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Figure 1. An ITC Forth word
 
-![Fig.1 An ITC Forth Word](img/mov3-1.gif)
+![Fig.1 An ITC Forth Word](img/mov3-1.svg)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
