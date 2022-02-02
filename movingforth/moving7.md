@@ -148,12 +148,10 @@ Since ." strings can never be accessed by the programmer, they *can* be stored i
 
 The 8051 can't actually write to Program memory. There's no hardware signal for this, and no machine instruction. Under these circumstances, the CamelForth *interpreter* will work, but new words can't be compiled. You can get around this by causing some memory to appear in *both* Program and Data space. [Figure 1](#FIG01) shows the modification to my board, an MCB8031 from Blue Ridge Micros (2505 Plymouth Road, Johnson City, TN, 37601, USA, telephone 615-335-6696, fax 615-929-3164). U1A and U1B create a new read strobe which is active for *either* a Program or Data fetch. EPROM is selected only when A15 is low (lower 32K), and RAM when A15 is high (upper 32K). You still can't write to EPROM, of course, but you *can* execute programs out of RAM\! One disadvantage: this makes @ and I@ equivalent, so it's not immediately obvious if the wrong one was used somewhere.
 
-<div id="FIG01">
-<figure>
-<figcaption><p>Figure 1</p></figcaption>
-<img src="img/mov7-1.svg">
-</figure>
-</div>
+<span id="FIG01"></span>
+*Figure 1*
+
+![Figure 1](img/mov7-1.svg)
 
 ## NEXT ISSUE...
 
