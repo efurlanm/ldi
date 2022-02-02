@@ -406,7 +406,13 @@ Row 1 | row 2
 |Bar  |101  |
 
 
- <span> |
+|       |       |
+| ----- | ----- |
+| Foo   | 37    |
+| Bar   | 101   |
+
+
+        |
 ---     |    ---
 Value   |  Value
 Value   |  Value
