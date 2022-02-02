@@ -108,10 +108,10 @@ Forthwrights are somewhat inconsistent in their terminology, so I'll define my t
 
 <div id="FIG01">
 <figure>
-<figcaption><p style="color:red">Figure 1. An ITC Forth word</p></figcaption>
+<figcaption><span style="color:red;font-size:smaller;"><p>Figure 1. An ITC Forth word</p></span></figcaption>
 <img src="img/mov3-1.svg">
 </figure>
-</div></br>
+</div><br>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
