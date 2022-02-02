@@ -59,6 +59,19 @@ Assume SQUARE is encountered while executing some other Forth word. Forth's Inte
 <tr><td><nobr>    JP (X)    </nobr></td><td>    jump to the address in the X register    </td></tr>
 </table>
 
+xxxx
+
+*NEXT (interpreter)*
+
+|||
+|---|---|
+| (IP) -> W  | fetch memory pointed by IP into "W" register <br> ... W now holds address of the Code Field |
+| IP+2 -> IP | advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread) |
+| (W) -> X   | fetch memory pointed by W into "X" register <br> ... X now holds address of the machine code |
+| JP (X)     | jump to the address in the X register |
+
+xxxx
+
 This illustrates an important but rarely-elucidated principle: _the address of the Forth word just entered is kept in W._ CODE words don't need this information, but all other kinds of Forth words do.
 
 If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <abbr tittle="the word after SQUARE">_next_ word to be executed</abbr>. This is why the Forth interpreter is usually called NEXT.
@@ -376,24 +389,3 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 *Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group <s>FTP</s> server, <s>ftp://ftp.forth.org/pub/Forth</s> http://www.forth.org/ .*
 
-
-
-
-|||
-|---|---:|
-| **Name:**     | John Doe |
-| **Position:** | CEO      |
-
-xxxxx
-
-|||
-|--- |---|
-|Foo |37   |
-|Bar |101  |
-
-xxxxx
-
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
