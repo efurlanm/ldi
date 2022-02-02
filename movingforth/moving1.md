@@ -420,12 +420,19 @@ xxxx
 | ------------- | ------------- |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
+
+xxxx
+
         |
 ---     |    ---
 Value   |  Value
 Value   |  Value
 
+xxx
+
 | Left-aligned | Center-aligned | Right-aligned |
 | :---         |     :---:      |          ---: |
 | git status   | git status     | git status    |
 | git diff     | git diff       | git diff      |
+
+xxx
