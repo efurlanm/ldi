@@ -116,6 +116,7 @@ Forthwrights are somewhat inconsistent in their terminology, so I'll define my t
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 Figure 1. An ITC Forth word
+
 ![Fig.1 An ITC Forth Word](img/mov3-1.gif)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
