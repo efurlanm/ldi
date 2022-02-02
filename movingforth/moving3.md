@@ -106,12 +106,12 @@ To understand the mechanism of the Code Field, and how parameters are passed, we
 
 Forthwrights are somewhat inconsistent in their terminology, so I'll define my terms, using the ITC Forth word illustrated in Figure 1. The Header contains the dictionary information, and isn't involved in the execution of the Forth word. The Body is the "working" part of the word, and consists of the fixed-length Code Field, and the variable-length Parameter Field. For any given word, the locations of these two fields in memory are the Code Field Address (CFA) and the Parameter Field Address (PFA), respectively. <u>The Code Field Address of a word is the address in memory where its Code Field is located.</u> This is <u>not</u> to be confused with the <u>contents</u> of the Code Field, which, in ITC Forths, is another different address. To be specific, the contents of the Code Field is the address of a fragment of machine code somewhere else in memory. I will refer to this as the Code Address. Later, when in discussing DTC and STC Forths, I will also refer to the "Code Field contents," which will include more than just the Code Address.
 
-<div id="FIG01">
+<div id="FIG01"><small><center>
 <figure>
-<figcaption>Figure 1. An ITC Forth word</br></figcaption>
+<figcaption><p>Figure 1. An ITC Forth word</p></figcaption>
 <img src="img/mov3-1.svg">
-</figure>
-</div></br>
+</figure></br></small></center>
+</div>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
