@@ -43,14 +43,13 @@ Let's look at the definition of a Forth word SQUARE:
 : SQUARE  DUP * ;
 ```
 
-In a typical ITC Forth this would appear in memory as shown in Figure 1. (The <b>Header</b> Field will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
+In a typical ITC Forth this would appear in memory as shown in Figure 1. (The **Header** Field will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
 
-<figure>
-<figcaption><br>Figure 1. Indirect Threaded Code<br><br></figcaption>
-<img src="img/mov1-1.svg" alt="Figure 1. Indirect Threaded Code">
-</figure><br>
+<span id=FIG01>*Figure 1. Indirect Threaded Code*</span>
 
-Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's <b>Code Field</b> .) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
+![Figure 1](img/mov1-1.svg)
+
+Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's **Code Field** .) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
 <table>                
 <caption>    NEXT (interpreter)            </caption>
@@ -64,7 +63,7 @@ This illustrates an important but rarely-elucidated principle: _the address of t
 
 If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <abbr tittle="the word after SQUARE">_next_ word to be executed</abbr>. This is why the Forth interpreter is usually called NEXT.
 
-But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the <b>Parameter Field</b> of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth.) This is called DOCOLON or ENTER in various Forths:
+But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the **Parameter Field** of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth.) This is called DOCOLON or ENTER in various Forths:
 
 <table>                
 <caption>    ENTER            </caption>
@@ -376,3 +375,39 @@ On the 8086 you could conceivably use a segment register to specify the base add
 <span id="TAL80">[TAL80]</span> Talbot, R. J., _fig-Forth for the 6809_, Forth Interest Group (1980). [[1]](http://www.forth.org/fig-forth/contents.html)
 
 *Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group <s>FTP</s> server, <s>ftp://ftp.forth.org/pub/Forth</s> http://www.forth.org/ .*
+
+
+| <!-- -->    | <!-- -->    |
+|-------------|-------------|
+| Foo         | Bar         |
+
+
+[]()  | 
+------|------
+Row 1 | row 2
+
+
+
+|Regular | text | in header | turns bold |
+|-|-|-|-|
+| __So__ | __bold__ | __all__ | __table entries__ |
+| __and__ | __it looks__ | __like a__ | __"headerless table"__ |
+
+
+
+|-------------|--------|
+|**Name:**    |John Doe|
+|**Position:**|CEO     |
+
+
+|     |     |
+|-----|-----|
+|Foo  |37   |
+|Bar  |101  |
+
+
+ <span> |
+---     |    ---
+Value   |  Value
+Value   |  Value
+
