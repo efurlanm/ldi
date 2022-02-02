@@ -393,27 +393,39 @@ Row 1 | row 2
 | __So__ | __bold__ | __all__ | __table entries__ |
 | __and__ | __it looks__ | __like a__ | __"headerless table"__ |
 
+xxxxx
 
-
+|||
 |-------------|--------|
 |**Name:**    |John Doe|
 |**Position:**|CEO     |
 
+xxxxx
 
 |     |     |
 |-----|-----|
 |Foo  |37   |
 |Bar  |101  |
 
+xxxxx
 
 |       |       |
 | ----- | ----- |
 | Foo   | 37    |
 | Bar   | 101   |
 
+xxxx
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
         |
 ---     |    ---
 Value   |  Value
 Value   |  Value
 
+| Left-aligned | Center-aligned | Right-aligned |
+| :---         |     :---:      |          ---: |
+| git status   | git status     | git status    |
+| git diff     | git diff       | git diff      |
