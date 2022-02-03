@@ -11,3 +11,4 @@ Example of using pandoc to convert markdown to html:
 - `template.html` file can be changed as needed
 
 
+Alternatively we can use panserver to view the markdown files: https://github.com/Marfisc/panserver
