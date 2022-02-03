@@ -3,17 +3,17 @@
 Part 1: Design Decisions in the Forth Kernel  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal #59 (January/February 1993)](./README.md#the-computer-journal-tcj).
+This article first appeared in [The Computer Journal (TCJ) #59 (January/February 1993)](./README.md#the-computer-journal-tcj).
 
 ## INTRODUCTION
 
-Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when Bill Kibler suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91]](#ROD91) [[ROD92]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](http://en.wikipedia.org/wiki/CP\/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-80)s gathering dust.
+Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when [Bill Kibler](http://www.forth.org/resumes/kibler_bill.html) suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91]](#ROD91) [[ROD92]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](http://en.wikipedia.org/wiki/CP\/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-80)s gathering dust.
 
 ## THE ESSENTIAL HARDWARE
 
 _You_ must choose a CPU. I will not delve into the merits of one CPU over another for Forth, since a CPU choice is usually forced upon you by other considerations. Besides, the object of this article is to show how to move Forth to _any_ CPU.
 
-You can expect the usual 16-bit Forth kernel (see below) to occupy about 8K bytes of program space. For a full kernel that can compile Forth definitions, you should allow a minimum of 1K byte of RAM. To use Forth's block-management system for disk storage, you should add 3 kBytes or more for buffers. For a 32-bit Forth model, double these numbers.
+You can expect the usual 16-bit Forth kernel (see below) to occupy about 8 kBytes of program space. For a full kernel that can compile Forth definitions, you should allow a minimum of 1 kByte of RAM. To use Forth's block-management system for disk storage, you should add 3 kBytes or more for buffers. For a 32-bit Forth model, double these numbers.
 
 These are the _minimums_ to get a Forth kernel up and running. To run an application on your hardware, you should increase PROM and RAM sizes to suit.
 
@@ -31,11 +31,11 @@ All of the examples described in this article are 16-bit Forths running on 8-bit
 
 ## THE THREADING TECHNIQUE
 
-"Threaded code" is the hallmark of Forth. A Forth "thread" is just a list of addresses of routines to be executed. You can think of this as a list of subroutine calls, with the CALL instructions removed. Over the years many threading variations have been devised, and which one is best depends upon the CPU and the application. To make a decision, you need to understand how they work, and their tradeoffs.
+"Threaded code" is the hallmark of Forth. A Forth "thread" is just a list of addresses of routines to be executed. You can think of this as a list of subroutine calls, with the CALL instructions removed. Over the years many threading variations have been devised, and which one is best depends upon the CPU and the application. To make a decision, you need to understand how they work, and their trade-offs.
 
 ### Indirect Threaded Code (ITC)
 
-This is the classical Forth threading technique, used in [fig- Forth](http://www.forth.org/fig-forth/contents.html) and [F83](http://github.com/ForthHub/F83), and described in most books on Forth. All the other threading schemes are "improvements" on this, so you need to understand ITC to appreciate the others.
+This is the classical Forth threading technique, used in [fig-Forth](http://www.forth.org/fig-forth/contents.html) and [F83](http://github.com/ForthHub/F83), and described in most books on Forth. All the other threading schemes are "improvements" on this, so you need to understand ITC to appreciate the others.
 
 Let's look at the definition of a Forth word SQUARE:
 
@@ -43,14 +43,14 @@ Let's look at the definition of a Forth word SQUARE:
 : SQUARE  DUP * ;
 ```
 
-In a typical ITC Forth this would appear in memory as shown in [Figure 1](#FIG01). (The **Header** Field will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
+In a typical ITC Forth this would appear in memory as shown in [Figure 1](#FIG01). (The **Header Field** will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)
 
 <span id=FIG01></span>
 *Figure 1. Indirect Threaded Code*
 
 ![](img/mov1-1.svg)
 
-Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's **Code Field** .) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's Code Field. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
+Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's **Code Field** .) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's **Code Field**. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:
 
 *NEXT (interpreter)*
 
@@ -63,7 +63,7 @@ Assume SQUARE is encountered while executing some other Forth word. Forth's Inte
 
 This illustrates an important but rarely-elucidated principle: _the address of the Forth word just entered is kept in W._ CODE words don't need this information, but all other kinds of Forth words do.
 
-If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <s>next</s> word to be executed. This is why the Forth interpreter is usually called NEXT.
+If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the *next* word to be executed. This is why the Forth interpreter is usually called NEXT.
 
 But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the **Parameter Field** of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call\! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth.) This is called DOCOLON or ENTER in various Forths:
 
@@ -88,7 +88,7 @@ The "return from subroutine" is the word EXIT, which gets compiled when Forth se
 
 Walk through a couple of nested Forth definitions, just to assure yourself that this works.
 
-Note the characteristics of ITC: _every_ Forth word has a one-cell Code Field. Colon definitions compile one cell for each word used in the definition. And the Forth interpreter must actually perform a _double_ indirection to get the address of the next machine code to run (first through IP, then through W).
+Note the characteristics of ITC: _every_ Forth word has a one-cell **Code Field**. Colon definitions compile one cell for each word used in the definition. And the Forth interpreter must actually perform a _double_ indirection to get the address of the next machine code to run (first through IP, then through W).
 
 ITC is neither the smallest nor the fastest threading technique. It may be the simplest; although DTC (described next) is really no more complex. So why are so many Forths indirect-threaded? Mainly because _previous_ Forths, used as models, were indirect- threaded. These days, DTC is becoming more popular.
 
@@ -96,9 +96,9 @@ So when should ITC be used? Of the various techniques, ITC produces the cleanest
 
 ### Direct Threaded Code (DTC)
 
-Direct Threaded Code differs from ITC in only one respect: instead of the Code Field containing the address of some machine code, _the Code Field contains actual machine code itself._
+Direct Threaded Code differs from ITC in only one respect: instead of the **Code Field** containing the address of some machine code, _the Code Field contains actual machine code itself._
 
-I'm not saying that the complete code for ENTER is contained in each and every colon definition\! In "high-level" Forth words, the Code Field will contain _a subroutine call_, as shown in [Figure 2](#FIG02). Colon definitions, for instance, will contain a call to the ENTER routine.
+I'm not saying that the complete code for ENTER is contained in each and every colon definition\! In "high-level" Forth words, the **Code Field** will contain _a subroutine call_, as shown in [Figure 2](#FIG02). Colon definitions, for instance, will contain a call to the ENTER routine.
 
 <span id=FIG02></span>
 *Figure 2. Direct Threaded Code*
@@ -111,7 +111,7 @@ The NEXT pseudo-code for direct threading is simply:
 <tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register    </td></tr>
 <tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP (assuming 2-byte addresses)    </td></tr>
 <tr><td><nobr>    JP (W)    </nobr></td><td>    jump to the address in the W register    </td></tr>
-</table>                
+</table>
 
 This gains speed: the interpreter now performs only a _single_ indirection. On the Z80 this reduces the NEXT routine -- the most-used code fragment in the Forth kernel -- from eleven instructions to seven\!
 
@@ -119,7 +119,7 @@ This costs space: every high-level definition in a Z80 Forth (for example) is no
 
 Of course, DTC CODE definitions are two bytes shorter, since they no longer need a pointer at all\! 
 
-I used to think that high-level definitions in DTC Forths required the use of a subroutine call in the Code Field. Frank Sergeant's Pygmy Forth [[SER90]](#SER90) demonstrates that a simple jump can be used just as easily, and will usually be faster.
+I used to think that high-level definitions in DTC Forths required the use of a subroutine call in the **Code Field**. Frank Sergeant's Pygmy Forth [[SER90]](#SER90) demonstrates that a simple jump can be used just as easily, and will usually be faster.
 
 Guy Kelly has compiled a superb review of Forth implementations for the IBM PC [[KEL92]](#KEL92), which I strongly recommend to _all_ Forth kernel writers. Of the 19 Forths he studied, 10 used DTC, 7 used ITC, and 2 used subroutine threading (discussed next). _I recommend the use of Direct-Threaded Code over Indirect-Threaded Code for all new Forth kernels._
 
@@ -148,7 +148,7 @@ See [Figure 3](#FIG03). This representation of Forth words has been used as a st
 
 ![](img/mov1-3.svg)
 
-STC is an elegant representation; colon definitions and CODE words are now identical. "Defined words" (VARIABLEs, CONSTANTs, and the like) are handled the same as in DTC -- the Code Field begins with a jump or call to some machine code elsewhere.
+STC is an elegant representation; colon definitions and CODE words are now identical. "Defined words" (VARIABLEs, CONSTANTs, and the like) are handled the same as in DTC -- the **Code Field** begins with a jump or call to some machine code elsewhere.
 
 The major disadvantage is that subroutine calls are usually larger than simple addresses. On the Z80, for example, the size of colon definitions increases by 50% -- and most of your application is colon definitions\! Contrariwise, on a 32-bit 68000 there may be no size increase at all, when 4-byte addresses are replaced with 4-byte BSRs. (But if your code size exceeds 64K, some of those addresses must be replaced with 6-byte JSRs.)
 
@@ -163,7 +163,7 @@ _The only way to know for sure is to write sample code._ This is intimately invo
 On older and 8-bit CPUs, almost every Forth primitive involves several machine instructions. But on more powerful CPUs, many Forth primitives are written in a single instruction. For example, on the 32-bit 68000, DROP is simply
 
 ```nasm
-ADDQ #4,An     where An is Forth's PSP register
+    ADDQ    #4,An     where An is Forth's PSP register
 ```
 
 In a subroutine-threaded Forth, using DROP in a colon definition would result in the sequence
@@ -187,9 +187,9 @@ The advantage of in-line expansion -- aside from speed and size -- is the potent
 would be compiled in 68000 STC as
 
 ```nasm
-BSR LIT
-.DW  3 
-BSR PLUS
+    BSR     LIT
+    .DW     3 
+    BSR     PLUS
 ```
 
 but could be expanded in-line as a _single_ machine instruction\!
@@ -316,8 +316,7 @@ template (see the aux directory). -->
 <tr><td> 8051 </td><td> R0,1 </td><td> R2,3 </td><td> R4,5 </td><td> R6,7 </td><td> fixed </td><td> memory </td><td> <a href="#PAY90">[PAY90]</a> </td></tr>
 </tbody>                
 <tfoot><tr><td colspan="8"> <sup>[1]</sup>F83.   <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
-</table>                
-
+</table>
 
 "SP" refers to the hardware stack pointer. "Zpage" refers to values kept in the 6502's memory page zero, which are almost as useful as -- sometimes more useful than -- values kept in registers; e.g., they can be used for memory addressing. "Fixed" means that Payne's 8051 Forth has a single, immovable user area, and UP is a hard-coded constant.
 
@@ -337,15 +336,15 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 ## REFERENCES
 
-<span id="CUR93a">[CUR93a]</span> Curley, Charles, "Life in the FastForth Lane", awaiting publication in Forth Dimensions. Description of a 68000 subroutine-threaded Forth. [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5) [[2]](http://www.forth.org/fd/FD-V14N5.pdf) [[3]](http://www.forth.org/fd/curley2.html) [[4]](http://github.com/charlescurley/realforth) [[5]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
+<span id="CUR93a">[CUR93a]</span> [Curley, Charles](http://www.charlescurley.com/), "Life in the FastForth Lane", awaiting publication in Forth Dimensions. Description of a 68000 subroutine-threaded Forth. [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5) [[2]](http://www.forth.org/fd/FD-V14N5.pdf) [[3]](http://www.forth.org/fd/curley2.html) [[4]](http://github.com/charlescurley/realforth) [[5]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
 
 <span id="CUR93b">[CUR93b]</span> Curley, Charles, "Optimizing in a BSR/JSR Threaded Forth", awaiting publication in Forth Dimensions. Single-pass code optimization for FastForth, in only five screens of code\! Includes listing. [[1]](http://www.forth.org/fd/curley1.html) [[2]](https://archive.org/details/Forth_Dimension_Volume_14_Number_6) [[3]](http://www.forth.org/fd/FD-V14N6.pdf) [[4]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
 
-<span id="KEL92">[KEL92]</span> Kelly, Guy M., "Forth Systems Comparisons", Forth Dimensions XIII:6 (Mar/Apr 1992). Also published in the _1991 FORML Conference Proceedings_. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design tradeoffs of many 8086 Forths with code fragments and benchmarks -- highly recommended\! [[1]](https://archive.org/details/Forth_Dimension_Volume_13_Number_6) [[2]](http://www.forth.org/fd/FD-V13N6.pdf) [[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
+<span id="KEL92">[KEL92]</span> Kelly, Guy M., "Forth Systems Comparisons", Forth Dimensions XIII:6 (Mar/Apr 1992). Also published in the _1991 FORML Conference Proceedings_. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design trade offs of many 8086 Forths with code fragments and benchmarks -- highly recommended\! [[1]](https://archive.org/details/Forth_Dimension_Volume_13_Number_6) [[2]](http://www.forth.org/fd/FD-V13N6.pdf) [[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
 
 <span id="KOG82">[KOG82]</span> Kogge, Peter M., "An Architectural Trail to Threaded-Code Systems", IEEE Computer, vol. 15 no. 3 (Mar 1982). Remains the definitive description of various threading techniques. [[1]](http://www.semanticscholar.org/paper/An-Architectural-Trail-to-Threaded-Code-Systems-Kogge/171f9d8fc050641d022116dafaf550debfc2a3f9) [[2]](ref/An_A_T_to_Threaded-Code_Systems_-_Kogge.pdf)
 
-<span id="ROD91">[ROD91]</span> Rodriguez, B.J., "B.Y.O. Assembler", Part 1, The Computer Journal \#52 (Sep/Oct 1991). General principles of writing Forth assemblers. [[1]](http://archive.org/details/the-computer-journal-52) [[2]](tcj/tcj_52_September-October_1991_text.pdf)
+<span id="ROD91">[ROD91]</span> [Rodriguez, B.J.](https://dl.acm.org/profile/81100318863), "B.Y.O. Assembler", Part 1, The Computer Journal \#52 (Sep/Oct 1991). General principles of writing Forth assemblers. [[1]](http://archive.org/details/the-computer-journal-52) [[2]](tcj/tcj_52_September-October_1991_text.pdf)
 
 <span id="ROD92">[ROD92]</span> Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal \#54 (Jan/Feb 1992). A 6809 assembler in Forth. [[1]](http://archive.org/details/the-computer-journal-54) [[2]](tcj/tcj_54_January-February_1992_text.pdf)
 
@@ -353,7 +352,7 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 - "An Extensible Optimizer for Compiling Forth", _1989 FORML Conference Proceedings_, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a 68000 optimizer; no code provided.
 
-- "Extensible Optiming Compiler", Forth Dimensions XII:2 (Jul/Aug 1990). [[1]](https://archive.org/details/Forth_Dimension_Volume_12_Number_2) [[2]](http://www.forth.org/fd/FD-V12N2.pdf)
+- "Extensible Optimizing Compiler", Forth Dimensions XII:2 (Jul/Aug 1990). [[1]](https://archive.org/details/Forth_Dimension_Volume_12_Number_2) [[2]](http://www.forth.org/fd/FD-V12N2.pdf)
 
 ### Forth Implementations
 

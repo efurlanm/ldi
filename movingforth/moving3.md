@@ -125,9 +125,13 @@ Executing the word UN will push the value 1 onto the Forth Parameter Stack. Exec
 
 In the Forth kernel there is a single word called CONSTANT. This is <u>not</u> a constant-type word itself; it is a high-level Forth definition. CONSTANT is a "defining word": it creates <u>new</u> words in the Forth dictionary. Here we create the new "constant-type" words UN, DEUX, and TROIS. (You may think of these as "instances" of the "class" CONSTANT) These three words will have their Code Fields pointing to a machine code fragment that does the action of CONSTANT.
 
-What must this code fragment do? Figure 2 shows the memory representation of the three constants. All three words point to a common action routine. The difference in the words is entirely contained in their Parameter Fields, which, in this case, simply hold the constant values ("instance variables" in object lingo). So, the action of these three words should be <u>fetch the contents of the Parameter Field, and push this onto the stack.</u> The code understands implicitly that the parameter field contains a single-cell value.
+What must this code fragment do? [Figure 2](#FIG02) shows the memory representation of the three constants. All three words point to a common action routine. The difference in the words is entirely contained in their Parameter Fields, which, in this case, simply hold the constant values ("instance variables" in object lingo). So, the action of these three words should be <u>fetch the contents of the Parameter Field, and push this onto the stack.</u> The code understands implicitly that the parameter field contains a single-cell value.
 
-![Fig.2 Three Constants](img/mov3-2.gif)
+<span id=FIG02></span>
+
+*Figure 2. Three constants*
+
+![](img/mov3-2.svg)
 
 To write a machine-code fragment to do this, we need to know how to find the Parameter Field Address, <u>after</u> the Forth interpreter jumps to the machine code. That is, how is the PFA passed to the machine-code routine? This, in turn, depends on how the Forth interpreter NEXT has been coded, which varies from implementation to implementation. <u>To write machine-code actions, we must understand NEXT.</u>
 
@@ -161,7 +165,7 @@ DOCON:  LDD 2,X  ; fetch the cell at W+2
 In general, <u>ITC Forths leave the Parameter Field Address or some "nearby" address in the W register.</u> In this case, W contained the CFA, which in this Forth implementation is always PFA-2. Since every class of Forth word except CODE words needs to use the Parameter Field Address, many implementations of NEXT will increment W to leave it pointing to the PFA. We can do this on the 6809 with one small change:
 
 ```nasm
-NEXT:  LDX ,Y++     ; (IP) -> W, and IP+2 -> IP
+NEXT:   LDX ,Y++     ; (IP) -> W, and IP+2 -> IP
         JMP [,X++]   ; (W) -> temp, JMP (temp), W+2 -> W
 ```
 
@@ -196,7 +200,7 @@ Direct Threading works just like Indirect Threading, except that instead of the 
 The choice of a JUMP or a CALL instruction in the Code Field hinges upon <u>how the Parameter Field Address can be obtained by the machine code routine.</u> In order to jump to the Code Field, many CPUs require that its address be in a register. For instance, the indirect jump on the 8086 is JMP AX (or some other register), and on the Z80 is JP (HL) (or IX or IY). On these processors, the DTC NEXT involves two operations, which on the 6809 would be:
 
 ```nasm
-NEXT:  LDX ,Y++    ; (IP) -> W, and IP+2 -> IP
+NEXT:   LDX ,Y++    ; (IP) -> W, and IP+2 -> IP
         JMP ,X      ; JMP (W)
 ```
 
