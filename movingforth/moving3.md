@@ -415,7 +415,7 @@ Assume an indirect-threaded ITC 6809, and the following:
 Recall the definition of NEXT for these conditions:
 
 ```nasm
-NEXT:  LDX ,Y++   ; (IP) -> W, and IP+2 -> IP
+NEXT:   LDX ,Y++   ; (IP) -> W, and IP+2 -> IP
         JMP [,X]   ; (W) -> temp, JMP (temp)
 ```
 
