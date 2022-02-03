@@ -6,10 +6,10 @@ $ pandoc --self-contained --from=gfm --to=html --css=gh.css --template=template.
 
 
 
-- the `gh.css` comes from https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.css
+- `gh.css` comes from https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.css
 
 - `--self-contained` creates a single .html file with no external dependencies, including images
 
-- the `template.html` file can be changed as needed
+- `template.html` file can be changed as needed
 
 
