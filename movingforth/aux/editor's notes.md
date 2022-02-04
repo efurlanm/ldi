@@ -6,3 +6,4 @@
 - the original documents were converted from html to markdown using `pandoc`
 - PDF files were converted to TXT using `pdftotext` (poppler-utils)
 - in the pandoc directory there are some tips on how to convert from markdown to html using pandoc
+- the sources directory contains the original files that were converted to markdown
