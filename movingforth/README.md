@@ -2,7 +2,7 @@
 
 Original sources: http://www.bradrodriguez.com/papers/
 
-I decided to create this repo because it was difficult for me to read, study and learn easily using the original documentation, plus the fact that I enjoy taking notes as I read. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on, so I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the MIT license, and all original sources are under the [author's original license](http://www.bradrodriguez.com).
+I decided to create this repo because it was difficult for me to read, study and learn easily using the original documentation, plus the fact that I enjoy taking notes as I read. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on, so I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the CC0-BY-4.0 license, and all original sources are under the [author's original license](http://www.bradrodriguez.com).
 
 Forth is a procedural, stack-oriented programming language and interactive environment designed by Charles H. Moore in 1968 at the United States National Radio Astronomy Observatory (NRAO), to help control radio telescopes. Today it is used in numerous spacecraft, such as the Rosetta/Philae probe which uses [10 RTX2010 processors](http://www.cpushack.com/2014/11/12/here-comes-philae-powered-by-an-rtx2010/) that support direct execution of Forth. NASA has a list of [space-related applications of the Forth](http://web.archive.org/web/20110204160744/http://forth.gsfc.nasa.gov/), compiled by James Rash, at Goddard Space Flight Center Greenbelt, Maryland. Forth is generally [targeted at small embedded systems and microcontrollers like the STM8](http://github.com/TG9541/stm8ef/wiki) used in various consumer devices like [chinese gadgets](http://github.com/TG9541/stm8ef/wiki/STM8S-Value-Line-Gadgets). What catches my attention in Forth is the possibility of being used running directly on the microcontroller using a REPL (Read-Eval-Print Loop) programming environment that allows the programmer to interact with a running program, experiment and obtain immediate results directly in the microcontroller, without the need for cross-compilation, which reduces development time. Other features are also useful, such as the ease of the interface and, because it is relatively simple, it is easy to deploy and optimize for a specific architecture.
 
@@ -58,7 +58,7 @@ Scanned PDF files source: http://archive.org/details/the-computer-journal
 
 ## Forth Dimensions (FD)
 
-Source 1 : http://archive.org/details/forthdimension (scanned PDF files)  
+Source 1 : http://archive.org/details/forthdimension (scanned PDF files) \
 Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 
 * FD \#XIII:6 "Forth Systems Comparisons" (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_13_Number_6) [[2]](http://www.forth.org/fd/FD-V13N6.pdf) [[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
@@ -69,10 +69,7 @@ Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 
 ## Notes
 
-- The documents were edited using the Mark Text editor ( http://github.com/marktext ), and if we want them in PDF format, we can use Mark Text to export them
-
-- To download the documents and obtain a local copy of this repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
-
+- The documents were edited using the [Mark Text](http://github.com/marktext) editor, and if PDF or HTML format is desired, Mark Text can be used to export
 - The Mark Text reader is also a good offline markdown document reader
-
-- The html directory contains automatically generated html versions from markdown files
+- To download the documents and obtain a local copy of this repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+- The html directory contains automatically generated HTML versions from markdown files
