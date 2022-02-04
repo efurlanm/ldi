@@ -70,8 +70,10 @@ Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 
 ## Notes
 
-- The documents were edited using the Mark Text editor ( http://github.com/marktext ), and if you want them in PDF format, you can use Mark Text to export them
+- The documents were edited using the Mark Text editor ( http://github.com/marktext ), and if we want them in PDF format, we can use Mark Text to export them
 
 - To download the documents and obtain a local copy of this repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
 - The Mark Text reader is also a good offline markdown document reader
+
+- The html directory contains automatically generated html versions from markdown files
