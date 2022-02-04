@@ -70,7 +70,7 @@ Now, on to our main topic:
 
 ## WHAT'S A CODE FIELD?
 
-The DOES\> concept seems to be one of the most misunderstood and mystifying aspects of Forth. Yet DOES\> is also one of Forth's most powerful features -- in many ways, it anticipated object- oriented programming. The action and power of DOES\> hinges upon a brilliant innovation of Forth: the Code Field.
+The DOES\> concept seems to be one of the most misunderstood and mystifying aspects of Forth. Yet DOES\> is also one of Forth's most powerful features -- in many ways, it anticipated object-oriented programming. The action and power of DOES\> hinges upon a brilliant innovation of Forth: the Code Field.
 
 Recall from Part 1 that the "body" of a Forth definition consists of two parts: the Code Field, and the Parameter Field. You can think of these two fields in several ways:
 
@@ -90,17 +90,14 @@ Common features appear in all these views:
 
 A typical Forth kernel will have several Code Field routines predefined.
 
-```
-Code Field  Parameter Field
-routine     contents
-----------  -------------------------------------------
-ENTER       a high-level "thread" (series of addresses)
-DOCON       a constant value
-DOVAR       a storage location for data 
-DOVOC       vocabulary info (varies by implementation)
-```
+| Code Field <br>routine | Parameter Field <br>contents                |
+| ---------------------- | ------------------------------------------- |
+| ENTER                  | a high-level "thread" (series of addresses) |
+| DOCON                  | a constant value                            |
+| DOVAR                  | a storage location for data                 |
+| DOVOC                  | vocabulary info (varies by implementation)  |
 
-What makes this feature powerful is that a Forth program is <u>not</u> limited to this set of Code Field routines (or whatever set is provided in your kernel). The programmer can define new Code Field routines, and new Parameter Fields to match. In object- oriented lingo, new "classes" and "methods" can be created (although each class has only one method). And -- like Forth words themselves -- the Code Field actions can be defined in either assembly language or high-level Forth\!
+What makes this feature powerful is that a Forth program is <u>not</u> limited to this set of Code Field routines (or whatever set is provided in your kernel). The programmer can define new Code Field routines, and new Parameter Fields to match. In object-oriented lingo, new "classes" and "methods" can be created (although each class has only one method). And -- like Forth words themselves -- the Code Field actions can be defined in either assembly language or high-level Forth\!
 
 To understand the mechanism of the Code Field, and how parameters are passed, we will first look at the case of assembly-language (machine code) actions. We'll start with Indirect Threading (ITC), since it is the easiest to understand, and then see how the logic is modified in Direct-Threaded (DTC) and Subroutine- Threaded (STC) Forths. Then, we'll look at how the Code Field action can be written in high-level Forth.
 
@@ -171,21 +168,31 @@ NEXT:   LDX ,Y++     ; (IP) -> W, and IP+2 -> IP
 
 This adds three clock cycles to NEXT, and leaves the Parameter Field Address in W. What does it do to the Code Field routines?
 
-```nasm
-        W=CFA           W=PFA
-        --------------  ------------------------------
-DOCON:  LDD 2,X (6)     LDD ,X (5)
-        PSHU D          PSHU D
-        NEXT            NEXT
+<table><thead><tr><th> 
+W=CFA </th><th> W=PFA 
+</th></th></thead><tr><td><pre>
+DOCON:  LDD 2,X (6)              
+        PSHU D                   
+        NEXT<br>
+DOVAR:  LEAX 2,X (5)             
+        PSHU X                   
+        NEXT<br>
+ENTER:  PSHS Y                   
+        LEAY 2,X (5)             
+        NEXT                     
+</pre></td><td><pre>
+LDD ,X (5)                       
+PSHU D                           
+NEXT<br>
+; no operation                   
+PSHU X                           
+NEXT<br>
+PSHS Y                           
+LEAY ,X  (4, faster than TFR X,Y)
+NEXT                             
+</pre></td></tr></table>
 
-DOVAR:  LEAX 2,X (5)    ; no operation
-        PSHU X          PSHU X
-        NEXT            NEXT
-
-ENTER:  PSHS Y          PSHS Y
-        LEAY 2,X (5)    LEAY ,X  (4, faster than TFR X,Y)
-        NEXT            NEXT
-```
+</table>
 
 In exchange for a three-cycle penalty in NEXT, the DOCON code is reduced by one clock cycle, DOVAR by five cycles, and ENTER by one cycle. CODE words don't use the value in W, so they gain nothing from the auto increment. The speed gained or lost is determined by the mix of Forth words executed. The usual rule is that most of the words <u>executed</u> are CODE words, thus, incrementing W in NEXT costs a bit of speed overall. (There is a memory savings, but DOCON, DOVAR, and ENTER appear only once, making this gain slight.)
 
