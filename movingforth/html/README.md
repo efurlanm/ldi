@@ -41,6 +41,6 @@ sed "s/<name>.md/<name>.html/g" <file>
 | moving7.html | camel80h.html                              |
 | moving9.html | camel09.html                               |
 
-* the files are separate because they were originally separate
+(the files are separated because originally they were like this)
 
 
