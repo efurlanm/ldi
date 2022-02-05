@@ -79,7 +79,7 @@ W and IP both need to be address registers, so these are the logical use for X a
 
 Now a threading model can be chosen. I'll scratch STC and TTC, to make this a "conventional" Forth. The limiting factor in performance is then the NEXT routine. Let's look at this in both ITC and DTC:
 
-```nasm
+```
 ITC-NEXT: LDX ,Y++   (8) (IP)->W, increment IP
           JMP [,X]   (6) (W)->temp, jump to adrs in temp
 
@@ -90,7 +90,7 @@ DTC-NEXT: JMP [,Y++] (9) (IP)->temp, increment IP,
 
 NEXT is one instruction in a DTC 6809\! This means you can code it in-line in two bytes, making it both smaller and faster than JMP NEXT. For comparison, look at the "NEXT" logic for subroutine threading:
 
-```nasm
+```
         RTS           (5) ...at the end of one CODE word 
         JSR nextword  (8) ...in the "thread"
         ...               ...start of the next CODE word
@@ -102,7 +102,7 @@ Given the choice of DTC, you have to decide: does a high-level word have a Jump 
 
 using a JSR (Call):
 
-```nasm
+```
         JSR ENTER   (8)
         ...
 ENTER:  PULS W      (7) get address following JSR into W reg
@@ -114,7 +114,7 @@ ENTER:  PULS W      (7) get address following JSR into W reg
 
 using a JMP:
 
-```nasm
+```
         JMP ENTER   (4)
          ...
 ENTER:  PSHS IP     (7) save the old IP on the Return Stack
@@ -130,7 +130,7 @@ The DTC 6809 NEXT doesn't use the W register, because the 6809 addressing modes 
 
 Either way, the code for EXIT is the same:
 
-```nasm
+```
 EXIT:   PULS IP     pop "saved" IP from return stack
         NEXT        continue Forth interpretation
 ```
@@ -143,7 +143,7 @@ NEXT, ENTER, and EXIT don't use the stack, and thus have identical code either w
 
 DOVAR, DOCON, LIT, and OVER require the same number of CPU cycles either way. These illustrate the earlier comment that putting TOS in register often just changes <u>where</u> the push or pop takes place:
 
-```nasm
+```
         TOS in D        TOS in memory   pseudo-code
         -------------   -------------   ---------------------
 
@@ -168,7 +168,7 @@ OVER:   PSHU D          LDD  2,PSP      2nd on stack -> D
 
 SWAP, ROT, 0=, @, and especially + are all <u>faster</u> with TOS in register:
 
-```nasm
+```
         TOS in D        TOS in memory   pseudo-code
         ------------    -------------   ----------------
 
@@ -208,7 +208,7 @@ ROT:    LDX  ,PSP (5)   LDX  ,PSP (5)   TOS -> X
 
 \! and +\! are <u>slower</u> with TOS in register:
 
-```nasm
+```
         TOS in D        TOS in memory   pseudo-code
         ------------    ------------    -----------------
 
@@ -226,7 +226,7 @@ ROT:    LDX  ,PSP (5)   LDX  ,PSP (5)   TOS -> X
         NEXT
 ```
 
-The reason these words are slower is that most Forth memory- reference words expect the address on the top of stack, so an extra TFR instruction is needed. This is why it's a help for the TOS register to be an address register. Unfortunately, all the 6809 address registers are spoken for...and it's much more important for W, IP, PSP, and RSP to be in address registers than TOS. The TOS-in-register penalty for \! and +\! should be outweighed by the gains in the many arithmetic and stack operations.
+The reason these words are slower is that most Forth memory-reference words expect the address on the top of stack, so an extra TFR instruction is needed. This is why it's a help for the TOS register to be an address register. Unfortunately, all the 6809 address registers are spoken for...and it's much more important for W, IP, PSP, and RSP to be in address registers than TOS. The TOS-in-register penalty for \! and +\! should be outweighed by the gains in the many arithmetic and stack operations.
 
 ## CASE STUDY 2: THE 8051
 
@@ -236,9 +236,9 @@ All of the arithmetic operations, and many of the logical, must use the accumula
 
 Some 8051 Forths have been written that implement a full 16-bit model, e.g. \[PAY90\], but they are too slow for my taste. Let's make some tradeoffs and make a faster 8051 Forth.
 
-Our foremost reality is the availability of only one address register. So let's use the 8051's Program Counter as IP -- i.e., let's make a subroutine-threaded Forth. If the compiler uses 2- byte ACALLs instead of 3-byte LCALLs whenever possible, most of the STC code will be as small as ITC or DTC code.
+Our foremost reality is the availability of only one address register. So let's use the 8051's Program Counter as IP -- i.e., let's make a subroutine-threaded Forth. If the compiler uses 2-byte ACALLs instead of 3-byte LCALLs whenever possible, most of the STC code will be as small as ITC or DTC code.
 
-Subroutine threading implies that the Return Stack Pointer is the hardware stack pointer. There are 64 cells of space in the on- chip register file, not enough room for multiple task stacks. At this point you can
+Subroutine threading implies that the Return Stack Pointer is the hardware stack pointer. There are 64 cells of space in the on-chip register file, not enough room for multiple task stacks. At this point you can
 
 a) restrict this Forth to single-task;  
 b) code all of the Forth definitions so that upon entry they move their return address to a software stack in external RAM; or  
@@ -293,7 +293,7 @@ The Z8 and TMS320C25 are more civilized: they allow write access to program memo
 
 ## CASE STUDY 3: THE Z80
 
-The Z80 is instructive because it is an extreme example of a non- orthogonal CPU. It has <u>four different kinds</u> of address registers\! Some operations use A as destination, some any 8-bit register, some HL, some any 16-bit register, and so on. Many operations (such as EX DE,HL) are only defined for one combination of registers.
+The Z80 is instructive because it is an extreme example of a non-orthogonal CPU. It has <u>four different kinds</u> of address registers\! Some operations use A as destination, some any 8-bit register, some HL, some any 16-bit register, and so on. Many operations (such as EX DE,HL) are only defined for one combination of registers.
 
 In a CPU such as the Z80 (or 8086\!), the assignment of Forth functions must be carefully matched to the capabilities of the CPU registers. Many more tradeoffs need to be evaluated, and often the only way is to write sample code for a number of different assignments. Rather than burden this article down endless permutations of Forth code, I'll present one register assignment based on many Z80 code experiments. It turns out that these choices can be rationalized in terms of the general principles outlined earlier.
 
@@ -324,7 +324,7 @@ IX and IY might be considered for the Forth stack pointers, because of their ind
 
 What about Forth's IP? Mostly, IP fetches from memory and autoincrements, so there's no programming advantage to using IX/IY over BC/DE. But speed is of the essence with IP, and BC/DE are faster. Let's put IP in DE: it has the advantage of being able to swap with HL, which adds versatility.
 
-A second Z80 register pair (other than W) will be needed for 16- bit arithmetic. Only BC is left, and it can be used for addressing <u>or</u> for ALU operations with A. But should BC be a second working register "X", or the top-of-stack? Only code will tell; for now, let's optimistically assume that BC=TOS.
+A second Z80 register pair (other than W) will be needed for 16-bit arithmetic. Only BC is left, and it can be used for addressing <u>or</u> for ALU operations with A. But should BC be a second working register "X", or the top-of-stack? Only code will tell; for now, let's optimistically assume that BC=TOS.
 
 This leaves the RSP and UP functions, and the IX and IY registers unused. IX and IY are equivalent, so let's assign IX=RSP, and IY=UP.
 
@@ -338,7 +338,7 @@ HL = W     SP = PSP
 
 Now look at NEXT for the DTC Forth:
 
-```nasm
+```
 DTC-NEXT: LD A,(DE) (7) (IP)->W, increment IP
           LD L,A    (4)
           INC DE    (6)
@@ -350,7 +350,7 @@ DTC-NEXT: LD A,(DE) (7) (IP)->W, increment IP
 
 alternate version (same number of clock cycles)
 
-```nasm
+```
 DTC-NEXT: EX DE,HL  (4) (IP)->W, increment IP
 NEXT-HL:  LD E,(HL) (7)
           INC HL    (6)
@@ -364,7 +364,7 @@ Note that cells are stored low-byte first in memory. Also, although it might see
 
 Just for comparison, let's look at an ITC NEXT. The pseudo-code given previously requires another temporary register "X", whose contents can be used for an indirect jump. Let DE=X, and BC=IP. TOS will have to be kept in memory.
 
-```nasm
+```
 ITC-NEXT: LD A,(BC) (7) (IP)->W, increment IP
           LD L,A    (4)
           INC BC    (6)
@@ -387,7 +387,7 @@ If coded in-line, DTC NEXT would require seven bytes in every CODE word. A jump 
 
 Now let's look at the code for ENTER. Using a CALL, the hardware stack is popped to get the Parameter Field address:
 
-```nasm
+```
         CALL ENTER  (17)
         ...
 ENTER:  DEC IX      (10) push the old IP on the return stack
@@ -400,7 +400,7 @@ ENTER:  DEC IX      (10) push the old IP on the return stack
 
 Actually it's faster to POP HL, and then use the last six instructions of NEXT (omitting the EX DE,HL):
 
-```nasm
+```
         CALL ENTER  (17)
         ...
 ENTER:  DEC IX      (10) push the old IP on the return stack
@@ -414,7 +414,7 @@ ENTER:  DEC IX      (10) push the old IP on the return stack
 
 When a JP is used, the W register (HL) is left pointing to the Code Field. The Parameter Field is 3 bytes after:
 
-```nasm
+```
         JP ENTER    (10)
         ...
 ENTER:  DEC IX      (10) push the old IP on the return stack
@@ -430,7 +430,7 @@ ENTER:  DEC IX      (10) push the old IP on the return stack
 
 Again, because of the alternate entry point for NEXT, the new value for IP doesn't actually have to be put into the DE register pair.
 
-The CALL version is one cycle faster. On an embedded Z80, a one- byte RST instruction could be used to gain speed <u>and</u> save space. This option is not available on many Z80-based personal computers.
+The CALL version is one cycle faster. On an embedded Z80, a one-byte RST instruction could be used to gain speed <u>and</u> save space. This option is not available on many Z80-based personal computers.
 
 ## CASE STUDY 4: THE 8086
 
@@ -447,7 +447,7 @@ DX = scratch   SP = PSP
 
 Most 8086 Forths use the SI register for IP, so that NEXT can be written with the LODSW instruction. In Pygmy the DTC NEXT is:
 
-```nasm
+```
 NEXT:  LODSW
        JMP AX
 ```
@@ -456,7 +456,7 @@ This is short enough to include in-line in every CODE word.
 
 High-level and "defined" Forth words use a JMP (relative) to their machine code. The ENTER routine (called 'docol' in Pygmy) must therefore get the Parameter Field address from W:
 
-```nasm
+```
 ENTER:  XCHG SP,BP
         PUSH SI
         XCHG SP,BP
@@ -467,7 +467,7 @@ ENTER:  XCHG SP,BP
 
 Note the use of XCHG to swap the two stack pointers. This allows the use of PUSH and POP instructions for both stacks, which is faster than using indirect access on BP.
 
-```nasm
+```
 EXIT:   XCHG SP,BP
         POP SI
         XCHG SP,BP

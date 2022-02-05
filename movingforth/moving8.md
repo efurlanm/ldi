@@ -5,7 +5,7 @@ by Brad Rodriguez
 
 This article first appeared in [The Computer Journal #74 (July/August 1995)](../movingforth/#the-computer-journal-tcj).
 
-Finally, the last installment of "Moving Forth\!" Here is the long- promised ANSI CamelForth for the Motorola 6809, and specifically for the Scroungmaster II processor board.
+Finally, the last installment of "Moving Forth\!" Here is the long-promised ANSI CamelForth for the Motorola 6809, and specifically for the Scroungmaster II processor board.
 
 Unlike the Z80 and 8051 CamelForth, the 6809 Forth was produced with my "Chromium 2" Forth metacompiler \[ROD92\]. Right away you'll notice two things: first, the metacompiler runs on an older Forth (F83), and so the source code is contained in 16x64 Forth "screens". I've converted these to an ASCII file for TCJ, but the original formatting is still evident.
 

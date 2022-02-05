@@ -49,7 +49,7 @@ The last is particularly applicable to those who don't own PCs, since most cross
 
 I've written several Forths each way, so I'm painfully aware of the tradeoffs. I admit a preference for metacompilers: I find the Forth code for MAX much easier to read and understand than its assembler equivalent. Most of the arguments against metacompilers have been overcome by modern "professional" compilers, and if you're using Forth for work I <u>strongly</u> recommend investing in a commercial product. Alas, public-domain metacompilers (including my own) are still behind the times, clunky, and arcane.
 
-So I'm going to take a radical position for a Forth programmer, and tell you to <u>choose for yourself</u>. I'll publish the 6809 code in metacompiler form, and I'll supply a metacompiler for F83 (IBM PC, CP/M, or Atari ST) \[ROD92\]. The Z80 code will be written for a CP/M assembler. The 8051 code will be written for a public- domain PC cross-assembler.
+So I'm going to take a radical position for a Forth programmer, and tell you to <u>choose for yourself</u>. I'll publish the 6809 code in metacompiler form, and I'll supply a metacompiler for F83 (IBM PC, CP/M, or Atari ST) \[ROD92\]. The Z80 code will be written for a CP/M assembler. The 8051 code will be written for a public-domain PC cross-assembler.
 
 **Forth in C?**
 

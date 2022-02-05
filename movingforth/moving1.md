@@ -23,7 +23,7 @@ The word size used by Forth is not necessarily the same as that of the CPU. The 
 
 8-bit CPUs almost invariably support 16-bit Forths. This usually requires explicit coding of double-byte arithmetic, although some 8-bit CPUs do have a few 16-bit operations.
 
-16-bit CPUs commonly run 16-bit Forths, although the same double- precision techniques can be used to write a 32-bit Forth on a 16- bit CPU. At least one 32-bit Forth has been written for the 8086/8088.
+16-bit CPUs commonly run 16-bit Forths, although the same double-precision techniques can be used to write a 32-bit Forth on a 16-bit CPU. At least one 32-bit Forth has been written for the 8086/8088.
 
 32-bit CPUs normally run 32-bit Forths. A smaller Forth model rarely saves code length or processor time. However, I know of at least one 16-bit Forth written for the [68000](http://en.wikipedia.org/wiki/Motorola_68000). This _does_ shrink application code size by a factor of two, since high-level Forth definitions become a string of 16-bit addresses rather than a string of 32-bit addresses. (This will become evident shortly.) Most 68000s, though, have plenty of RAM.
 
@@ -90,7 +90,7 @@ Walk through a couple of nested Forth definitions, just to assure yourself that 
 
 Note the characteristics of ITC: _every_ Forth word has a one-cell **Code Field**. Colon definitions compile one cell for each word used in the definition. And the Forth interpreter must actually perform a _double_ indirection to get the address of the next machine code to run (first through IP, then through W).
 
-ITC is neither the smallest nor the fastest threading technique. It may be the simplest; although DTC (described next) is really no more complex. So why are so many Forths indirect-threaded? Mainly because _previous_ Forths, used as models, were indirect- threaded. These days, DTC is becoming more popular.
+ITC is neither the smallest nor the fastest threading technique. It may be the simplest; although DTC (described next) is really no more complex. So why are so many Forths indirect-threaded? Mainly because _previous_ Forths, used as models, were indirect-threaded. These days, DTC is becoming more popular.
 
 So when should ITC be used? Of the various techniques, ITC produces the cleanest and most elegant definitions -- nothing but addresses. If you're attuned to such considerations, ITC may appeal to you. If your code fiddles around with the insides of definitions, the simplicity and uniformity of the ITC representation may enhance portability. ITC is the classical Forth model, so it may be preferred for education. Finally, on CPUs lacking a subroutine call instruction -- such as the [1802](http://en.wikipedia.org/wiki/RCA_1802) -- ITC is often more efficient than DTC.
 
@@ -135,7 +135,7 @@ This is a simple speed vs. space decision: in-line NEXT is always faster, but al
 
 A high-level Forth definition is nothing but a list of subroutines to be executed. You don't need interpreters to accomplish this; you can get the same effect by simply stringing a list of subroutine calls together:
 
-```nasm
+```
 SQUARE: CALL DUP
         CALL *     ; or a suitable alphanumeric name
         RET
@@ -162,13 +162,13 @@ _The only way to know for sure is to write sample code._ This is intimately invo
 
 On older and 8-bit CPUs, almost every Forth primitive involves several machine instructions. But on more powerful CPUs, many Forth primitives are written in a single instruction. For example, on the 32-bit 68000, DROP is simply
 
-```nasm
+```
     ADDQ    #4,An     where An is Forth's PSP register
 ```
 
 In a subroutine-threaded Forth, using DROP in a colon definition would result in the sequence
 
-```nasm
+```
 BSR ...
 BSR DROP  ------->   DROP: ADDQ #4,An
 BSR ...   <-------         RTS
@@ -186,7 +186,7 @@ The advantage of in-line expansion -- aside from speed and size -- is the potent
 
 would be compiled in 68000 STC as
 
-```nasm
+```
     BSR     LIT
     .DW     3 
     BSR     PLUS
@@ -243,7 +243,7 @@ If _at all possible_, put W, IP, PSP, and RSP in registers. The virtual register
 
 **X** is a working register, _not_ considered one of the "classical" Forth registers, even though the classical ITC Forths need it for the second indirection. In ITC you must be able to jump indirect using X. X may also be used by a few CODE words to do arithmetic and such. This is particularly important on processors that cannot use memory as an operand. For example, ADD on a Z80 might be (in pseudo-code)
 
-```nasm
+```
 POP W   POP X   X+W -> W   PUSH W 
 ```
 

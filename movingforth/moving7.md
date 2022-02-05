@@ -89,7 +89,7 @@ Port 2 (P2) contains the high byte of the Parameter Stack Pointer (allowing R0 t
 
 I have a novel implementation of BRANCH and ?BRANCH. Since the 8051 model is subroutine-threaded, high-level Forth is compiled as true machine code. So BRANCH can be implemented with an SJMP (or AJMP or LJMP) instruction. ?BRANCH can be implemented with a JZ instruction, *if* the zero/nonzero status of the top-of-stack is put in the accumulator (A register). The subroutine ZEROSENSE does this. So, BRANCH and ?BRANCH become
 
-```nasm
+```
 BRANCH:   SJMP dest 
 ?BRANCH:  LCALL ZEROSENSE JZ dest
 ```
@@ -98,13 +98,13 @@ Similar routines LOOPSENSE and PLUSLOOPSENSE allow a JZ instruction to be used f
 
 In the assembly language source file I have manually replaced the sequence
 
-```nasm
+```
 LCALL word   RET
 ```
 
 with the shorter and faster
 
-```nasm
+```
 LJMP word
 ```
 
