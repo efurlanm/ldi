@@ -24,7 +24,11 @@ These files were automatically generated using pandoc
 pandoc --self-contained --from=gfm --to=html --css=aux/pandoc/github-markdown.css --template=aux/pandoc/template.html <name>.md -o html/<name>.html
 ```
 
-and in the generated files, replacing .md links with .html links.
+and in the generated files, replacing .md links with .html links
+
+```bash
+sed "s/<name>.md/<name>.html/g" <file>
+```
 
 ## Notes
 
