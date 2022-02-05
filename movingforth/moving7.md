@@ -9,7 +9,7 @@ Under the prodding of Our Esteemed Editor, I present CamelForth for the 8051. Ca
 
 ## Z80 ERRATA
 
-In the file CAMEL80H.AZM, the definition of DO is given as
+In the file [CAMEL80H.AZM](camel80h.md), the definition of DO is given as
 
 ```
 ['] xdo ,BRANCH  . . .

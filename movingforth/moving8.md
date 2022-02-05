@@ -17,11 +17,11 @@ CODE 1+   1 # ADDD,   NEXT   ;C
 
 The assembler used is the 6809 assembler I've described previously in TCJ \[ROD91\].
 
-I typed the [high-level source code](camel09.html) directly from the already-published listings (converting to the Forth syntax in the process). Unfortunately, this was done over the space of a few days, and sometimes I worked from the Z80 listing, and sometimes the 8051... with the result that the Harvard-architecture constructs (such as I@ and IALLOT) are not consistently used in the 6809 code. This is of no consequence for the non-Harvard 6809, but I'll have to correct this before porting the Forth code to a Harvard CPU.
+I typed the [high-level source code](camel09.md) directly from the already-published listings (converting to the Forth syntax in the process). Unfortunately, this was done over the space of a few days, and sometimes I worked from the Z80 listing, and sometimes the 8051... with the result that the Harvard-architecture constructs (such as I@ and IALLOT) are not consistently used in the 6809 code. This is of no consequence for the non-Harvard 6809, but I'll have to correct this before porting the Forth code to a Harvard CPU.
 
 Also, since I was working from published listings, I often neglected typing the detailed comments for the high-level words. For this I apologize. You can find how any word works by consulting the previous listings, but I shouldn't force you to do this.
 
-[6809 CAMELFORTH SOURCE CODE](camel09.html)
+[6809 CAMELFORTH SOURCE CODE](camel09.md)
 
 The 6809 CamelForth model holds top-of-stack in D, and uses the S stack pointer for the Parameter Stack. The U stack pointer is the Return Stack Pointer, and Y is the Interpreter Pointer. X is the temporary register "W". The 6809 direct page pointer DPR holds the high byte of the User Pointer (the low byte is assumed to be zero).
 
@@ -104,3 +104,5 @@ There were some errors in the Harvard memory access in CamelForth/8051. The corr
 <a id="ROD92">\[ROD92\]</a> Rodriguez, B. J., "Principles of Metacompilation", Forth Dimensions [[XIV:3 (Sep/Oct 1992)]](fd/Forth_Dimension_Volume_14_Number_3.pdf), [[XIV:4 (Nov/Dec 1992)]](fd/Forth_Dimension_Volume_14_Number_4.pdf), and [[XIV:5 (Jan/Feb 1993)]](fd/Forth_Dimension_Volume_14_Number_5.pdf). Describes the "Chromium 1" metacompiler.
 
 *Source code for 6809 CamelForth is available on this site at <http://www.camelforth.com/public_ftp/cam09-10.zip>.*
+
+## 
