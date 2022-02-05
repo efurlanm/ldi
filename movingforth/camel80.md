@@ -1,3 +1,4 @@
+```
 ; Listing 2.
 ; ===============================================
 ; CamelForth for the Zilog Z80
@@ -1026,4 +1027,4 @@ snext:  next
 lastword EQU link   ; nfa of last word in dict.
 enddict EQU $       ; user's code starts here
         END
-
+```

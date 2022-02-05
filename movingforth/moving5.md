@@ -31,7 +31,7 @@ Exactly *which* words should be written in machine code? The selection of the op
 6. If a word juggles many parameters on the stack, but has relatively simple logic, it may be better in CODE, where the parameters can be kept in registers.
 7. If the logic or control flow of a word is complex, it's probably better in high-level Forth.
 
-For Z80 CamelForth I have a set of about 70 primitives. (See Table 1 [glosslo.txt](glosslo.txt)) Having already decided on the Forth model and CPU usage (see my previous TCJ articles), I followed this development procedure:
+For Z80 CamelForth I have a set of about 70 primitives. (See Table 1 [glosslo.txt](glosslo.html)) Having already decided on the Forth model and CPU usage (see my previous TCJ articles), I followed this development procedure:
 
 1. Select the subset of the ANSI Core word set which will be primitives. (Subject to revision, of course.)
 2. From the ANSI descriptions, write assembler definitions of these words, plus the processor initialization code.
@@ -39,14 +39,14 @@ For Z80 CamelForth I have a set of about 70 primitives. (See Table 1 [glosslo.tx
 4. Test that you can produce working machine code. I usually add a few lines of assembler code to output a character once the initialization is complete. This seemingly trivial test is crucial\! It ensures that your hardware, assembler, "downloader" (EPROM emulator or whatever), and serial communications are all working\! 5. (Embedded systems only) Add another assembler code fragment to read the serial port and echo it back...thus testing *both* directions of communications.
 6. Write a *high-level* Forth fragment to output a character, using *only* Forth primitives. (Usually something like "LIT,33h,EMIT,BYE") This tests the Forth register initialization, the stacks, and the threading mechanism. Problems at this stage can usually be traced to logic errors in NEXT or in the initialization, or data stack goofs (e.g. stack in ROM).
 7. Write a colon definition to output a character, and include it in the high-level fragment from step 6. (E.g., define BLIP as "LIT,34h,EMIT,EXIT" and then test the fragment "LIT,33h,EMIT, BLIP,BYE") Problems at this stage are usually with DOCOLON or EXIT logic, or return stack goofs.
-8. At this point you can write some tools to help you with debugging, such as words to display in hex a number on the stack. Listing 1 [cameltst.txt](cameltst.txt) shows a simple test routine to do a never-ending memory dump (useful even if your keyboard doesn't work). This tests the primitives DUP, EMIT, EXIT, C@, \>\<, LIT, 1+, and BRANCH, as well as several levels of nesting. Plus, it doesn't use DO..LOOP, which are often difficult to get working. When this code works, you have some confidence that your basic Forth model is valid.
+8. At this point you can write some tools to help you with debugging, such as words to display in hex a number on the stack. Listing 1 [cameltst.txt](cameltst.html) shows a simple test routine to do a never-ending memory dump (useful even if your keyboard doesn't work). This tests the primitives DUP, EMIT, EXIT, C@, \>\<, LIT, 1+, and BRANCH, as well as several levels of nesting. Plus, it doesn't use DO..LOOP, which are often difficult to get working. When this code works, you have some confidence that your basic Forth model is valid.
 9. From here on it's just testing the remaining primitives -- DO..LOOP, UM/MOD, UM\*, and DODOES are particularly tricky -- and adding high-level definitions. I like to get a rudimentary interpreter going next, so that I can test words interactively.
 
-With this set of primitives you can begin writing Forth code. Sure, you have to use an assembler instead of a Forth compiler, but -- as Listing 1 [cameltst.txt](cameltst.txt) suggests -- you can use high-level control flow and nesting to write useful code that would be more difficult to write in assembler.
+With this set of primitives you can begin writing Forth code. Sure, you have to use an assembler instead of a Forth compiler, but -- as Listing 1 [cameltst.txt](cameltst.html) suggests -- you can use high-level control flow and nesting to write useful code that would be more difficult to write in assembler.
 
 ## READ THE CODE\!
 
-I've run out of abstractions for today. If you want to learn more about how a Forth kernel works and is written, study Listing 2 [camel80.txt](camel80.txt). It follows the Forth convention for documentation:
+I've run out of abstractions for today. If you want to learn more about how a Forth kernel works and is written, study Listing 2 [camel80.txt](camel80.html). It follows the Forth convention for documentation:
 
 ```forth
     WORD-NAME    stack in -- stack out    description
@@ -62,7 +62,7 @@ If the word has a return stack effect (other than nesting, that is), an addition
     stack in -- stack out    R: stack in -- stack out
 ```
 
-ANSI Forth defines a number of useful abbreviations for stack arguments, such as "n" for a signed single-cell number, "u" for an unsigned single-cell number, "c" for a character, and so on. See Table 1 [glosslo.txt](glosslo.txt).
+ANSI Forth defines a number of useful abbreviations for stack arguments, such as "n" for a signed single-cell number, "u" for an unsigned single-cell number, "c" for a character, and so on. See Table 1 [glosslo.txt](glosslo.html).
 
 ## REFERENCES
 

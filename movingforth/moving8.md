@@ -17,11 +17,11 @@ CODE 1+   1 # ADDD,   NEXT   ;C
 
 The assembler used is the 6809 assembler I've described previously in TCJ \[ROD91\].
 
-I typed the high-level source code [camel09.txt](camel09.txt) directly from the already-published listings (converting to the Forth syntax in the process). Unfortunately, this was done over the space of a few days, and sometimes I worked from the Z80 listing, and sometimes the 8051... with the result that the Harvard-architecture constructs (such as I@ and IALLOT) are not consistently used in the 6809 code. This is of no consequence for the non-Harvard 6809, but I'll have to correct this before porting the Forth code to a Harvard CPU.
+I typed the high-level source code [camel09.txt](camel09.html) directly from the already-published listings (converting to the Forth syntax in the process). Unfortunately, this was done over the space of a few days, and sometimes I worked from the Z80 listing, and sometimes the 8051... with the result that the Harvard-architecture constructs (such as I@ and IALLOT) are not consistently used in the 6809 code. This is of no consequence for the non-Harvard 6809, but I'll have to correct this before porting the Forth code to a Harvard CPU.
 
 Also, since I was working from published listings, I often neglected typing the detailed comments for the high-level words. For this I apologize. You can find how any word works by consulting the previous listings, but I shouldn't force you to do this.
 
-**6809 CAMELFORTH SOURCE CODE [camel09.txt](camel09.txt)**
+**6809 CAMELFORTH SOURCE CODE [camel09.txt](camel09.html)**
 
 The 6809 CamelForth model holds top-of-stack in D, and uses the S stack pointer for the Parameter Stack. The U stack pointer is the Return Stack Pointer, and Y is the Interpreter Pointer. X is the temporary register "W". The 6809 direct page pointer DPR holds the high byte of the User Pointer (the low byte is assumed to be zero).
 

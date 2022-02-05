@@ -1,3 +1,4 @@
+```
     TABLE 1.  GLOSSARY OF WORDS IN CAMEL80.AZM
     Words which are (usually) written in CODE.
 
@@ -120,3 +121,4 @@ document.  Others are functions I find useful.
 > S=     c-addr1 c-addr2 u -- n      string compare
 >                n<0: s1<s2, n=0: s1=s2, n>0: s1>s2
 > USER   n --              define user variable 'n'
+```

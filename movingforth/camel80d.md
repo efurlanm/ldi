@@ -1,3 +1,4 @@
+```
 ; LISTING 3.
 ;
 ; ===============================================
@@ -138,4 +139,4 @@ noop:   next
 ; REVEAL.  These words must be (substantially)
 ; rewritten if either the header structure or its
 ; inherent assumptions are changed.
-
+```

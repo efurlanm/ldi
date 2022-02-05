@@ -1,3 +1,4 @@
+```
 ; Listing 1.
 ; ===============================================
 ; CamelForth for the Zilog Z80
@@ -91,3 +92,4 @@ zquit1:  DW lit,0dh,EMIT,lit,0ah,EMIT,DUP,DOTA
        DW DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB
        DW DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB
        DW branch,zquit1
+```
