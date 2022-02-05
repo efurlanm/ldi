@@ -32,7 +32,7 @@ sed "s/<name>.md/<name>.html/g" <file>
 
 ## Notes
 
-* the HTML files are self-contained and do not rely on external image or css files. For example, a single HTML file can be emailed as if it were a single PDF. When sending a file, the dependencies must be sent as well:
+* the HTML files are self-contained and do not rely on external image or css files. For example, a single HTML file can be emailed as if it were a single PDF. When sending a file, the HTML dependencies must be sent as well:
 
 | file         | depends on                                 |
 | ------------ | ------------------------------------------ |
