@@ -9,19 +9,19 @@ This article first appeared in [The Computer Journal #69 (September/October 1994
 
 There are two goofs in the CAMEL80.AZM file I presented in TCJ\#67. The minor goof is that the name length specified in the HEAD macro for the Forth word **\>** was incorrectly typed as 2 instead of 1.
 
-The major goof results from a subtlety of CP/M console I/O. KEY must not echo the typed character, and so used BDOS function 6. KEY? used BDOS function 11 to test non-destructively for the presence of a keypress. Unfortunately, BDOS function 6 does not "clear" the keypress detected by function 11\! I have now rewritten KEY? to use BDOS function 6 (see Listing 1 [camel80.txt](camel80.html)). Since this is a "destructive" test, I had to add logic to save the "consumed" keypress and return it when KEY is next used. This new logic can be used whenever your hardware (or operating system) provides only a destructive test-for-keypress.
+The major goof results from a subtlety of CP/M console I/O. KEY must not echo the typed character, and so used BDOS function 6. KEY? used BDOS function 11 to test non-destructively for the presence of a keypress. Unfortunately, BDOS function 6 does not "clear" the keypress detected by function 11\! I have now rewritten KEY? to use BDOS function 6 (see [Listing 1](camel80.html)). Since this is a "destructive" test, I had to add logic to save the "consumed" keypress and return it when KEY is next used. This new logic can be used whenever your hardware (or operating system) provides only a destructive test-for-keypress.
 
 ## HIGH LEVEL DEFINITIONS
 
 In the last installment I did not expound greatly on the source code. Each Forth "primitive" performs a miniscule, sharply-defined function. It was almost all Z80 assembler code, and if it wasn't obvious *why* a particular word was included, I hope it was clear *what* each word did.
 
-In this installment I have no such luxury: I will present the high level definitions which embody the elegant (and tortuous) logic of the Forth language. Entire books have been written \[1,2,3\] describing Forth kernels, and if you want complete mastery I highly recommend you buy one of them. For TCJ I'll limit myself to some of the key words of the compiler and interpreter, given in Listing 2 [camel80h.txt](camel80h.html).
+In this installment I have no such luxury: I will present the high level definitions which embody the elegant (and tortuous) logic of the Forth language. Entire books have been written \[1,2,3\] describing Forth kernels, and if you want complete mastery I highly recommend you buy one of them. For TCJ I'll limit myself to some of the key words of the compiler and interpreter, given in [Listing 2](camel80h.html).
 
 ## TEXT INTERPRETER OPERATION
 
 The text or "outer" interpreter is the Forth code which accepts input from the keyboard and performs the desired Forth operations. (This is distinct from the address or "inner" interpreter, NEXT, which executes compiled threaded code) The best way to understand it is to work through the startup of the Forth system.
 
-1. The CP/M entry point (see listing [camel80.txt](camel80.html) in previous installment) determines the top of available memory, set the stack pointers (PSP,RSP) and user pointer (UP), establishing the memory map shown in [Figure 1](#FIGURE1). It then sets the "inner" interpreter pointer (IP) to execute the Forth word **COLD**.
+1. The CP/M entry point (see [listing](camel80.html) in previous installment) determines the top of available memory, set the stack pointers (PSP,RSP) and user pointer (UP), establishing the memory map shown in [Figure 1](#figure-1.-z80-cpm-camelforth-memory-map). It then sets the "inner" interpreter pointer (IP) to execute the Forth word **COLD**.
 
 2. **COLD** initializes the user variables from a startup table, and then does **ABORT**. (**COLD** will also attempt to execute a Forth command from the CP/M command line.)
 
@@ -45,7 +45,7 @@ You can even have unnamed ("headless") fragments of Forth code, if you *know* yo
 
 The design decisions could fill another article. Suffice it to say that CamelForth uses the simplest scheme: a single linked list, with the header located just before the executable code. No vocabularies... although I may add them in a future issue of TCJ.
 
-## HEADER STRUCTURE ([FIGURE 2](#FIGURE2))
+## HEADER STRUCTURE ([Figure 2](#figure-2.-header-structures))
 
 Still more design decisions: what data should be present in the header, and how should it be stored?
 
@@ -55,7 +55,7 @@ The "precedence bit" is a flag which indicates if this word has IMMEDIATE status
 
 If the names are kept in a linked list, there must be a link. Usually the latest word is at the head of the linked list, and the link points to a previous word. This enforces the ANSI (and traditional) requirement for redefined words. Charles Curley \[7\] has studied the placement of the link field, and found that the compiler can be made significantly faster if the link field comes *before* the name (rather than after, as was done in Fig-Forth).
 
-[Figure 2](#FIGURE2) shows the structure of the CamelForth word header, and the Fig-Forth, F83, and Pygmy Forth headers for comparison. The "view" vield of F83 and Pygmy is an example of other useful information which can be stored in the Forth word header.
+[Figure 2](#figure-2.-header-structures) shows the structure of the CamelForth word header, and the Fig-Forth, F83, and Pygmy Forth headers for comparison. The "view" vield of F83 and Pygmy is an example of other useful information which can be stored in the Forth word header.
 
 Remember: it's important to distinguish the header from the "body" (executable part) of the word. They need not be stored together. The header is only used during compilation and interpretation, and a "purely executable" Forth application could dispense with headers entirely. However, headers must be present -- at least for the ANSI word set -- for it to be a legal ANS Forth System.
 
@@ -71,7 +71,7 @@ Thus we see that there is no distinct Forth "compiler", in the same sense that w
 
 ## THE DEPENDENCY WORD SET
 
-Most of the remaining high-level words are either a) necessary to implement the compiler and interpreter, or b) provided solely for your programming pleasure. But there is one set which deserves special mention: the words I have separated into the file CAMEL80D.AZM (Listing 3 [camel80d.txt](camel80d.html)).
+Most of the remaining high-level words are either a) necessary to implement the compiler and interpreter, or b) provided solely for your programming pleasure. But there is one set which deserves special mention: the words I have separated into the file CAMEL80D.AZM ([Listing 3](camel80d.html)).
 
 One of the goals of the ANSI Forth Standard was to hide CPU and model dependencies (Direct or Indirect Threaded? 16 or 32 bit?) from the application programmer. Several words were added to the Standard for this purpose. I have taken this one step further, attempting to encapsulate these dependencies *even within the kernel*. Ideally, the high-level Forth code in the file CAMEL80H.AZM should be the same for all CamelForth targets (although different assemblers will have different syntax).
 
