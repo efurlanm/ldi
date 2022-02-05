@@ -31,12 +31,12 @@ This series originally appeared in [The Computer Journal](http://archive.org/det
 
 These listings are part of Moving Forth and are described in the text.
 
-* [Table 1. Glossary](glosslo.txt): Glossary of words in CAMEL80.AZM
-* [Primitive testing code](cameltst.txt): The "minimal" test of the CamelForth kernel
-* [CAMEL80.AZM](camel80.txt): Code Primitives
-* [CAMEL80H.AZM](camel80h.txt): High Level Words
-* [CAMEL80D.AZM](camel80d.txt): CPU and Model Dependencies
-* [CAMEL09](camel09.txt): Direct-Threaded Forth model for Motorola 6809
+* [Table 1. Glossary](glosslo.md): Glossary of words in CAMEL80.AZM
+* [Primitive testing code](cameltst.md): The "minimal" test of the CamelForth kernel
+* [CAMEL80.AZM](camel80.md): Code Primitives
+* [CAMEL80H.AZM](camel80h.md): High Level Words
+* [CAMEL80D.AZM](camel80d.md): CPU and Model Dependencies
+* [CAMEL09](camel09.md): Direct-Threaded Forth model for Motorola 6809
 
 ## The Computer Journal (TCJ)
 
