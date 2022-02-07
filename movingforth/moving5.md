@@ -8,7 +8,7 @@ Journal #67 (May/June 1994)](../movingforth/#the-computer-journal-tcj).
 
 ## THE CODE I PROMISED
 
-At long last, I am ready to present the complete source code for an (I hope) ANSI compliant Forth, CamelForth\[1\]. As an intellectual exercise -- and to ensure a clear copyright -- I've written this code entirely from scratch. (Do you know how hard it is to *not* look at excellent code examples?) Of course, my experience with various Forths has no doubt influenced some design decisions.
+At long last, I am ready to present the complete source code for an (I hope) ANSI compliant Forth, CamelForth \[1\]. As an intellectual exercise -- and to ensure a clear copyright -- I've written this code entirely from scratch. (Do you know how hard it is to *not* look at excellent code examples?) Of course, my experience with various Forths has no doubt influenced some design decisions.
 
 Due to space limitations, the source code will be presented in four installments (if you can't wait, complete files will be on GEnie):
 
@@ -49,7 +49,7 @@ With this set of primitives you can begin writing Forth code. Sure, you have to 
 I've run out of abstractions for today. If you want to learn more about how a Forth kernel works and is written, study [Listing 2](camel80.md). It follows the Forth convention for documentation:
 
 ```forth
-    WORD-NAME    stack in -- stack out    description
+WORD-NAME    stack in -- stack out    description
 ```
 
 <u>WORD-NAME</u> is the name by which *Forth* knows the word. Often these names include peculiar ASCII characters, so an approximation must be used when defining assembler labels (such as ONEPLUS for the Forth word 1+).
@@ -59,7 +59,7 @@ I've run out of abstractions for today. If you want to learn more about how a Fo
 If the word has a return stack effect (other than nesting, that is), an additional return stack comment will be added after "R:"
 
 ```forth
-    stack in -- stack out    R: stack in -- stack out
+stack in -- stack out    R: stack in -- stack out
 ```
 
 ANSI Forth defines a number of useful abbreviations for stack arguments, such as "n" for a signed single-cell number, "u" for an unsigned single-cell number, "c" for a character, and so on. See [Table 1](glosslo.md).

@@ -139,7 +139,7 @@
       <g class="com.sun.star.drawing.CustomShape">
        <g id="id7">
         <rect class="BoundingBox" stroke="none" fill="none" x="8990" y="2974" width="2666" height="1069"/>
-        <path fill="rgb(232,245,233)" stroke="none" d="M 10323,4016 L 9016,4016 9016,3000 11629,3000 11629,4016 10323,4016 Z"/>
+        <path fill="rgb(227,242,253)" stroke="none" d="M 10323,4016 L 9016,4016 9016,3000 11629,3000 11629,4016 10323,4016 Z"/>
         <path fill="none" stroke="rgb(0,0,0)" stroke-width="51" stroke-linejoin="round" d="M 10323,4016 L 9016,4016 9016,3000 11629,3000 11629,4016 10323,4016 Z"/>
         <text class="TextShape"><tspan class="TextParagraph" font-family="Noto Sans, sans-serif" font-size="353px" font-weight="400"><tspan class="TextPosition" x="10223" y="3646"><tspan fill="rgb(0,0,0)" stroke="none">2</tspan></tspan></tspan></text>
        </g>

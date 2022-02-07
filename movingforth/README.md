@@ -71,5 +71,5 @@ Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 
 - the documents were edited using [Mark Text](http://github.com/marktext) which is also a good offline markdown document reader
 - Mark Text also exports the document to PDF or HTML
-- the html directory contains automatically generated HTML versions, using pandoc
+- the [html](https://github.com/efurlanm/ldi/tree/main/movingforth/html) directory contains automatically generated HTML versions, using pandoc
 - to obtain a local copy of this repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository

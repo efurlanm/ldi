@@ -19,7 +19,7 @@
 by Brad Rodriguez</p>
 <p>This article first appeared in <a href="../movingforth/#the-computer-journal-tcj">The Computer Journal #67 (May/June 1994)</a>.</p>
 <h2 id="the-code-i-promised">THE CODE I PROMISED</h2>
-<p>At long last, I am ready to present the complete source code for an (I hope) ANSI compliant Forth, CamelForth[1]. As an intellectual exercise -- and to ensure a clear copyright -- I&#39;ve written this code entirely from scratch. (Do you know how hard it is to <em>not</em> look at excellent code examples?) Of course, my experience with various Forths has no doubt influenced some design decisions.</p>
+<p>At long last, I am ready to present the complete source code for an (I hope) ANSI compliant Forth, CamelForth [1]. As an intellectual exercise -- and to ensure a clear copyright -- I&#39;ve written this code entirely from scratch. (Do you know how hard it is to <em>not</em> look at excellent code examples?) Of course, my experience with various Forths has no doubt influenced some design decisions.</p>
 <p>Due to space limitations, the source code will be presented in four installments (if you can&#39;t wait, complete files will be on GEnie):</p>
 <ol>
 <li>Z80 Forth &quot;primitives,&quot; in assembler source</li>
@@ -53,12 +53,12 @@ by Brad Rodriguez</p>
 <p>With this set of primitives you can begin writing Forth code. Sure, you have to use an assembler instead of a Forth compiler, but -- as <a href="cameltst.html">Listing 1</a> suggests -- you can use high-level control flow and nesting to write useful code that would be more difficult to write in assembler.</p>
 <h2 id="read-the-code">READ THE CODE!</h2>
 <p>I&#39;ve run out of abstractions for today. If you want to learn more about how a Forth kernel works and is written, study <a href="camel80.html">Listing 2</a>. It follows the Forth convention for documentation:</p>
-<pre class="forth"><code>    WORD-NAME    stack in -- stack out    description
+<pre class="forth"><code>WORD-NAME    stack in -- stack out    description
 </code></pre>
 <p><u>WORD-NAME</u> is the name by which <em>Forth</em> knows the word. Often these names include peculiar ASCII characters, so an approximation must be used when defining assembler labels (such as ONEPLUS for the Forth word 1+).</p>
 <p><u>stack in</u> are the arguments this word expects to see on the stack, with the topmost stack item always on the right. <u>stack out</u> are the arguments this word will leave on the stack, likewise.</p>
 <p>If the word has a return stack effect (other than nesting, that is), an additional return stack comment will be added after &quot;R:&quot;</p>
-<pre class="forth"><code>    stack in -- stack out    R: stack in -- stack out
+<pre class="forth"><code>stack in -- stack out    R: stack in -- stack out
 </code></pre>
 <p>ANSI Forth defines a number of useful abbreviations for stack arguments, such as &quot;n&quot; for a signed single-cell number, &quot;u&quot; for an unsigned single-cell number, &quot;c&quot; for a character, and so on. See <a href="glosslo.html">Table 1</a>.</p>
 <h2 id="references">REFERENCES</h2>
