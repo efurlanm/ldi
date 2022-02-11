@@ -21,7 +21,7 @@ It should be
 ['] xdo ,XT  . . .
 ```
 
-This is of no consequence on the Z80 (where ,BRANCH and ,XT are identical), but it became embarassingly obvious on the 8051.
+This is of no consequence on the Z80 (where ,BRANCH and ,XT are identical), but it became embarrassingly obvious on the 8051.
 
 Also, in the words S" and (S"), the word ALIGN should really be ALIGNED. On the Z80 -- and the 8051 -- both are no-ops, so this mistake didn't make itself evident.
 

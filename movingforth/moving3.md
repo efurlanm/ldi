@@ -90,7 +90,7 @@ Common features appear in all these views:
 
 A typical Forth kernel will have several Code Field routines predefined.
 
-| Code Field <br>routine | Parameter Field <br>contents                |
+| Code Field<br/>routine | Parameter Field<br/>contents                |
 | ---------------------- | ------------------------------------------- |
 | ENTER                  | a high-level "thread" (series of addresses) |
 | DOCON                  | a constant value                            |
@@ -606,7 +606,7 @@ In the next installment I'll discuss the merits of assemblers vs. metacompilers,
 
 ## REFERENCES
 
-\[DER82\] Derick, Mitch and Baker, Linda, <u>Forth Encyclopedia</u>, Mountain View Press (1982). A word-by-word description of fig-Forth in minute detail. Still available from the Forth Interest Group, P.O. Box 2154, Oakland CA 94621.
+\[DER82\] Derick, Mitch and Baker, Linda, [Forth Encyclopedia](http://archive.org/details/MitchDerickLindaBakerForthEncyclopediaTheCompleteForthProgrammersManualMountainViewPress1982), Mountain View Press (1982). A word-by-word description of fig-Forth in minute detail. Still available from the Forth Interest Group, P.O. Box 2154, Oakland CA 94621.
 
 \[LAX84\] Laxen, H. and Perry, M., <u>F83 for the IBM PC</u>, version 2.1.0 (1984). Distributed by the authors, available from the Forth Interest Group or GEnie.
 

@@ -24,7 +24,7 @@ by Brad Rodriguez</p>
 <pre><code>[&#39;] xdo ,BRANCH  . . .</code></pre>
 <p>It should be</p>
 <pre><code>[&#39;] xdo ,XT  . . .</code></pre>
-<p>This is of no consequence on the Z80 (where ,BRANCH and ,XT are identical), but it became embarassingly obvious on the 8051.</p>
+<p>This is of no consequence on the Z80 (where ,BRANCH and ,XT are identical), but it became embarrassingly obvious on the 8051.</p>
 <p>Also, in the words S&quot; and (S&quot;), the word ALIGN should really be ALIGNED. On the Z80 -- and the 8051 -- both are no-ops, so this mistake didn&#39;t make itself evident.</p>
 <h2 id="8051-camelforth-model">8051 CAMELFORTH MODEL</h2>
 <p>In issue #60 I summarized the design decisions for an 8051 Forth. To recap: the 8051&#39;s retarded memory addressing practically demands the use of subroutine threading. This means the hardware stack (in the 8051 register file) is the Return Stack. The Parameter Stack (a.k.a. Data Stack) is in 256 bytes of external RAM, using R0 as the stack pointer. Since that article, I&#39;ve discovered that it&#39;s better to keep the Top Of Stack item (TOS) in DPTR than in R3:R2. Thus:</p>

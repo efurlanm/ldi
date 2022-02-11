@@ -31,7 +31,7 @@ This series originally appeared in [The Computer Journal](http://archive.org/det
 
 These listings are part of Moving Forth and are described in the text.
 
-* [Table 1. Glossary](glosslo.md): Glossary of words in CAMEL80.AZM
+* [Glossary](glosslo.md): Glossary of words in CAMEL80.AZM
 * [Primitive testing code](cameltst.md): The "minimal" test of the CamelForth kernel
 * [CAMEL80.AZM](camel80.md): Code Primitives
 * [CAMEL80H.AZM](camel80h.md): High Level Words

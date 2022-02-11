@@ -501,17 +501,17 @@ Subsequent articles will look at:
 
 ## REFERENCES
 
-\[KEL92\] Kelly, Guy M., "Forth Systems Comparisons," Forth Dimensions XIII:6 (Mar/Apr 1992). Also published in the <u>1991 FORML Conference Proceedings</u>. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design tradeoffs of many 8086 Forths with code fragments and benchmarks -- highly recommended\!
+\[KEL92\] Kelly, Guy M., "Forth Systems Comparisons," Forth Dimensions XIII:6 (Mar/Apr 1992) [[1]](http://archive.org/details/Forth_Dimension_Volume_13_Number_6) [[2]](http://www.forth.org/fd/FD-V13N6.pdf) [[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf). Also published in the <u>1991 FORML Conference Proceedings</u>. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design tradeoffs of many 8086 Forths with code fragments and benchmarks -- highly recommended\!
 
-\[MOT83\] Motorola Inc., <u>8-Bit Microprocessor and Peripheral Data</u>, Motorola data book (1983).
+\[MOT83\] Motorola Inc., <u>8-Bit Microprocessor and Peripheral Data</u>, Motorola data book (1983). [[1]](http://archive.org/details/bitsavers_motoroladaoprocessorandPeripheralData_34048525)
 
-\[SIG92\] Signetics Inc., <u>80C51-Based 8-Bit Microcontrollers</u>, Signetics data book (1992).
+\[SIG92\] Signetics Inc., <u>80C51-Based 8-Bit Microcontrollers</u>, Signetics data book (1992). [[1]](http://archive.org/details/bitsavers_signeticsdcs80C51Based8BitMicrocontrollers_63245635)
 
 ### Forth Implementations
 
-\[PAY90\] Payne, William H., <u>Embedded Controller FORTH for the 8051 Family</u>, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. Hardcopy only; files can be downloaded from GEnie. Not for the novice\!
+\[PAY90\] Payne, William H., <u>Embedded Controller FORTH for the 8051 Family</u>, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. Hardcopy only; files can be downloaded from GEnie. Not for the novice\! [[1]](http://archive.org/details/WilliamH.PayneAuth.EmbeddedControllerFORTHForThe8051FamilyBostonAcademicPress1990)
 
-\[SER90\] Sergeant, Frank, <u>Pygmy Forth for the IBM PC</u>, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain.
+\[SER90\] Sergeant, Frank, <u>Pygmy Forth for the IBM PC</u>, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain. [[1]](http://www.forth.org/compilers.html)
 
 \[SEY89\] Seywerd, H., Elehew, W. R., and Caven, P., <u>LOVE-83Forth for the IBM PC</u>, version 1.20 (1989). A shareware Forth using a five-segment model. Contact Seywerd Associates, 265 Scarboro Cres., Scarborough, Ontario M1M 2J7 Canada.
 

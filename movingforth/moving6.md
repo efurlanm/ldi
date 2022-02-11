@@ -51,7 +51,7 @@ Still more design decisions: what data should be present in the header, and how 
 
 The minimum data is the name, precedence bit, and pointer (explicit or implicit) to executable code. For simplicity, CamelForth stores the name as a "counted string" (one byte of length, followed by N characters). Early Forth Inc. products stored a length but only the first three characters, for faster comparisons (the actual improvement gained is another hot debate). Fig-Forth compromised, flagging the last character with MSB high in order to allow either full-length or truncated names. Other Forths have used packed strings \[4\], and I suspect even C-style null-terminated strings have been used.
 
-The "precedence bit" is a flag which indicates if this word has IMMEDIATE status. IMMEDIATE words are executed *even during compilation*, which is how Forth implements compiler directives and control structres. There are other ways to distinguish compiler directives -- Pygmy Forth \[5\], for example, puts them in a separate vocabulary. But ANS Forth essentially mandates the use of a precedence bit \[6\]. Many Forths store this bit in the "length" byte. I have chosen to put it in a separate byte, in order to use the "normal" string operators on word names (e.g. **S=** within **FIND**, and **TYPE** within **WORDS**).
+The "precedence bit" is a flag which indicates if this word has IMMEDIATE status. IMMEDIATE words are executed *even during compilation*, which is how Forth implements compiler directives and control structures. There are other ways to distinguish compiler directives -- Pygmy Forth \[5\], for example, puts them in a separate vocabulary. But ANS Forth essentially mandates the use of a precedence bit \[6\]. Many Forths store this bit in the "length" byte. I have chosen to put it in a separate byte, in order to use the "normal" string operators on word names (e.g. **S=** within **FIND**, and **TYPE** within **WORDS**).
 
 If the names are kept in a linked list, there must be a link. Usually the latest word is at the head of the linked list, and the link points to a previous word. This enforces the ANSI (and traditional) requirement for redefined words. Charles Curley \[7\] has studied the placement of the link field, and found that the compiler can be made significantly faster if the link field comes *before* the name (rather than after, as was done in Fig-Forth).
 
@@ -82,6 +82,7 @@ The words **COMPILE, \!CF ,CF \!COLON** and **,EXIT** hide peculiarities of the 
 ```
 word     compiles on Z80   compiles on 8051
 -------- ----------------- ---------------------------
+
 COMPILE, address           LCALL address
 !CF      CALL address      LCALL address
 ,CF      !CF & allot       3 bytes !CF & allot 3 bytes
