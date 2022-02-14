@@ -54,4 +54,4 @@ Random links to books and libraries that I found interesting
 
 ## License
 
-My work follows the CC0-BY-4.0 license. The works of other authors follow their licenses.
+My work follows the CC-BY-4.0 license. The works of other authors follow their licenses.
