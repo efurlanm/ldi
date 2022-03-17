@@ -30,7 +30,8 @@ My personal notes on language design and implementation, internals, computer arc
 
 ## Forth
 
-* [Moving Forth, by Brad Rodriguez](http://efurlanm.github.io/movingforth/): Forth language internals
+* [Moving Forth, by Brad Rodriguez](http://efurlanm.github.io/movingforth/): Forth language internals (MkDocs version)
+    * [Moving Forth, web site sources](movingforth/)
 
 ## Vintage computer
 
