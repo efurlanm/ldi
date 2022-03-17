@@ -1,2 +1,4 @@
 site_name: MovingForth
-theme: readthedocs
+theme: 
+    name: readthedocs
+    highlightjs: false
