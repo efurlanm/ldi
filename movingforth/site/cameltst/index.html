@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Cameltst - MovingForth</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Cameltst";
+    var mkdocs_page_input_path = "cameltst.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> MovingForth</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Moving Forth, by Brad Rodriguez</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../8051task/">MULTITASKING 8051 CAMELFORTH</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel09/">Camel09</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel80/">Camel80</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel80d/">Camel80d</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel80h/">Camel80h</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Cameltst</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../glosslo/">Glosslo</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving1/">MOVING FORTH 1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving2/">MOVING FORTH 2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving3/">MOVING FORTH 3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving4/">MOVING FORTH 4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving5/">MOVING FORTH 5</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving6/">MOVING FORTH 6</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving7/">MOVING FORTH 7</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving8/">MOVING FORTH 8</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Aux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../aux/editor%27s%20notes/">Editor's Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Pandoc</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../aux/pandoc/">Index</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Html</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../html/">Index</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Mvp</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../mvp/">MVP-Forth for the Apple II</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">MovingForth</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Cameltst</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <pre><code>; Listing 1.
+; ===============================================
+; CamelForth for the Zilog Z80
+; Primitive testing code
+;
+; This is the &quot;minimal&quot; test of the CamelForth
+; kernel.  It verifies the threading and nesting
+; mechanisms, the stacks, and the primitives
+;   DUP EMIT EXIT lit branch ONEPLUS.
+; It is particularly useful because it does not
+; use the DO..LOOP, multiply, or divide words,
+; and because it can be used on embedded CPUs.
+; The numeric display word .A is also useful
+; for testing the rest of the Core wordset.
+;
+; The required macros and CPU initialization
+; are in file CAMEL80.AZM.
+; ===============================================
+
+;Z &gt;&lt;   u1 -- u2    swap the bytes of TOS
+    head SWAB,2,&gt;&lt;,docode
+        ld a,b
+        ld b,c
+        ld c,a
+        next
+
+;Z LO   c1 -- c2    return low nybble of TOS
+    head LO,2,LO,docode
+        ld a,c
+        and 0fh
+        ld c,a
+        ld b,0
+        next
+
+;Z HI   c1 -- c2    return high nybble of TOS
+    head HI,2,HI,docode
+        ld a,c
+        and 0f0h
+        rrca
+        rrca
+        rrca
+        rrca
+        ld c,a
+        ld b,0
+        next
+
+;Z &gt;HEX  c1 -- c2    convert nybble to hex char
+    head TOHEX,4,&gt;HEX,docode
+        ld a,c
+        sub 0ah
+        jr c,numeric
+        add a,7
+numeric: add a,3ah
+        ld c,a
+        next
+
+;Z .HH   c --       print byte as 2 hex digits
+;   DUP HI &gt;HEX EMIT LO &gt;HEX EMIT ;
+    head DOTHH,3,.HH,docolon
+        DW DUP,HI,TOHEX,EMIT,LO,TOHEX,EMIT,EXIT
+
+;Z .B    a -- a+1   fetch &amp; print byte, advancing
+;   DUP C@ .HH 20 EMIT 1+ ;
+    head DOTB,2,.B,docolon
+    DW DUP,CFETCH,DOTHH,lit,20h,EMIT,ONEPLUS,EXIT
+
+;Z .A   u --       print unsigned as 4 hex digits
+;   DUP &gt;&lt; .HH .HH 20 EMIT ;
+    head DOTA,2,.A,docolon
+        DW DUP,SWAB,DOTHH,DOTHH,lit,20h,EMIT,EXIT
+
+;X DUMP   addr u --      dump u locations at addr
+;   0 DO
+;      I 15 AND 0= IF CR DUP .A THEN
+;      .B
+;   LOOP DROP ;
+    head DUMP,4,DUMP,docolon
+        DW LIT,0,XDO
+DUMP2:  DW II,LIT,15,AND,ZEROEQUAL,qbranch,DUMP1
+        DW CR,DUP,DOTA
+DUMP1:  DW DOTB,XLOOP,DUMP2,DROP,EXIT
+
+;Z ZQUIT   --    endless dump for testing
+;   0 BEGIN  0D EMIT 0A EMIT  DUP .A
+;       .B .B .B .B .B .B .B .B
+;       .B .B .B .B .B .B .B .B
+;   AGAIN ;
+    head ZQUIT,5,ZQUIT,docolon
+       DW lit,0
+zquit1:  DW lit,0dh,EMIT,lit,0ah,EMIT,DUP,DOTA
+       DW DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB
+       DW DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB
+       DW branch,zquit1
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../glosslo/" class="btn btn-neutral float-right" title="Glosslo">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../camel80h/" class="btn btn-neutral" title="Camel80h"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../camel80h/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../glosslo/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

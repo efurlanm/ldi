@@ -1,0 +1,143 @@
+*/ MVP/A : 2/20/83
+********************************
+*                              *
+*     APPLE ][ MVP FORTH       *
+*     VERSION  1.0103.03       *
+*                              *
+*       IMPLEMENTED BY         *
+*      ROBERT E. KUNTZE        *
+*  1198 W. VANDERBILT COURT    *
+*  SUNNYVALE, CA.     94087    *
+*                              *
+*   DISTRIBUTION BY:           *
+*   MOUNTAIN VIEW PRESS        *
+*      P.O. BOX 4656           *
+*      MOUNTAIN VIEW, CA.      *
+*      94040                   *
+*                              *
+********************************
+*                              *
+*  THIS PUBLICATION IS PLACED  *
+*    IN THE PUBLIC DOMAIN.     *
+*                              *
+*  PERMISSION TO DISTRIBUTE IS *
+*  GRANTED BY THE INCLUSION OF *
+*  CREDIT TO BOTH:             *
+*                              *
+*     MOUNTAIN VIEW PRESS      *
+*                              *
+*             AND              *
+*                              *
+*       ROBERT E. KUNTZE       *
+*                              *
+********************************
+*                              *
+*  THIS SOURCE CODE WAS        *
+*  DEVELOPED AND COMPILED      *
+*  USING THE:                  *
+*                              *
+*         BIG MAC.LC           *
+*    MACRO-ASSEMBLER/TED       *
+*                              *
+*       GLEN E. BREDON         *
+*                              *
+*  APPLE PUGETSOUND PROGRAM    *
+*      LIBRARY EXCHANGE        *
+*                              *
+********************************
+*
+*    EQUATES FOR;
+*     MEMORY ASSIGNMENT,
+*     MACHINE REGISTERS,
+*     & DISK PARAMETERS.
+*
+TOS      EQU   $E8        TOP OF STACK + 2
+N        EQU   $F0        SCRATCH WORKSPACE
+IP       EQU   $F8        INTERPRETIVE POINTER
+W        EQU   $FB        CODE FIELD POINTER
+UAP      EQU   $FE        USER AREA POINTER
+XSAVE    EQU   $FD        TEMPORARY X REG.
+TIBX     EQU   $0100      TERMINAL IN BUFFER
+ORIGN    EQU   $0800      ORIGN FORTH DICT.
+UAREA    EQU   $B5A0      USER AREA
+*
+*    APPLE MONITOR S/R
+*
+COUT     EQU   $FDED      CHARA. OUT
+COUT1    EQU   $FDF0      OUTPUT TO APPLE SCREEN
+CSW      EQU   $36        POINTS TO CHARACTER OUTPUT
+CROUT    EQU   $FD8E      C/R OUTPUT
+KEYIN    EQU   $FD1B      INPUT FROM KEYBOARD
+KSW      EQU   $38        POINTS TO CHARACTER INPUT
+RDKEY    EQU   $FD0C      READ KEYBOARD
+*
+*    JUMP VECTORS TO BOOTUP
+*    CODE AND SYSTEM PARAMETERS.
+*
+         ORG   $0800
+*
+*
+         JMP   COLD+2
+REENTRY  JMP   WARM
+IFORTH   DA    RBRAC-4    LAST NAME ADDR.
+         HEX   0800       APPLE BACKSPACE CHARACTER
+         DA    UAREA      START USER AREA
+IUSER    DA    TOS        TOP OF STACK
+         HEX   FF01       TOP OF RETURN STACK
+         DA    TIBX       TERM. INPUT BUFFER
+         HEX   1F00       NAME FIELD WIDTH, 31
+         HEX   0100       WARNING FLAG
+         DA    RBRAC+12   FENCE ADDRESS
+         DA    RBRAC+12   TOP OF DICTIONARY
+         DA    VL0        VOCABULARY LINK POINTER
+         DA    ADFINDA    FIRST OF VECTORED
+         DA    AQTERMA     CODE
+         DA    AABORTA     VECTORS
+         DA    ABLOCKA
+         DA    ACRA
+         DA    AEMITA
+         DA    AEXPCTA
+         DA    AINTERP
+         DA    AKEYA
+         DA    ALOADA
+         DA    ANUMBER
+         DA    APAGEA
+         DA    ARSLWA
+         DA    ASVFRTH
+         DA    AVOCB79
+         DA    AWORDA
+*
+*    'SETUPN' ( FROM STACK TO N REG )
+*
+SETUPN   ASL
+         STA   N-1
+SETUPN1  LDA   0,X
+         STA   N,Y
+         INX
+         INY
+         CPY   N-1
+         BNE   SETUPN1
+         LDY   #0
+         RTS
+*
+*   'NEXT' IS THE ADDRESS INTERPRETER
+*           THAT MOVES FROM WORD TO WORD
+*
+PUSH     DEX
+         DEX
+PUT      STA   1,X
+         PLA
+         STA   0,X
+NEXT     LDY   #1
+         LDA   (IP),Y     FETCH CODE FIELD ADDRESS
+         STA   W+1         POINTED TO BY'IP'.
+         DEY
+         LDA   (IP),Y
+         STA   W
+         CLC
+         LDA   IP         INCREMENT 'IP' BY 2 
+         ADC   #2
+         STA   IP
+         BCC   NEXT1
+         INC   IP+1
+NEXT1    JMP   W-1

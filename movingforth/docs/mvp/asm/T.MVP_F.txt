@@ -1,0 +1,764 @@
+*/ MVP/F  2/20/83
+*
+*    'CONFIGURE'  ( --- )
+*
+         HEX   89
+         DCI   'CONFIGURE'
+         DA    COMPILE-10
+CONFIGR  DA    DOCOLON
+         DA    QCONFIG
+         DA    CR
+         DA    ADOTQA
+         HEX   13
+         ASC   'NUMBER OF DRIVES ? '
+         DA    KEY
+         DA    LIT
+         HEX   3100
+         DA    SUB
+         DA    DUP
+         DA    LIT
+         HEX   0500
+         DA    ULESS
+         DA    NOT
+         DA    AABORTQ
+         HEX   0F
+         ASC   'TOO MANY DRIVES'
+         DA    DUP
+         DA    LIT
+         HEX   3100
+         DA    PLUS
+         DA    EMIT
+         DA    ONEP
+         DA    LIT
+         DA    MAXDDRV+2
+         DA    STORE
+         DA    MAXDDRV
+         DA    ZERO
+         DA    ADOA
+CONFIG1  DA    CR
+         DA    ADOTQA
+         HEX   06
+         ASC   'DRIVE '
+         DA    I
+         DA    DOT
+         DA    ADOTQA
+         HEX   02
+         ASC   '? '
+         DA    KEY
+         DA    LIT
+         HEX   3000
+         DA    SUB
+         DA    DUP
+         DA    LIT
+         HEX   0700
+         DA    ULESS
+         DA    NOT
+         DA    AABORTQ
+         HEX   0C
+         ASC   'OUT OF RANGE'
+         DA    DUP
+         DA    LIT
+         HEX   3000
+         DA    PLUS
+         DA    EMIT
+         DA    I
+         DA    TWOSTAR
+         DA    DEN
+         DA    PLUS
+         DA    STORE
+         DA    ALOOPA
+         DFB   CONFIG1-*,>CONFIG1-*
+         DA    DR0
+         DA    CR
+         DA    CR
+         DA    ADOTQA
+         HEX   0D
+         ASC   'DR0 SELECTED '
+         DA    CR
+         DA    EXIT
+*
+*    'CONSTANT'  ( N --- )
+*
+         HEX   88
+         DCI   'CONSTANT'
+         DA    CONFIGR-12
+CONSTNT  DA    DOCOLON
+         DA    CREATE
+         DA    COMMA
+         DA    ASCODEA
+DOCONST  LDY   #2
+         LDA   (W),Y
+         PHA
+         INY
+         LDA   (W),Y
+         JMP   PUSH
+*
+*    'CONTEXT'  ( --- ADDR )
+*
+         HEX   87
+         DCI   'CONTEXT'
+         DA    CONSTNT-11
+CONTEXT  DA    DOUSER
+         HEX   3C
+*
+*    'CONVERT'  ( D1 ADDR --- D2 ADDR )
+*
+         HEX   87
+         DCI   'CONVERT'
+         DA    CONTEXT-10
+CONVERT  DA    DOCOLON
+CONVER1  DA    ONEP
+         DA    DUP
+         DA    TOR
+         DA    CAT
+         DA    BASE
+         DA    AT
+         DA    DIGIT
+         DA    ZBRANCH
+         DFB   CONVER3-*,00
+         DA    SWAP
+         DA    BASE
+         DA    AT
+         DA    USTAR
+         DA    DROP
+         DA    ROT
+         DA    BASE
+         DA    AT
+         DA    USTAR
+         DA    DPLUS
+         DA    DPL
+         DA    AT
+         DA    ONEP
+         DA    ZBRANCH
+         DFB   CONVER2-*,00
+         DA    ONE
+         DA    DPL
+         DA    PSTORE
+CONVER2  DA    RFROM
+         DA    BRANCH
+         DFB   CONVER1-*,>CONVER1-*
+CONVER3  DA    RFROM
+         DA    EXIT
+*
+*    'COUNT'  ( ADDR --- ADDR+1 N )
+*
+         HEX   85
+         DCI   'COUNT'
+         DA    CONVERT-10
+COUNT    DA    DOCOLON
+         DA    DUP
+         DA    ONEP
+         DA    SWAP
+         DA    CAT
+         DA    EXIT
+*
+*    'CR'  ( --- )
+*
+         HEX   82
+         DCI   'CR'
+         DA    COUNT-8
+CR       DA    DOCOLON
+         DA    TCR
+         DA    AT
+         DA    EXECUTE
+         DA    EXIT
+*
+*    'CREATE'
+*
+         HEX   86
+         DCI   'CREATE'
+         DA    CR-5
+CREATE   DA    DOCOLON
+         DA    BL
+         DA    WORD
+         DA    DUP
+         DA    DUP
+         DA    ONEP
+         DA    CAT
+         DA    ZERO
+         DA    EQUAL
+         DA    AABORTQ
+         HEX   1A
+         ASC   'ATTEMPTED TO REDEFINE NULL'
+         DA    DUP
+         DA    CONTEXT
+         DA    AT
+         DA    AT
+         DA    AFINDA
+         DA    ZBRANCH
+         DFB   CREATE1-*,00
+         DA    DDROP
+         DA    WARNING
+         DA    AT
+         DA    ZBRANCH
+         DFB   CREATE1-*,00
+         DA    DUP
+         DA    COUNT
+         DA    TYPE
+         DA    SPACE
+         DA    ADOTQA
+         HEX   0E
+         ASC   " ISN'T UNIQUE "
+         DA    ACRA
+CREATE1  DA    CAT
+         DA    WIDTH
+         DA    AT
+         DA    MIN
+         DA    ONEP
+         DA    DDUP
+         DA    LIT
+         HEX   0300
+         DA    PLUS
+         DA    PLUS
+         DA    LIT
+         HEX   0F00
+         DA    ANDD
+         DA    ZEQUAL
+         DA    ZBRANCH
+         DFB   CREATE2-*,00
+         DA    DDUP
+         DA    SWAP
+         DA    DUP
+         DA    ONEP
+         DA    ROT
+         DA    ACMOVE
+         DA    LIT
+         HEX   EA00
+         DA    CCOMMA
+         DA    SWAP
+         DA    ONEP
+         DA    SWAP
+CREATE2  DA    ALLOT
+         DA    DUP
+         DA    LIT
+         HEX   8000
+         DA    TOGGLE
+         DA    HERE
+         DA    ONEM
+         DA    LIT
+         HEX   8000
+         DA    TOGGLE
+         DA    LATEST
+         DA    COMMA
+         DA    TWO
+         DA    ALLOT
+         DA    CURRENT
+         DA    AT
+         DA    STORE
+         DA    ASCODEA
+DOCREAT  CLC
+         LDA   W
+         ADC   #2
+         PHA
+         TYA
+         ADC   W+1
+         JMP   PUSH
+*
+*    'CSP'  ( --- ADDR )
+*
+         HEX   83
+         DCI   'CSP'
+         DA    CREATE-9
+CSP      DA    DOUSER
+         HEX   3E
+*
+*    'CURRENT'  ( --- ADDR )
+*
+         HEX   87
+         DCI   'CURRENT'
+         DA    CSP-6
+CURRENT  DA    DOUSER
+         HEX   40
+*
+*    'D!'  ( D ADDR --- )
+*
+         HEX   82
+         DCI   'D!'
+         DA    CURRENT-10
+DSTORE   DA    DSTORE+2
+         LDA   $2,X
+         STA   (0,X)
+         INC   $0,X
+         BNE   DSTORE1
+         INC   $1,X
+DSTORE1  LDA   $3,X
+         STA   (0,X)
+         INC   $0,X
+         BNE   DSTORE2
+         INC   $1,X
+DSTORE2  LDA   $4,X
+         STA   (0,X)
+         INC   $0,X
+         BNE   DSTORE3
+         INC   $1,X
+DSTORE3  LDA   $5,X
+         STA   (0,X)
+         INX
+         INX
+         JMP   POPTWO
+*
+*    'D+' ( D1 D2 --- SUM )
+*
+         HEX   82
+         DCI   'D+'
+         DA    DSTORE-5
+DPLUS    DA    DPLUS+2
+         CLC
+         LDA   $2,X
+         ADC   $6,X
+         STA   $6,X
+         LDA   $3,X
+         ADC   $7,X
+         STA   $7,X
+         LDA   $0,X
+         ADC   $4,X
+         STA   $4,X
+         LDA   $1,X
+         ADC   $5,X
+         STA   $5,X
+         JMP   POPTWO
+*
+*    'D+-'  ( D1 N --- D2 )
+*
+         HEX   83
+         DCI   'D+-'
+         DA    DPLUS-5
+DPM      DA    DOCOLON
+         DA    ZLESS
+         DA    ZBRANCH
+         DFB   DPM1-*,00
+         DA    DNEGATE
+DPM1     DA    EXIT
+*
+*    'D.'  ( D --- )
+*
+         HEX   82
+         DCI   'D.'
+         DA    DPM-6
+DDOT     DA    DOCOLON
+         DA    ZERO
+         DA    DDOTR
+         DA    SPACE
+         DA    EXIT
+*
+*    'D.R'  ( D N --- )
+*
+         HEX   83
+         DCI   'D.R'
+         DA    DDOT-5
+DDOTR    DA    DOCOLON
+         DA    DEPTH
+         DA    LIT
+         HEX   0300
+         DA    LESS
+         DA    AABORTQ
+         HEX   0B
+         ASC   'EMPTY STACK'
+         DA    TOR
+         DA    SWAP
+         DA    OVER
+         DA    DUP
+         DA    DPM
+         DA    LESSHRP
+         DA    SHARPS
+         DA    ROT
+         DA    SIGN
+         DA    SHARPA
+         DA    RFROM
+         DA    OVER
+         DA    SUB
+         DA    SPACES
+         DA    TYPE
+         DA    EXIT
+*
+*    'D<'  ( D1 D2 --- F )
+*
+         HEX   82
+         DCI   'D<'
+         DA    DDOTR-6
+DLESS    DA    DOCOLON
+         DA    ROT
+         DA    DDUP
+         DA    EQUAL
+         DA    ZBRANCH
+         DFB   DLESS1-*,00
+         DA    ROT
+         DA    ROT
+         DA    DNEGATE
+         DA    DPLUS
+         DA    ZLESS
+         DA    BRANCH
+         DFB   DLESS2-*,00
+DLESS1   DA    SWAP
+         DA    LESS
+         DA    SWAP
+         DA    DROP
+DLESS2   DA    SWAP
+         DA    DROP
+         DA    EXIT
+*
+*    'DABS'  ( D1 --- D2 )
+*
+         HEX   84
+         DCI   'DABS'
+         DA    DLESS-5
+DABS     DA    DOCOLON
+         DA    DUP
+         DA    DPM
+         DA    EXIT
+*
+*    'DDROP'  ( D --- )
+*
+         HEX   85
+         DCI   'DDROP'
+         DA    DABS-7
+DDROP    DA    POPTWO
+*
+*    'DDUP'  ( D --- D D )
+*
+         HEX   84
+         DCI   'DDUP'
+         DA    DDROP-8
+DDUP     DA    DDUP+2
+         LDA   $2,X
+         PHA
+         LDA   $3,X
+         DEX
+         DEX
+         STA   $1,X
+         PLA
+         STA   $0,X
+         LDA   $2,X
+         PHA
+         LDA   $3,X
+         JMP   PUSH
+*
+*  'DECIMAL'  ( --- )
+*
+         HEX   87
+         DCI   'DECIMAL'
+         DA    DDUP-7
+DECIMAL  DA    DOCOLON
+         DA    LIT
+         HEX   0A00
+         DA    BASE
+         DA    STORE
+         DA    EXIT
+*
+*    'DEFINITIONS'  ( --- )
+*
+         HEX   8B
+         DCI   'DEFINITIONS'
+         DA    DECIMAL-10
+DEFINIT  DA    DOCOLON
+         DA    CONTEXT
+         DA    AT
+         DA    CURRENT
+         DA    STORE
+         DA    EXIT
+*
+*    'DEN'  ( --- ADDR )
+*
+         HEX   83
+         DCI   'DEN'
+         DA    DEFINIT-14
+DEN      DA    DOCREAT
+         HEX   0000
+         HEX   0000
+         HEX   0000
+         HEX   0000
+         HEX   0000
+*
+*    'DENSITY'  ( --- ADDR )
+*
+         HEX   87
+         DCI   'DENSITY'
+         DA    DEN-6
+DENSITY  DA    DOCREAT
+         HEX   0000
+*
+*    'DEPTH'  ( --- N )
+*
+         HEX   85
+         DCI   'DEPTH'
+         DA    DENSITY-10
+DEPTH    DA    DOCOLON
+         DA    SPAT
+         DA    SZERO
+         DA    SWAP
+         DA    SUB
+         DA    TWO
+         DA    SLASH
+         DA    EXIT
+*
+*    'DIGIT' ( C N1 --- N2 TF )
+*            ( C N1 --- FF )
+*
+         HEX   85
+         DCI   'DIGIT'
+         DA    DEPTH-8
+DIGIT    DA    DIGIT+2
+         SEC
+         LDA   $2,X
+         SBC   #$30
+         BMI   DIGIT2
+         CMP   #$A
+         BMI   DIGIT1
+         SEC
+         SBC   #$7
+         CMP   #$A
+         BMI   DIGIT2
+DIGIT1   CMP   $0,X
+         BPL   DIGIT2
+         STA   $2,X
+         LDA   #$1
+         PHA
+         TYA
+         JMP   PUT        EXIT TRUE WITH CONVERTED VALUE
+DIGIT2   TYA
+         PHA
+         INX
+         INX
+         JMP   PUT        EXIT FALSE, BAD CONVERSION
+*
+*    'DLITERAL'  ( D --- D ) EXECUTING
+*                ( D --- ) COMPILING
+*
+         HEX   C8
+         DCI   'DLITERAL'
+         DA    DIGIT-8
+DLITERL  DA    DOCOLON
+         DA    STATE
+         DA    AT
+         DA    ZBRANCH
+         DFB   DLITER1-*,00
+         DA    SWAP
+         DA    LITERAL
+         DA    LITERAL
+DLITER1  DA    EXIT
+*
+*    'DNEGATE' ( D --- -D )
+*
+         HEX   87
+         DCI   'DNEGATE'
+         DA    DLITERL-11
+DNEGATE  DA    DNEGATE+2
+         SEC
+         TYA
+         SBC   $2,X
+         STA   $2,X
+         TYA
+         SBC   $3,X
+         STA   $3,X
+         JMP   NEGATE+3
+*
+*    'DO'  ( N1 N2 --- )
+*
+         HEX   C2
+         DCI   'DO'
+         DA    DNEGATE-10
+DO       DA    DOCOLON
+         DA    COMPILE
+         DA    ADOA
+         DA    HERE
+         DA    LIT
+         HEX   0300
+         DA    EXIT
+*
+*    'DOES>'
+*
+         HEX   C5
+         DCI   'DOES>'
+         DA    DO-5
+DOES     DA    DOCOLON
+         DA    QCSP
+         DA    COMPILE
+         DA    ASCODEA
+         DA    LIT
+         HEX   2000
+         DA    CCOMMA
+         DA    COMPILE
+         DA    *+4
+         DA    EXIT
+DODOES   DEX              ;MAKE ROOM ON
+         DEX              ; STACK FOR ONE ITEM
+         CLC              ; GET W AND
+         LDA   W           INCREMENT BY TWO
+         ADC   #2          AND PUT ON
+         STA   $0,X        STACK
+         TYA
+         ADC   W+1
+         STA   $1,X
+         SEC              ;FETCH ADDRESS OFF
+         PLA              ; RETURN STACK,
+         SBC   #1
+         STA   W
+         PLA
+         SBC   #0          DECREMENT BY ONE
+         STA   W+1         AND STORE IN W
+         JMP   DOCOLON
+*
+*    'DP'  ( --- ADDR )
+*
+         HEX   82
+         DCI   'DP'
+         DA    DOES-8
+DP       DA    DOUSER
+         HEX   12
+*
+*    'DPL'  ( --- ADDR )
+*
+         HEX   83
+         DCI   'DPL'
+         DA    DP-5
+DPL      DA    DOUSER
+         HEX   42
+*
+*    'DR-DEN'  ( N1 --- N2 )
+*
+         HEX   86
+         DCI   'DR-DEN'
+         DA    DPL-6
+DRDDEN   DA    DOCOLON
+         DA    TWOSTAR
+         DA    DEN
+         DA    PLUS
+         DA    AT
+         DA    EXIT
+*
+*    'DR0'  ( --- )
+*
+         HEX   83
+         DCI   'DR0'
+         DA    DRDDEN-9
+DR0      DA    DOCOLON
+         DA    ZERO
+         DA    OFFSET
+         DA    STORE
+         DA    EXIT
+*
+*    'DR1'  ( --- )
+*
+         HEX   83
+         DCI   'DR1'
+         DA    DR0-6
+DR1      DA    DOCOLON
+         DA    DR0
+         DA    ZERO
+         DA    SETDDRX
+         DA    EXIT
+*
+*    'DR2'  ( --- )
+*
+         HEX   83
+         DCI   'DR2'
+         DA    DR1-6
+DR2      DA    DOCOLON
+         DA    DR1
+         DA    ONE
+         DA    SETDDRX
+         DA    EXIT
+*
+*    'DR3'  ( --- )
+*
+         HEX   83
+         DCI   'DR3'
+         DA    DR2-6
+DR3      DA    DOCOLON
+         DA    DR2
+         DA    TWO
+         DA    SETDDRX
+         DA    EXIT
+*
+*        ORG  $4004   FOR ONE HIRES PAGE
+*        ORG  $6004   FOR TWO HIRES PAGES
+*
+*
+*    'DR4'  ( --- )
+*
+         HEX   83
+         DCI   'DR4'
+         DA    DR3-6
+DR4      DA    DOCOLON
+         DA    DR3
+         DA    LIT
+         HEX   0300
+         DA    SETDDRX
+         DA    EXIT
+*
+*    'DROP' ( N --- )
+*
+         HEX   84
+         DCI   'DROP'
+         DA    DR4-6
+DROP     DA    DROP+2
+         JMP   POP
+*
+*    'DUP' ( N --- N N )
+*
+         HEX   83
+         DCI   'DUP'
+         DA    DROP-7
+DUP      DA    DUP+2
+         LDA   $0,X
+         PHA
+         LDA   $1,X
+         JMP   PUSH
+*
+*    'ELSE'
+*
+         HEX   C4
+         DCI   'ELSE'
+         DA    DUP-6
+ELSE     DA    DOCOLON
+         DA    TWO
+         DA    QPAIRS
+         DA    COMPILE
+         DA    BRANCH
+         DA    HERE
+         DA    ZERO
+         DA    COMMA
+         DA    SWAP
+         DA    TWO
+         DA    THEN
+         DA    TWO
+         DA    EXIT
+*
+*    'EMIT'  ( C --- )
+*
+         HEX   84
+         DCI   'EMIT'
+         DA    ELSE-7
+EMIT     DA    DOCOLON
+         DA    TEMIT
+         DA    AT
+         DA    EXECUTE
+         DA    EXIT
+*
+*    'EMPTY-BUFFERS'  ( --- )
+*
+         HEX   8D
+         DCI   'EMPTY-BUFFERS'
+         DA    EMIT-7
+EMPTBUF  DA    DOCOLON
+         DA    FIRST
+         DA    LIMIT
+         DA    OVER
+         DA    SUB
+         DA    ZERO
+         DA    AFILLA
+         DA    NUMBUFF
+         DA    ZERO
+         DA    ADOA
+EMPTBU1  DA    LIT
+         HEX   FF7F
+         DA    LIT
+         HEX   0404
+         DA    I
+         DA    STAR
+         DA    FIRST
+         DA    PLUS
+         DA    STORE
+         DA    ALOOPA
+         DFB   EMPTBU1-*,>EMPTBU1-*
+         DA    EXIT

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Glosslo - MovingForth</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Glosslo";
+    var mkdocs_page_input_path = "glosslo.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> MovingForth</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Moving Forth, by Brad Rodriguez</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../8051task/">MULTITASKING 8051 CAMELFORTH</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel09/">Camel09</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel80/">Camel80</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel80d/">Camel80d</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel80h/">Camel80h</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cameltst/">Cameltst</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Glosslo</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving1/">MOVING FORTH 1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving2/">MOVING FORTH 2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving3/">MOVING FORTH 3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving4/">MOVING FORTH 4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving5/">MOVING FORTH 5</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving6/">MOVING FORTH 6</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving7/">MOVING FORTH 7</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving8/">MOVING FORTH 8</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Aux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../aux/editor%27s%20notes/">Editor's Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Pandoc</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../aux/pandoc/">Index</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Html</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../html/">Index</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Mvp</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../mvp/">MVP-Forth for the Apple II</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">MovingForth</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Glosslo</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <pre><code>    TABLE 1.  GLOSSARY OF WORDS IN CAMEL80.AZM
+    Words which are (usually) written in CODE.
+
+NAME   stack in -- stack out          description
+
+  Guide to stack diagrams:  R: = return stack,
+  c = 8-bit character, flag = boolean (0 or -1), 
+  n = signed 16-bit, u = unsigned 16-bit,
+  d = signed 32-bit, ud = unsigned 32-bit,
+  +n = unsigned 15-bit, x = any cell value, 
+  i*x j*x = any number of cell values,
+  a-addr = aligned adrs, c-addr = character adrs
+  p-addr = I/O port adrs, sys = system-specific.
+  Refer to ANS Forth document for more details.
+
+               ANS Forth Core words
+
+These are required words whose definitions are 
+specified by the ANS Forth document.
+
+!      x a-addr --           store cell in memory
+
++ n1/u1 n2/u2 -- n3/u3             add n1+n2
+  +!     n/u a-addr --           add cell to memory
+- n1/u1 n2/u2 -- n3/u3        subtract n1-n2
+  &lt;      n1 n2 -- flag           test n1&lt;n2, signed
+  =      x1 x2 -- flag                   test x1=x2
+
+  &gt;      n1 n2 -- flag           test n1&gt;n2, signed
+  &gt; 
+  &gt; R     x --   R: -- x        push to return stack
+  &gt; ?DUP   x -- 0 | x x                DUP if nonzero
+  &gt; @      a-addr -- x         fetch cell from memory
+  &gt; 0&lt;     n -- flag             true if TOS negative
+  &gt; 0=     n/u -- flag           return true if TOS=0
+  &gt; 1+     n1/u1 -- n2/u2                add 1 to TOS
+  &gt; 1-     n1/u1 -- n2/u2         subtract 1 from TOS
+  &gt; 2*     x1 -- x2             arithmetic left shift
+  &gt; 2/     x1 -- x2            arithmetic right shift
+  &gt; AND    x1 x2 -- x3                    logical AND
+  &gt; CONSTANT   n --           define a Forth constant
+  &gt; C!     c c-addr --           store char in memory
+  &gt; C@     c-addr -- c         fetch char from memory
+  &gt; DROP   x --                     drop top of stack
+  &gt; DUP    x -- x x            duplicate top of stack
+  &gt; EMIT   c --           output character to console
+  &gt; EXECUTE   i*x xt -- j*x   execute Forth word 'xt'
+  &gt; EXIT   --                 exit a colon definition
+  &gt; FILL   c-addr u c --        fill memory with char
+  &gt; I      -- n   R: sys1 sys2 -- sys1 sys2
+  &gt; 
+  &gt;                 get the innermost loop index
+  &gt; 
+  &gt; INVERT x1 -- x2                 bitwise inversion
+  &gt; J      -- n   R: 4*sys -- 4*sys
+  &gt; 
+  &gt;                    get the second loop index
+  &gt; 
+  &gt; KEY    -- c           get character from keyboard
+  &gt; LSHIFT x1 u -- x2        logical L shift u places
+  &gt; NEGATE x1 -- x2                  two's complement
+  &gt; OR     x1 x2 -- x3                     logical OR
+  &gt; OVER   x1 x2 -- x1 x2 x1        per stack diagram
+  &gt; ROT    x1 x2 x3 -- x2 x3 x1     per stack diagram
+  &gt; RSHIFT x1 u -- x2        logical R shift u places
+  &gt; R&gt;     -- x    R: x --      pop from return stack
+  &gt; R@     -- x    R: x -- x       fetch from rtn stk
+  &gt; SWAP   x1 x2 -- x2 x1          swap top two items
+  &gt; UM*    u1 u2 -- ud       unsigned 16x16-&gt;32 mult.
+  &gt; UM/MOD ud u1 -- u2 u3     unsigned 32/16-&gt;16 div.
+  &gt; UNLOOP --   R: sys1 sys2 --       drop loop parms
+  &gt; U&lt;     u1 u2 -- flag         test u1&lt;n2, unsigned
+  &gt; VARIABLE   --             define a Forth variable
+  &gt; XOR    x1 x2 -- x3                    logical XOR
+
+            ANS Forth Extensions
+
+  These are optional words whose definitions are
+  specified by the ANS Forth document.
+
+&lt;&gt;     x1 x2 -- flag               test not equal 
+BYE    i*x --                      return to CP/M
+CMOVE  c-addr1 c-addr2 u --      move from bottom
+CMOVE&gt; c-addr1 c-addr2 u --         move from top
+KEY?   -- flag        return true if char waiting
+M+     d1 n -- d2            add single to double
+NIP    x1 x2 -- x2              per stack diagram
+TUCK   x1 x2 -- x2 x1 x2        per stack diagram
+U&gt;     u1 u2 -- flag         test u1&gt;u2, unsigned 
+
+               Private Extensions
+
+These are words which are unique to CamelForth.
+Many of these are necessary to implement ANS
+Forth words, but are not specified by the ANS
+document.  Others are functions I find useful.
+
+(do)   n1|u1 n2|u2 --  R: -- sys1 sys2
+                             run-time code for DO
+(loop) R: sys1 sys2 --  | sys1 sys2
+                           run-time code for LOOP
+(+loop)  n --   R: sys1 sys2 --  | sys1 sys2
+                          run-time code for +LOOP
+
+&gt; &lt;     x1 -- x2                        swap bytes 
+&gt; ?branch  x --                  branch if TOS zero
+&gt; BDOS   DE C -- A                   call CP/M BDOS
+&gt; branch --                           branch always
+&gt; lit    -- x         fetch inline literal to stack
+&gt; PC!    c p-addr --            output char to port
+&gt; PC@    p-addr -- c           input char from port
+&gt; RP!    a-addr --         set return stack pointer
+&gt; RP@    -- a-addr         get return stack pointer
+&gt; SCAN   c-addr1 u1 c -- c-addr2 u2
+&gt;                                find matching char
+&gt; SKIP   c-addr1 u1 c -- c-addr2 u2
+&gt;                               skip matching chars
+&gt; SP!    a-addr --           set data stack pointer
+&gt; SP@    -- a-addr           get data stack pointer
+&gt; S=     c-addr1 c-addr2 u -- n      string compare
+&gt;                n&lt;0: s1&lt;s2, n=0: s1=s2, n&gt;0: s1&gt;s2
+&gt; USER   n --              define user variable 'n'
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../moving1/" class="btn btn-neutral float-right" title="MOVING FORTH 1">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../cameltst/" class="btn btn-neutral" title="Cameltst"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cameltst/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../moving1/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>MovingForth</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Moving Forth, by Brad Rodriguez";
+    var mkdocs_page_input_path = "README.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> MovingForth</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Moving Forth, by Brad Rodriguez</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#moving-forth-a-series-on-writing-forth-kernels">Moving Forth: a series on writing Forth kernels</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#listings">Listings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-computer-journal-tcj">The Computer Journal (TCJ)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#forth-dimensions-fd">Forth Dimensions (FD)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="8051task/">MULTITASKING 8051 CAMELFORTH</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="camel09/">Camel09</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="camel80/">Camel80</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="camel80d/">Camel80d</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="camel80h/">Camel80h</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="cameltst/">Cameltst</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="glosslo/">Glosslo</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="moving1/">MOVING FORTH 1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="moving2/">MOVING FORTH 2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="moving3/">MOVING FORTH 3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="moving4/">MOVING FORTH 4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="moving5/">MOVING FORTH 5</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="moving6/">MOVING FORTH 6</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="moving7/">MOVING FORTH 7</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="moving8/">MOVING FORTH 8</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Aux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="aux/editor%27s%20notes/">Editor's Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Pandoc</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="aux/pandoc/">Index</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Html</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="html/">Index</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Mvp</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="mvp/">MVP-Forth for the Apple II</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">MovingForth</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Moving Forth, by Brad Rodriguez</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="moving-forth-by-brad-rodriguez">Moving Forth, by Brad Rodriguez</h1>
+<p>Original sources: http://www.bradrodriguez.com/papers/</p>
+<p>I decided to create this repo because it was difficult for me to read, study and learn easily using the original documentation, plus the fact that I enjoy taking notes as I read. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on, so I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the CC0-BY-4.0 license, and all original sources are under the <a href="http://www.bradrodriguez.com">author's original license</a>.</p>
+<p>Forth is a procedural, stack-oriented programming language and interactive environment designed by Charles H. Moore in 1968 at the United States National Radio Astronomy Observatory (NRAO), to help control radio telescopes. Today it is used in numerous spacecraft, such as the Rosetta/Philae probe which uses <a href="http://www.cpushack.com/2014/11/12/here-comes-philae-powered-by-an-rtx2010/">10 RTX2010 processors</a> that support direct execution of Forth. NASA has a list of <a href="http://web.archive.org/web/20110204160744/http://forth.gsfc.nasa.gov/">space-related applications of the Forth</a>, compiled by James Rash, at Goddard Space Flight Center Greenbelt, Maryland. Forth is generally <a href="http://github.com/TG9541/stm8ef/wiki">targeted at small embedded systems and microcontrollers like the STM8</a> used in various consumer devices like <a href="http://github.com/TG9541/stm8ef/wiki/STM8S-Value-Line-Gadgets">chinese gadgets</a>. What catches my attention in Forth is the possibility of being used running directly on the microcontroller using a REPL (Read-Eval-Print Loop) programming environment that allows the programmer to interact with a running program, experiment and obtain immediate results directly in the microcontroller, without the need for cross-compilation, which reduces development time. Other features are also useful, such as the ease of the interface and, because it is relatively simple, it is easy to deploy and optimize for a specific architecture.</p>
+<table>
+<tr>
+<td><img src="img/construction.gif"></td>
+<td>This repository is permanently under construction, so its content changes constantly</td>
+</tr>
+</table>
+
+<h2 id="moving-forth-a-series-on-writing-forth-kernels">Moving Forth: a series on writing Forth kernels</h2>
+<p>This series originally appeared in <a href="http://archive.org/details/the-computer-journal/">The Computer Journal</a>. Accompanying source code can be found on the <a href="http://www.camelforth.com/">CamelForth</a> page.</p>
+<ul>
+<li><a href="moving1/">Part 1: Design Decisions in the Forth Kernel</a></li>
+<li><a href="moving2/">Part 2: Benchmarks and Case Studies of Forth Kernels</a></li>
+<li><a href="moving3/">Part 3: Demystifying DOES&gt;</a></li>
+<li><a href="moving4/">Part 4: Assemble or Metacompile?</a></li>
+<li><a href="moving5/">Part 5: The Z80 Primitives</a></li>
+<li><a href="moving6/">Part 6: The Z80 High-level Kernel</a></li>
+<li><a href="moving7/">Part 7: CamelForth for the 8051</a></li>
+<li><a href="moving8/">Part 8: CamelForth for the 6809</a></li>
+<li><a href="8051task/">Multitasking 8051 CamelForth</a></li>
+</ul>
+<h2 id="listings">Listings</h2>
+<p>These listings are part of Moving Forth and are described in the text.</p>
+<ul>
+<li><a href="glosslo/">Glossary</a>: Glossary of words in CAMEL80.AZM</li>
+<li><a href="cameltst/">Primitive testing code</a>: The "minimal" test of the CamelForth kernel</li>
+<li><a href="camel80/">CAMEL80.AZM</a>: Code Primitives</li>
+<li><a href="camel80h/">CAMEL80H.AZM</a>: High Level Words</li>
+<li><a href="camel80d/">CAMEL80D.AZM</a>: CPU and Model Dependencies</li>
+<li><a href="camel09/">CAMEL09</a>: Direct-Threaded Forth model for Motorola 6809</li>
+</ul>
+<h2 id="the-computer-journal-tcj">The Computer Journal (TCJ)</h2>
+<ul>
+<li><a href="http://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/">The Computer Journal Home Page</a> (Wayback Machine link)</li>
+</ul>
+<p>Scanned PDF files source: http://archive.org/details/the-computer-journal</p>
+<ul>
+<li>TCJ #52: B.Y.O. Assembler (1) (3.9 MB PDF file) <a href="http://archive.org/details/the-computer-journal-52">[1]</a> <a href="tcj/tcj_52_September-October_1991_text.pdf">[2]</a></li>
+<li>TCJ #54: B.Y.O. Assembler (2) (2.7 MB PDF file) <a href="http://archive.org/details/the-computer-journal-54">[1]</a> <a href="tcj/tcj_54_January-February_1992_text.pdf">[2]</a></li>
+<li>TCJ #59: Moving Forth (2.6 MB PDF file) <a href="http://archive.org/details/the-computer-journal-59">[1]</a> <a href="tcj/tcj_59_January-February_1993_text.pdf">[2]</a></li>
+<li>TCJ #60: Moving Forth Part II (2.9 MB PDF file) <a href="http://archive.org/details/the-computer-journal-60">[1]</a> <a href="tcj/tcj_60_March-April_1993_text.pdf">[2]</a></li>
+<li>TCJ #62: Moving Forth Part III (3.0 MB PDF file) <a href="http://archive.org/details/the-computer-journal-62">[1]</a> <a href="tcj/tcj_62_July-August_1993_text.pdf">[2]</a></li>
+<li>TCJ #64: Moving Forth Part IV (3.4 MB PDF file) <a href="http://archive.org/details/the-computer-journal-64">[1]</a> <a href="tcj/tcj_64_November-December_1993_text.pdf">[2]</a></li>
+<li>TCJ #67: Moving Forth Part 5 (3.1 MB PDF file) <a href="http://archive.org/details/the-computer-journal-67">[1]</a> <a href="tcj/tcj_67_May-June_1994_text.pdf">[2]</a></li>
+<li>TCJ #69: Moving Forth Part 6 (3.7 MB PDF file) <a href="http://archive.org/details/the-computer-journal-69">[1]</a> <a href="tcj/tcj_69_September-October_1994_text.pdf">[2]</a></li>
+<li>TCJ #71: Moving Forth Part 7 (3.2 MB PDF file) <a href="http://archive.org/details/the-computer-journal-71">[1]</a> <a href="tcj/tcj_71_January-February_1995_text.pdf">[2]</a></li>
+<li>TCJ #72: Moving Forth Part 7.5 (3.1 MB PDF file) <a href="http://archive.org/details/the-computer-journal-72">[1]</a> <a href="tcj/tcj_72_March-April_1995_text.pdf">[2]</a></li>
+<li>TCJ #74: Moving Forth Part 8 (4.0 MB PDF file) <a href="http://archive.org/details/the-computer-journal-74">[1]</a> <a href="tcj/tcj_74_July-August_1995_text.pdf">[2]</a></li>
+</ul>
+<h2 id="forth-dimensions-fd">Forth Dimensions (FD)</h2>
+<p>Source 1 : http://archive.org/details/forthdimension (scanned PDF files) \
+Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)</p>
+<ul>
+<li>FD #XIII:6 "Forth Systems Comparisons" (21 MB PDF file) <a href="http://archive.org/details/Forth_Dimension_Volume_13_Number_6">[1]</a> <a href="http://www.forth.org/fd/FD-V13N6.pdf">[2]</a> <a href="fd/Forth_Dimension_Volume_13_Number_6.pdf">[3]</a></li>
+<li>FD #XIV:3 "Principles of Metacompilation 1" (21 MB PDF file) <a href="http://archive.org/details/Forth_Dimension_Volume_14_Number_3">[1]</a> <a href="http://www.forth.org/fd/FD-V14N3.pdf">[2]</a> <a href="fd/Forth_Dimension_Volume_14_Number_3.pdf">[3]</a></li>
+<li>FD #XIV:4 "Principles of Metacompilation 2" (21 MB PDF file) <a href="http://archive.org/details/Forth_Dimension_Volume_14_Number_4">[1]</a> <a href="http://www.forth.org/fd/FD-V14N4.pdf">[2]</a> <a href="fd/Forth_Dimension_Volume_14_Number_4.pdf">[3]</a></li>
+<li>FD #XIV:5 "Principles of Metacompilation 3" &amp; "Life in the FastForth Lane" (22 MB PDF file) <a href="http://archive.org/details/Forth_Dimension_Volume_14_Number_5">[1]</a> <a href="http://www.forth.org/fd/FD-V14N5.pdf">[2]</a> <a href="fd/Forth_Dimension_Volume_14_Number_5.pdf">[3]</a></li>
+<li>FD #XIV:5 "Principles of Metacompilation 3" &amp; "Optimizing in a BSR/JSR Threaded Forth" (22 MB PDF file) <a href="http://archive.org/details/Forth_Dimension_Volume_14_Number_6">[1]</a> <a href="http://www.forth.org/fd/FD-V14N6.pdf">[2]</a> <a href="fd/Forth_Dimension_Volume_14_Number_6.pdf">[3]</a></li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>the documents were edited using <a href="http://github.com/marktext">Mark Text</a> which is also a good offline markdown document reader</li>
+<li>Mark Text also exports the document to PDF or HTML</li>
+<li>the <a href="https://github.com/efurlanm/ldi/tree/main/movingforth/html">html</a> directory contains automatically generated HTML versions, using pandoc</li>
+<li>to obtain a local copy of this repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="8051task/" class="btn btn-neutral float-right" title="MULTITASKING 8051 CAMELFORTH">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="8051task/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.2.3
+Build Date UTC : 2022-03-17 01:16:10.807299+00:00
+-->

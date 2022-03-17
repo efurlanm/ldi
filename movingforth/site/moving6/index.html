@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>MOVING FORTH 6 - MovingForth</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "MOVING FORTH 6";
+    var mkdocs_page_input_path = "moving6.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> MovingForth</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Moving Forth, by Brad Rodriguez</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../8051task/">MULTITASKING 8051 CAMELFORTH</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel09/">Camel09</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel80/">Camel80</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel80d/">Camel80d</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../camel80h/">Camel80h</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cameltst/">Cameltst</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../glosslo/">Glosslo</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving1/">MOVING FORTH 1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving2/">MOVING FORTH 2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving3/">MOVING FORTH 3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving4/">MOVING FORTH 4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving5/">MOVING FORTH 5</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">MOVING FORTH 6</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#errata">ERRATA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#high-level-definitions">HIGH LEVEL DEFINITIONS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#text-interpreter-operation">TEXT INTERPRETER OPERATION</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-forth-dictionary">THE FORTH DICTIONARY</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#header-structure-figure-2">HEADER STRUCTURE (Figure 2)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compiler-operation">COMPILER OPERATION</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-dependency-word-set">THE DEPENDENCY WORD SET</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-time">NEXT TIME...</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">REFERENCES</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#figure-1-z80-cpm-camelforth-memory-map">FIGURE 1. Z80 CP/M CAMELFORTH MEMORY MAP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#figure-2-header-structures">FIGURE 2. HEADER STRUCTURES</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving7/">MOVING FORTH 7</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../moving8/">MOVING FORTH 8</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Aux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../aux/editor%27s%20notes/">Editor's Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Pandoc</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../aux/pandoc/">Index</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Html</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../html/">Index</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Mvp</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../mvp/">MVP-Forth for the Apple II</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">MovingForth</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>MOVING FORTH 6</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="moving-forth-6">MOVING FORTH 6</h1>
+<p>Part 6: the Z80 high-level kernel<br />
+by Brad Rodriguez</p>
+<p>This article first appeared in <a href="../movingforth/#the-computer-journal-tcj">The Computer Journal #69 (September/October 1994)</a>.</p>
+<h2 id="errata">ERRATA</h2>
+<p>There are two goofs in the <a href="../camel80/">CAMEL80.AZM</a> file I presented in TCJ#67. The minor goof is that the name length specified in the HEAD macro for the Forth word <strong>></strong> was incorrectly typed as 2 instead of 1.</p>
+<p>The major goof results from a subtlety of CP/M console I/O. KEY must not echo the typed character, and so used BDOS function 6. KEY? used BDOS function 11 to test non-destructively for the presence of a keypress. Unfortunately, BDOS function 6 does not "clear" the keypress detected by function 11! I have now rewritten KEY? to use BDOS function 6 (see <a href="../camel80/">Listing 1</a>). Since this is a "destructive" test, I had to add logic to save the "consumed" keypress and return it when KEY is next used. This new logic can be used whenever your hardware (or operating system) provides only a destructive test-for-keypress.</p>
+<h2 id="high-level-definitions">HIGH LEVEL DEFINITIONS</h2>
+<p>In the last installment I did not expound greatly on the source code. Each Forth "primitive" performs a miniscule, sharply-defined function. It was almost all Z80 assembler code, and if it wasn't obvious <em>why</em> a particular word was included, I hope it was clear <em>what</em> each word did.</p>
+<p>In this installment I have no such luxury: I will present the high level definitions which embody the elegant (and tortuous) logic of the Forth language. Entire books have been written [1,2,3] describing Forth kernels, and if you want complete mastery I highly recommend you buy one of them. For TCJ I'll limit myself to some of the key words of the compiler and interpreter, given in <a href="../camel80h/">Listing 2</a>.</p>
+<h2 id="text-interpreter-operation">TEXT INTERPRETER OPERATION</h2>
+<p>The text or "outer" interpreter is the Forth code which accepts input from the keyboard and performs the desired Forth operations. (This is distinct from the address or "inner" interpreter, NEXT, which executes compiled threaded code) The best way to understand it is to work through the startup of the Forth system.</p>
+<ol>
+<li>
+<p>The CP/M entry point (see <a href="../camel80/">listing</a> in previous installment) determines the top of available memory, set the stack pointers (PSP,RSP) and user pointer (UP), establishing the memory map shown in <a href="#figure-1.-z80-cpm-camelforth-memory-map">Figure 1</a>. It then sets the "inner" interpreter pointer (IP) to execute the Forth word <strong>COLD</strong>.</p>
+</li>
+<li>
+<p><strong>COLD</strong> initializes the user variables from a startup table, and then does <strong>ABORT</strong>. (<strong>COLD</strong> will also attempt to execute a Forth command from the CP/M command line.)</p>
+</li>
+<li>
+<p><strong>ABORT</strong> resets the parameter stack pointer and does <strong>QUIT</strong>.</p>
+</li>
+<li>
+<p><strong>QUIT</strong> resets the return stack pointer, loop stack pointer, and interpret state, and then begins to interpret Forth commands. (The name is apt because <strong>QUIT</strong> can be used to abort an application and get back to the "top level" of Forth. Unlike <strong>ABORT</strong>, <strong>QUIT</strong> will leave the parameter stack contents alone) <strong>QUIT</strong> is an infinite loop which will <strong>ACCEPT</strong> a line from the keyboard, and then <strong>INTERPRET</strong> it as Forth commands. When not compiling, <strong>QUIT</strong> will prompt "ok" after each line.</p>
+</li>
+<li>
+<p><strong>INTERPRET</strong> is an almost verbatim translation of the algorithm given in section 3.4 of the ANS Forth document. It parses one space-delimited string from the input, and tries to <strong>FIND</strong> the Forth word of that name. If the word is found, it will be either executed (if it is an IMMEDIATE word, or if in the "interpret" state, STATE=0) or compiled into the dictionary (if in the "compile" state, STATE\&lt;>0). If not found, Forth attempts to convert the string as a number. If successful, <strong>LITERAL</strong> will either place it on the parameter stack (if in "interpret" state) or compile it as an in-line literal value (if in "compile" state). If not a Forth word and not a valid number, the string is typed, an error message is displayed, and the interpreter <strong>ABORT</strong>s. This process is repeated, string by string, until the end of the input line is reached.</p>
+</li>
+</ol>
+<h2 id="the-forth-dictionary">THE FORTH DICTIONARY</h2>
+<p>Whoa! How does the interpreter "find" a Forth word by name? Answer: Forth keeps a "dictionary" of the names of all Forth words. Each name is connected in some fashion with the executable code for the corresponding word.</p>
+<p>There are many ways to store a set of strings for searching: a simple array, a linked list, a multiple linked list, hash table, etc. Almost all are valid here -- all Forth asks is that, if you reuse a name, the <em>latest</em> definition is found when you search the dictionary.</p>
+<p>It's also possible to have several sets of names ("vocabularies", or "wordlists" in the new ANSI jargon ). This lets you reuse a name <em>without</em> losing its previous meaning. For example, you could have an integer <strong>+</strong>, a floating-point <strong>+</strong>, even a <strong>+</strong> for strings...one way to achieve the "operator overloading" so beloved by the object-oriented community.</p>
+<p>Each string may be connected with its executable code by being physically adjacent in memory -- i.e., the name appears in memory just before the executable code, thus being called the "head" or "header" of the Forth word. Or the strings may be located in a totally different part of memory, and connected with pointers to executable code ("separate heads").</p>
+<p>You can even have unnamed ("headless") fragments of Forth code, if you <em>know</em> you'll never need to compile or interpret them. ANSI only requires that the ANS Forth words be findable.</p>
+<p>The design decisions could fill another article. Suffice it to say that CamelForth uses the simplest scheme: a single linked list, with the header located just before the executable code. No vocabularies... although I may add them in a future issue of TCJ.</p>
+<h2 id="header-structure-figure-2">HEADER STRUCTURE (<a href="#figure-2.-header-structures">Figure 2</a>)</h2>
+<p>Still more design decisions: what data should be present in the header, and how should it be stored?</p>
+<p>The minimum data is the name, precedence bit, and pointer (explicit or implicit) to executable code. For simplicity, CamelForth stores the name as a "counted string" (one byte of length, followed by N characters). Early Forth Inc. products stored a length but only the first three characters, for faster comparisons (the actual improvement gained is another hot debate). Fig-Forth compromised, flagging the last character with MSB high in order to allow either full-length or truncated names. Other Forths have used packed strings [4], and I suspect even C-style null-terminated strings have been used.</p>
+<p>The "precedence bit" is a flag which indicates if this word has IMMEDIATE status. IMMEDIATE words are executed <em>even during compilation</em>, which is how Forth implements compiler directives and control structures. There are other ways to distinguish compiler directives -- Pygmy Forth [5], for example, puts them in a separate vocabulary. But ANS Forth essentially mandates the use of a precedence bit [6]. Many Forths store this bit in the "length" byte. I have chosen to put it in a separate byte, in order to use the "normal" string operators on word names (e.g. <strong>S=</strong> within <strong>FIND</strong>, and <strong>TYPE</strong> within <strong>WORDS</strong>).</p>
+<p>If the names are kept in a linked list, there must be a link. Usually the latest word is at the head of the linked list, and the link points to a previous word. This enforces the ANSI (and traditional) requirement for redefined words. Charles Curley [7] has studied the placement of the link field, and found that the compiler can be made significantly faster if the link field comes <em>before</em> the name (rather than after, as was done in Fig-Forth).</p>
+<p><a href="#figure-2.-header-structures">Figure 2</a> shows the structure of the CamelForth word header, and the Fig-Forth, F83, and Pygmy Forth headers for comparison. The "view" vield of F83 and Pygmy is an example of other useful information which can be stored in the Forth word header.</p>
+<p>Remember: it's important to distinguish the header from the "body" (executable part) of the word. They need not be stored together. The header is only used during compilation and interpretation, and a "purely executable" Forth application could dispense with headers entirely. However, headers must be present -- at least for the ANSI word set -- for it to be a legal ANS Forth System.</p>
+<p>When "compiling" a Forth system from assembler source code, you can define macros to build this header (see HEAD and IMMED in CAMEL80.AZM). In the Forth environment the header, <em>and the Code Field</em>, is constructed by the word <strong>CREATE</strong>.</p>
+<h2 id="compiler-operation">COMPILER OPERATION</h2>
+<p>We now know enough to understand the Forth compiler. The word <strong>:</strong> starts a new high-level definition, by creating a header for the word (<strong>CREATE</strong>), changing its Code Field to "docolon" (<strong>!COLON</strong>), and switching to compile state (<strong>]</strong>). Recall that, in compile state, every word encountered by the text interpreter is compiled into the dictionary instead of being executed. This will continue until the word <strong>;</strong> is encountered. Being an IMMEDIATE word, <strong>;</strong> will execute, compiling an <strong>EXIT</strong> to end the definition, and then switching back to interpret state (<strong>[</strong>).</p>
+<p>Also, <strong>:</strong> will <strong>HIDE</strong> the new word, and <strong>;</strong> will <strong>REVEAL</strong> it (by setting and clearing the "smudge" bit in the name). This is to allow a Forth word to be redefined in terms of its "prior self". To force a recursive call to the word being defined, use <strong>RECURSE</strong>.</p>
+<p>Thus we see that there is no distinct Forth "compiler", in the same sense that we would speak of a C or Pascal compiler. The Forth compiler is embodied in the actions of various Forth words. This makes it easy for you to change or extend the compiler, but makes it difficult to create a Forth application <em>without</em> a built-in compiler!</p>
+<h2 id="the-dependency-word-set">THE DEPENDENCY WORD SET</h2>
+<p>Most of the remaining high-level words are either a) necessary to implement the compiler and interpreter, or b) provided solely for your programming pleasure. But there is one set which deserves special mention: the words I have separated into the file CAMEL80D.AZM (<a href="../camel80d/">Listing 3</a>).</p>
+<p>One of the goals of the ANSI Forth Standard was to hide CPU and model dependencies (Direct or Indirect Threaded? 16 or 32 bit?) from the application programmer. Several words were added to the Standard for this purpose. I have taken this one step further, attempting to encapsulate these dependencies <em>even within the kernel</em>. Ideally, the high-level Forth code in the file <a href="../camel80h/">CAMEL80H.AZM</a> should be the same for all CamelForth targets (although different assemblers will have different syntax).</p>
+<p>Differences in cell size and word alignment are managed by the ANS Forth words <strong>ALIGN ALIGNED CELL+ CELLS CHAR+ CHARS</strong> and my own addition, <strong>CELL</strong> (equivalent to <strong>1 CELLS</strong>, but smaller when compiled).</p>
+<p>The words <strong>COMPILE, !CF ,CF !COLON</strong> and <strong>,EXIT</strong> hide peculiarities of the threading model, such as a) how are the threads represented, and b) how is the Code Field implemented? The value of these words becomes evident when you look at the differences between the direct-threaded Z80 and the subroutine-threaded 8051:</p>
+<pre><code>word     compiles on Z80   compiles on 8051
+-------- ----------------- ---------------------------
+
+COMPILE, address           LCALL address
+!CF      CALL address      LCALL address
+,CF      !CF &amp; allot       3 bytes !CF &amp; allot 3 bytes
+!COLON   CALL docolon      nothing!
+,EXIT    address of EXIT   RET
+</code></pre>
+<p>(<strong>!CF</strong> and <strong>,CF</strong> are different for indirect-threaded Forths.)</p>
+<p>In similar fashion, the words <strong>,BRANCH ,DEST</strong> and <strong>!DEST</strong> hide the implementation of high-level branch and loop operators. I have tried to invent -- without borrowing from existing Forths! -- the minimal set of operators which can factor out all the implementation differences. Only time, expert criticism, and many CamelForths will tell how successful I've been.</p>
+<p>So far I have <em>not</em> been successful factoring the differences in header structure into a similar set of words. The words <strong>FIND</strong> and <strong>CREATE</strong> are so intimately involved with the header contents that I haven't yet found suitable subfactors. I have made a start, with the words <strong>NFA>LFA NFA>CFA IMMED? HIDE REVEAL</strong> and the ANS Forth words <strong>>BODY IMMEDIATE</strong>. I'll continue to work on this. Fortunately, it is practical for the time being to use the identical header structure on all CamelForth implementations (since they're all byte-addressed 16-bit Forths).</p>
+<h2 id="next-time">NEXT TIME...</h2>
+<p>I will probably present the 8051 kernel, and talk about how the Forth compiler and interpreter are modified for Harvard architectures (computers that have logically distinct memories for Code and Data, like the 8051). For the 8051 I will print the files CAMEL51 and CAMEL51D, but probably only excerpts from CAMEL51H, since (except for formatting of the assembler file) the high-level code shouldn't be different from what I've presented this issue...and Bill needs the space for other articles! Don't worry, the full code will be uploaded to GEnie.</p>
+<p><em>However,</em> I may succumb to demands of Scroungemaster II builders, and publish the 6809 CamelForth configured for the Scroungemaster II board. Whichever I do next, I'll do the other just one installment later.</p>
+<h2 id="references">REFERENCES</h2>
+<ol>
+<li>
+<p>Derick, Mitch and Baker, Linda, <u>Forth Encyclopedia</u>, Mountain View Press, Route 2 Box 429, La Honda, CA 94020 USA (1982). Word-by-word description of Fig-Forth.</p>
+</li>
+<li>
+<p>Ting, C. H., <u>Systems Guide to fig-Forth</u>, Offete Enterprises, 1306 South B Street, San Mateo, CA 94402 USA (1981).</p>
+</li>
+<li>
+<p>Ting, C. H., <u>Inside F83</u>, Offete Enterprises (1986).</p>
+</li>
+<li>
+<p>Ewing, Martin S., <u>The Caltech Forth Manual</u>, a Technical Report of the Owens Valley Radio Observatory (1978). This PDP-11 Forth stored a length, four characters, and a link in two 16-bit words.</p>
+</li>
+<li>
+<p>Sergeant, Frank, <u>Pygmy Forth for the IBM PC</u>, version 1.4 (1992). Distributed by the author, available from the Forth Interest Group (P.O. Box 2154, Oakland CA 94621 USA) or on GEnie.</p>
+</li>
+<li>
+<p>J. E. Thomas examined this issue thoroughly when converting Pygmy Forth to an ANSI Forth. No matter what tricks you play with relinking words, strict ANSI compliance is violated. A regrettable decision on the part of the ANS Forth team.</p>
+</li>
+<li>
+<p>In private communication.</p>
+</li>
+</ol>
+<p>The source code for Z80 CamelForth is <em>now</em> available on GEnie as CAMEL80.ARC in the CP/M and Forth Roundtables. Really. I just uploaded it. (Apologies to those who have been waiting.)</p>
+<p><em>Source code for Z80 CamelForth is available on this site at <a href="http://www.camelforth.com/public_ftp/cam80-12.zip">http://www.camelforth.com/public_ftp/cam80-12.zip</a>.</em></p>
+<p><span id="FIGURE1"></span></p>
+<h2 id="figure-1-z80-cpm-camelforth-memory-map">FIGURE 1. Z80 CP/M CAMELFORTH MEMORY MAP</h2>
+<p>assuming CP/M BDOS starts at ED00 hex.</p>
+<pre><code>0000 +-----------------------+
+     |      CP/M stuff       |
+0080 +-----------------------+
+     | Terminal Input Buffer |
+     |                       |
+0100 +-----------------------+
+     |                       |
+     | CamelForth Z80 kernel |
+     |                       |
+1700 +-----------------------+
+     | User definitions      |
+     |                       |
+     |                       |   / EB00 reserved
+     ~~~~~~~~~~~~~~~~~~~~~~~~~  /  EB02 &gt;IN
+     |                       | /   EB04 BASE
+EB00 +-----------------------+/    EB06 STATE
+     | User Area             |     EB08 DP
+     |                       |\    EB0A,EB0C 'SOURCE
+     |                       | \   EB0E LATEST
+     |       Parameter Stack |  \  EB10 HP
+EC00 +-----------------------+   \ EB12 LP
+     |                       |
+     |   HOLD working buffer |
+EC28 +-----------------------+
+     | PAD buffer            |
+     |                       |
+EC80 +-----------------------+
+     | Leave stack*          |
+     |                       |
+     |                       |
+     |          Return stack |
+ED00 +-----------------------+
+     |                       |
+     |         CP/M          |
+     |                       |
+FFFF +-----------------------+
+</code></pre>
+<p>* used during compilation of DO..LOOPs.</p>
+<p><span id="FIGURE2"></span></p>
+<h2 id="figure-2-header-structures">FIGURE 2. HEADER STRUCTURES</h2>
+<pre><code>    CamelForth        Fig-Forth          Pygmy Forth            F83
+
+ D7           D0    D7           D0    D7           D0    D7           D0
++---------------+  +-+-+-+---------+  +---------------+  +---------------+
+|               |  |1|P|S| length  |  |               |  |               |
+|-    link     -|  +-+-+-+---------+  |-    view     -|  |-    view     -|
+|               |  |               |  |               |  |               |
++-------------+-+  |-    name     -|  +---------------+  +---------------+
+|      0      |P|  |               |  |               |  |               |
++-+-----------+-+  ~~~~~~~~~~~~~~~~~  |-    link     -|  |-    link     -|
+|S|   length    |  |               |  |               |  |               |
++-+-------------+  +-+            -|  +-+-+-+---------+  +-+-+-+---------+
+|               |  |1|             |  |0|0|S| length  |  |1|P|S| length  |
+|-    name     -|  +-+-------------+  +-+-+-+---------+  +-+-+-+---------+
+|               |  |               |  |               |  |               |
+~~~~~~~~~~~~~~~~~  |-    link     -|  |-    name     -|  |-    name     -|
+|               |  |               |  |               |  |               |
+|-             -|  +---------------+  ~~~~~~~~~~~~~~~~~  ~~~~~~~~~~~~~~~~~
+|               |                     |               |  |               |
++---------------+                     |-             -|  +-+            -|
+                                      |               |  |1|             |
+                                      +---------------+  +-+-------------+
+</code></pre>
+<p><strong>Link</strong> - in CamelForth and Fig-Forth, points to the previous word's Length byte. In Pygmy Forth and F83, points to the previous word's Link.</p>
+<p><strong>P</strong> - Precedence bit, equals 1 for an IMMEDIATE word (not used in Pygmy).</p>
+<p><strong>S</strong> - Smudge bit, used to prevent FIND from finding this word.</p>
+<p><strong>1</strong> - in Fig-Forth and F83, the length byte and the last character of the name are flagged with a 1 in the most significant bit (bit 7).</p>
+<p><strong>View</strong> - in Pygmy Forth and F83, contains the block number of the source code for this word.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../moving7/" class="btn btn-neutral float-right" title="MOVING FORTH 7">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../moving5/" class="btn btn-neutral" title="MOVING FORTH 5"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../moving5/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../moving7/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
