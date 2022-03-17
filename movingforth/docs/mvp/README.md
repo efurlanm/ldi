@@ -1,6 +1,6 @@
 # MVP-Forth for the Apple II
 
-I downloaded these [files](http://github.com/efurlanm/ldi/tree/main/movingforth/docs/mvp/files) from
+I downloaded these [files](http://github.com/efurlanm/ldi/tree/main/movingforth/mvpfiles) from
 
 <https://mirrors.apple2.org.za/ftp.apple.asimov.net/images/programming/forth/>
 
