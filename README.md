@@ -1,4 +1,9 @@
-# Language design and implementation
+     _       ____    ___ 
+    | |     |  _ \  |_ _|
+    | |     | | | |  | | 
+    | |___  | |_| |  | | 
+    |_____| |____/  |___|
+    Language design and implementation
 
 My personal notes on language design and implementation, internals, computer architecture, and related topics
 
