@@ -1,8 +1,8 @@
 # Editor's Notes
 
-- The sources for this website are available at: https://github.com/efurlanm/ldi/tree/main/movingforth
-- Markdown documents were edited using the [Mark Text] editor(http://marktext.app/) and also the KWrite text editor
-- The MkDocs static site generator was used to build the website
+- The sources for this website are available at: <http://github.com/efurlanm/ldi/tree/main/movingforth>
+- Markdown documents were edited using the [Mark Text](http://marktext.app/) editor and also the KWrite text editor
+- The [MkDocs](http://www.mkdocs.org/) static site generator was used to build the website
 - Tables are edited in Libreoffice Calc (LC) using an html template. Once ready, just ctrl-c/ctrl-v from LC to the text
 - Figures are edited using Libreoffice Drawn (LD) and exported as SVG. In trial-and-error tests, what looks best on both the laptop monitor and the smartphone screen are ~7 x 3-inch-sized pictures with font size 10 or 12
 - The original documents were converted from html to markdown using `pandoc`
