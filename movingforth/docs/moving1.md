@@ -7,7 +7,7 @@ This article first appeared in [The Computer Journal (TCJ) #59 (January/February
 
 ## INTRODUCTION
 
-Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when [Bill Kibler](http://www.forth.org/resumes/kibler_bill.html) suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [[ROD91]](#ROD91) [[ROD92]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](http://en.wikipedia.org/wiki/CP\/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-80)s gathering dust.
+Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it\! So, when [Bill Kibler](http://www.forth.org/resumes/kibler_bill.html) suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the [6809](http://en.wikipedia.org/wiki/Motorola_6809), [8051](http://en.wikipedia.org/wiki/Intel_8051), and [Z80](http://en.wikipedia.org/wiki/Zilog_Z80). I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler [\[ROD91\]](#ROD91) [\[ROD92\]](#ROD92), and I'll be needing a 6809 Forth for future [TCJ](http://archive.org/details/the-computer-journal/) projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the [CP/M](http://en.wikipedia.org/wiki/CP\/M) readers of TCJ, and for some friends with [TRS-80](http://en.wikipedia.org/wiki/TRS-80)s gathering dust.
 
 ## THE ESSENTIAL HARDWARE
 
@@ -119,9 +119,9 @@ This costs space: every high-level definition in a Z80 Forth (for example) is no
 
 Of course, DTC CODE definitions are two bytes shorter, since they no longer need a pointer at all\! 
 
-I used to think that high-level definitions in DTC Forths required the use of a subroutine call in the **Code Field**. Frank Sergeant's Pygmy Forth [[SER90]](#SER90) demonstrates that a simple jump can be used just as easily, and will usually be faster.
+I used to think that high-level definitions in DTC Forths required the use of a subroutine call in the **Code Field**. Frank Sergeant's Pygmy Forth [\[SER90\]](#SER90) demonstrates that a simple jump can be used just as easily, and will usually be faster.
 
-Guy Kelly has compiled a superb review of Forth implementations for the IBM PC [[KEL92]](#KEL92), which I strongly recommend to _all_ Forth kernel writers. Of the 19 Forths he studied, 10 used DTC, 7 used ITC, and 2 used subroutine threading (discussed next). _I recommend the use of Direct-Threaded Code over Indirect-Threaded Code for all new Forth kernels._
+Guy Kelly has compiled a superb review of Forth implementations for the IBM PC [\[KEL92\]](#KEL92), which I strongly recommend to _all_ Forth kernel writers. Of the 19 Forths he studied, 10 used DTC, 7 used ITC, and 2 used subroutine threading (discussed next). _I recommend the use of Direct-Threaded Code over Indirect-Threaded Code for all new Forth kernels._
 
 ### Jump to NEXT, or code it in-line?
 
@@ -141,7 +141,7 @@ SQUARE: CALL DUP
         RET
 ```
 
-See [Figure 3](#FIG03). This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers [[KOG82]](#KOG82).
+See [Figure 3](#FIG03). This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers [\[KOG82\]](#KOG82).
 
 <span id=FIG03></span>
 *Figure 3. Subroutine Threaded Code*
@@ -174,7 +174,7 @@ BSR DROP  ------->   DROP: ADDQ #4,An
 BSR ...   <-------         RTS
 ```
 
-ADDQ is a two-byte instruction. Why write a four-byte subroutine call to a two-byte instruction? No matter how many times DROP is used, there's no savings\! The code is smaller and faster if the ADDQ is coded directly into the stream of BSRs. Some Forth compilers do this "in-line expansion" of CODE words [[CUR93a]](#CUR93a).
+ADDQ is a two-byte instruction. Why write a four-byte subroutine call to a two-byte instruction? No matter how many times DROP is used, there's no savings\! The code is smaller and faster if the ADDQ is coded directly into the stream of BSRs. Some Forth compilers do this "in-line expansion" of CODE words [\[CUR93a\]](#CUR93a).
 
 The disadvantage of in-line expansion is that decompiling back to the original source code becomes very difficult. As long as subroutine calls are used, you still have pointers (the subroutine addresses) to the Forth words comprising the thread. With pointers to the words, you can obtain their names. But once a word is expanded into in-line code, all knowledge of where that code came from is lost.
 
@@ -194,7 +194,7 @@ would be compiled in 68000 STC as
 
 but could be expanded in-line as a _single_ machine instruction\!
 
-Optimizing Forth compilers is too broad a topic for this article. This is an active area of Forth language research; see, for instance, [[SCO89]](#SCO89) and [[CUR93b]](#CUR93b). The final culmination of optimized STC is a Forth which compiles to "pure" machine code, just like a C or Fortran compiler.
+Optimizing Forth compilers is too broad a topic for this article. This is an active area of Forth language research; see, for instance, [\[SCO89\]](#SCO89) and [\[CUR93b\]](#CUR93b). The final culmination of optimized STC is a Forth which compiles to "pure" machine code, just like a C or Fortran compiler.
 
 ### Token Threaded Code (TTC)
 
@@ -285,7 +285,7 @@ A word which _adds_ items to the stack must push the "old" TOS onto the stack (u
 
 _If you have at least six cell-size CPU registers, I recommend keeping the TOS in a register._ I consider TOS more important than UP to have in register, but less important than W, IP, PSP, and RSP. (TOS in register performs many of the functions of the X register.) It's useful if this register can perform memory addressing. [PDP-11](http://en.wikipedia.org/wiki/PDP-11)s, [Z8](http://en.wikipedia.org/wiki/Zilog_Z8)s, and 68000s are good candidates.
 
-Nine of the 19 IBM PC Forths studied by Guy Kelly [[KEL92]](#KEL92) keep TOS in register.
+Nine of the 19 IBM PC Forths studied by Guy Kelly [\[KEL92\]](#KEL92) keep TOS in register.
 
 I think this innovation has been resisted because of the false beliefs that a) it adds instructions, and b) the top stack element must be accessible as memory. It turns out that even such words as PICK, ROLL, and DEPTH are trivially modified for TOS-in-register.
 
@@ -336,45 +336,45 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 ## REFERENCES
 
-<span id="CUR93a">[CUR93a]</span> [Curley, Charles](http://www.charlescurley.com/), "Life in the FastForth Lane", awaiting publication in Forth Dimensions. Description of a 68000 subroutine-threaded Forth. [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5) [[2]](http://www.forth.org/fd/FD-V14N5.pdf) [[3]](http://www.forth.org/fd/curley2.html) [[4]](http://github.com/charlescurley/realforth) [[5]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
+<span id="CUR93a">[CUR93a]</span> [Curley, Charles](http://www.charlescurley.com/), "Life in the FastForth Lane", awaiting publication in Forth Dimensions. Description of a 68000 subroutine-threaded Forth. [\[1\]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5) [\[2\]](http://www.forth.org/fd/FD-V14N5.pdf) [\[3\]](http://www.forth.org/fd/curley2.html) [\[4\]](http://github.com/charlescurley/realforth) [\[5\]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
 
-<span id="CUR93b">[CUR93b]</span> Curley, Charles, "Optimizing in a BSR/JSR Threaded Forth", awaiting publication in Forth Dimensions. Single-pass code optimization for FastForth, in only five screens of code\! Includes listing. [[1]](http://www.forth.org/fd/curley1.html) [[2]](https://archive.org/details/Forth_Dimension_Volume_14_Number_6) [[3]](http://www.forth.org/fd/FD-V14N6.pdf) [[4]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
+<span id="CUR93b">[CUR93b]</span> Curley, Charles, "Optimizing in a BSR/JSR Threaded Forth", awaiting publication in Forth Dimensions. Single-pass code optimization for FastForth, in only five screens of code\! Includes listing. [\[1\]](http://www.forth.org/fd/curley1.html) [\[2\]](https://archive.org/details/Forth_Dimension_Volume_14_Number_6) [\[3\]](http://www.forth.org/fd/FD-V14N6.pdf) [\[4\]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
 
-<span id="KEL92">[KEL92]</span> Kelly, Guy M., "Forth Systems Comparisons", Forth Dimensions XIII:6 (Mar/Apr 1992). Also published in the _1991 FORML Conference Proceedings_. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design trade offs of many 8086 Forths with code fragments and benchmarks -- highly recommended\! [[1]](https://archive.org/details/Forth_Dimension_Volume_13_Number_6) [[2]](http://www.forth.org/fd/FD-V13N6.pdf) [[3]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
+<span id="KEL92">[KEL92]</span> Kelly, Guy M., "Forth Systems Comparisons", Forth Dimensions XIII:6 (Mar/Apr 1992). Also published in the _1991 FORML Conference Proceedings_. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design trade offs of many 8086 Forths with code fragments and benchmarks -- highly recommended\! [\[1\]](https://archive.org/details/Forth_Dimension_Volume_13_Number_6) [\[2\]](http://www.forth.org/fd/FD-V13N6.pdf) [\[3\]](fd/Forth_Dimension_Volume_13_Number_6.pdf)
 
-<span id="KOG82">[KOG82]</span> Kogge, Peter M., "An Architectural Trail to Threaded-Code Systems", IEEE Computer, vol. 15 no. 3 (Mar 1982). Remains the definitive description of various threading techniques. [[1]](http://www.semanticscholar.org/paper/An-Architectural-Trail-to-Threaded-Code-Systems-Kogge/171f9d8fc050641d022116dafaf550debfc2a3f9) [[2]][1]
+<span id="KOG82">[KOG82]</span> Kogge, Peter M., "An Architectural Trail to Threaded-Code Systems", IEEE Computer, vol. 15 no. 3 (Mar 1982). Remains the definitive description of various threading techniques. [\[1\]](http://www.semanticscholar.org/paper/An-Architectural-Trail-to-Threaded-Code-Systems-Kogge/171f9d8fc050641d022116dafaf550debfc2a3f9) [\[2\]][1]
 
-<span id="ROD91">[ROD91]</span> [Rodriguez, B.J.](https://dl.acm.org/profile/81100318863), "B.Y.O. Assembler", Part 1, The Computer Journal \#52 (Sep/Oct 1991). General principles of writing Forth assemblers. [[1]](http://archive.org/details/the-computer-journal-52) [[2]](tcj/tcj_52_September-October_1991_text.pdf)
+<span id="ROD91">[ROD91]</span> [Rodriguez, B.J.](https://dl.acm.org/profile/81100318863), "B.Y.O. Assembler", Part 1, The Computer Journal \#52 (Sep/Oct 1991). General principles of writing Forth assemblers. [\[1\]](http://archive.org/details/the-computer-journal-52) [\[2\]](tcj/tcj_52_September-October_1991_text.pdf)
 
-<span id="ROD92">[ROD92]</span> Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal \#54 (Jan/Feb 1992). A 6809 assembler in Forth. [[1]](http://archive.org/details/the-computer-journal-54) [[2]](tcj/tcj_54_January-February_1992_text.pdf)
+<span id="ROD92">[ROD92]</span> Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal \#54 (Jan/Feb 1992). A 6809 assembler in Forth. [\[1\]](http://archive.org/details/the-computer-journal-54) [\[2\]](tcj/tcj_54_January-February_1992_text.pdf)
 
 <span id="SCO89">[SCO89]</span> Scott, Andrew:
 
 - "An Extensible Optimizer for Compiling Forth", _1989 FORML Conference Proceedings_, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a 68000 optimizer; no code provided.
 
-- "Extensible Optimizing Compiler", Forth Dimensions XII:2 (Jul/Aug 1990). [[1]](https://archive.org/details/Forth_Dimension_Volume_12_Number_2) [[2]](http://www.forth.org/fd/FD-V12N2.pdf)
+- "Extensible Optimizing Compiler", Forth Dimensions XII:2 (Jul/Aug 1990). [\[1\]](https://archive.org/details/Forth_Dimension_Volume_12_Number_2) [\[2\]](http://www.forth.org/fd/FD-V12N2.pdf)
 
 ### Forth Implementations
 
-<span id="CUR86">[CUR86]</span> Curley, Charles, _real-Forth for the 68000_, ~~privately distributed (1986)~~. [[1]](http://github.com/charlescurley/realforth)
+<span id="CUR86">[CUR86]</span> Curley, Charles, _real-Forth for the 68000_, <del>privately distributed (1986)</del>. [\[1\]](http://github.com/charlescurley/realforth)
 
-<span id="JAM80">[JAM80]</span> James, John S., _fig-Forth for the PDP-11_, Forth Interest Group (1980). [[1]](http://www.forth.org/fig-forth/contents.html) [[2]](http://www.stackosaurus.com/figforth.html)
+<span id="JAM80">[JAM80]</span> James, John S., _fig-Forth for the PDP-11_, Forth Interest Group (1980). [\[1\]](http://www.forth.org/fig-forth/contents.html) [\[2\]](http://www.stackosaurus.com/figforth.html)
 
-<span id="KUN81">[KUN81]</span> Kuntze, Robert E., _MVP-Forth for the Apple II_, Mountain View Press (1981). [[1]](https://archive.org/details/haydon90_All_About_Forth_3rd_ed) [[2]](mvp/)
+<span id="KUN81">[KUN81]</span> Kuntze, Robert E., _MVP-Forth for the Apple II_, Mountain View Press (1981). [\[1\]](https://archive.org/details/haydon90_All_About_Forth_3rd_ed) [\[2\]](mvp/)
 
-<span id="LAX84">[LAX84]</span> Laxen, H. and Perry, M., _F83 for the IBM PC_, version 2.1.0 (1984). Distributed by the authors, available from the Forth Interest Group or GEnie. [[1]](http://github.com/ForthHub/F83) [[2]](http://forth.org/OffeteStore/1003_InsideF83.pdf)
+<span id="LAX84">[LAX84]</span> Laxen, H. and Perry, M., _F83 for the IBM PC_, version 2.1.0 (1984). Distributed by the authors, available from the Forth Interest Group or GEnie. [\[1\]](http://github.com/ForthHub/F83) [\[2\]](http://forth.org/OffeteStore/1003_InsideF83.pdf)
 
-<span id="LOE81">[LOE81]</span> Loeliger, R. G., _Threaded Interpretive Languages_, BYTE Publications (1981), ISBN 0-07-038360-X. May be the only book ever written on the subject of creating a Forth-like kernel (the example used is the Z80). Worth it if you can find a copy. [[1]](http://archive.org/details/R.G.LoeligerThreadedInterpretiveLanguagesTheirDesignAndImplementationByteBooks1981) [[2]][2]
+<span id="LOE81">[LOE81]</span> Loeliger, R. G., _Threaded Interpretive Languages_, BYTE Publications (1981), ISBN 0-07-038360-X. May be the only book ever written on the subject of creating a Forth-like kernel (the example used is the Z80). Worth it if you can find a copy. [\[1\]](http://archive.org/details/R.G.LoeligerThreadedInterpretiveLanguagesTheirDesignAndImplementationByteBooks1981) [\[2\]][2]
 
-<span id="MPE92">[MPE92]</span> MicroProcessor Engineering Ltd., _MPE Z8/Super8 PowerForth Target_, MPE Ltd., 133 Hill Lane, Shirley, Southampton, S01 5AF, U.K. (June 1992). A commercial product. [[1]](https://www.mpeforth.com/)
+<span id="MPE92">[MPE92]</span> MicroProcessor Engineering Ltd., _MPE Z8/Super8 PowerForth Target_, MPE Ltd., 133 Hill Lane, Shirley, Southampton, S01 5AF, U.K. (June 1992). A commercial product. [\[1\]](https://www.mpeforth.com/)
 
-<span id="PAY90">[PAY90]</span> Payne, William H., _Embedded Controller FORTH for the 8051 Family_, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. ~~Hardcopy only; files can be downloaded from GEnie~~. Not for the novice\! [[1]](http://archive.org/details/WilliamH.PayneAuth.EmbeddedControllerFORTHForThe8051FamilyBostonAcademicPress1990) [[2]][3]
+<span id="PAY90">[PAY90]</span> Payne, William H., _Embedded Controller FORTH for the 8051 Family_, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. <del>Hardcopy only; files can be downloaded from GEnie</del>. Not for the novice\! [\[1\]](http://archive.org/details/WilliamH.PayneAuth.EmbeddedControllerFORTHForThe8051FamilyBostonAcademicPress1990) [\[2\]][3]
 
-<span id="SER90">[SER90]</span> Sergeant, Frank, _Pygmy Forth for the IBM PC_, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain. [[1]](https://github.com/utoh/pygmy-forth)
+<span id="SER90">[SER90]</span> Sergeant, Frank, _Pygmy Forth for the IBM PC_, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain. [\[1\]](https://github.com/utoh/pygmy-forth)
 
-<span id="TAL80">[TAL80]</span> Talbot, R. J., _fig-Forth for the 6809_, Forth Interest Group (1980). [[1]](http://www.forth.org/fig-forth/contents.html)
+<span id="TAL80">[TAL80]</span> Talbot, R. J., _fig-Forth for the 6809_, Forth Interest Group (1980). [\[1\\]](http://www.forth.org/fig-forth/contents.html)
 
-*Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group ~~FTP~~ server, ~~ftp://ftp.forth.org/pub/Forth~~ http://www.forth.org/ *
+*Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group <del>FTP</del> server, <del>ftp://ftp.forth.org/pub/Forth</del> http://www.forth.org/*
 
 
 

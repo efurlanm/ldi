@@ -11,9 +11,7 @@ Unlike the Z80 and 8051 CamelForth, the 6809 Forth was produced with my "Chromiu
 
 Second, source code for a Forth metacompiler looks like ordinary Forth code (with a few changes, which I'll discuss shortly). Thus the definition of `1+` is given as
 
-```forth
-CODE 1+   1 # ADDD,   NEXT   ;C
-```
+    CODE 1+   1 # ADDD,   NEXT   ;C
 
 The assembler used is the 6809 assembler I've described previously in TCJ \[ROD91\].
 
@@ -27,17 +25,15 @@ The 6809 CamelForth model holds top-of-stack in D, and uses the S stack pointer 
 
 The memory map for a Scroungemaster II with 8K of RAM and 8K of EPROM is as follows:
 
-```
-6000-797Fh RAM dictionary (for new definitions)
-7980-79FFh Terminal Input Buffer
-7A00-7A7Fh User Area (USER variables)
-7A80-7AFFh Parameter Stack (grows downward)
-7B00-7B27h HOLD area (grows downward) 
-7B28-7B7Fh PAD area (general purpose buffer)
-7B80-7BFFh Return Stack (grows downward)
+    6000-797Fh RAM dictionary (for new definitions)
+    7980-79FFh Terminal Input Buffer
+    7A00-7A7Fh User Area (USER variables)
+    7A80-7AFFh Parameter Stack (grows downward)
+    7B00-7B27h HOLD area (grows downward) 
+    7B28-7B7Fh PAD area (general purpose buffer)
+    7B80-7BFFh Return Stack (grows downward)
 
-E000-FFFFh Forth kernel in EPROM
-```
+    E000-FFFFh Forth kernel in EPROM
 
 All of the RAM data areas are referenced to the User Pointer, whose starting value is given by UP-INIT: in this case, 7A00h. (Note the use of UP-INIT-HI for the high byte of this value) When CamelForth starts, it will set its Dictionary Pointer to DP-INIT, which must be in RAM so you can add new definitions to the Forth dictionary. These are all specified with the metacompiler's EQU directive. An EQU is like a CONSTANT, except that it is *only* known to the metacompiler. These EQUates take up no space in the 6809 kernel, and will not appear in the 6809 Forth's dictionary.
 
@@ -47,25 +43,19 @@ AKA ("also known as") defines a synonym for a Forth word. Since the 6809 is a no
 
 The metacompiler allows you to use forward references, i.e., Forth words which haven't been defined yet. (You must of course define them before you finish\!) Often this is automatic, but AKA requires you to explicitly declare a forward reference with PRESUME. Thus
 
-```
-PRESUME WORD   AKA WORD IWORD
-```
+    PRESUME WORD   AKA WORD IWORD
 
 is needed to create the IWORD synonym. @ \! HERE ALLOT and the others are PRESUMEd by the metacompiler, so we don't have to do so here.
 
 The CODE definitions are conventional. Note that you can use
 
-```
-HERE EQU labelname
-```
+    HERE EQU labelname
 
 to generate a label when metacompiling. (This is a function of the metacompiler, not the assembler) Also, ASM: begins a "fragment" of assembler code (i.e., not part of a CODE word).
 
 The phrase
 
-```
-HERE RESOLVES name
-```
+    HERE RESOLVES name
 
 is used to resolve certain forward references which are made by the metacompiler (for example, the metacompiler has to know where the code for the DOCOLON action is). You should leave these alone. Otherwise, feel free to add any CODE definitions to the source code.
 
@@ -83,11 +73,9 @@ Currently, the User Pointer never changes. The reason we have a User Pointer is 
 
 The source code for 6809 CamelForth, version 1.0, is available on GEnie's Forth Roundtable in the file CAM09-10.ZIP. This file includes the Chromium 2 metacompiler, complete and ready to run. You'll need a copy of F83. Then you merely type
 
-```
-F83 CHROMIUM.SCR
-1 LOAD
-BYE
-```
+    F83 CHROMIUM.SCR
+    1 LOAD
+    BYE
 
 This will load the metacompiler, compile the 6809 CamelForth, and write the result to an Intel hex file 6809.HEX. Note: if you're using the CP/M or Atari ST versions of F83, you'll have to edit the load screen to delete the hex file utility, since this only works under MS- DOS. I haven't yet tested Chromium 2 with CP/M or Atari ST, so if you need assistance, please contact me.
 
