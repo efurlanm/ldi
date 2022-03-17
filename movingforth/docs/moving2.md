@@ -3,7 +3,7 @@
 Part 2: Benchmarks and Case Studies of Forth Kernels  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal #60 (March/April 1993)](../movingforth/#the-computer-journal-tcj).
+This article first appeared in [The Computer Journal #60 (March/April 1993)](../#the-computer-journal-tcj).
 
 ## BENCHMARKS
 

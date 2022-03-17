@@ -4,7 +4,7 @@ Part 5: The Z80 Primitives
 by Brad Rodriguez
 
 This article first appeared in [The Computer
-Journal #67 (May/June 1994)](../movingforth/#the-computer-journal-tcj).
+Journal #67 (May/June 1994)](../#the-computer-journal-tcj).
 
 ## THE CODE I PROMISED
 

@@ -66,10 +66,3 @@ Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 * FD \#XIV:4 "Principles of Metacompilation 2" (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_4) [[2]](http://www.forth.org/fd/FD-V14N4.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_4.pdf)
 * FD \#XIV:5 "Principles of Metacompilation 3" & "Life in the FastForth Lane" (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5) [[2]](http://www.forth.org/fd/FD-V14N5.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_5.pdf)
 * FD \#XIV:5 "Principles of Metacompilation 3" & "Optimizing in a BSR/JSR Threaded Forth" (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_6) [[2]](http://www.forth.org/fd/FD-V14N6.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
-
-## Notes
-
-- the documents were edited using [Mark Text](http://github.com/marktext) which is also a good offline markdown document reader
-- Mark Text also exports the document to PDF or HTML
-- the [html](https://github.com/efurlanm/ldi/tree/main/movingforth/html) directory contains automatically generated HTML versions, using pandoc
-- to obtain a local copy of this repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository

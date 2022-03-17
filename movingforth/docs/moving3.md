@@ -3,7 +3,7 @@
 Part 3: Demystifying DOES\> \
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal #62 (July/August 1993)](../movingforth/#the-computer-journal-tcj).
+This article first appeared in [The Computer Journal #62 (July/August 1993)](../#the-computer-journal-tcj).
 
 ## **OOPS\!**
 

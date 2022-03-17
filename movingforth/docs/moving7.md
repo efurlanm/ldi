@@ -3,7 +3,7 @@
 Part 7: CamelForth for the 8051  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal #71 (January/February 1995)](../movingforth/#the-computer-journal-tcj).
+This article first appeared in [The Computer Journal #71 (January/February 1995)](../#the-computer-journal-tcj).
 
 Under the prodding of Our Esteemed Editor, I present CamelForth for the 8051. CamelForth for the 6809 will follow soon\! This 8051 Forth occupies about 6K of program memory. Alas, the full source listing would take 16 pages of TCJ, so this article includes only the significantly changed portions of the kernel. *\[Note for web publication: see the end of this page for a link to the 8051 source code.\]* These should illustrate how the high-level code is modified for the 8051 assembler, and for subroutine threading. The full source code is available in the Forth Roundtable on GEnie as file CAMEL51.ZIP, and the freeware 8051 assembler as file A51.ZIP. But first...
 

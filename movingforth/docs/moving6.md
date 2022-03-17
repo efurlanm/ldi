@@ -3,7 +3,7 @@
 Part 6: the Z80 high-level kernel  
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal #69 (September/October 1994)](../movingforth/#the-computer-journal-tcj).
+This article first appeared in [The Computer Journal #69 (September/October 1994)](../#the-computer-journal-tcj).
 
 ## ERRATA
 

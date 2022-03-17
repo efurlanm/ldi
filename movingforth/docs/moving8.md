@@ -3,7 +3,7 @@
 Part 8: CamelForth for the 6809 \
 by Brad Rodriguez
 
-This article first appeared in [The Computer Journal #74 (July/August 1995)](../movingforth/#the-computer-journal-tcj).
+This article first appeared in [The Computer Journal #74 (July/August 1995)](../#the-computer-journal-tcj).
 
 Finally, the last installment of "Moving Forth\!" Here is the long-promised ANSI CamelForth for the Motorola 6809, and specifically for the Scroungmaster II processor board.
 
