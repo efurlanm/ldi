@@ -8,11 +8,11 @@ Example of using pandoc to convert markdown to html:
 
 - `--self-contained` creates a single .html file with no external dependencies, including images
 
-- the [`template.html`][1] file can be changed as needed
+- the [`template.html`][EL01] file can be changed as needed
 
 - alternatively we can use panserver to view the markdown files: <http://github.com/Marfisc/panserver>
 
 
-<!-- LINKS -->
+<!-- EXTERNAL LINKS -->
 
-[1]: http://github.com/efurlanm/ldi/tree/main/movingforth/pandoc
+[EL01]: http://github.com/efurlanm/ldi/tree/main/movingforth/pandoc

@@ -7,6 +7,7 @@ This article first appeared in [The Computer Journal #71 (January/February 1995)
 
 Under the prodding of Our Esteemed Editor, I present CamelForth for the 8051. CamelForth for the 6809 will follow soon\! This 8051 Forth occupies about 6K of program memory. Alas, the full source listing would take 16 pages of TCJ, so this article includes only the significantly changed portions of the kernel. *\[Note for web publication: see the end of this page for a link to the 8051 source code.\]* These should illustrate how the high-level code is modified for the 8051 assembler, and for subroutine threading. The full source code is available in the Forth Roundtable on GEnie as file CAMEL51.ZIP, and the freeware 8051 assembler as file A51.ZIP. But first...
 
+
 ## Z80 ERRATA
 
 In the file [CAMEL80H.AZM](camel80h.md), the definition of DO is given as
@@ -24,6 +25,7 @@ It should be
 This is of no consequence on the Z80 (where ,BRANCH and ,XT are identical), but it became embarrassingly obvious on the 8051.
 
 Also, in the words S" and (S"), the word ALIGN should really be ALIGNED. On the Z80 -- and the 8051 -- both are no-ops, so this mistake didn't make itself evident.
+
 
 ## 8051 CAMELFORTH MODEL
 
@@ -114,6 +116,7 @@ I wrote the 8051 kernel to use "Intel" byte order (low byte first). Then I disco
 
 Listing 1 gives the 8051 assembly language "primitives", and Listing 2 gives the Dependency word set.
 
+
 ## HARVARD ARCHITECTURES
 
 The 8051 uses a "Harvard" architecture: program and data are kept in separate memories. In embedded systems, these are typically ROM and RAM, respectively. ANS Forth is the first Forth standard to address the restrictions of a Harvard architecture. Briefly, ANS Forth says that a) application programs can only access Data memory, and b) all of the operators used to access memory and build data structures must operate in Data space. (Ref. section 3.3.3 of the ANS document \[ANS94\].) This includes the Forth words
@@ -144,6 +147,7 @@ My solution is to have S" *store* the string in Code space, but permanently rese
 
 Since ." strings can never be accessed by the programmer, they *can* be stored in Code space, using the words (IS") and IS". (These are the "old" (S") and S".) This adds two words to the kernel, but saves quite a bit of Data space. I plan to move the string-literal words into either the Dependency word set, or a new "Harvard" word set.
 
+
 ## WRITING TO PROGRAM SPACE
 
 The 8051 can't actually write to Program memory. There's no hardware signal for this, and no machine instruction. Under these circumstances, the CamelForth *interpreter* will work, but new words can't be compiled. You can get around this by causing some memory to appear in *both* Program and Data space. [Figure 1](#FIG01) shows the modification to my board, an MCB8031 from Blue Ridge Micros (2505 Plymouth Road, Johnson City, TN, 37601, USA, telephone 615-335-6696, fax 615-929-3164). U1A and U1B create a new read strobe which is active for *either* a Program or Data fetch. EPROM is selected only when A15 is low (lower 32K), and RAM when A15 is high (upper 32K). You still can't write to EPROM, of course, but you *can* execute programs out of RAM\! One disadvantage: this makes @ and I@ equivalent, so it's not immediately obvious if the wrong one was used somewhere.
@@ -152,6 +156,7 @@ The 8051 can't actually write to Program memory. There's no hardware signal for 
 *Figure 1*
 
 ![Figure 1](img/mov7-1.svg)
+
 
 ## NEXT ISSUE...
 
@@ -163,6 +168,7 @@ These modifications to the CamelForth high-level code are intended to be portabl
     etc.
 
 In the next installment I shall modify the *8051* source code to work on the 6809...thus approaching a truly portable model by successive approximation.
+
 
 ## REFERENCES
 

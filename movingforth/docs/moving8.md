@@ -95,5 +95,3 @@ There were some errors in the Harvard memory access in CamelForth/8051. The corr
 <a id="ROD92">\[ROD92\]</a> Rodriguez, B. J., "Principles of Metacompilation", Forth Dimensions [[XIV:3 (Sep/Oct 1992)]](fd/Forth_Dimension_Volume_14_Number_3.pdf), [[XIV:4 (Nov/Dec 1992)]](fd/Forth_Dimension_Volume_14_Number_4.pdf), and [[XIV:5 (Jan/Feb 1993)]](fd/Forth_Dimension_Volume_14_Number_5.pdf). Describes the "Chromium 1" metacompiler.
 
 *Source code for 6809 CamelForth is available on this site at <http://www.camelforth.com/public_ftp/cam09-10.zip>.*
-
-

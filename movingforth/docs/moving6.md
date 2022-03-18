@@ -5,17 +5,20 @@ by Brad Rodriguez
 
 This article first appeared in [The Computer Journal #69 (September/October 1994)](../#the-computer-journal-tcj).
 
+
 ## ERRATA
 
 There are two goofs in the [CAMEL80.AZM](camel80.md) file I presented in TCJ\#67. The minor goof is that the name length specified in the HEAD macro for the Forth word **\>** was incorrectly typed as 2 instead of 1.
 
 The major goof results from a subtlety of CP/M console I/O. KEY must not echo the typed character, and so used BDOS function 6. KEY? used BDOS function 11 to test non-destructively for the presence of a keypress. Unfortunately, BDOS function 6 does not "clear" the keypress detected by function 11\! I have now rewritten KEY? to use BDOS function 6 (see [Listing 1](camel80.md)). Since this is a "destructive" test, I had to add logic to save the "consumed" keypress and return it when KEY is next used. This new logic can be used whenever your hardware (or operating system) provides only a destructive test-for-keypress.
 
+
 ## HIGH LEVEL DEFINITIONS
 
 In the last installment I did not expound greatly on the source code. Each Forth "primitive" performs a miniscule, sharply-defined function. It was almost all Z80 assembler code, and if it wasn't obvious *why* a particular word was included, I hope it was clear *what* each word did.
 
 In this installment I have no such luxury: I will present the high level definitions which embody the elegant (and tortuous) logic of the Forth language. Entire books have been written \[1,2,3\] describing Forth kernels, and if you want complete mastery I highly recommend you buy one of them. For TCJ I'll limit myself to some of the key words of the compiler and interpreter, given in [Listing 2](camel80h.md).
+
 
 ## TEXT INTERPRETER OPERATION
 
@@ -31,6 +34,7 @@ The text or "outer" interpreter is the Forth code which accepts input from the k
 
 5. **INTERPRET** is an almost verbatim translation of the algorithm given in section 3.4 of the ANS Forth document. It parses one space-delimited string from the input, and tries to **FIND** the Forth word of that name. If the word is found, it will be either executed (if it is an IMMEDIATE word, or if in the "interpret" state, STATE=0) or compiled into the dictionary (if in the "compile" state, STATE\<\>0). If not found, Forth attempts to convert the string as a number. If successful, **LITERAL** will either place it on the parameter stack (if in "interpret" state) or compile it as an in-line literal value (if in "compile" state). If not a Forth word and not a valid number, the string is typed, an error message is displayed, and the interpreter **ABORT**s. This process is repeated, string by string, until the end of the input line is reached.
 
+
 ## THE FORTH DICTIONARY
 
 Whoa\! How does the interpreter "find" a Forth word by name? Answer: Forth keeps a "dictionary" of the names of all Forth words. Each name is connected in some fashion with the executable code for the corresponding word.
@@ -44,6 +48,7 @@ Each string may be connected with its executable code by being physically adjace
 You can even have unnamed ("headless") fragments of Forth code, if you *know* you'll never need to compile or interpret them. ANSI only requires that the ANS Forth words be findable.
 
 The design decisions could fill another article. Suffice it to say that CamelForth uses the simplest scheme: a single linked list, with the header located just before the executable code. No vocabularies... although I may add them in a future issue of TCJ.
+
 
 ## HEADER STRUCTURE ([Figure 2](#figure-2.-header-structures))
 
@@ -61,6 +66,7 @@ Remember: it's important to distinguish the header from the "body" (executable p
 
 When "compiling" a Forth system from assembler source code, you can define macros to build this header (see HEAD and IMMED in CAMEL80.AZM). In the Forth environment the header, *and the Code Field*, is constructed by the word **CREATE**.
 
+
 ## COMPILER OPERATION
 
 We now know enough to understand the Forth compiler. The word **:** starts a new high-level definition, by creating a header for the word (**CREATE**), changing its Code Field to "docolon" (**\!COLON**), and switching to compile state (**\]**). Recall that, in compile state, every word encountered by the text interpreter is compiled into the dictionary instead of being executed. This will continue until the word **;** is encountered. Being an IMMEDIATE word, **;** will execute, compiling an **EXIT** to end the definition, and then switching back to interpret state (**\[**).
@@ -68,6 +74,7 @@ We now know enough to understand the Forth compiler. The word **:** starts a new
 Also, **:** will **HIDE** the new word, and **;** will **REVEAL** it (by setting and clearing the "smudge" bit in the name). This is to allow a Forth word to be redefined in terms of its "prior self". To force a recursive call to the word being defined, use **RECURSE**.
 
 Thus we see that there is no distinct Forth "compiler", in the same sense that we would speak of a C or Pascal compiler. The Forth compiler is embodied in the actions of various Forth words. This makes it easy for you to change or extend the compiler, but makes it difficult to create a Forth application *without* a built-in compiler\!
+
 
 ## THE DEPENDENCY WORD SET
 
@@ -79,16 +86,16 @@ Differences in cell size and word alignment are managed by the ANS Forth words *
 
 The words **COMPILE, \!CF ,CF \!COLON** and **,EXIT** hide peculiarities of the threading model, such as a) how are the threads represented, and b) how is the Code Field implemented? The value of these words becomes evident when you look at the differences between the direct-threaded Z80 and the subroutine-threaded 8051:
 
-```
-word     compiles on Z80   compiles on 8051
--------- ----------------- ---------------------------
 
-COMPILE, address           LCALL address
-!CF      CALL address      LCALL address
-,CF      !CF & allot       3 bytes !CF & allot 3 bytes
-!COLON   CALL docolon      nothing!
-,EXIT    address of EXIT   RET
-```
+    word     compiles on Z80   compiles on 8051
+    -------- ----------------- ---------------------------
+
+    COMPILE, address           LCALL address
+    !CF      CALL address      LCALL address
+    ,CF      !CF & allot       3 bytes !CF & allot 3 bytes
+    !COLON   CALL docolon      nothing!
+    ,EXIT    address of EXIT   RET
+
 
 (**\!CF** and **,CF** are different for indirect-threaded Forths.)
 
@@ -96,11 +103,13 @@ In similar fashion, the words **,BRANCH ,DEST** and **\!DEST** hide the implemen
 
 So far I have *not* been successful factoring the differences in header structure into a similar set of words. The words **FIND** and **CREATE** are so intimately involved with the header contents that I haven't yet found suitable subfactors. I have made a start, with the words **NFA\>LFA NFA\>CFA IMMED? HIDE REVEAL** and the ANS Forth words **\>BODY IMMEDIATE**. I'll continue to work on this. Fortunately, it is practical for the time being to use the identical header structure on all CamelForth implementations (since they're all byte-addressed 16-bit Forths).
 
+
 ## NEXT TIME...
 
 I will probably present the 8051 kernel, and talk about how the Forth compiler and interpreter are modified for Harvard architectures (computers that have logically distinct memories for Code and Data, like the 8051). For the 8051 I will print the files CAMEL51 and CAMEL51D, but probably only excerpts from CAMEL51H, since (except for formatting of the assembler file) the high-level code shouldn't be different from what I've presented this issue...and Bill needs the space for other articles\! Don't worry, the full code will be uploaded to GEnie.
 
 *However,* I may succumb to demands of Scroungemaster II builders, and publish the 6809 CamelForth configured for the Scroungemaster II board. Whichever I do next, I'll do the other just one installment later.
+
 
 ## REFERENCES
 
@@ -124,52 +133,52 @@ The source code for Z80 CamelForth is *now* available on GEnie as CAMEL80.ARC in
 
 <span id="FIGURE1"></span>
 
+
 ## FIGURE 1. Z80 CP/M CAMELFORTH MEMORY MAP
 
 assuming CP/M BDOS starts at ED00 hex.
 
-```
-0000 +-----------------------+
-     |      CP/M stuff       |
-0080 +-----------------------+
-     | Terminal Input Buffer |
-     |                       |
-0100 +-----------------------+
-     |                       |
-     | CamelForth Z80 kernel |
-     |                       |
-1700 +-----------------------+
-     | User definitions      |
-     |                       |
-     |                       |   / EB00 reserved
-     ~~~~~~~~~~~~~~~~~~~~~~~~~  /  EB02 >IN
-     |                       | /   EB04 BASE
-EB00 +-----------------------+/    EB06 STATE
-     | User Area             |     EB08 DP
-     |                       |\    EB0A,EB0C 'SOURCE
-     |                       | \   EB0E LATEST
-     |       Parameter Stack |  \  EB10 HP
-EC00 +-----------------------+   \ EB12 LP
-     |                       |
-     |   HOLD working buffer |
-EC28 +-----------------------+
-     | PAD buffer            |
-     |                       |
-EC80 +-----------------------+
-     | Leave stack*          |
-     |                       |
-     |                       |
-     |          Return stack |
-ED00 +-----------------------+
-     |                       |
-     |         CP/M          |
-     |                       |
-FFFF +-----------------------+
-```
+    0000 +-----------------------+
+        |      CP/M stuff       |
+    0080 +-----------------------+
+        | Terminal Input Buffer |
+        |                       |
+    0100 +-----------------------+
+        |                       |
+        | CamelForth Z80 kernel |
+        |                       |
+    1700 +-----------------------+
+        | User definitions      |
+        |                       |
+        |                       |   / EB00 reserved
+        ~~~~~~~~~~~~~~~~~~~~~~~~~  /  EB02 >IN
+        |                       | /   EB04 BASE
+    EB00 +-----------------------+/    EB06 STATE
+        | User Area             |     EB08 DP
+        |                       |\    EB0A,EB0C 'SOURCE
+        |                       | \   EB0E LATEST
+        |       Parameter Stack |  \  EB10 HP
+    EC00 +-----------------------+   \ EB12 LP
+        |                       |
+        |   HOLD working buffer |
+    EC28 +-----------------------+
+        | PAD buffer            |
+        |                       |
+    EC80 +-----------------------+
+        | Leave stack*          |
+        |                       |
+        |                       |
+        |          Return stack |
+    ED00 +-----------------------+
+        |                       |
+        |         CP/M          |
+        |                       |
+    FFFF +-----------------------+
 
 \* used during compilation of DO..LOOPs.
 
 <span id="FIGURE2"></span>
+
 
 ## FIGURE 2. HEADER STRUCTURES
 

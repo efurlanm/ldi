@@ -7,11 +7,10 @@
 - Figures are edited using Libreoffice Drawn (LD) and exported as SVG. In trial-and-error tests, what looks best on both the laptop monitor and the smartphone screen are ~7 x 3-inch-sized pictures with font size 10 or 12
 - The original documents were converted from html to markdown using `pandoc`
 - PDF files were converted to TXT using `pdftotext` (poppler-utils)
-- The [sources][1] directory contains the original files that were converted to markdown
+- The [sources][EL01] directory contains the original files that were converted to markdown
 - Instructions to obtain a local copy of this repository: [cloning-a-repository](http://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
 
+<!-- EXTERNAL LINKS -->
 
-
-<!-- REFERENCES -->
-[1]: http://github.com/efurlanm/ldi/tree/main/movingforth/sources
+[EL01]: http://github.com/efurlanm/ldi/tree/main/movingforth/sources
