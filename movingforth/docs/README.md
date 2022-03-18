@@ -6,7 +6,7 @@
                             |___/ 
     by Brad Rodriguez
 
-Original sources: http://www.bradrodriguez.com/papers/
+Original sources: <http://www.bradrodriguez.com/papers/>
 
 I decided to create this repo because it was difficult for me to read, study and learn easily using the original documentation, plus the fact that I enjoy taking notes as I read. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on, so I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the CC0-BY-4.0 license, and all original sources are under the [author's original license](http://www.bradrodriguez.com).
 
