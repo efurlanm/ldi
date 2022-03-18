@@ -65,6 +65,7 @@ Likewise, IF THEN and their ilk include the metacompiler phrases to build and re
 
 If you're new to Forth and the metacompiler, it's best to just accept these as given. "Ordinary" colon definitions are easy to add. Just follow the example of the rest of the 6809 source code. You can even make CREATE..DOES\> definitions, as long as you don't need to use them within the metacompiler.
 
+
 ## FUTURE WORK
 
 On a 1 MHz 6809, a line of text input takes a noticeable time to process (up to 1 second at a rough estimate). This is partly becuase so much of the interpreter is written in high-level Forth, and partly because CamelForth uses a single-linked-list dictionary. These handicaps only affect *compilation* speed, not execution speed, but the delays can be annoying. Maybe someday I'll do an article on "Accelerating Forth".
@@ -81,9 +82,11 @@ This will load the metacompiler, compile the 6809 CamelForth, and write the resu
 
 Which reminds me: I have a *new email address\!* You can now reach me as bj@genie.com, or just BJ if you're a GEnie user. It's a lot easier to type. *\[Note for web publication: my current email address is [here](http://www.bradrodriguez.com/email.htm).\]*
 
+
 ## ERRATA
 
 There were some errors in the Harvard memory access in CamelForth/8051. The corrected file is on GEnie as CAM51-11.ZIP. I've also uploaded the current Z80 CamelForth, CAM80-12.ZIP, which incorporates all the fixes which have been published in TCJ.
+
 
 ## REFERENCES
 
@@ -93,4 +96,4 @@ There were some errors in the Harvard memory access in CamelForth/8051. The corr
 
 *Source code for 6809 CamelForth is available on this site at <http://www.camelforth.com/public_ftp/cam09-10.zip>.*
 
-## 
+

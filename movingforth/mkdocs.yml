@@ -3,3 +3,4 @@ site_name: MovingForth
 theme:
     name: readthedocs
     highlightjs: false
+#    hljs_languages: forth
