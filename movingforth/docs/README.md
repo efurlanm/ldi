@@ -10,7 +10,7 @@
 
 Original sources: <http://www.bradrodriguez.com/papers/>
 
-I decided to create [this repo][1] because it was difficult for me to read, study and learn easily using the original documentation, plus the fact that I enjoy taking notes as I read. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on, so I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the CC0-BY-4.0 license, and all original sources are under the [author's original license](http://www.bradrodriguez.com).
+I decided to create [this repo][EL01] because it was difficult for me to read, study and learn easily using the original documentation, plus the fact that I enjoy taking notes as I read. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on, so I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the CC0-BY-4.0 license, and all original sources are under the [author's original license](http://www.bradrodriguez.com).
 
 Forth is a procedural, stack-oriented programming language and interactive environment designed by Charles H. Moore in 1968 at the United States National Radio Astronomy Observatory (NRAO), to help control radio telescopes. Today it is used in numerous spacecraft, such as the Rosetta/Philae probe which uses [10 RTX2010 processors](http://www.cpushack.com/2014/11/12/here-comes-philae-powered-by-an-rtx2010/) that support direct execution of Forth. NASA has a list of [space-related applications of the Forth](http://web.archive.org/web/20110204160744/http://forth.gsfc.nasa.gov/), compiled by James Rash, at Goddard Space Flight Center Greenbelt, Maryland. Forth is generally [targeted at small embedded systems and microcontrollers like the STM8](http://github.com/TG9541/stm8ef/wiki) used in various consumer devices like [chinese gadgets](http://github.com/TG9541/stm8ef/wiki/STM8S-Value-Line-Gadgets). What catches my attention in Forth is the possibility of being used running directly on the microcontroller using a REPL (Read-Eval-Print Loop) programming environment that allows the programmer to interact with a running program, experiment and obtain immediate results directly in the microcontroller, without the need for cross-compilation, which reduces development time. Other features are also useful, such as the ease of the interface and, because it is relatively simple, it is easy to deploy and optimize for a specific architecture.
 
@@ -80,6 +80,6 @@ Source 2 : http://www.forth.org/fd/FDcover.html (scanned PDF files)
 * FD \#XIV:5 "Principles of Metacompilation 3" & "Optimizing in a BSR/JSR Threaded Forth" (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_6) [[2]](http://www.forth.org/fd/FD-V14N6.pdf) [[3]](fd/Forth_Dimension_Volume_14_Number_6.pdf)
 
 
-<!-- LINKS -->
+<!-- EXTERNAL LINKS -->
 
-[1]: http://github.com/efurlanm/ldi/tree/main/movingforth/
+[EL01]: http://github.com/efurlanm/ldi/tree/main/movingforth/
