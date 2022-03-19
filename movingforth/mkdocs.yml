@@ -1,6 +1,21 @@
+# Dependencies:
+# $ pip install mkdocs mkdocs-material mkdocs-jupyter
+# colors: red, pink, purple, deep purple, indigo, blue, light blue, cyan, teal, green, light green, lime, yellow, amber, orange, deep orange, brown, grey, blue guey, blak, white
 site_name: MovingForth
-
+site_author: E Furlan
+copyright: CC-BY-4.0 License - E Furlan
+site_url: http://efurlanm.github.io/movingforth
+repo_name: efurlanm/ldi
+repo_url: https://github.com/efurlanm/ldi/tree/main/movingforth
 theme:
-    name: readthedocs
-    highlightjs: false
-#    hljs_languages: forth
+    name: material
+    font: false
+    palette:
+        primary: orange
+    features:
+        - header.autohide
+extra_css:
+    - css/extra.css
+plugins:
+    - search
+    - mkdocs-jupyter
