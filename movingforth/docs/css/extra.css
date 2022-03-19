@@ -1,0 +1,42 @@
+
+/* ### TABLE ### */
+
+.md-typeset table:not([class]) {
+    display: table;
+    line-height: 1;
+}
+
+.md-typeset table:not([class]),
+.md-typeset td,
+.md-typeset th {
+    border: 1px solid var(--md-typeset-table-color);
+    border-collapse: collapse;
+}
+
+.md-typeset table:not([class]) th {
+    background-color: #f8f8f8;
+}
+
+
+/* ### JUPYTER ### */
+
+.jupyter-wrapper .jp-RenderedText {
+    --jp-code-font-size: 12px;
+}
+
+.md-typeset h1 {
+    margin-top: calc(var(--jp-content-heading-margin-top));
+    margin-bottom: calc(var(--jp-content-heading-margin-bottom));
+}
+
+
+
+
+/* inline style sheet xxxx */
+/*.jupyter-wrapper, .jp-CodeMirrorEditor {
+    --jp-border-width: 0; 
+}*/
+
+/*.rst-content div[class^="highlight"] {
+    margin: 1px 0 0 0;
+}*/
