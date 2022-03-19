@@ -1,6 +1,6 @@
 # Dependencies:
 # $ pip install mkdocs mkdocs-material mkdocs-jupyter
-# colors: red, pink, purple, deep purple, indigo, blue, light blue, cyan, teal, green, light green, lime, yellow, amber, orange, deep orange, brown, grey, blue guey, blak, white
+# colors: red, pink, purple, deep purple, indigo, blue, light blue, cyan, teal, green, light green, lime, yellow, amber,| orange, deep orange, brown, grey, blue grey, blak, white
 site_name: MovingForth
 site_author: E Furlan
 copyright: CC-BY-4.0 License - E Furlan
@@ -12,6 +12,7 @@ theme:
     font: false
     palette:
         primary: orange
+        accent: orange
     features:
         - header.autohide
 extra_css:
