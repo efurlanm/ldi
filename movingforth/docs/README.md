@@ -19,7 +19,7 @@ Forth is a procedural, stack-oriented programming language and interactive envir
 <table>
     <tr>
         <td><img src="img/construction.gif"></td>
-        <td>This repository is permanently under construction, so its content changes constantly</td>
+        <td>This repository is permanently under construction, so its content changes constantly.</td>
     </tr>
 </table>
 
