@@ -18,5 +18,5 @@ theme:
         - header.autohide
 extra_css:
     - css/extra.css
-plugin:
+plugins:
     - search
