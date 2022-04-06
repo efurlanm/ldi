@@ -7,24 +7,29 @@
 
 My personal notes on language design and implementation, internals, computer architecture, and related topics
 
+
 ## Wikibooks
 
 * [Compiler (from Introduction to Software Engineering)](https://en.wikibooks.org/wiki/Introduction_to_Software_Engineering/Tools/Compiler)
 * [Compiler Construction](https://en.wikibooks.org/wiki/Compiler_Construction)
+
 
 ## Wikipedia
 
 * [Compiler](https://en.wikipedia.org/wiki/Compiler)
 * [History of compiler construction](https://en.wikipedia.org/wiki/History_of_compiler_construction)
 
+
 ## Reddit
 
 * [Programming Languages](http://www.reddit.com/r/ProgrammingLanguages/): discussion of programming languages, programming language theory, design, their syntax and compilers
 * [Compilers](http://www.reddit.com/r/Compilers/): theory and development of compilers
 
+
 ## Usenet
 
 * [The comp.compilers newsgroup](https://compilers.iecc.com/)
+
 
 ## Internals
 
@@ -33,10 +38,11 @@ My personal notes on language design and implementation, internals, computer arc
 * [GNU C Compiler Internals](https://en.wikibooks.org/wiki/GNU_C_Compiler_Internals)
 * [The Erlang Runtime System](http://blog.stenmans.org/theBeamBook/#_the_erlang_virtual_machine_beam)
 
+
 ## Forth
 
-* [Moving Forth, by Brad Rodriguez](http://efurlanm.github.io/movingforth/): Forth language internals (MkDocs version)
-    * [web site sources](movingforth/)
+* [Moving Forth, by Brad Rodriguez](movingforth/): Forth language internals
+
 
 ## Vintage computer
 
@@ -50,6 +56,7 @@ Vintage computer internals, or "computer archeology"
 * Altair BASIC Annotated Disassembly: [[1]](http://altairbasic.org/)
 * HP-41 internals: [[1]](http://github.com/efurlanm/ml/tree/master/hp41)
 
+
 ## Library and books
 
 Random links to books and libraries that I found interesting
@@ -57,6 +64,7 @@ Random links to books and libraries that I found interesting
 * [SETZER, V. W.; MELO, I. S. H. *A construção de um compilador*]()
 * [Library with several books on compilers, computers, and programming](https://vdoc.pub/search/compiler)
 * [R G Loeliger. *Threaded Interpretive Languages: Their Design And Implementation*](https://vdoc.pub/documents/threaded-interpretive-languages-their-design-and-implementation-1seph9gct7uo)
+
 
 ## License
 
