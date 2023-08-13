@@ -43,7 +43,7 @@ My personal notes on language design and implementation, internals, computer arc
 
 ## Forth
 
-* [Moving Forth, by Brad Rodriguez](http://efurlanm.github.io/ldi/): Forth language internals
+* My personal notes on the Forth language: <http://efurlanm.github.io/movingforth>
 
 
 ## Vintage computer
