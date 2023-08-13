@@ -1,0 +1,1243 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="E Furlan">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>MOVING FORTH 1 - MovingForth</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.2505c338.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffa724">
+        
+      
+      
+
+    
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#moving-forth-1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="MovingForth" class="md-header__button md-logo" aria-label="MovingForth" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MovingForth
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MOVING FORTH 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="http://github.com/efurlanm/ldi/tree/main/movingforth" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    efurlanm/ldi
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="MovingForth" class="md-nav__button md-logo" aria-label="MovingForth" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    MovingForth
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="http://github.com/efurlanm/ldi/tree/main/movingforth" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    efurlanm/ldi
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        MOVING FORTH
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8051task.html" class="md-nav__link">
+        MULTITASKING 8051 CAMELFORTH
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="camel09.html" class="md-nav__link">
+        Camel09
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="camel80.html" class="md-nav__link">
+        Camel80
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="camel80d.html" class="md-nav__link">
+        Camel80d
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="camel80h.html" class="md-nav__link">
+        Camel80h
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cameltst.html" class="md-nav__link">
+        Cameltst
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="glosslo.html" class="md-nav__link">
+        Glosslo
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          MOVING FORTH 1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="moving1.html" class="md-nav__link md-nav__link--active">
+        MOVING FORTH 1
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    INTRODUCTION
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-essential-hardware" class="md-nav__link">
+    THE ESSENTIAL HARDWARE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-or-32-bit" class="md-nav__link">
+    16 OR 32 BIT?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-threading-technique" class="md-nav__link">
+    THE THREADING TECHNIQUE
+  </a>
+  
+    <nav class="md-nav" aria-label="THE THREADING TECHNIQUE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indirect-threaded-code-itc" class="md-nav__link">
+    Indirect Threaded Code (ITC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-threaded-code-dtc" class="md-nav__link">
+    Direct Threaded Code (DTC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jump-to-next-or-code-it-in-line" class="md-nav__link">
+    Jump to NEXT, or code it in-line?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subroutine-threaded-code-stc" class="md-nav__link">
+    Subroutine Threaded Code (STC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stc-with-in-line-expansion-optimization-direct-compilation" class="md-nav__link">
+    STC with in-line expansion; optimization; direct compilation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-threaded-code-ttc" class="md-nav__link">
+    Token Threaded Code (TTC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segment-threaded-code" class="md-nav__link">
+    Segment Threaded Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#register-allocation" class="md-nav__link">
+    REGISTER ALLOCATION
+  </a>
+  
+    <nav class="md-nav" aria-label="REGISTER ALLOCATION">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-classical-forth-registers" class="md-nav__link">
+    The Classical Forth Registers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-the-hardware-stack" class="md-nav__link">
+    Use of the Hardware Stack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top-of-stack-in-register" class="md-nav__link">
+    Top-Of-Stack in Register
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#some-examples" class="md-nav__link">
+    Some examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#narrow-registers" class="md-nav__link">
+    Narrow Registers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    REFERENCES
+  </a>
+  
+    <nav class="md-nav" aria-label="REFERENCES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forth-implementations" class="md-nav__link">
+    Forth Implementations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="moving2.html" class="md-nav__link">
+        MOVING FORTH 2
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="moving3.html" class="md-nav__link">
+        MOVING FORTH 3
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="moving4.html" class="md-nav__link">
+        MOVING FORTH 4
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="moving5.html" class="md-nav__link">
+        MOVING FORTH 5
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="moving6.html" class="md-nav__link">
+        MOVING FORTH 6
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="moving7.html" class="md-nav__link">
+        MOVING FORTH 7
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="moving8.html" class="md-nav__link">
+        MOVING FORTH 8
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17">
+          Aux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Aux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_17">
+          <span class="md-nav__icon md-icon"></span>
+          Aux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aux/editor%27s%20notes.html" class="md-nav__link">
+        Editor's Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aux/pandoc.html" class="md-nav__link">
+        Pandoc markdown to html
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_18">
+          Mvp
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Mvp" data-md-level="1">
+        <label class="md-nav__title" for="__nav_18">
+          <span class="md-nav__icon md-icon"></span>
+          Mvp
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mvp/index.html" class="md-nav__link">
+        MVP-Forth for the Apple II
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    INTRODUCTION
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-essential-hardware" class="md-nav__link">
+    THE ESSENTIAL HARDWARE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-or-32-bit" class="md-nav__link">
+    16 OR 32 BIT?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-threading-technique" class="md-nav__link">
+    THE THREADING TECHNIQUE
+  </a>
+  
+    <nav class="md-nav" aria-label="THE THREADING TECHNIQUE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indirect-threaded-code-itc" class="md-nav__link">
+    Indirect Threaded Code (ITC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-threaded-code-dtc" class="md-nav__link">
+    Direct Threaded Code (DTC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jump-to-next-or-code-it-in-line" class="md-nav__link">
+    Jump to NEXT, or code it in-line?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subroutine-threaded-code-stc" class="md-nav__link">
+    Subroutine Threaded Code (STC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stc-with-in-line-expansion-optimization-direct-compilation" class="md-nav__link">
+    STC with in-line expansion; optimization; direct compilation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token-threaded-code-ttc" class="md-nav__link">
+    Token Threaded Code (TTC)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segment-threaded-code" class="md-nav__link">
+    Segment Threaded Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#register-allocation" class="md-nav__link">
+    REGISTER ALLOCATION
+  </a>
+  
+    <nav class="md-nav" aria-label="REGISTER ALLOCATION">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-classical-forth-registers" class="md-nav__link">
+    The Classical Forth Registers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-the-hardware-stack" class="md-nav__link">
+    Use of the Hardware Stack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top-of-stack-in-register" class="md-nav__link">
+    Top-Of-Stack in Register
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#some-examples" class="md-nav__link">
+    Some examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#narrow-registers" class="md-nav__link">
+    Narrow Registers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    REFERENCES
+  </a>
+  
+    <nav class="md-nav" aria-label="REFERENCES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forth-implementations" class="md-nav__link">
+    Forth Implementations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="http://github.com/efurlanm/ldi/tree/main/movingforth/edit/master/docs/moving1.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="moving-forth-1">MOVING FORTH 1</h1>
+<p>Part 1: Design Decisions in the Forth Kernel<br />
+by Brad Rodriguez</p>
+<p>This article first appeared in <a href="index.html#the-computer-journal-tcj">The Computer Journal (TCJ) #59 (January/February 1993)</a>.</p>
+<h2 id="introduction">INTRODUCTION</h2>
+<p>Everyone in the Forth community talks about how easy it is to port Forth to a new CPU. But like many "easy" and "obvious" tasks, not much is written on how to do it! So, when <a href="http://www.forth.org/resumes/kibler_bill.html">Bill Kibler</a> suggested this topic for an article, I decided to break with the great oral tradition of Forthwrights, and document the process in black and white. Over the course of these articles I will develop Forths for the <a href="http://en.wikipedia.org/wiki/Motorola_6809">6809</a>, <a href="http://en.wikipedia.org/wiki/Intel_8051">8051</a>, and <a href="http://en.wikipedia.org/wiki/Zilog_Z80">Z80</a>. I'm doing the 6809 to illustrate an easy and conventional Forth model; plus, I've already published a 6809 assembler <a href="#ROD91">[ROD91]</a> <a href="#ROD92">[ROD92]</a>, and I'll be needing a 6809 Forth for future <a href="http://archive.org/details/the-computer-journal/">TCJ</a> projects. I'm doing the 8051 Forth for a University project, but it also illustrates some rather different design decisions. The Z80 Forth is for all the <a href="http://en.wikipedia.org/wiki/CP\/M">CP/M</a> readers of TCJ, and for some friends with <a href="http://en.wikipedia.org/wiki/TRS-80">TRS-80</a>s gathering dust.</p>
+<h2 id="the-essential-hardware">THE ESSENTIAL HARDWARE</h2>
+<p><em>You</em> must choose a CPU. I will not delve into the merits of one CPU over another for Forth, since a CPU choice is usually forced upon you by other considerations. Besides, the object of this article is to show how to move Forth to <em>any</em> CPU.</p>
+<p>You can expect the usual 16-bit Forth kernel (see below) to occupy about 8 kBytes of program space. For a full kernel that can compile Forth definitions, you should allow a minimum of 1 kByte of RAM. To use Forth's block-management system for disk storage, you should add 3 kBytes or more for buffers. For a 32-bit Forth model, double these numbers.</p>
+<p>These are the <em>minimums</em> to get a Forth kernel up and running. To run an application on your hardware, you should increase PROM and RAM sizes to suit.</p>
+<h2 id="16-or-32-bit">16 OR 32 BIT?</h2>
+<p>The word size used by Forth is not necessarily the same as that of the CPU. The smallest practical Forth is a 16-bit model; i.e., one which uses 16-bit integers and 16-bit addresses. The Forth community calls this the "cell" size, since "word" refers to a Forth definition.</p>
+<p>8-bit CPUs almost invariably support 16-bit Forths. This usually requires explicit coding of double-byte arithmetic, although some 8-bit CPUs do have a few 16-bit operations.</p>
+<p>16-bit CPUs commonly run 16-bit Forths, although the same double-precision techniques can be used to write a 32-bit Forth on a 16-bit CPU. At least one 32-bit Forth has been written for the 8086/8088.</p>
+<p>32-bit CPUs normally run 32-bit Forths. A smaller Forth model rarely saves code length or processor time. However, I know of at least one 16-bit Forth written for the <a href="http://en.wikipedia.org/wiki/Motorola_68000">68000</a>. This <em>does</em> shrink application code size by a factor of two, since high-level Forth definitions become a string of 16-bit addresses rather than a string of 32-bit addresses. (This will become evident shortly.) Most 68000s, though, have plenty of RAM.</p>
+<p>All of the examples described in this article are 16-bit Forths running on 8-bit CPUs.</p>
+<h2 id="the-threading-technique">THE THREADING TECHNIQUE</h2>
+<p>"Threaded code" is the hallmark of Forth. A Forth "thread" is just a list of addresses of routines to be executed. You can think of this as a list of subroutine calls, with the CALL instructions removed. Over the years many threading variations have been devised, and which one is best depends upon the CPU and the application. To make a decision, you need to understand how they work, and their trade-offs.</p>
+<h3 id="indirect-threaded-code-itc">Indirect Threaded Code (ITC)</h3>
+<p>This is the classical Forth threading technique, used in <a href="http://www.forth.org/fig-forth/contents.html">fig-Forth</a> and <a href="http://github.com/ForthHub/F83">F83</a>, and described in most books on Forth. All the other threading schemes are "improvements" on this, so you need to understand ITC to appreciate the others.</p>
+<p>Let's look at the definition of a Forth word SQUARE:</p>
+<pre><code class="language-forth">: SQUARE  DUP * ;
+</code></pre>
+<p>In a typical ITC Forth this would appear in memory as shown in <a href="#FIG01">Figure 1</a>. (The <strong>Header Field</strong> will be discussed in a future article; it holds housekeeping information used for compilation, and isn't involved in threading.)</p>
+<p><span id=FIG01></span>
+<em>Figure 1. Indirect Threaded Code</em></p>
+<p><img alt="" src="img/mov1-1.svg" /></p>
+<p>Assume SQUARE is encountered while executing some other Forth word. Forth's Interpreter Pointer (IP) will be pointing to a cell in memory -- contained within that "other" word -- which contains the address of the word SQUARE. (To be precise, that cell contains the address of SQUARE's <strong>Code Field</strong> .) The interpreter fetches that address, and then uses it to fetch the contents of SQUARE's <strong>Code Field</strong>. These contents are yet another address -- the address of a machine language subroutine which performs the word SQUARE. In pseudo-code, this is:</p>
+<p><em>NEXT (interpreter)</em></p>
+<table>                
+<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register <br> ... W now holds address of the <b>Code Field</b>    </td></tr>
+<tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP, just like a program counter <br> (assuming 2-byte addresses in the thread)    </td></tr>
+<tr><td><nobr>    (W) -> X    </nobr></td><td>    fetch memory pointed by W into "X" register <br> ... X now holds address of the machine code    </td></tr>
+<tr><td><nobr>    JP (X)    </nobr></td><td>    jump to the address in the X register    </td></tr>
+</table>
+
+<p>This illustrates an important but rarely-elucidated principle: <em>the address of the Forth word just entered is kept in W.</em> CODE words don't need this information, but all other kinds of Forth words do.</p>
+<p>If SQUARE were written in machine code, this would be the end of the story: that bit of machine code would be executed, and then jump back to the Forth interpreter -- which, since IP was incremented, is pointing to the <em>next</em> word to be executed. This is why the Forth interpreter is usually called NEXT.</p>
+<p>But, SQUARE is a high-level "colon" definition -- it holds a "thread", a list of addresses. In order to perform this definition, the Forth interpreter must be re-started at a new location: the <strong>Parameter Field</strong> of SQUARE. Of course, the interpreter's old location must be saved, to resume the "other" Forth word once SQUARE is finished. This is just like a subroutine call! The machine language action of SQUARE is simply to push the old IP, set IP to a new location, run the interpreter, and when SQUARE is done pop the IP. (As you can see, the IP is the "program counter" of high-level Forth.) This is called DOCOLON or ENTER in various Forths:</p>
+<p><em>ENTER</em></p>
+<table>                
+<tr><td><nobr>    PUSH IP    </nobr></td><td>    onto the "return address stack"    </td></tr>
+<tr><td><nobr>    W+2 -> IP    </nobr></td><td>    W still points to the <b>Code Field</b>, so W+2 is the address of the Body! (Assuming a 2-byte address -- other Forths may be different.)    </td></tr>
+<tr><td><nobr>    JUMP    </nobr></td><td>    to interpreter ("NEXT")    </td></tr>
+</table>
+
+<p>This identical code fragment is used by all high-level (i.e., threaded) Forth definitions! That's why a pointer to this code fragment, not the fragment itself, is included in the Forth definition. Over hundreds of definitions, the savings add up! And this is why it's called Indirect threading.</p>
+<p>The "return from subroutine" is the word EXIT, which gets compiled when Forth sees ';'. (Some Forths call it ;S instead of EXIT.) EXIT just executes a machine language routine which does the following:</p>
+<p><em>EXIT</em></p>
+<table>
+<tr><td><nobr>    POP IP    </nobr></td><td>    from the "return address stack"    </td></tr>
+<tr><td><nobr>    JUMP    </nobr></td><td>    to interpreter    </td></tr>
+</table>
+
+<p>Walk through a couple of nested Forth definitions, just to assure yourself that this works.</p>
+<p>Note the characteristics of ITC: <em>every</em> Forth word has a one-cell <strong>Code Field</strong>. Colon definitions compile one cell for each word used in the definition. And the Forth interpreter must actually perform a <em>double</em> indirection to get the address of the next machine code to run (first through IP, then through W).</p>
+<p>ITC is neither the smallest nor the fastest threading technique. It may be the simplest; although DTC (described next) is really no more complex. So why are so many Forths indirect-threaded? Mainly because <em>previous</em> Forths, used as models, were indirect-threaded. These days, DTC is becoming more popular.</p>
+<p>So when should ITC be used? Of the various techniques, ITC produces the cleanest and most elegant definitions -- nothing but addresses. If you're attuned to such considerations, ITC may appeal to you. If your code fiddles around with the insides of definitions, the simplicity and uniformity of the ITC representation may enhance portability. ITC is the classical Forth model, so it may be preferred for education. Finally, on CPUs lacking a subroutine call instruction -- such as the <a href="http://en.wikipedia.org/wiki/RCA_1802">1802</a> -- ITC is often more efficient than DTC.</p>
+<h3 id="direct-threaded-code-dtc">Direct Threaded Code (DTC)</h3>
+<p>Direct Threaded Code differs from ITC in only one respect: instead of the <strong>Code Field</strong> containing the address of some machine code, <em>the Code Field contains actual machine code itself.</em></p>
+<p>I'm not saying that the complete code for ENTER is contained in each and every colon definition! In "high-level" Forth words, the <strong>Code Field</strong> will contain <em>a subroutine call</em>, as shown in <a href="#FIG02">Figure 2</a>. Colon definitions, for instance, will contain a call to the ENTER routine.</p>
+<p><span id=FIG02></span>
+<em>Figure 2. Direct Threaded Code</em></p>
+<p><img alt="" src="img/mov1-2.svg" /></p>
+<p>The NEXT pseudo-code for direct threading is simply:</p>
+<table>                
+<tr><td><nobr>    (IP) -> W    </nobr></td><td>    fetch memory pointed by IP into "W" register    </td></tr>
+<tr><td><nobr>    IP+2 -> IP    </nobr></td><td>    advance IP (assuming 2-byte addresses)    </td></tr>
+<tr><td><nobr>    JP (W)    </nobr></td><td>    jump to the address in the W register    </td></tr>
+</table>
+
+<p>This gains speed: the interpreter now performs only a <em>single</em> indirection. On the Z80 this reduces the NEXT routine -- the most-used code fragment in the Forth kernel -- from eleven instructions to seven!</p>
+<p>This costs space: every high-level definition in a Z80 Forth (for example) is now one byte longer, since a 2-byte address has been replaced by a 3-byte call. But <em>this is not universally true.</em> A 32-bit 68000 Forth may replace a 4-byte address with a 4-byte BSR instruction, for no net loss. And on the <a href="http://www.zilog.com/docs/ps0146.pdf">Zilog Super8</a>, which has machine instructions for DTC Forth, the 2-byte address is replaced by a 1-byte ENTER instruction, making a DTC Forth <em>smaller</em> on the Super8! </p>
+<p>Of course, DTC CODE definitions are two bytes shorter, since they no longer need a pointer at all! </p>
+<p>I used to think that high-level definitions in DTC Forths required the use of a subroutine call in the <strong>Code Field</strong>. Frank Sergeant's Pygmy Forth <a href="#SER90">[SER90]</a> demonstrates that a simple jump can be used just as easily, and will usually be faster.</p>
+<p>Guy Kelly has compiled a superb review of Forth implementations for the IBM PC <a href="#KEL92">[KEL92]</a>, which I strongly recommend to <em>all</em> Forth kernel writers. Of the 19 Forths he studied, 10 used DTC, 7 used ITC, and 2 used subroutine threading (discussed next). <em>I recommend the use of Direct-Threaded Code over Indirect-Threaded Code for all new Forth kernels.</em></p>
+<h3 id="jump-to-next-or-code-it-in-line">Jump to NEXT, or code it in-line?</h3>
+<p>The Forth inner interpreter, NEXT, is a common routine to all CODE definitions. You might keep just one copy of this common routine, and have all CODE words jump to it. (Note that you Jump to NEXT; a subroutine Call is not necessary.)</p>
+<p>However, the speed of NEXT is crucial to the speed of the entire Forth system. Also, on many CPUs, the NEXT routine is quite short; often only two or three instructions. So it may be preferable to code NEXT in-line, wherever it is used. This is frequently done by making NEXT an assembler macro.</p>
+<p>This is a simple speed vs. space decision: in-line NEXT is always faster, but almost always larger. The total size increase is the number of extra bytes required for in-line expansion, times the number of CODE words in the system. Sometimes there's no tradeoff at all: in a 6809 DTC Forth, an in-line NEXT is <em>shorter</em> than a Jump instruction!</p>
+<h3 id="subroutine-threaded-code-stc">Subroutine Threaded Code (STC)</h3>
+<p>A high-level Forth definition is nothing but a list of subroutines to be executed. You don't need interpreters to accomplish this; you can get the same effect by simply stringing a list of subroutine calls together:</p>
+<pre><code>SQUARE: CALL DUP
+        CALL *     ; or a suitable alphanumeric name
+        RET
+</code></pre>
+<p>See <a href="#FIG03">Figure 3</a>. This representation of Forth words has been used as a starting point to explain Forth threading techniques to assembly language programmers <a href="#KOG82">[KOG82]</a>.</p>
+<p><span id=FIG03></span>
+<em>Figure 3. Subroutine Threaded Code</em></p>
+<p><img alt="" src="img/mov1-3.svg" /></p>
+<p>STC is an elegant representation; colon definitions and CODE words are now identical. "Defined words" (VARIABLEs, CONSTANTs, and the like) are handled the same as in DTC -- the <strong>Code Field</strong> begins with a jump or call to some machine code elsewhere.</p>
+<p>The major disadvantage is that subroutine calls are usually larger than simple addresses. On the Z80, for example, the size of colon definitions increases by 50% -- and most of your application is colon definitions! Contrariwise, on a 32-bit 68000 there may be no size increase at all, when 4-byte addresses are replaced with 4-byte BSRs. (But if your code size exceeds 64K, some of those addresses must be replaced with 6-byte JSRs.)</p>
+<p>Subroutine threading <em>may</em> be faster than direct threading. You save time by not having an interpreter, but you lose time because <em>every</em> reference to a Forth word involves a push and pop of a return address. In a DTC Forth, only high-level words cause activity on the return stack. On the 6809 or Zilog Super8, DTC is faster than STC.</p>
+<p>There is another advantage to STC: it dispenses with the IP register. Some processors -- like the 8051 -- are desperately short of addressing registers. Eliminating the IP can really simplify and speed up the kernel!</p>
+<p><em>The only way to know for sure is to write sample code.</em> This is intimately involved with register selection, discussed in the next section.</p>
+<h3 id="stc-with-in-line-expansion-optimization-direct-compilation">STC with in-line expansion; optimization; direct compilation</h3>
+<p>On older and 8-bit CPUs, almost every Forth primitive involves several machine instructions. But on more powerful CPUs, many Forth primitives are written in a single instruction. For example, on the 32-bit 68000, DROP is simply</p>
+<pre><code>    ADDQ    #4,An     where An is Forth's PSP register
+</code></pre>
+<p>In a subroutine-threaded Forth, using DROP in a colon definition would result in the sequence</p>
+<pre><code>BSR ...
+BSR DROP  -------&gt;   DROP: ADDQ #4,An
+BSR ...   &lt;-------         RTS
+</code></pre>
+<p>ADDQ is a two-byte instruction. Why write a four-byte subroutine call to a two-byte instruction? No matter how many times DROP is used, there's no savings! The code is smaller and faster if the ADDQ is coded directly into the stream of BSRs. Some Forth compilers do this "in-line expansion" of CODE words <a href="#CUR93a">[CUR93a]</a>.</p>
+<p>The disadvantage of in-line expansion is that decompiling back to the original source code becomes very difficult. As long as subroutine calls are used, you still have pointers (the subroutine addresses) to the Forth words comprising the thread. With pointers to the words, you can obtain their names. But once a word is expanded into in-line code, all knowledge of where that code came from is lost.</p>
+<p>The advantage of in-line expansion -- aside from speed and size -- is the potential for code optimization. For example, the Forth sequence</p>
+<pre><code class="language-forth">3 +  
+</code></pre>
+<p>would be compiled in 68000 STC as</p>
+<pre><code>    BSR     LIT
+    .DW     3 
+    BSR     PLUS
+</code></pre>
+<p>but could be expanded in-line as a <em>single</em> machine instruction!</p>
+<p>Optimizing Forth compilers is too broad a topic for this article. This is an active area of Forth language research; see, for instance, <a href="#SCO89">[SCO89]</a> and <a href="#CUR93b">[CUR93b]</a>. The final culmination of optimized STC is a Forth which compiles to "pure" machine code, just like a C or Fortran compiler.</p>
+<h3 id="token-threaded-code-ttc">Token Threaded Code (TTC)</h3>
+<p>DTC and STC aim to improve the speed of Forth programs, at some cost in memory. Now let's move the <em>other</em> direction from ITC, toward something slower but smaller.</p>
+<p>The purpose of a Forth thread is to specify a list of Forth words (subroutines) to be performed. Suppose a 16-bit Forth system only had a maximum of 256 different words. Then each word could be uniquely identified by an 8-bit number. Instead of a list of 16-bit addresses, you would have a list of 8-bit identifiers or "tokens," and the size of the colon definitions would be halved!</p>
+<p>A token-threaded Forth keeps a table of addresses of all Forth words, as shown in <a href="#FIG04">Figure 4</a>. The token value is then used to index into this table, to find the Forth word corresponding to a given token. This <em>adds</em> one level of indirection to the Forth interpreter, so it is slower than an "address-threaded" Forth.</p>
+<p><span id=FIG04></span>
+<em>Figure 4. Token Threaded Code</em></p>
+<p><img alt="" src="img/mov1-4.svg" /></p>
+<p>The principal advantage of token-threaded Forths is small size. TTC is most commonly seen in handheld computers and other severely size-constrained applications. Also, the table of "entry points" into all the Forth words can simplify linkage of separately-compiled modules.</p>
+<p>The disadvantage of TTC is speed: TTC makes the slowest Forths. Also, the TTC compiler is slightly more complex. If you need more than 256 Forth words, it's necessary to have some open-ended encoding scheme to mix 8-bit and larger tokens.</p>
+<p>I can envision a 32-bit Forth using 16-bit tokens, but how many 32-bit systems are size-constrained?</p>
+<h3 id="segment-threaded-code">Segment Threaded Code</h3>
+<p>Since there are so many 8086 derivatives in the world, segment threading deserves a brief mention. Instead of using "normal" byte addresses within a 64K segment, <em>paragraph</em> addresses are used. (A "paragraph" is 16 bytes in the 8086.) Then, the interpreter can load these addresses into segment registers, instead of into the usual address registers. This allows a 16- bit Forth model to efficiently access the full megabyte of 8086 memory.</p>
+<p>The principal disadvantage of segment threading is the 16-byte "granularity" of the memory space. Every Forth word must be aligned to a 16-byte boundary. If Forth words have random lengths, an average of 8 bytes will be wasted per Forth word.</p>
+<h2 id="register-allocation">REGISTER ALLOCATION</h2>
+<p>Next to the threading technique, the usage of the CPU's registers is the most crucial design decision. It's probably the most difficult. The availability of CPU registers can determine what threading technique can be used, and even what the memory map will be!</p>
+<h3 id="the-classical-forth-registers">The Classical Forth Registers</h3>
+<p>The classical Forth model has five "virtual registers." These are abstract entities which are used in the primitive operations of Forth. NEXT, ENTER, and EXIT were defined earlier in terms of these abstract registers.</p>
+<p>Each of these is one cell wide -- i.e., in a 16-bit Forth, these are 16-bit registers. (There are exceptions to this rule, as you will see later.) These <em>may not all be CPU registers.</em> If your CPU doesn't have enough registers, some of these can be kept in memory. I'll describe them in the order of their importance; i.e., the bottom of this list are the best candidates to be stored in memory.</p>
+<p><strong>W</strong> is the Working register. It is used for many things, including memory reference, so it should be an address register; i.e., you must be able to fetch and store memory using the contents of W as the address. You also need to be able to do arithmetic on W. (In DTC Forths, you must also be able to jump indirect using W.) W is used by the interpreter <em>in every Forth word</em>. In a CPU having only one register, you would use it for W and keep everything else in memory (and the system would be incredibly slow).</p>
+<p><strong>IP</strong> is the Interpreter Pointer. This is used by <em>every Forth word</em> (through NEXT, ENTER, or EXIT). IP must be an address register. You also need to be able to increment IP. Subroutine threaded Forths don't need this register.</p>
+<p><strong>PSP</strong> is the Parameter Stack (or "data stack") Pointer, sometimes called simply SP. I prefer PSP because SP is frequently the name of a CPU register, and they shouldn't be confused. Most CODE words use this. PSP must be a stack pointer, or an address register which can be incremented and decremented. It's also a plus if you can do indexed addressing from PSP.</p>
+<p><strong>RSP</strong> is the Return Stack Pointer, sometimes called simply RP. This is used by colon definitions in ITC and DTC Forths, and by <em>all</em> words in STC Forths. RSP must be a stack pointer, or an address register which can be incremented and decremented.</p>
+<p>If <em>at all possible</em>, put W, IP, PSP, and RSP in registers. The virtual registers that follow can be kept in memory, but there is usually a speed advantage to keeping them in CPU registers.</p>
+<p><strong>X</strong> is a working register, <em>not</em> considered one of the "classical" Forth registers, even though the classical ITC Forths need it for the second indirection. In ITC you must be able to jump indirect using X. X may also be used by a few CODE words to do arithmetic and such. This is particularly important on processors that cannot use memory as an operand. For example, ADD on a Z80 might be (in pseudo-code)</p>
+<pre><code>POP W   POP X   X+W -&gt; W   PUSH W 
+</code></pre>
+<p>Sometimes another working register, Y, is also defined.</p>
+<p><strong>UP</strong> is the User Pointer, holding the base address of the task's user area. UP is usually added to an offset, and used by high-level Forth code, so it can be just stored somewhere. But if the CPU can do indexed addressing from the UP register, CODE words can more easily and quickly access user variables. If you have a surplus of address registers, use one for UP. Single-task Forths don't need UP.</p>
+<p><strong>X</strong> -- if needed -- is more important to keep in register than UP. UP is the easiest of the Forth virtual registers to move into memory.</p>
+<h3 id="use-of-the-hardware-stack">Use of the Hardware Stack</h3>
+<p>Most CPUs have a stack pointer as part of their hardware, used by interrupts and subroutine calls. How does this map into the Forth registers? Should it be the PSP or the RSP?</p>
+<p>The short answer is, <em>it depends</em>. It is said that the PSP is used more than the RSP in ITC and DTC Forths. If your CPU has few address registers, and PUSH and POP are faster than explicit reference, use the hardware stack as the Parameter Stack.</p>
+<p>On the other hand, if your CPU is rich in addressing modes -- and allows indexed addressing -- there's a plus in having the PSP as a general-purpose address register. In this case, use the hardware stack as the Return Stack.</p>
+<p>Sometimes you do neither! The <a href="http://en.wikipedia.org/wiki/Texas_Instruments_TMS320">TMS320C25</a>'s hardware stack is only eight cells deep -- all but useless for Forth. So its hardware stack is used <em>only</em> for interrupts, and both PSP and RSP are general-purpose address registers. (ANS Forth specifies a minimum of 32 cells of Parameter Stack and 24 cells of Return Stack; I prefer 64 cells of each.)</p>
+<p>You will occasionally encounter the dogma that the hardware stack "must be" the Parameter Stack, or "must be" the Return Stack. Instead, code some sample Forth primitives, such as</p>
+<pre><code class="language-forth">SWAP  OVER  @  !  +  0=  
+</code></pre>
+<p>and see which approach is smaller or faster. (DUP and DROP, by the way, are no test -- they're usually trivial.)</p>
+<p>Occasionally you reach strange conclusions! Gary Bergstrom has pointed out that a 6809 DTC Forth can be made a few cycles faster by using the 6809 user stack pointer as the <em>IP</em>; NEXT becomes a POP. He uses an index register for one of Forth's stacks.</p>
+<h3 id="top-of-stack-in-register">Top-Of-Stack in Register</h3>
+<p>Forth's performance can be improved considerably by keeping the top element of the Parameter Stack in a register! Many Forth words (such as 0=) then don't need to use the stack. Other words still do the same number of pushes and pops, only in a different place in the code. Only a few Forth words (DROP and 2DROP) become more complicated, since you can no longer simply adjust the stack pointer -- you have to update the TOS register as well.</p>
+<p>There are a few rules when writing CODE words:</p>
+<p>A word which <em>removes</em> items from the stack must pop the "new" TOS into its register.</p>
+<p>A word which <em>adds</em> items to the stack must push the "old" TOS onto the stack (unless, of course, it's consumed by the word).</p>
+<p><em>If you have at least six cell-size CPU registers, I recommend keeping the TOS in a register.</em> I consider TOS more important than UP to have in register, but less important than W, IP, PSP, and RSP. (TOS in register performs many of the functions of the X register.) It's useful if this register can perform memory addressing. <a href="http://en.wikipedia.org/wiki/PDP-11">PDP-11</a>s, <a href="http://en.wikipedia.org/wiki/Zilog_Z8">Z8</a>s, and 68000s are good candidates.</p>
+<p>Nine of the 19 IBM PC Forths studied by Guy Kelly <a href="#KEL92">[KEL92]</a> keep TOS in register.</p>
+<p>I think this innovation has been resisted because of the false beliefs that a) it adds instructions, and b) the top stack element must be accessible as memory. It turns out that even such words as PICK, ROLL, and DEPTH are trivially modified for TOS-in-register.</p>
+<p>What about buffering <em>two</em> stack elements in registers? When you keep the top of stack in a register, the total number of operations performed remains essentially the same. A push remains a push, regardless of whether it is before or after the operation you're performing. On the other hand, buffering two stack elements in registers <em>adds</em> a large number of instructions -- a push becomes a push followed by a move. Only dedicated Forth processors like the <a href="http://en.wikipedia.org/wiki/RTX2010">RTX2000</a> and fantastically clever optimizing compilers can benefit from buffering two stack elements in registers.</p>
+<h3 id="some-examples">Some examples</h3>
+<p>Here are the register assignments made by Forths for a number of different CPUs. Try to deduce the design decisions of the authors from this list.</p>
+<!-- Do not edit this table. It is created in Libreoffice using a 
+template (see the aux directory). -->
+
+<p><em>Register Assignments</em></p>
+<table>                
+<thead>                
+<tr><th>  </th><th> W </th><th> IP </th><th> PSP </th><th> RSP </th><th> UP </th><th> TOS </th><th>  </th></tr>
+</thead>                
+<tbody>                
+<tr><td> 8086<sup>[1]</sup> </td><td> BX </td><td> SI </td><td> SP </td><td> BP </td><td> memory </td><td> memory </td><td> <a href="#LAX84">[LAX84]</a> </td></tr>
+<tr><td> 8086<sup>[2]</sup> </td><td> AX </td><td> SI </td><td> SP </td><td> BP </td><td> none </td><td> BX </td><td> <a href="#SER90">[SER90]</a> </td></tr>
+<tr><td> 68000 </td><td> A5 </td><td> A4 </td><td> A3 </td><td> A7=SP </td><td> A6 </td><td> memory </td><td> <a href="#CUR86">[CUR86]</a> </td></tr>
+<tr><td> PDP-11 </td><td> R2 </td><td> R4 </td><td> R5 </td><td> R6=SP </td><td> R3 </td><td> memory </td><td> <a href="#JAM80">[JAM80]</a> </td></tr>
+<tr><td> 6809 </td><td> X </td><td> Y </td><td> U </td><td> S </td><td> memory </td><td> memory </td><td> <a href="#TAL80">[TAL80]</a> </td></tr>
+<tr><td> 6502 </td><td> Zpage </td><td> Zpage </td><td> X </td><td> SP </td><td> Zpage </td><td> memory </td><td> <a href="#KUN81">[KUN81]</a> </td></tr>
+<tr><td> Z80 </td><td> DE </td><td> BC </td><td> SP </td><td> IX </td><td> none </td><td> memory </td><td> <a href="#LOE81">[LOE81]</a> </td></tr>
+<tr><td> Z8 </td><td> RR6 </td><td> RR12 </td><td> RR14 </td><td> SP </td><td> RR10 </td><td> RR8 </td><td> <a href="#MPE92">[MPE92]</a> </td></tr>
+<tr><td> 8051 </td><td> R0,1 </td><td> R2,3 </td><td> R4,5 </td><td> R6,7 </td><td> fixed </td><td> memory </td><td> <a href="#PAY90">[PAY90]</a> </td></tr>
+</tbody>                
+<tfoot><tr><td colspan="8"> <sup>[1]</sup>F83.   <sup>[2]</sup>Pygmy Forth.               </td></tr></tfoot>
+</table>
+
+<p>"SP" refers to the hardware stack pointer. "Zpage" refers to values kept in the 6502's memory page zero, which are almost as useful as -- sometimes more useful than -- values kept in registers; e.g., they can be used for memory addressing. "Fixed" means that Payne's 8051 Forth has a single, immovable user area, and UP is a hard-coded constant.</p>
+<h3 id="narrow-registers">Narrow Registers</h3>
+<p>Notice anything odd in the previous list? The 6502 Forth -- a 16-bit model -- uses <em>8-bit</em> stack pointers!</p>
+<p>It is possible to make PSP, RSP, and UP smaller than the cell size of the Forth. This is because the stacks and user area are both relatively small areas of memory. Each stack may be as small as 64 cells in length, and the user area rarely exceeds 128 cells. You simply need to ensure that either a) these data areas are confined to a small area of memory, so a short address can be used, or b) the high address bits are provided in some other way, e.g., a memory page select.</p>
+<p>In the 6502, the hardware stack is confined to page one of RAM (addresses 01xxh) by the design of the CPU. The 8-bit stack pointer can be used for the Return Stack. The Parameter Stack is kept in page zero of RAM, which can be indirectly accessed by the 8-bit index register X. (Question for the advanced student: why use the 6502's X, and not Y? Hint: look at the addressing modes available.)</p>
+<p>In the 8051, you can use the 8-bit registers R0 and R1 to address external RAM, provided that you explicitly output the high 8 bits of address to port 2. This allows a "page select" for two stacks.</p>
+<p>UP is different from PSP and RSP: it simply provides a base address; it is never incremented or decremented. So it's practical to supply only the <em>high</em> bits of this virtual register. The low bits must then be provided by whatever indexed addressing technique is used. For example, on the 6809, you can use the DP register to hold the high 8 bits of UP, and then use Direct Page addressing to access any of the 256 locations in this page. This forces all user areas to begin on an address xx00h, which is no great hardship, and limits the user area to 128 cells in length.</p>
+<p>On the 8086 you could conceivably use a segment register to specify the base address of the user area.</p>
+<h2 id="references">REFERENCES</h2>
+<p><span id="CUR93a">[CUR93a]</span> <a href="http://www.charlescurley.com/">Curley, Charles</a>, "Life in the FastForth Lane", awaiting publication in Forth Dimensions. Description of a 68000 subroutine-threaded Forth. <a href="http://archive.org/details/Forth_Dimension_Volume_14_Number_5">[1]</a> <a href="http://www.forth.org/fd/FD-V14N5.pdf">[2]</a> <a href="http://www.forth.org/fd/curley2.html">[3]</a> <a href="http://github.com/charlescurley/realforth">[4]</a> <a href="fd/Forth_Dimension_Volume_14_Number_5.pdf">[5]</a></p>
+<p><span id="CUR93b">[CUR93b]</span> Curley, Charles, "Optimizing in a BSR/JSR Threaded Forth", awaiting publication in Forth Dimensions. Single-pass code optimization for FastForth, in only five screens of code! Includes listing. <a href="http://www.forth.org/fd/curley1.html">[1]</a> <a href="https://archive.org/details/Forth_Dimension_Volume_14_Number_6">[2]</a> <a href="http://www.forth.org/fd/FD-V14N6.pdf">[3]</a> <a href="fd/Forth_Dimension_Volume_14_Number_6.pdf">[4]</a></p>
+<p><span id="KEL92">[KEL92]</span> Kelly, Guy M., "Forth Systems Comparisons", Forth Dimensions XIII:6 (Mar/Apr 1992). Also published in the <em>1991 FORML Conference Proceedings</em>. Both available from the Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Illustrates design trade offs of many 8086 Forths with code fragments and benchmarks -- highly recommended! <a href="https://archive.org/details/Forth_Dimension_Volume_13_Number_6">[1]</a> <a href="http://www.forth.org/fd/FD-V13N6.pdf">[2]</a> <a href="fd/Forth_Dimension_Volume_13_Number_6.pdf">[3]</a></p>
+<p><span id="KOG82">[KOG82]</span> Kogge, Peter M., "An Architectural Trail to Threaded-Code Systems", IEEE Computer, vol. 15 no. 3 (Mar 1982). Remains the definitive description of various threading techniques. <a href="http://www.semanticscholar.org/paper/An-Architectural-Trail-to-Threaded-Code-Systems-Kogge/171f9d8fc050641d022116dafaf550debfc2a3f9">[1]</a> <a href="http://github.com/efurlanm/ldi/tree/main/movingforth/ref/An_A_T_to_Threaded-Code_Systems_-_Kogge.pdf">[2]</a></p>
+<p><span id="ROD91">[ROD91]</span> <a href="https://dl.acm.org/profile/81100318863">Rodriguez, B.J.</a>, "B.Y.O. Assembler", Part 1, The Computer Journal #52 (Sep/Oct 1991). General principles of writing Forth assemblers. <a href="http://archive.org/details/the-computer-journal-52">[1]</a> <a href="tcj/tcj_52_September-October_1991_text.pdf">[2]</a></p>
+<p><span id="ROD92">[ROD92]</span> Rodriguez, B.J., "B.Y.O. Assembler", Part 2, The Computer Journal #54 (Jan/Feb 1992). A 6809 assembler in Forth. <a href="http://archive.org/details/the-computer-journal-54">[1]</a> <a href="tcj/tcj_54_January-February_1992_text.pdf">[2]</a></p>
+<p><span id="SCO89">[SCO89]</span> Scott, Andrew:</p>
+<ul>
+<li>
+<p>"An Extensible Optimizer for Compiling Forth", <em>1989 FORML Conference Proceedings</em>, Forth Interest Group, P.O. Box 2154, Oakland, CA 94621. Good description of a 68000 optimizer; no code provided.</p>
+</li>
+<li>
+<p>"Extensible Optimizing Compiler", Forth Dimensions XII:2 (Jul/Aug 1990). <a href="https://archive.org/details/Forth_Dimension_Volume_12_Number_2">[1]</a> <a href="http://www.forth.org/fd/FD-V12N2.pdf">[2]</a></p>
+</li>
+</ul>
+<h3 id="forth-implementations">Forth Implementations</h3>
+<p><span id="CUR86">[CUR86]</span> Curley, Charles, <em>real-Forth for the 68000</em>, <del>privately distributed (1986)</del>. <a href="http://github.com/charlescurley/realforth">[1]</a></p>
+<p><span id="JAM80">[JAM80]</span> James, John S., <em>fig-Forth for the PDP-11</em>, Forth Interest Group (1980). <a href="http://www.forth.org/fig-forth/contents.html">[1]</a> <a href="http://www.stackosaurus.com/figforth.html">[2]</a></p>
+<p><span id="KUN81">[KUN81]</span> Kuntze, Robert E., <em>MVP-Forth for the Apple II</em>, Mountain View Press (1981). <a href="https://archive.org/details/haydon90_All_About_Forth_3rd_ed">[1]</a> <a href="mvp/">[2]</a></p>
+<p><span id="LAX84">[LAX84]</span> Laxen, H. and Perry, M., <em>F83 for the IBM PC</em>, version 2.1.0 (1984). Distributed by the authors, available from the Forth Interest Group or GEnie. <a href="http://github.com/ForthHub/F83">[1]</a> <a href="http://forth.org/OffeteStore/1003_InsideF83.pdf">[2]</a></p>
+<p><span id="LOE81">[LOE81]</span> Loeliger, R. G., <em>Threaded Interpretive Languages</em>, BYTE Publications (1981), ISBN 0-07-038360-X. May be the only book ever written on the subject of creating a Forth-like kernel (the example used is the Z80). Worth it if you can find a copy. <a href="http://archive.org/details/R.G.LoeligerThreadedInterpretiveLanguagesTheirDesignAndImplementationByteBooks1981">[1]</a> <a href="http://github.com/efurlanm/ldi/tree/main/movingforth/ref/Threaded_Interpretive_Languages_-_Loeliger.pdf">[2]</a></p>
+<p><span id="MPE92">[MPE92]</span> MicroProcessor Engineering Ltd., <em>MPE Z8/Super8 PowerForth Target</em>, MPE Ltd., 133 Hill Lane, Shirley, Southampton, S01 5AF, U.K. (June 1992). A commercial product. <a href="https://www.mpeforth.com/">[1]</a></p>
+<p><span id="PAY90">[PAY90]</span> Payne, William H., <em>Embedded Controller FORTH for the 8051 Family</em>, Academic Press (1990), ISBN 0-12-547570-5. This is a complete "kit" for a 8051 Forth, including a metacompiler for the IBM PC. <del>Hardcopy only; files can be downloaded from GEnie</del>. Not for the novice! <a href="http://archive.org/details/WilliamH.PayneAuth.EmbeddedControllerFORTHForThe8051FamilyBostonAcademicPress1990">[1]</a> <a href="http://github.com/efurlanm/ldi/tree/main/movingforth/ref/Embedded_Controller_FORTH_for_the_8051_Family_-_Payne.pdf">[2]</a></p>
+<p><span id="SER90">[SER90]</span> Sergeant, Frank, <em>Pygmy Forth for the IBM PC</em>, version 1.3 (1990). Distributed by the author, available from the Forth Interest Group. Version 1.4 is now available on GEnie, and worth the extra effort to obtain. <a href="http://github.com/utoh/pygmy-forth">[1]</a></p>
+<p><span id="TAL80">[TAL80]</span> Talbot, R. J., <em>fig-Forth for the 6809</em>, Forth Interest Group (1980). <a href="http://www.forth.org/fig-forth/contents.html">[1]</a></p>
+<p><em>Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group <del>FTP</del> server, <del>ftp://ftp.forth.org/pub/Forth</del> http://www.forth.org/</em></p>
+<!-- REFERENCES -->
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="glosslo.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Glosslo" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Glosslo
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="moving2.html" class="md-footer__link md-footer__link--next" aria-label="Next: MOVING FORTH 2" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              MOVING FORTH 2
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      CC BY 4.0 License
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide"], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>
