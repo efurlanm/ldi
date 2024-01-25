@@ -12,7 +12,7 @@ My personal notes on language design and implementation, internals, computer arc
 
 ## Jupyter Notebooks
 
-* SoYouThinkYouKnowC.ipynb - based on [Excerpts that are difficult to read in C](https://wordsandbuttons.online/so_you_think_you_know_c.html)
+* [SoYouThinkYouKnowC.ipynb](SoYouThinkYouKnowC.ipynb) - based on [Excerpts that are difficult to read in C](https://wordsandbuttons.online/so_you_think_you_know_c.html)
 
 
 ## Forth
