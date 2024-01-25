@@ -10,6 +10,16 @@
 My personal notes on language design and implementation, internals, computer architecture, tips and tricks, code snippets, trivia, and related random stuff
 
 
+## Jupyter Notebooks
+
+* SoYouThinkYouKnowC.ipynb - based on [Excerpts that are difficult to read in C](https://wordsandbuttons.online/so_you_think_you_know_c.html)
+
+
+## Forth
+
+* My personal notes on Brad Rodriguez's Moving Forth.: <http://efurlanm.github.io/movingforth>
+
+
 ## Wikibooks
 
 * [Compiler (from Introduction to Software Engineering)](https://en.wikibooks.org/wiki/Introduction_to_Software_Engineering/Tools/Compiler)
@@ -39,11 +49,6 @@ My personal notes on language design and implementation, internals, computer arc
 * [GNU Fortran Compiler Internals](https://gcc.gnu.org/onlinedocs/gfc-internals/)
 * [GNU C Compiler Internals](https://en.wikibooks.org/wiki/GNU_C_Compiler_Internals)
 * [The Erlang Runtime System](http://blog.stenmans.org/theBeamBook/#_the_erlang_virtual_machine_beam)
-
-
-## Forth
-
-* My personal notes on Brad Rodriguez's Moving Forth.: <http://efurlanm.github.io/movingforth>
 
 
 ## Vintage computer
