@@ -1,74 +1,86 @@
-# MOVING FORTH
+# Language Design and Implementation
 
-     __  __            _               _____          _   _     
-    |  \/  | _____   _(_)_ __   __ _  |  ___|__  _ __| |_| |__  
-    | |\/| |/ _ \ \ / / | '_ \ / _` | | |_ / _ \| '__| __| '_ \ 
-    | |  | | (_) \ V /| | | | | (_| | |  _| (_) | |  | |_| | | |
-    |_|  |_|\___/ \_/ |_|_| |_|\__, | |_|  \___/|_|   \__|_| |_|
-                               |___/ 
-    Author: Brad Rodriguez
-    Editor: Eduardo Furlan
+<small>
+Last edited: 2024-11-19 &nbsp;&nbsp;|&nbsp;&nbsp;
+[Website](http://efurlanm.github.io/ldi/) &nbsp;&nbsp;|&nbsp;&nbsp;
+[Repository](https://github.com/efurlanm/ldi/)
+</small>
 
-*Last edited: 2022-02-04<br>
-Website: <https://efurlanm.github.io/forth/><br>
-Repository: <https://github.com/efurlanm/forth/><br>
-Original sources: <http://www.bradrodriguez.com/papers/>*
+     _       ____    ___ 
+    | |     |  _ \  |_ _|
+    | |     | | | |  | | 
+    | |___  | |_| |  | | 
+    |_____| |____/  |___|
+    Language Design and Implementation
 
-I decided to create this documentation because it was difficult for me to read, study and learn easily using the original documentation, plus the fact that I enjoy taking notes as I read. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on, so I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the CC BY 4.0 license, and all original sources are under the [author's original license](http://www.bradrodriguez.com).
+My personal notes on language design and implementation, internals, computer architecture, tips and tricks, snippets, trivia, and related random stuff.
 
-Forth is a procedural, stack-oriented programming language and interactive environment designed by Charles H. Moore in 1968 at the United States National Radio Astronomy Observatory (NRAO), to help control radio telescopes. Today it is used in numerous spacecraft, such as the Rosetta/Philae probe which uses [10 RTX2010 processors](http://www.cpushack.com/2014/11/12/here-comes-philae-powered-by-an-rtx2010/) that support direct execution of Forth. NASA has a list of [space-related applications of the Forth](http://web.archive.org/web/20110204160744/http://forth.gsfc.nasa.gov/), compiled by James Rash, at Goddard Space Flight Center Greenbelt, Maryland. Forth is generally [targeted at small embedded systems and microcontrollers like the STM8](http://github.com/TG9541/stm8ef/wiki) used in various consumer devices like [chinese gadgets](http://github.com/TG9541/stm8ef/wiki/STM8S-Value-Line-Gadgets). What catches my attention in Forth is the possibility of being used running directly on the microcontroller using a REPL (Read-Eval-Print Loop) programming environment that allows the programmer to interact with a running program, experiment and obtain immediate results directly in the microcontroller, without the need for cross-compilation, which reduces development time. Other features are also useful, such as the ease of the interface and, because it is relatively simple, it is easy to deploy and optimize for a specific architecture.
 
-## Moving Forth: a series on writing Forth kernels
+## Jupyter Notebooks
 
-This series originally appeared in [The Computer Journal](http://archive.org/details/the-computer-journal/). Accompanying source code can be found on the [CamelForth](http://www.camelforth.com/) page.
+* [SoYouThinkYouKnowC.ipynb](SoYouThinkYouKnowC.ipynb) - based on [Excerpts that are difficult to read in C](https://wordsandbuttons.online/so_you_think_you_know_c.html)
 
-* [Part 1: Design Decisions in the Forth Kernel](moving1.md)
-* [Part 2: Benchmarks and Case Studies of Forth Kernels](moving2.md)
-* [Part 3: Demystifying DOES>](moving3.md)
-* [Part 4: Assemble or Metacompile?](moving4.md)
-* [Part 5: The Z80 Primitives](moving5.md)
-* [Part 6: The Z80 High-level Kernel](moving6.md)
-* [Part 7: CamelForth for the 8051](moving7.md)
-* [Part 8: CamelForth for the 6809](moving8.md)
-* [Multitasking 8051 CamelForth](8051task.md)
 
-## Listings
+## Forth
 
-These listings are part of Moving Forth and are described in the text.
+* My personal notes on Brad Rodriguez's Moving Forth
+    * [Website](https://github.com/efurlanm/ldi/tree/main/forth/docs/index.html)
+    * [Repository](https://github.com/efurlanm/ldi/tree/main/forth/)
 
-* [Glossary](glosslo.md): Glossary of words in CAMEL80.AZM
-* [Primitive testing code](cameltst.md): The "minimal" test of the CamelForth kernel
-* [CAMEL80.AZM](camel80.md): Code Primitives
-* [CAMEL80H.AZM](camel80h.md): High Level Words
-* [CAMEL80D.AZM](camel80d.md): CPU and Model Dependencies
-* [CAMEL09](camel09.md): Direct-Threaded Forth model for Motorola 6809
 
-## The Computer Journal (TCJ)
+## Wikibooks
 
-- [The Computer Journal Home Page](http://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/) (Wayback Machine link)
+* [Compiler (from Introduction to Software Engineering)](https://en.wikibooks.org/wiki/Introduction_to_Software_Engineering/Tools/Compiler)
+* [Compiler Construction](https://en.wikibooks.org/wiki/Compiler_Construction)
 
-Scanned PDF files source: <http://archive.org/details/the-computer-journal>
 
-* TCJ \#52: B.Y.O. Assembler (1) (3.9 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-52)
-* TCJ \#54: B.Y.O. Assembler (2) (2.7 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-54)
-* TCJ \#59: Moving Forth (2.6 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-59)
-* TCJ \#60: Moving Forth Part II (2.9 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-60)
-* TCJ \#62: Moving Forth Part III (3.0 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-62)
-* TCJ \#64: Moving Forth Part IV (3.4 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-64) 
-* TCJ \#67: Moving Forth Part 5 (3.1 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-67) 
-* TCJ \#69: Moving Forth Part 6 (3.7 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-69) 
-* TCJ \#71: Moving Forth Part 7 (3.2 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-71) 
-* TCJ \#72: Moving Forth Part 7.5 (3.1 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-72)
-* TCJ \#74: Moving Forth Part 8 (4.0 MB PDF file) [[1]](http://archive.org/details/the-computer-journal-74) 
+## Wikipedia
 
-## Forth Dimensions (FD)
+* [Compiler](https://en.wikipedia.org/wiki/Compiler)
+* [History of compiler construction](https://en.wikipedia.org/wiki/History_of_compiler_construction)
 
-Source 1 : <http://archive.org/details/forthdimension> (scanned PDF files)  
-Source 2 : <http://www.forth.org/fd/FDcover.html> (scanned PDF files)
 
-* FD \#XIII:6 "Forth Systems Comparisons" (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_13_Number_6) [[2]](http://www.forth.org/fd/FD-V13N6.pdf)
-* FD \#XIV:3 "Principles of Metacompilation 1" (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_3) [[2]](http://www.forth.org/fd/FD-V14N3.pdf)
-* FD \#XIV:4 "Principles of Metacompilation 2" (21 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_4) [[2]](http://www.forth.org/fd/FD-V14N4.pdf)
-* FD \#XIV:5 "Principles of Metacompilation 3" & "Life in the FastForth Lane" (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5) [[2]](http://www.forth.org/fd/FD-V14N5.pdf)
-* FD \#XIV:5 "Principles of Metacompilation 3" & "Optimizing in a BSR/JSR Threaded Forth" (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_6) [[2]](http://www.forth.org/fd/FD-V14N6.pdf)
+## Reddit
 
+* [Programming Languages](http://www.reddit.com/r/ProgrammingLanguages/): discussion of programming languages, programming language theory, design, their syntax and compilers
+* [Compilers](http://www.reddit.com/r/Compilers/): theory and development of compilers
+
+
+## Usenet
+
+* [The comp.compilers newsgroup](https://compilers.iecc.com/)
+
+
+## Internals
+
+* [GNU Compiler Collection Internals](https://gcc.gnu.org/onlinedocs/gccint.pdf)
+* [GNU Fortran Compiler Internals](https://gcc.gnu.org/onlinedocs/gfc-internals/)
+* [GNU C Compiler Internals](https://en.wikibooks.org/wiki/GNU_C_Compiler_Internals)
+* [The Erlang Runtime System](http://blog.stenmans.org/theBeamBook/#_the_erlang_virtual_machine_beam)
+
+
+## Vintage computer
+
+Vintage computer internals, or "computer archeology".
+
+* Applesoft ROM internals: [[1]](http://www.txbobsc.com/scsc/scdocumentor/) [[2]](https://6502disassembly.com/a2-rom/)
+* TRS-80 ROM internals: [[1]](https://www.trs-80.com/wordpress/disassembled-rom/)
+* C64 ROM internals: [[1]](https://www.pagetable.com/c64ref/c64disasm/) [[2]](https://github.com/tgiphil/c64rom)
+* The Complete Spectrum ROM Disassembly: [[1]](https://archive.org/details/CompleteSpectrumROMDisassemblyThe)
+* Spectrum ROM Disassemblies: [[1]](https://github.com/ZXSpectrumVault/rom-disassemblies)
+* Altair BASIC Annotated Disassembly: [[1]](http://altairbasic.org/)
+* HP-41 internals: [[1]](http://github.com/efurlanm/ml/tree/master/hp41)
+
+
+## References
+
+Links to references I found interesting.
+
+* SETZER, V. W.; MELO, I. S. H. *A construção de um compilador*. (in Portuguese)
+* [Library with several books on compilers, computers, and programming](https://vdoc.pub/search/compiler)
+* [R G Loeliger. *Threaded Interpretive Languages: Their Design And Implementation*](https://vdoc.pub/documents/threaded-interpretive-languages-their-design-and-implementation-1seph9gct7uo)
+
+
+## License
+
+My work follows the CC-BY-4.0 license. The works of other authors follow their licenses.

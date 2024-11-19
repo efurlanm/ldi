@@ -1,9 +1,9 @@
-site_name: MovingForth
+site_name: 'Language Design and Implementation'
 site_author: Eduardo Furlan
-site_url: https://efurlanm.github.io/forth/
+site_url: https://efurlanm.github.io/ldi/
 copyright: CC BY 4.0 License
-repo_name: movingforth
-repo_url: http://github.com/efurlanm/forth/
+repo_name: LDI
+repo_url: http://github.com/efurlanm/ldi/
 docs_dir: docs-src
 site_dir: docs
 theme:

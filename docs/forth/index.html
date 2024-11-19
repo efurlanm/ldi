@@ -10,26 +10,28 @@
         <meta name="author" content="Eduardo Furlan">
       
       
-        <link rel="canonical" href="https://efurlanm.github.io/ldi/">
+        <link rel="canonical" href="https://efurlanm.github.io/ldi/forth/">
       
       
+        <link rel="prev" href="..">
       
-        <link rel="next" href="forth/">
+      
+        <link rel="next" href="8051task/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
-        <title>Language Design and Implementation</title>
+        <title>MOVING FORTH - Language Design and Implementation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="css/extra.css">
+      <link rel="stylesheet" href="../css/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#language-design-and-implementation" class="md-skip">
+        <a href="#moving-forth" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Language Design and Implementation" class="md-header__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
+    <a href=".." title="Language Design and Implementation" class="md-header__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Language Design and Implementation
+              MOVING FORTH
             
           </span>
         </div>
@@ -197,7 +199,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Language Design and Implementation" class="md-nav__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
+    <a href=".." title="Language Design and Implementation" class="md-nav__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -224,6 +226,63 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Language Design and Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Forth
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Forth
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
     
   
   
@@ -240,18 +299,18 @@
           
   
   <span class="md-ellipsis">
-    Language Design and Implementation
+    MOVING FORTH
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Language Design and Implementation
+    MOVING FORTH
   </span>
   
 
@@ -273,90 +332,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#jupyter-notebooks" class="md-nav__link">
+  <a href="#moving-forth-a-series-on-writing-forth-kernels" class="md-nav__link">
     <span class="md-ellipsis">
-      Jupyter Notebooks
+      Moving Forth: a series on writing Forth kernels
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#forth" class="md-nav__link">
+  <a href="#listings" class="md-nav__link">
     <span class="md-ellipsis">
-      Forth
+      Listings
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#wikibooks" class="md-nav__link">
+  <a href="#the-computer-journal-tcj" class="md-nav__link">
     <span class="md-ellipsis">
-      Wikibooks
+      The Computer Journal (TCJ)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#wikipedia" class="md-nav__link">
+  <a href="#forth-dimensions-fd" class="md-nav__link">
     <span class="md-ellipsis">
-      Wikipedia
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reddit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reddit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usenet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usenet
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#internals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internals
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vintage-computer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vintage computer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      License
+      Forth Dimensions (FD)
     </span>
   </a>
   
@@ -369,61 +374,6 @@
     </li>
   
 
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Forth
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            Forth
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="forth/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MOVING FORTH
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -433,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/8051task/" class="md-nav__link">
+      <a href="8051task/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -454,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/camel09/" class="md-nav__link">
+      <a href="camel09/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -475,7 +425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/camel80/" class="md-nav__link">
+      <a href="camel80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -496,7 +446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/camel80d/" class="md-nav__link">
+      <a href="camel80d/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -517,7 +467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/camel80h/" class="md-nav__link">
+      <a href="camel80h/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -538,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/cameltst/" class="md-nav__link">
+      <a href="cameltst/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -559,7 +509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/glosslo/" class="md-nav__link">
+      <a href="glosslo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -580,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving1/" class="md-nav__link">
+      <a href="moving1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -601,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving2/" class="md-nav__link">
+      <a href="moving2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -622,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving3/" class="md-nav__link">
+      <a href="moving3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -643,7 +593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving4/" class="md-nav__link">
+      <a href="moving4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -664,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving5/" class="md-nav__link">
+      <a href="moving5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -685,7 +635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving6/" class="md-nav__link">
+      <a href="moving6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -706,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving7/" class="md-nav__link">
+      <a href="moving7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -727,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving8/" class="md-nav__link">
+      <a href="moving8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -783,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/About/editor%27s%20notes/" class="md-nav__link">
+      <a href="About/editor%27s%20notes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -804,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/About/pandoc/" class="md-nav__link">
+      <a href="About/pandoc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -868,7 +818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/MVP-Forth/" class="md-nav__link">
+      <a href="MVP-Forth/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -924,90 +874,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#jupyter-notebooks" class="md-nav__link">
+  <a href="#moving-forth-a-series-on-writing-forth-kernels" class="md-nav__link">
     <span class="md-ellipsis">
-      Jupyter Notebooks
+      Moving Forth: a series on writing Forth kernels
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#forth" class="md-nav__link">
+  <a href="#listings" class="md-nav__link">
     <span class="md-ellipsis">
-      Forth
+      Listings
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#wikibooks" class="md-nav__link">
+  <a href="#the-computer-journal-tcj" class="md-nav__link">
     <span class="md-ellipsis">
-      Wikibooks
+      The Computer Journal (TCJ)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#wikipedia" class="md-nav__link">
+  <a href="#forth-dimensions-fd" class="md-nav__link">
     <span class="md-ellipsis">
-      Wikipedia
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reddit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reddit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usenet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usenet
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#internals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internals
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vintage-computer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vintage computer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      License
+      Forth Dimensions (FD)
     </span>
   </a>
   
@@ -1031,78 +927,71 @@
   
 
 
-<h1 id="language-design-and-implementation">Language Design and Implementation</h1>
-<p><small>
-Last edited: 2024-11-19 &nbsp;&nbsp;|&nbsp;&nbsp;
-<a href="http://efurlanm.github.io/ldi/">Website</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-<a href="https://github.com/efurlanm/ldi/">Repository</a>
-</small></p>
-<pre><code> _       ____    ___ 
-| |     |  _ \  |_ _|
-| |     | | | |  | | 
-| |___  | |_| |  | | 
-|_____| |____/  |___|
-Language Design and Implementation
+<h1 id="moving-forth">MOVING FORTH</h1>
+<pre><code> __  __            _               _____          _   _     
+|  \/  | _____   _(_)_ __   __ _  |  ___|__  _ __| |_| |__  
+| |\/| |/ _ \ \ / / | '_ \ / _` | | |_ / _ \| '__| __| '_ \ 
+| |  | | (_) \ V /| | | | | (_| | |  _| (_) | |  | |_| | | |
+|_|  |_|\___/ \_/ |_|_| |_|\__, | |_|  \___/|_|   \__|_| |_|
+                           |___/ 
+Author: Brad Rodriguez
+Editor: Eduardo Furlan
 </code></pre>
-<p>My personal notes on language design and implementation, internals, computer architecture, tips and tricks, snippets, trivia, and related random stuff.</p>
-<h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
+<p><em>Last edited: 2022-02-04<br />
+Original sources: <a href="http://www.bradrodriguez.com/papers/">http://www.bradrodriguez.com/papers/</a></em></p>
+<p>I decided to create this documentation because it was difficult for me to read, study and learn easily using the original documentation, plus the fact that I enjoy taking notes as I read. There were broken links, bad formatting on the smartphone screen, files were scattered, and so on, so I decided to put everything in one place, fix broken links, add more useful links and comments, move the pictures to SVG, and format it a little better to make the consultation and study easier. Everything I've done is under the CC BY 4.0 license, and all original sources are under the <a href="http://www.bradrodriguez.com">author's original license</a>.</p>
+<p>Forth is a procedural, stack-oriented programming language and interactive environment designed by Charles H. Moore in 1968 at the United States National Radio Astronomy Observatory (NRAO), to help control radio telescopes. Today it is used in numerous spacecraft, such as the Rosetta/Philae probe which uses <a href="http://www.cpushack.com/2014/11/12/here-comes-philae-powered-by-an-rtx2010/">10 RTX2010 processors</a> that support direct execution of Forth. NASA has a list of <a href="http://web.archive.org/web/20110204160744/http://forth.gsfc.nasa.gov/">space-related applications of the Forth</a>, compiled by James Rash, at Goddard Space Flight Center Greenbelt, Maryland. Forth is generally <a href="http://github.com/TG9541/stm8ef/wiki">targeted at small embedded systems and microcontrollers like the STM8</a> used in various consumer devices like <a href="http://github.com/TG9541/stm8ef/wiki/STM8S-Value-Line-Gadgets">chinese gadgets</a>. What catches my attention in Forth is the possibility of being used running directly on the microcontroller using a REPL (Read-Eval-Print Loop) programming environment that allows the programmer to interact with a running program, experiment and obtain immediate results directly in the microcontroller, without the need for cross-compilation, which reduces development time. Other features are also useful, such as the ease of the interface and, because it is relatively simple, it is easy to deploy and optimize for a specific architecture.</p>
+<h2 id="moving-forth-a-series-on-writing-forth-kernels">Moving Forth: a series on writing Forth kernels</h2>
+<p>This series originally appeared in <a href="http://archive.org/details/the-computer-journal/">The Computer Journal</a>. Accompanying source code can be found on the <a href="http://www.camelforth.com/">CamelForth</a> page.</p>
 <ul>
-<li><a href="SoYouThinkYouKnowC.ipynb">SoYouThinkYouKnowC.ipynb</a> - based on <a href="https://wordsandbuttons.online/so_you_think_you_know_c.html">Excerpts that are difficult to read in C</a></li>
+<li><a href="moving1/">Part 1: Design Decisions in the Forth Kernel</a></li>
+<li><a href="moving2/">Part 2: Benchmarks and Case Studies of Forth Kernels</a></li>
+<li><a href="moving3/">Part 3: Demystifying DOES&gt;</a></li>
+<li><a href="moving4/">Part 4: Assemble or Metacompile?</a></li>
+<li><a href="moving5/">Part 5: The Z80 Primitives</a></li>
+<li><a href="moving6/">Part 6: The Z80 High-level Kernel</a></li>
+<li><a href="moving7/">Part 7: CamelForth for the 8051</a></li>
+<li><a href="moving8/">Part 8: CamelForth for the 6809</a></li>
+<li><a href="8051task/">Multitasking 8051 CamelForth</a></li>
 </ul>
-<h2 id="forth">Forth</h2>
+<h2 id="listings">Listings</h2>
+<p>These listings are part of Moving Forth and are described in the text.</p>
 <ul>
-<li>My personal notes on Brad Rodriguez's Moving Forth<ul>
-<li><a href="https://github.com/efurlanm/ldi/tree/main/forth/docs/index.html">Website</a></li>
-<li><a href="https://github.com/efurlanm/ldi/tree/main/forth/">Repository</a></li>
+<li><a href="glosslo/">Glossary</a>: Glossary of words in CAMEL80.AZM</li>
+<li><a href="cameltst/">Primitive testing code</a>: The "minimal" test of the CamelForth kernel</li>
+<li><a href="camel80/">CAMEL80.AZM</a>: Code Primitives</li>
+<li><a href="camel80h/">CAMEL80H.AZM</a>: High Level Words</li>
+<li><a href="camel80d/">CAMEL80D.AZM</a>: CPU and Model Dependencies</li>
+<li><a href="camel09/">CAMEL09</a>: Direct-Threaded Forth model for Motorola 6809</li>
 </ul>
-</li>
-</ul>
-<h2 id="wikibooks">Wikibooks</h2>
+<h2 id="the-computer-journal-tcj">The Computer Journal (TCJ)</h2>
 <ul>
-<li><a href="https://en.wikibooks.org/wiki/Introduction_to_Software_Engineering/Tools/Compiler">Compiler (from Introduction to Software Engineering)</a></li>
-<li><a href="https://en.wikibooks.org/wiki/Compiler_Construction">Compiler Construction</a></li>
+<li><a href="http://web.archive.org/web/19970719063726/http://www.psyber.com/~tcj/">The Computer Journal Home Page</a> (Wayback Machine link)</li>
 </ul>
-<h2 id="wikipedia">Wikipedia</h2>
+<p>Scanned PDF files source: <a href="http://archive.org/details/the-computer-journal">http://archive.org/details/the-computer-journal</a></p>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Compiler">Compiler</a></li>
-<li><a href="https://en.wikipedia.org/wiki/History_of_compiler_construction">History of compiler construction</a></li>
+<li>TCJ #52: B.Y.O. Assembler (1) (3.9 MB PDF file) <a href="http://archive.org/details/the-computer-journal-52">[1]</a></li>
+<li>TCJ #54: B.Y.O. Assembler (2) (2.7 MB PDF file) <a href="http://archive.org/details/the-computer-journal-54">[1]</a></li>
+<li>TCJ #59: Moving Forth (2.6 MB PDF file) <a href="http://archive.org/details/the-computer-journal-59">[1]</a></li>
+<li>TCJ #60: Moving Forth Part II (2.9 MB PDF file) <a href="http://archive.org/details/the-computer-journal-60">[1]</a></li>
+<li>TCJ #62: Moving Forth Part III (3.0 MB PDF file) <a href="http://archive.org/details/the-computer-journal-62">[1]</a></li>
+<li>TCJ #64: Moving Forth Part IV (3.4 MB PDF file) <a href="http://archive.org/details/the-computer-journal-64">[1]</a> </li>
+<li>TCJ #67: Moving Forth Part 5 (3.1 MB PDF file) <a href="http://archive.org/details/the-computer-journal-67">[1]</a> </li>
+<li>TCJ #69: Moving Forth Part 6 (3.7 MB PDF file) <a href="http://archive.org/details/the-computer-journal-69">[1]</a> </li>
+<li>TCJ #71: Moving Forth Part 7 (3.2 MB PDF file) <a href="http://archive.org/details/the-computer-journal-71">[1]</a> </li>
+<li>TCJ #72: Moving Forth Part 7.5 (3.1 MB PDF file) <a href="http://archive.org/details/the-computer-journal-72">[1]</a></li>
+<li>TCJ #74: Moving Forth Part 8 (4.0 MB PDF file) <a href="http://archive.org/details/the-computer-journal-74">[1]</a> </li>
 </ul>
-<h2 id="reddit">Reddit</h2>
+<h2 id="forth-dimensions-fd">Forth Dimensions (FD)</h2>
+<p>Source 1 : <a href="http://archive.org/details/forthdimension">http://archive.org/details/forthdimension</a> (scanned PDF files)<br />
+Source 2 : <a href="http://www.forth.org/fd/FDcover.html">http://www.forth.org/fd/FDcover.html</a> (scanned PDF files)</p>
 <ul>
-<li><a href="http://www.reddit.com/r/ProgrammingLanguages/">Programming Languages</a>: discussion of programming languages, programming language theory, design, their syntax and compilers</li>
-<li><a href="http://www.reddit.com/r/Compilers/">Compilers</a>: theory and development of compilers</li>
+<li>FD #XIII:6 "Forth Systems Comparisons" (21 MB PDF file) <a href="http://archive.org/details/Forth_Dimension_Volume_13_Number_6">[1]</a> <a href="http://www.forth.org/fd/FD-V13N6.pdf">[2]</a></li>
+<li>FD #XIV:3 "Principles of Metacompilation 1" (21 MB PDF file) <a href="http://archive.org/details/Forth_Dimension_Volume_14_Number_3">[1]</a> <a href="http://www.forth.org/fd/FD-V14N3.pdf">[2]</a></li>
+<li>FD #XIV:4 "Principles of Metacompilation 2" (21 MB PDF file) <a href="http://archive.org/details/Forth_Dimension_Volume_14_Number_4">[1]</a> <a href="http://www.forth.org/fd/FD-V14N4.pdf">[2]</a></li>
+<li>FD #XIV:5 "Principles of Metacompilation 3" &amp; "Life in the FastForth Lane" (22 MB PDF file) <a href="http://archive.org/details/Forth_Dimension_Volume_14_Number_5">[1]</a> <a href="http://www.forth.org/fd/FD-V14N5.pdf">[2]</a></li>
+<li>FD #XIV:5 "Principles of Metacompilation 3" &amp; "Optimizing in a BSR/JSR Threaded Forth" (22 MB PDF file) <a href="http://archive.org/details/Forth_Dimension_Volume_14_Number_6">[1]</a> <a href="http://www.forth.org/fd/FD-V14N6.pdf">[2]</a></li>
 </ul>
-<h2 id="usenet">Usenet</h2>
-<ul>
-<li><a href="https://compilers.iecc.com/">The comp.compilers newsgroup</a></li>
-</ul>
-<h2 id="internals">Internals</h2>
-<ul>
-<li><a href="https://gcc.gnu.org/onlinedocs/gccint.pdf">GNU Compiler Collection Internals</a></li>
-<li><a href="https://gcc.gnu.org/onlinedocs/gfc-internals/">GNU Fortran Compiler Internals</a></li>
-<li><a href="https://en.wikibooks.org/wiki/GNU_C_Compiler_Internals">GNU C Compiler Internals</a></li>
-<li><a href="http://blog.stenmans.org/theBeamBook/#_the_erlang_virtual_machine_beam">The Erlang Runtime System</a></li>
-</ul>
-<h2 id="vintage-computer">Vintage computer</h2>
-<p>Vintage computer internals, or "computer archeology".</p>
-<ul>
-<li>Applesoft ROM internals: <a href="http://www.txbobsc.com/scsc/scdocumentor/">[1]</a> <a href="https://6502disassembly.com/a2-rom/">[2]</a></li>
-<li>TRS-80 ROM internals: <a href="https://www.trs-80.com/wordpress/disassembled-rom/">[1]</a></li>
-<li>C64 ROM internals: <a href="https://www.pagetable.com/c64ref/c64disasm/">[1]</a> <a href="https://github.com/tgiphil/c64rom">[2]</a></li>
-<li>The Complete Spectrum ROM Disassembly: <a href="https://archive.org/details/CompleteSpectrumROMDisassemblyThe">[1]</a></li>
-<li>Spectrum ROM Disassemblies: <a href="https://github.com/ZXSpectrumVault/rom-disassemblies">[1]</a></li>
-<li>Altair BASIC Annotated Disassembly: <a href="http://altairbasic.org/">[1]</a></li>
-<li>HP-41 internals: <a href="http://github.com/efurlanm/ml/tree/master/hp41">[1]</a></li>
-</ul>
-<h2 id="references">References</h2>
-<p>Links to references I found interesting.</p>
-<ul>
-<li>SETZER, V. W.; MELO, I. S. H. <em>A construção de um compilador</em>. (in Portuguese)</li>
-<li><a href="https://vdoc.pub/search/compiler">Library with several books on compilers, computers, and programming</a></li>
-<li><a href="https://vdoc.pub/documents/threaded-interpretive-languages-their-design-and-implementation-1seph9gct7uo">R G Loeliger. <em>Threaded Interpretive Languages: Their Design And Implementation</em></a></li>
-</ul>
-<h2 id="license">License</h2>
-<p>My work follows the CC-BY-4.0 license. The works of other authors follow their licenses.</p>
 
 
 
@@ -1153,10 +1042,10 @@ Language Design and Implementation
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>

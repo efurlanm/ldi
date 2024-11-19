@@ -10,26 +10,28 @@
         <meta name="author" content="Eduardo Furlan">
       
       
-        <link rel="canonical" href="https://efurlanm.github.io/ldi/">
+        <link rel="canonical" href="https://efurlanm.github.io/ldi/forth/camel80d/">
       
       
+        <link rel="prev" href="../camel80/">
       
-        <link rel="next" href="forth/">
+      
+        <link rel="next" href="../camel80h/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
-        <title>Language Design and Implementation</title>
+        <title>Camel80d - Language Design and Implementation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,11 +75,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#language-design-and-implementation" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -90,7 +87,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Language Design and Implementation" class="md-header__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
+    <a href="../.." title="Language Design and Implementation" class="md-header__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Language Design and Implementation
+              Camel80d
             
           </span>
         </div>
@@ -197,7 +194,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Language Design and Implementation" class="md-nav__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
+    <a href="../.." title="Language Design and Implementation" class="md-nav__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -224,30 +221,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Language Design and Implementation
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -256,116 +233,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#jupyter-notebooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Jupyter Notebooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#forth" class="md-nav__link">
-    <span class="md-ellipsis">
-      Forth
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wikibooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wikibooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wikipedia" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wikipedia
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reddit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reddit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usenet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usenet
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#internals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internals
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vintage-computer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vintage computer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      License
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -374,17 +241,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -398,7 +267,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Forth
@@ -412,7 +281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -433,7 +302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/8051task/" class="md-nav__link">
+      <a href="../8051task/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -454,7 +323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/camel09/" class="md-nav__link">
+      <a href="../camel09/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -475,7 +344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/camel80/" class="md-nav__link">
+      <a href="../camel80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -493,10 +362,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="forth/camel80d/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -505,6 +381,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -517,7 +394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/camel80h/" class="md-nav__link">
+      <a href="../camel80h/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -538,7 +415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/cameltst/" class="md-nav__link">
+      <a href="../cameltst/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -559,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/glosslo/" class="md-nav__link">
+      <a href="../glosslo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -580,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving1/" class="md-nav__link">
+      <a href="../moving1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -601,7 +478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving2/" class="md-nav__link">
+      <a href="../moving2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -622,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving3/" class="md-nav__link">
+      <a href="../moving3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -643,7 +520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving4/" class="md-nav__link">
+      <a href="../moving4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -664,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving5/" class="md-nav__link">
+      <a href="../moving5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -685,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving6/" class="md-nav__link">
+      <a href="../moving6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -706,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving7/" class="md-nav__link">
+      <a href="../moving7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -727,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/moving8/" class="md-nav__link">
+      <a href="../moving8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -783,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/About/editor%27s%20notes/" class="md-nav__link">
+      <a href="../About/editor%27s%20notes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -804,7 +681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/About/pandoc/" class="md-nav__link">
+      <a href="../About/pandoc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -868,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="forth/MVP-Forth/" class="md-nav__link">
+      <a href="../MVP-Forth/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -914,106 +791,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#jupyter-notebooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Jupyter Notebooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#forth" class="md-nav__link">
-    <span class="md-ellipsis">
-      Forth
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wikibooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wikibooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wikipedia" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wikipedia
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reddit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reddit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usenet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usenet
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#internals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internals
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vintage-computer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vintage computer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      License
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1031,78 +808,149 @@
   
 
 
-<h1 id="language-design-and-implementation">Language Design and Implementation</h1>
-<p><small>
-Last edited: 2024-11-19 &nbsp;&nbsp;|&nbsp;&nbsp;
-<a href="http://efurlanm.github.io/ldi/">Website</a> &nbsp;&nbsp;|&nbsp;&nbsp;
-<a href="https://github.com/efurlanm/ldi/">Repository</a>
-</small></p>
-<pre><code> _       ____    ___ 
-| |     |  _ \  |_ _|
-| |     | | | |  | | 
-| |___  | |_| |  | | 
-|_____| |____/  |___|
-Language Design and Implementation
+  <h1>Camel80d</h1>
+
+<pre><code>; LISTING 3.
+;
+; ===============================================
+; CamelForth for the Zilog Z80
+; (c) 1994 Bradford J. Rodriguez
+; Permission is granted to freely copy, modify,
+; and distribute this program for personal or
+; educational use.  Commercial inquiries should
+; be directed to the author at 221 King St. E.,
+; #32, Hamilton, Ontario L8N 1B5 Canada
+;
+; CAMEL80D.AZM: CPU and Model Dependencies
+;   Source code is for the Z80MR macro assembler.
+;   Forth words are documented as follows:
+;*   NAME     stack -- stack    description
+;   Word names in upper case are from the ANS
+;   Forth Core word set.  Names in lower case are
+;   &quot;internal&quot; implementation words &amp; extensions.
+;
+; Direct-Threaded Forth model for Zilog Z80
+;   cell size is   16 bits (2 bytes)
+;   char size is    8 bits (1 byte)
+;   address unit is 8 bits (1 byte), i.e.,
+;       addresses are byte-aligned.
+; ===============================================
+
+; ALIGNMENT AND PORTABILITY OPERATORS ===========
+; Many of these are synonyms for other words,
+; and so are defined as CODE words.
+
+;C ALIGN    --                         align HERE
+    head ALIGN,5,ALIGN,docode
+noop:   next
+
+;C ALIGNED  addr -- a-addr       align given addr
+    head ALIGNED,7,ALIGNED,docode
+        jr noop
+
+;Z CELL     -- n                 size of one cell
+    head CELL,4,CELL,docon
+        dw 2
+
+;C CELL+    a-addr1 -- a-addr2      add cell size
+;   2 + ;
+    head CELLPLUS,5,CELL+,docode
+        inc bc
+        inc bc
+        next
+
+;C CELLS    n1 -- n2            cells-&gt;adrs units
+    head CELLS,5,CELLS,docode
+        jp twostar
+
+;C CHAR+    c-addr1 -- c-addr2   add char size
+    head CHARPLUS,5,CHAR+,docode
+        jp oneplus
+
+;C CHARS    n1 -- n2            chars-&gt;adrs units
+    head CHARS,5,CHARS,docode
+        jr noop
+
+;C &gt;BODY    xt -- a-addr      adrs of param field
+;   3 + ;                     Z80 (3 byte CALL)
+    head TOBODY,5,&gt;BODY,docolon
+        DW LIT,3,PLUS,EXIT
+
+;X COMPILE,  xt --         append execution token
+; I called this word ,XT before I discovered that
+; it is defined in the ANSI standard as COMPILE,.
+; On a DTC Forth this simply appends xt (like , )
+; but on an STC Forth this must append 'CALL xt'.
+    head COMMAXT,8,'COMPILE,',docode
+        jp COMMA
+
+;Z !CF    adrs cfa --   set code action of a word
+;   0CD OVER C!         store 'CALL adrs' instr
+;   1+ ! ;              Z80 VERSION
+; Depending on the implementation this could
+; append CALL adrs or JUMP adrs.
+    head STORECF,3,!CF,docolon
+        DW LIT,0CDH,OVER,CSTORE
+        DW ONEPLUS,STORE,EXIT
+
+;Z ,CF    adrs --       append a code field
+;   HERE !CF 3 ALLOT ;  Z80 VERSION (3 bytes)
+    head COMMACF,3,',CF',docolon
+        DW HERE,STORECF,LIT,3,ALLOT,EXIT
+
+;Z !COLON   --      change code field to docolon
+;   -3 ALLOT docolon-adrs ,CF ;
+; This should be used immediately after CREATE.
+; This is made a distinct word, because on an STC
+; Forth, colon definitions have no code field.
+    head STORCOLON,6,'!COLON',docolon
+        DW LIT,-3,ALLOT
+        DW LIT,docolon,COMMACF,EXIT
+
+;Z ,EXIT    --      append hi-level EXIT action
+;   ['] EXIT ,XT ;
+; This is made a distinct word, because on an STC
+; Forth, it appends a RET instruction, not an xt.
+    head CEXIT,5,',EXIT',docolon
+        DW LIT,EXIT,COMMAXT,EXIT
+
+; CONTROL STRUCTURES ============================
+; These words allow Forth control structure words
+; to be defined portably.
+
+;Z ,BRANCH   xt --    append a branch instruction
+; xt is the branch operator to use, e.g. qbranch
+; or (loop).  It does NOT append the destination
+; address.  On the Z80 this is equivalent to ,XT.
+    head COMMABRANCH,7,',BRANCH',docode
+        jp COMMA
+
+;Z ,DEST   dest --        append a branch address
+; This appends the given destination address to
+; the branch instruction.  On the Z80 this is ','
+; ...other CPUs may use relative addressing.
+    head COMMADEST,5,',DEST',docode
+        jp COMMA
+
+;Z !DEST   dest adrs --    change a branch dest'n
+; Changes the destination address found at 'adrs'
+; to the given 'dest'.  On the Z80 this is '!'
+; ...other CPUs may need relative addressing.
+    head STOREDEST,5,'!DEST',docode
+        jp STORE
+
+; HEADER STRUCTURE ==============================
+; The structure of the Forth dictionary headers
+; (name, link, immediate flag, and &quot;smudge&quot; bit)
+; does not necessarily differ across CPUs.  This
+; structure is not easily factored into distinct
+; &quot;portable&quot; words; instead, it is implicit in
+; the definitions of FIND and CREATE, and also in
+; NFA&gt;LFA, NFA&gt;CFA, IMMED?, IMMEDIATE, HIDE, and
+; REVEAL.  These words must be (substantially)
+; rewritten if either the header structure or its
+; inherent assumptions are changed.
 </code></pre>
-<p>My personal notes on language design and implementation, internals, computer architecture, tips and tricks, snippets, trivia, and related random stuff.</p>
-<h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
-<ul>
-<li><a href="SoYouThinkYouKnowC.ipynb">SoYouThinkYouKnowC.ipynb</a> - based on <a href="https://wordsandbuttons.online/so_you_think_you_know_c.html">Excerpts that are difficult to read in C</a></li>
-</ul>
-<h2 id="forth">Forth</h2>
-<ul>
-<li>My personal notes on Brad Rodriguez's Moving Forth<ul>
-<li><a href="https://github.com/efurlanm/ldi/tree/main/forth/docs/index.html">Website</a></li>
-<li><a href="https://github.com/efurlanm/ldi/tree/main/forth/">Repository</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="wikibooks">Wikibooks</h2>
-<ul>
-<li><a href="https://en.wikibooks.org/wiki/Introduction_to_Software_Engineering/Tools/Compiler">Compiler (from Introduction to Software Engineering)</a></li>
-<li><a href="https://en.wikibooks.org/wiki/Compiler_Construction">Compiler Construction</a></li>
-</ul>
-<h2 id="wikipedia">Wikipedia</h2>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Compiler">Compiler</a></li>
-<li><a href="https://en.wikipedia.org/wiki/History_of_compiler_construction">History of compiler construction</a></li>
-</ul>
-<h2 id="reddit">Reddit</h2>
-<ul>
-<li><a href="http://www.reddit.com/r/ProgrammingLanguages/">Programming Languages</a>: discussion of programming languages, programming language theory, design, their syntax and compilers</li>
-<li><a href="http://www.reddit.com/r/Compilers/">Compilers</a>: theory and development of compilers</li>
-</ul>
-<h2 id="usenet">Usenet</h2>
-<ul>
-<li><a href="https://compilers.iecc.com/">The comp.compilers newsgroup</a></li>
-</ul>
-<h2 id="internals">Internals</h2>
-<ul>
-<li><a href="https://gcc.gnu.org/onlinedocs/gccint.pdf">GNU Compiler Collection Internals</a></li>
-<li><a href="https://gcc.gnu.org/onlinedocs/gfc-internals/">GNU Fortran Compiler Internals</a></li>
-<li><a href="https://en.wikibooks.org/wiki/GNU_C_Compiler_Internals">GNU C Compiler Internals</a></li>
-<li><a href="http://blog.stenmans.org/theBeamBook/#_the_erlang_virtual_machine_beam">The Erlang Runtime System</a></li>
-</ul>
-<h2 id="vintage-computer">Vintage computer</h2>
-<p>Vintage computer internals, or "computer archeology".</p>
-<ul>
-<li>Applesoft ROM internals: <a href="http://www.txbobsc.com/scsc/scdocumentor/">[1]</a> <a href="https://6502disassembly.com/a2-rom/">[2]</a></li>
-<li>TRS-80 ROM internals: <a href="https://www.trs-80.com/wordpress/disassembled-rom/">[1]</a></li>
-<li>C64 ROM internals: <a href="https://www.pagetable.com/c64ref/c64disasm/">[1]</a> <a href="https://github.com/tgiphil/c64rom">[2]</a></li>
-<li>The Complete Spectrum ROM Disassembly: <a href="https://archive.org/details/CompleteSpectrumROMDisassemblyThe">[1]</a></li>
-<li>Spectrum ROM Disassemblies: <a href="https://github.com/ZXSpectrumVault/rom-disassemblies">[1]</a></li>
-<li>Altair BASIC Annotated Disassembly: <a href="http://altairbasic.org/">[1]</a></li>
-<li>HP-41 internals: <a href="http://github.com/efurlanm/ml/tree/master/hp41">[1]</a></li>
-</ul>
-<h2 id="references">References</h2>
-<p>Links to references I found interesting.</p>
-<ul>
-<li>SETZER, V. W.; MELO, I. S. H. <em>A construção de um compilador</em>. (in Portuguese)</li>
-<li><a href="https://vdoc.pub/search/compiler">Library with several books on compilers, computers, and programming</a></li>
-<li><a href="https://vdoc.pub/documents/threaded-interpretive-languages-their-design-and-implementation-1seph9gct7uo">R G Loeliger. <em>Threaded Interpretive Languages: Their Design And Implementation</em></a></li>
-</ul>
-<h2 id="license">License</h2>
-<p>My work follows the CC-BY-4.0 license. The works of other authors follow their licenses.</p>
 
 
 
@@ -1153,10 +1001,10 @@ Language Design and Implementation
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
