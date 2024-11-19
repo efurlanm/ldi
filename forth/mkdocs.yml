@@ -1,0 +1,23 @@
+site_name: MovingForth
+site_author: Eduardo Furlan
+site_url: https://efurlanm.github.io/forth/
+copyright: CC BY 4.0 License
+repo_name: movingforth
+repo_url: http://github.com/efurlanm/forth/
+docs_dir: docs-src
+site_dir: docs
+theme:
+    name: material
+    # squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+    palette:
+        primary: orange
+        accent: orange
+    features:
+        - header.autohide
+plugins:
+    - search
+extra_css:
+    - css/extra.css
+exclude_docs: |
+    .*
+    .git
