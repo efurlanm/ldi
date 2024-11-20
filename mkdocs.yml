@@ -17,8 +17,7 @@ theme:
         - header.autohide
 plugins:
     - search
-    - macros
-    #- mkdocs-jupyter
+    - mkdocs-jupyter
 extra_css:
     - css/extra.css
 exclude_docs: |
