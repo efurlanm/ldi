@@ -1,17 +1,16 @@
 # Language Design and Implementation
 
-<small>
-Last edited: 2024-11-19  
-Website: <http://efurlanm.github.io/ldi/>  
-Repository: <https://github.com/efurlanm/ldi/>
-</small>
-
      _       ____    ___ 
     | |     |  _ \  |_ _|
     | |     | | | |  | | 
     | |___  | |_| |  | | 
     |_____| |____/  |___|
     Language Design and Implementation
+
+*Last edited: 2024-11-19  
+Website: <http://efurlanm.github.io/ldi/>  
+Repository: <https://github.com/efurlanm/ldi/>*
+ 
 
 My personal notes on language design and implementation, internals, computer architecture, tips and tricks, snippets, trivia, and related random stuff.
 
@@ -24,9 +23,10 @@ My personal notes on language design and implementation, internals, computer arc
 ## Moving Forth
 
 * My personal notes on Brad Rodriguez's Moving Forth
-    * Website: <https://github.com/efurlanm/ldi/tree/main/forth/docs/index.html>
-    * Repository: <https://github.com/efurlanm/ldi/tree/main/forth/>
+    * Website: <https://github.com/efurlanm/ldi/Moving_Forth/>
+    * Repository: <http://github.com/efurlanm/ldi/tree/main/docs-src/Moving_Forth/>
 
+{{config.site_url}}
 
 ## Wikibooks
 

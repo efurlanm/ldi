@@ -10,26 +10,28 @@
         <meta name="author" content="Eduardo Furlan">
       
       
-        <link rel="canonical" href="https://efurlanm.github.io/ldi/">
+        <link rel="canonical" href="https://efurlanm.github.io/ldi/Moving_Forth/cameltst/">
       
       
+        <link rel="prev" href="../camel80h/">
       
-        <link rel="next" href="Moving_Forth/">
+      
+        <link rel="next" href="../glosslo/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
-        <title>Language Design and Implementation</title>
+        <title>Cameltst - Language Design and Implementation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,11 +75,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#language-design-and-implementation" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -90,7 +87,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Language Design and Implementation" class="md-header__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
+    <a href="../.." title="Language Design and Implementation" class="md-header__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Language Design and Implementation
+              Cameltst
             
           </span>
         </div>
@@ -197,7 +194,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Language Design and Implementation" class="md-nav__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
+    <a href="../.." title="Language Design and Implementation" class="md-nav__button md-logo" aria-label="Language Design and Implementation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -224,30 +221,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Language Design and Implementation
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -256,116 +233,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#jupyter-notebooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Jupyter Notebooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#moving-forth" class="md-nav__link">
-    <span class="md-ellipsis">
-      Moving Forth
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wikibooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wikibooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wikipedia" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wikipedia
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reddit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reddit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usenet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usenet
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#internals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internals
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vintage-computer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vintage computer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      License
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -374,17 +241,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -398,7 +267,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Moving Forth
@@ -412,7 +281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -433,7 +302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/8051task/" class="md-nav__link">
+      <a href="../8051task/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -454,7 +323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/camel09/" class="md-nav__link">
+      <a href="../camel09/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -475,7 +344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/camel80/" class="md-nav__link">
+      <a href="../camel80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -496,7 +365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/camel80d/" class="md-nav__link">
+      <a href="../camel80d/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -517,7 +386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/camel80h/" class="md-nav__link">
+      <a href="../camel80h/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -535,10 +404,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="Moving_Forth/cameltst/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -547,6 +423,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -559,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/glosslo/" class="md-nav__link">
+      <a href="../glosslo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -580,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/moving1/" class="md-nav__link">
+      <a href="../moving1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -601,7 +478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/moving2/" class="md-nav__link">
+      <a href="../moving2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -622,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/moving3/" class="md-nav__link">
+      <a href="../moving3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -643,7 +520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/moving4/" class="md-nav__link">
+      <a href="../moving4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -664,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/moving5/" class="md-nav__link">
+      <a href="../moving5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -685,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/moving6/" class="md-nav__link">
+      <a href="../moving6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -706,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/moving7/" class="md-nav__link">
+      <a href="../moving7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -727,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/moving8/" class="md-nav__link">
+      <a href="../moving8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -783,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/About/editor%27s%20notes/" class="md-nav__link">
+      <a href="../About/editor%27s%20notes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -804,7 +681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/About/pandoc/" class="md-nav__link">
+      <a href="../About/pandoc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -868,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Moving_Forth/MVP-Forth/" class="md-nav__link">
+      <a href="../MVP-Forth/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -914,106 +791,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#jupyter-notebooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Jupyter Notebooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#moving-forth" class="md-nav__link">
-    <span class="md-ellipsis">
-      Moving Forth
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wikibooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wikibooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wikipedia" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wikipedia
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reddit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reddit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usenet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usenet
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#internals" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internals
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vintage-computer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vintage computer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      License
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1031,77 +808,102 @@
   
 
 
-<h1 id="language-design-and-implementation">Language Design and Implementation</h1>
-<pre><code> _       ____    ___ 
-| |     |  _ \  |_ _|
-| |     | | | |  | | 
-| |___  | |_| |  | | 
-|_____| |____/  |___|
-Language Design and Implementation
+  <h1>Cameltst</h1>
+
+<pre><code>; Listing 1.
+; ===============================================
+; CamelForth for the Zilog Z80
+; Primitive testing code
+;
+; This is the &quot;minimal&quot; test of the CamelForth
+; kernel.  It verifies the threading and nesting
+; mechanisms, the stacks, and the primitives
+;   DUP EMIT EXIT lit branch ONEPLUS.
+; It is particularly useful because it does not
+; use the DO..LOOP, multiply, or divide words,
+; and because it can be used on embedded CPUs.
+; The numeric display word .A is also useful
+; for testing the rest of the Core wordset.
+;
+; The required macros and CPU initialization
+; are in file CAMEL80.AZM.
+; ===============================================
+
+;Z &gt;&lt;   u1 -- u2    swap the bytes of TOS
+    head SWAB,2,&gt;&lt;,docode
+        ld a,b
+        ld b,c
+        ld c,a
+        next
+
+;Z LO   c1 -- c2    return low nybble of TOS
+    head LO,2,LO,docode
+        ld a,c
+        and 0fh
+        ld c,a
+        ld b,0
+        next
+
+;Z HI   c1 -- c2    return high nybble of TOS
+    head HI,2,HI,docode
+        ld a,c
+        and 0f0h
+        rrca
+        rrca
+        rrca
+        rrca
+        ld c,a
+        ld b,0
+        next
+
+;Z &gt;HEX  c1 -- c2    convert nybble to hex char
+    head TOHEX,4,&gt;HEX,docode
+        ld a,c
+        sub 0ah
+        jr c,numeric
+        add a,7
+numeric: add a,3ah
+        ld c,a
+        next
+
+;Z .HH   c --       print byte as 2 hex digits
+;   DUP HI &gt;HEX EMIT LO &gt;HEX EMIT ;
+    head DOTHH,3,.HH,docolon
+        DW DUP,HI,TOHEX,EMIT,LO,TOHEX,EMIT,EXIT
+
+;Z .B    a -- a+1   fetch &amp; print byte, advancing
+;   DUP C@ .HH 20 EMIT 1+ ;
+    head DOTB,2,.B,docolon
+    DW DUP,CFETCH,DOTHH,lit,20h,EMIT,ONEPLUS,EXIT
+
+;Z .A   u --       print unsigned as 4 hex digits
+;   DUP &gt;&lt; .HH .HH 20 EMIT ;
+    head DOTA,2,.A,docolon
+        DW DUP,SWAB,DOTHH,DOTHH,lit,20h,EMIT,EXIT
+
+;X DUMP   addr u --      dump u locations at addr
+;   0 DO
+;      I 15 AND 0= IF CR DUP .A THEN
+;      .B
+;   LOOP DROP ;
+    head DUMP,4,DUMP,docolon
+        DW LIT,0,XDO
+DUMP2:  DW II,LIT,15,AND,ZEROEQUAL,qbranch,DUMP1
+        DW CR,DUP,DOTA
+DUMP1:  DW DOTB,XLOOP,DUMP2,DROP,EXIT
+
+;Z ZQUIT   --    endless dump for testing
+;   0 BEGIN  0D EMIT 0A EMIT  DUP .A
+;       .B .B .B .B .B .B .B .B
+;       .B .B .B .B .B .B .B .B
+;   AGAIN ;
+    head ZQUIT,5,ZQUIT,docolon
+       DW lit,0
+zquit1:  DW lit,0dh,EMIT,lit,0ah,EMIT,DUP,DOTA
+       DW DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB
+       DW DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB,DOTB
+       DW branch,zquit1
 </code></pre>
-<p><em>Last edited: 2024-11-19<br />
-Website: <a href="http://efurlanm.github.io/ldi/">http://efurlanm.github.io/ldi/</a><br />
-Repository: <a href="https://github.com/efurlanm/ldi/">https://github.com/efurlanm/ldi/</a></em></p>
-<p>My personal notes on language design and implementation, internals, computer architecture, tips and tricks, snippets, trivia, and related random stuff.</p>
-<h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
-<ul>
-<li><a href="SoYouThinkYouKnowC.ipynb">SoYouThinkYouKnowC.ipynb</a> - based on <a href="https://wordsandbuttons.online/so_you_think_you_know_c.html">Excerpts that are difficult to read in C</a></li>
-</ul>
-<h2 id="moving-forth">Moving Forth</h2>
-<ul>
-<li>My personal notes on Brad Rodriguez's Moving Forth<ul>
-<li>Website: <a href="https://github.com/efurlanm/ldi/Moving_Forth/">https://github.com/efurlanm/ldi/Moving_Forth/</a></li>
-<li>Repository: <a href="http://github.com/efurlanm/ldi/tree/main/docs-src/Moving_Forth/">http://github.com/efurlanm/ldi/tree/main/docs-src/Moving_Forth/</a></li>
-</ul>
-</li>
-</ul>
-<p>https://efurlanm.github.io/ldi/</p>
-<h2 id="wikibooks">Wikibooks</h2>
-<ul>
-<li><a href="https://en.wikibooks.org/wiki/Introduction_to_Software_Engineering/Tools/Compiler">Compiler (from Introduction to Software Engineering)</a></li>
-<li><a href="https://en.wikibooks.org/wiki/Compiler_Construction">Compiler Construction</a></li>
-</ul>
-<h2 id="wikipedia">Wikipedia</h2>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Compiler">Compiler</a></li>
-<li><a href="https://en.wikipedia.org/wiki/History_of_compiler_construction">History of compiler construction</a></li>
-</ul>
-<h2 id="reddit">Reddit</h2>
-<ul>
-<li><a href="http://www.reddit.com/r/ProgrammingLanguages/">Programming Languages</a>: discussion of programming languages, programming language theory, design, their syntax and compilers</li>
-<li><a href="http://www.reddit.com/r/Compilers/">Compilers</a>: theory and development of compilers</li>
-</ul>
-<h2 id="usenet">Usenet</h2>
-<ul>
-<li><a href="https://compilers.iecc.com/">The comp.compilers newsgroup</a></li>
-</ul>
-<h2 id="internals">Internals</h2>
-<ul>
-<li><a href="https://gcc.gnu.org/onlinedocs/gccint.pdf">GNU Compiler Collection Internals</a></li>
-<li><a href="https://gcc.gnu.org/onlinedocs/gfc-internals/">GNU Fortran Compiler Internals</a></li>
-<li><a href="https://en.wikibooks.org/wiki/GNU_C_Compiler_Internals">GNU C Compiler Internals</a></li>
-<li><a href="http://blog.stenmans.org/theBeamBook/#_the_erlang_virtual_machine_beam">The Erlang Runtime System</a></li>
-</ul>
-<h2 id="vintage-computer">Vintage computer</h2>
-<p>Vintage computer internals, or "computer archeology".</p>
-<ul>
-<li>Applesoft ROM internals: <a href="http://www.txbobsc.com/scsc/scdocumentor/">[1]</a> <a href="https://6502disassembly.com/a2-rom/">[2]</a></li>
-<li>TRS-80 ROM internals: <a href="https://www.trs-80.com/wordpress/disassembled-rom/">[1]</a></li>
-<li>C64 ROM internals: <a href="https://www.pagetable.com/c64ref/c64disasm/">[1]</a> <a href="https://github.com/tgiphil/c64rom">[2]</a></li>
-<li>The Complete Spectrum ROM Disassembly: <a href="https://archive.org/details/CompleteSpectrumROMDisassemblyThe">[1]</a></li>
-<li>Spectrum ROM Disassemblies: <a href="https://github.com/ZXSpectrumVault/rom-disassemblies">[1]</a></li>
-<li>Altair BASIC Annotated Disassembly: <a href="http://altairbasic.org/">[1]</a></li>
-<li>HP-41 internals: <a href="http://github.com/efurlanm/ml/tree/master/hp41">[1]</a></li>
-</ul>
-<h2 id="references">References</h2>
-<p>Links to references I found interesting.</p>
-<ul>
-<li>SETZER, V. W.; MELO, I. S. H. <em>A construção de um compilador</em>. (in Portuguese)</li>
-<li><a href="https://vdoc.pub/search/compiler">Library with several books on compilers, computers, and programming</a></li>
-<li><a href="https://vdoc.pub/documents/threaded-interpretive-languages-their-design-and-implementation-1seph9gct7uo">R G Loeliger. <em>Threaded Interpretive Languages: Their Design And Implementation</em></a></li>
-</ul>
-<h2 id="license">License</h2>
-<p>My work follows the CC-BY-4.0 license. The works of other authors follow their licenses.</p>
 
 
 
@@ -1152,10 +954,10 @@ Repository: <a href="https://github.com/efurlanm/ldi/">https://github.com/efurla
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
