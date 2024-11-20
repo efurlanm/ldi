@@ -12,6 +12,7 @@ theme:
     palette:
         primary: orange
         accent: orange
+    font: false
     features:
         - header.autohide
 plugins:

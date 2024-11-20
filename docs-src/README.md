@@ -23,10 +23,9 @@ My personal notes on language design and implementation, internals, computer arc
 ## Moving Forth
 
 * My personal notes on Brad Rodriguez's Moving Forth
-    * Website: <https://efurlanm.github.io/ldi/Moving_Forth/> (or using the left menu)
+    * Website: <https://efurlanm.github.io/ldi/Moving_Forth/> (or using the menu on the left)
     * Repository: <http://github.com/efurlanm/ldi/tree/main/docs-src/Moving_Forth/>
 
-{{config.site_url}}
 
 ## Wikibooks
 
@@ -69,7 +68,7 @@ Vintage computer internals, or "computer archeology".
 * The Complete Spectrum ROM Disassembly: [[1]](https://archive.org/details/CompleteSpectrumROMDisassemblyThe)
 * Spectrum ROM Disassemblies: [[1]](https://github.com/ZXSpectrumVault/rom-disassemblies)
 * Altair BASIC Annotated Disassembly: [[1]](http://altairbasic.org/)
-* HP-41 internals: [[1]](http://github.com/efurlanm/ml/tree/master/hp41)
+* HP-41 internals: [[1]](HP-41) (or using the menu on the left)
 
 
 ## References
