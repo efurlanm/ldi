@@ -1,9 +1,9 @@
 # Language Design and Implementation
 
 <small>
-Last edited: 2024-11-19 &nbsp;&nbsp;|&nbsp;&nbsp;
-[Website](http://efurlanm.github.io/ldi/) &nbsp;&nbsp;|&nbsp;&nbsp;
-[Repository](https://github.com/efurlanm/ldi/)
+Last edited: 2024-11-19  
+Website: <http://efurlanm.github.io/ldi/>  
+Repository: <https://github.com/efurlanm/ldi/>
 </small>
 
      _       ____    ___ 
@@ -21,11 +21,11 @@ My personal notes on language design and implementation, internals, computer arc
 * [SoYouThinkYouKnowC.ipynb](SoYouThinkYouKnowC.ipynb) - based on [Excerpts that are difficult to read in C](https://wordsandbuttons.online/so_you_think_you_know_c.html)
 
 
-## Forth
+## Moving Forth
 
 * My personal notes on Brad Rodriguez's Moving Forth
-    * [Website](https://github.com/efurlanm/ldi/tree/main/forth/docs/index.html)
-    * [Repository](https://github.com/efurlanm/ldi/tree/main/forth/)
+    * Website: <https://github.com/efurlanm/ldi/tree/main/forth/docs/index.html>
+    * Repository: <https://github.com/efurlanm/ldi/tree/main/forth/>
 
 
 ## Wikibooks

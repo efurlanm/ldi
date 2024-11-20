@@ -16,6 +16,7 @@ theme:
         - header.autohide
 plugins:
     - search
+    #- mkdocs-jupyter
 extra_css:
     - css/extra.css
 exclude_docs: |
