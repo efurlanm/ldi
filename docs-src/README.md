@@ -23,7 +23,7 @@ My personal notes on language design and implementation, internals, computer arc
 ## Moving Forth
 
 * My personal notes on Brad Rodriguez's Moving Forth
-    * Website: <https://github.com/efurlanm/ldi/Moving_Forth/>
+    * Website: <https://efurlanm.github.io/ldi/Moving_Forth/> (or using the left menu)
     * Repository: <http://github.com/efurlanm/ldi/tree/main/docs-src/Moving_Forth/>
 
 {{config.site_url}}
