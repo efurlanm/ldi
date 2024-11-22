@@ -1,5 +1,7 @@
 # Assembly
 
+My personal notes about the Assembly Programming Language.
+
 ## Links of interest
 
 * Intel manuals. <https://software.intel.com/en-us/articles/intel-sdm>
