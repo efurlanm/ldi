@@ -17,13 +17,13 @@ My personal notes on language design and implementation, internals, computer arc
 
 ## Jupyter Notebooks
 
-* [SoYouThinkYouKnowC.ipynb](SoYouThinkYouKnowC.ipynb) - based on [Excerpts that are difficult to read in C](https://wordsandbuttons.online/so_you_think_you_know_c.html)
+* [SoYouThinkYouKnowC.ipynb](SoYouThinkYouKnowC.md) - based on [Excerpts that are difficult to read in C](https://wordsandbuttons.online/so_you_think_you_know_c.html). *[[download](SoYouThinkYouKnowC.ipynb)]*
 
 
 ## Moving Forth
 
 * My personal notes on Brad Rodriguez's Moving Forth
-    * Website: <https://efurlanm.github.io/ldi/Moving_Forth/> (or using the menu on the left)
+    * Website: <https://efurlanm.github.io/ldi/Moving_Forth/> *(or using the menu on the left)*
     * Repository: <http://github.com/efurlanm/ldi/tree/main/docs-src/Moving_Forth/>
 
 
@@ -68,7 +68,7 @@ Vintage computer internals, or "computer archeology".
 * The Complete Spectrum ROM Disassembly: [[1]](https://archive.org/details/CompleteSpectrumROMDisassemblyThe)
 * Spectrum ROM Disassemblies: [[1]](https://github.com/ZXSpectrumVault/rom-disassemblies)
 * Altair BASIC Annotated Disassembly: [[1]](http://altairbasic.org/)
-* HP-41 internals: [[1]](HP-41) (or using the menu on the left)
+* HP-41 internals: [[1]](HP-41/README.md) *(or using the menu on the left)*
 
 
 ## References
