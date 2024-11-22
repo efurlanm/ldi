@@ -2,10 +2,7 @@
 
 *Last edited: 2023-12-11*
 
-Some exercises to try to better understand the creation of executables by an assembler.
-
-Reference(s):
-- <https://www.devdungeon.com/content/hello-world-nasm-assembler>
+Some exercises to try to better understand the creation of executables by an Assembler.
 
 
 ```python
@@ -116,7 +113,6 @@ hLen:   equ $-hello
       401025:	0f 05                	syscall 
 
 
+## References
 
-```python
-
-```
+- <https://www.devdungeon.com/content/hello-world-nasm-assembler>
