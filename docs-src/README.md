@@ -7,7 +7,7 @@
     |_____| |____/  |___|
     Language Design and Implementation
 
-*Last edited: 2024-11-19  
+*Last edited: 2024-11-25  
 Website: <http://efurlanm.github.io/ldi/>  
 Repository: <https://github.com/efurlanm/ldi/>*
  
@@ -17,26 +17,43 @@ My personal notes on language design and implementation, internals, computer arc
 
 ## Jupyter Notebooks
 
+My random personal notes about curiosities that I collect over time.
+
 * [SoYouThinkYouKnowC.ipynb](SoYouThinkYouKnowC.md) - based on [Excerpts that are difficult to read in C](https://wordsandbuttons.online/so_you_think_you_know_c.html). *[[download](SoYouThinkYouKnowC.ipynb)]*
+
+
+## Compiler construction
+
+My personal notes on compiler construction.
+
+* [A Construção de um Compilador](compconstr.md) (in Portuguese)
+
+
+## Fortran
+
+My personal notes on Fortran.
+
+* Fortran repository: <https://github.com/efurlanm/fortran/>
 
 
 ## Moving Forth
 
-* My personal notes on Brad Rodriguez's Moving Forth
-    * Website: <https://efurlanm.github.io/ldi/Moving_Forth/> *(or using the menu on the left)*
-    * Repository: <http://github.com/efurlanm/ldi/tree/main/docs-src/Moving_Forth/>
+My personal notes on Brad Rodriguez's Moving Forth
+
+* Website: <https://efurlanm.github.io/ldi/Moving_Forth/> *(or using the menu on the left)*
+* Repository: <http://github.com/efurlanm/ldi/tree/main/docs-src/Moving_Forth/>
 
 
 ## Wikibooks
 
 * [Compiler (from Introduction to Software Engineering)](https://en.wikibooks.org/wiki/Introduction_to_Software_Engineering/Tools/Compiler)
-* [Compiler Construction](https://en.wikibooks.org/wiki/Compiler_Construction)
+* [Compiler Construction, by Wikibooks](https://en.wikibooks.org/wiki/Compiler_Construction)
 
 
 ## Wikipedia
 
-* [Compiler](https://en.wikipedia.org/wiki/Compiler)
-* [History of compiler construction](https://en.wikipedia.org/wiki/History_of_compiler_construction)
+* [Compiler, by Wikipedia](https://en.wikipedia.org/wiki/Compiler)
+* [History of compiler construction, by Wikipedia](https://en.wikipedia.org/wiki/History_of_compiler_construction)
 
 
 ## Reddit
@@ -68,14 +85,14 @@ Vintage computer internals, or "computer archeology".
 * The Complete Spectrum ROM Disassembly: [[1]](https://archive.org/details/CompleteSpectrumROMDisassemblyThe)
 * Spectrum ROM Disassemblies: [[1]](https://github.com/ZXSpectrumVault/rom-disassemblies)
 * Altair BASIC Annotated Disassembly: [[1]](http://altairbasic.org/)
-* HP-41 internals: [[1]](HP-41/README.md) *(or using the menu on the left)*
+* HP-41 internals: [[1]](HP-41/README.md) *(or select using the menu on the left)*
 
 
 ## References
 
 Links to references I found interesting.
 
-* SETZER, V. W.; MELO, I. S. H. *A construção de um compilador*. (in Portuguese)
+* SETZER, V. W.; MELO, I. S. H. [A construção de um compilador](https://archive.org/details/a-construcao-de-um-compilador-r1.2/). (in Portuguese)
 * [Library with several books on compilers, computers, and programming](https://vdoc.pub/search/compiler)
 * [R G Loeliger. *Threaded Interpretive Languages: Their Design And Implementation*](https://vdoc.pub/documents/threaded-interpretive-languages-their-design-and-implementation-1seph9gct7uo)
 
