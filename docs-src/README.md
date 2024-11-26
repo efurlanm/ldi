@@ -25,9 +25,9 @@ My random personal notes about curiosities that I collect over time.
 
 ## Fortran
 
-My personal notes on Fortran.
+My personal Fortran notes are in a repository:
 
-* Fortran repository: <https://github.com/efurlanm/fortran/>
+* <https://github.com/efurlanm/fortran/>
 
 
 ## Moving Forth
