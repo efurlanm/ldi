@@ -11,8 +11,7 @@
 Website: <http://efurlanm.github.io/ldi/>  
 Repository: <https://github.com/efurlanm/ldi/>*
  
-
-My personal notes on language design, implementation, theory, applications, performance, internals, computer architecture, books, links, tips and tricks, excerpts, curiosities, and other random topics.
+My personal notes on language design, implementation, theory, internals, performance, computer architecture, programming, applications, books, links, tips and tricks, excerpts, curiosities, and related topics.
 
 Please use the menu on the left of this page (or the drop-down menu if your screen is small) to access the pages on this web site. The following are just a few topics of interest.
 
