@@ -17,6 +17,8 @@ theme:
         - header.autohide
 plugins:
     - search
+    - blog:
+        post_readtime: false
 extra_css:
     - css/extra.css
 exclude_docs: |

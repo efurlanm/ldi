@@ -2,7 +2,7 @@
 
 My personal notes on Language Design and Implementation, and related topics.
 
-Documentation web site: <https://efurlanm.github.io/ldi/>
+Website: <https://efurlanm.github.io/ldi/>
 
 All sources, including Jupyter Notebooks, are in the [docs-src](docs-src) directory.
 

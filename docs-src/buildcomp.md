@@ -1,8 +1,8 @@
-# A Construção de um Compilador
+# Building a Compiler (book)
 
 Minhas notas pessoais sobre o livro "A Construção de um Compilador" de W. Setzer, e I. Melo.
 
-Ele está hospedado no Internet Archive: <https://archive.org/details/a-construcao-de-um-compilador-r1.2>.
+O livro está hospedado no Internet Archive (<https://archive.org/details/a-construcao-de-um-compilador-r1.2>), e também está disponível na [página do autor](https://www.ime.usp.br/~vwsetzer/).
 
 È uma obra fundamental para quem deseja entender a teoria e prática da construção de compiladores. Publicado pela primeira vez em 1986, o livro aborda de forma didática e abrangente os conceitos essenciais, desde a análise léxica até a geração de código-objeto. É uma referência valiosa para estudantes e profissionais da área de ciência da computação, oferecendo uma visão detalhada e prática sobre o desenvolvimento de compiladores.
 
