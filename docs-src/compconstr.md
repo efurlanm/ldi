@@ -6,6 +6,14 @@ Ele está hospedado no Internet Archive: <https://archive.org/details/a-construc
 
 È uma obra fundamental para quem deseja entender a teoria e prática da construção de compiladores. Publicado pela primeira vez em 1986, o livro aborda de forma didática e abrangente os conceitos essenciais, desde a análise léxica até a geração de código-objeto. É uma referência valiosa para estudantes e profissionais da área de ciência da computação, oferecendo uma visão detalhada e prática sobre o desenvolvimento de compiladores.
 
+
+## Extensão do analisador sintático
+
+* PINTO, T. T. S. GGLL: um gerador de analisadores sintáticos para gramáticas gráficas LL(1). 2014. text – Universidade de São Paulo, 2014. DOI 10.11606/D.45.2014.tde-23012015-075452. Available at: <http://www.teses.usp.br/teses/disponiveis/45/45134/tde-23012015-075452/>.
+
+Resumo: Este trabalho tem como fulcro o desenvolvimento de um gerador de analisadores sintáticos do tipo top-down para gramáticas LL(1) com entrada gráfica da gramática, bem como uma comparação do mesmo com outros geradores em uso no mercado. Como resultado foi obtido um gerador totalmente funcional, e foi mostrado como ele é superior aos outros analisadores. São descritos detalhes da implementação e foi elaborado um manual de uso do sistema implementado em Java independente de ambientes de programação.
+
+
 ## Referências
 
 * AHO, A. V.; ULLMAN, J. D. The Theory of Parsing, Translation, and Compiling. Later Printing edition. Englewood Cliffs, N.J: Prentice Hall, 1972. Available at: https://www.google.com.br/books/edition/_/EZImAAAAMAAJ/.
