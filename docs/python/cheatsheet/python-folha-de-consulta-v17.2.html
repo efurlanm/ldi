@@ -1,0 +1,3067 @@
+<html><head>
+ <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="keywords" content="valdemar setzer, valdemar w. setzer, TSetzer, Python, folha de consulta, operadores, funções, comandos, Python operadores,
+ Python funções, Python comandos">
+<title>PYTHON – FOLHA DE CONSULTA, por V.W.Setzer</title>
+<style type="text/css">
+<!-- 
+a:hover { color: #FF0000; text-decoration: none; }
+.ssub {text-decoration: none}
+.style1 {font-weight: bold}
+-->
+</style>
+</head>
+
+<body>
+<font face="verdana" size="2"> 
+<h2 align="center">PYTHON – FOLHA DE CONSULTA</h2>
+<p align="center"><font size="3"><b>Valdemar W. Setzer</b></font><br>
+  <a href="https://www.ime.usp.br/%7Evwsetzer">www.ime.usp.br/~vwsetzer</a> (na 
+  seção <a href="https://www.ime.usp.br/%7Evwsetzer/#PRE">Recursos 
+  Educacionais</a>)<br>
+  Versão 17.2– 11/7/24</p>
+<h3><b>ÍNDICE</b></h3>
+<dir> 
+  <ol>
+    <li><a href="#OBS">Observações</a></li>
+    <li><a href="#TIP">Tipos, constantes, variáveis e matrizes</a></li>
+    <li><a href="#OPE">Operadores</a></li>
+    <li><a href="#OPL">Operadores lógicos (booleanos)</a></li>
+    <li><a href="#FNA">Funções nativas</a></li>
+    <li><a href="#FMA">Algumas funções e constantes matemáticas</a></li>
+    <li><a href="#OFU">Outras funções</a></li>
+    <li><a href="#PRE">Precedência (ordem de execução)</a></li>
+    <li><a href="#DFU">Declaração e uso de uma função</a></li>
+    <li><a href="#LAM">Notação lambda</a></li>
+    <li><a href="#GLO">Identificadores globais e locais</a></li>
+    <li><a href="#CLA">Classes</a></li>
+    <li><a href="#COC">Comandos compostos</a></li>
+    <li><a href="#PAL">Palavas reservadas</a></li>
+    <li><a href="#REF">Referências</a><br>
+      15.1 <a href="#TUT">Tutoriais</a><br>
+      15.2 <a href="#ORE">Outras referências</a></li>
+    <li><a href="#INS">Instalação do Python e uso do interpretador 
+      IDLE e seu editor</a></li>
+    <li><a href="#CUR">Curso</a></li>
+    <li><a href="#AMB">Textos, ambientes de programação, documentação 
+      e fóruns de programação</a></li>
+    <li><a href="#AGR">Agradecimentos</a></li>
+  </ol>
+</dir>
+</font> 
+<h3><font face="verdana"><b><a name="OBS">1. </a>OBSERVAÇÕES</b></font></h3>
+  <font face="verdana" size="2">
+  
+<div align="justify"> 
+  <ol>
+    <li>Atenção: a grande parte das células das tabelas abaixo 
+      contém uma única linha; se houver muitas células com 
+      mais do que uma linha, aumente o tamanho da janela do navegador ou diminua 
+      o tamanho das letras (em geral, no PC com Ctrl –; para aumentar de volta, 
+      Ctrl +).</li>
+    <li>Todos os operadores, funções e comandos dos exemplos foram 
+      testados com o interpretador IDLE ("Integrated Development and Learning 
+      Environment") do Python 3.6.1, a menos de alguns itens onde foi usado 
+      o Jupyter do Azure (ver o item <a href="#AMB">Ambientes</a>). Testes com 
+      outras versões são anotadas com a versão, p. ex. {3.7.2}</li>
+    <li>Ver <a href="https://docs.python.org/3/library/idle.html#command-line-usage">página 
+      com informações sobre o IDLE</a>.</li>
+    <li>Em todas as tabelas abaixo, supõe-se a execução prévia 
+      dos comandos de atribuição <font face="verdana" size="2"> 
+      A=1; B=2; C=3; D=1.2; E=2.3; F=3.4; G='abc'; H='def'</font></li>
+    <li>Nas expressões usando operadores e funções, espaços 
+      em branco são ignorados. Assim, pode-se escreve A = 1; X= 2+ &nbsp;&nbsp;B; 
+      etc. Símbolos de operadores, nomes de funções, de variáveis 
+      e de comandos não podem conter espaços em branco. Assim, A 
+      b e + <font face="verdana" size="2">= </font>não são considerados 
+      como a variável Ab e o operador +=, e sim como A e b, e + e = separadoss 
+      (resultam em erros de sintaxe).</li>
+    <li>Comentários: # define o resto da linha como comentário (isto 
+      é, ignorado pelo interpretador); """" ... """" 
+      define tudo entre os """" como comentário, inclusive 
+      várias linhas de código.</li>
+    <li>Nos exemplos, as palavras reservadas são grafadas em <b>negrito</b>.</li>
+    <li>Nos exemplos, após um comando para o IDLE em uma só linha, 
+      deve-se executá-lo digitando um Enter; o eventual resultado aparece 
+      neste texto depois de "&#8594;", p.ex. A+B &#8594; 3 (após 
+      dar-se o comando &gt;&gt;&gt;A+B e Enter, aparece 3 na próxima linha). 
+      Atenção: ao usar copiar/colar podem ser coladas várias 
+      linhas, mas todas devem formar apenas um único comando, por exemplo 
+      um <b>if</b> ou <b>while</b> com várias linhas. No entanto, podem-se 
+      dar 2 ou mais comandos em uma só linha, separados por ";": 
+      X=1; Y=2; X,Y &#8594; (1,2)</li>
+    <li>Algumas funções exigem a adição de um módulo 
+      especial ao programa, o que é feito com o comando <b>import</b>. 
+      Para detalhes sobre ele, ver <a href="https://docs.python.org/3/library/importlib.html">https://docs.python.org/3/library/importlib.html</a></li>
+    <li>Atenção: os exemplos desta página podem ser copiados 
+      e colados no Editor do IDLE (V. item 16 abaixo) e executados, cuidando-se 
+      para eliminar os &amp;rarr;.</li>
+    <li>Ver uma página com <a href="https://www.ime.usp.br/~vwsetzer/python-exemplos.html">exemplos de programas 
+      completos</a> testados no ambiente Azure da Microsoft. Ver também 
+      <a href="http://exercism.io/languages/python/exercises">um site com muitos 
+      exemplos</a>; os códigos estão nas abas "Test Suite".</li>
+    <li>Comentários, sugestões e críticas são muito 
+      bem vindos!!!</li>
+    <li>A seção 12 contém agradecimentos com o código 
+      dos colaboradores entre chaves {...}.</li>
+  </ol>
+  </div>
+   </font> 
+  <h3><font face="verdana"><b><a name="TIP"></a>2. TIPOS, CONSTANTES, VARIÁVEIS 
+    E MATRIZES</b></font></h3>
+  <h4><font face="verdana">2.1 Tipos de variáveis</font></h4>
+  <p><font face="verdana" size="2">A linguagem Python é <i>fracamente tipada</i>, 
+    isto é, uma variável x fica com o tipo do valor que ela recebe. 
+    Assim, se for executada a atribuição x = 1, x fica com o tipo 
+    inteiro; se depois é executado x = 1.5 daí para diante x fica 
+    com o tipo float, até mudar de tipo.</font></p>
+  <font face="verdana" size="2">
+  <h4>2.2 Tipos numéricos</h4>
+  
+</font> 
+<p><font face="verdana" size="2"><b>Inteiro</b> (int): precisão ilimitada. 
+  Ex.: 1234567890123456789012345<br>
+  <b>Constantes. Binária</b>. Ex.: 0b101 ou 0B101(valor decimal 5); <b>octal</b>: 
+  0o127 ou 0O127 (87); <b>hexadecimal</b>: 0xA5B ou oXA5B (2651). Constantes hexadecimais 
+  são comumente usada para represenar números binários em 
+  uma notação mais fácil de ser lida.<br>
+  <b>Ponto flutuante</b> (float): usualmente implementado usando o tipo double 
+  da linguagem C. Ex: .12345678901234567890 &#8594; 0.12345678901234568 (note-se 
+  o arredondamento).<br>
+  <b>Complexo</b>: contem uma parte real, e uma imaginária indicada por 
+  um j. Exs.: constante (1+2j) ou (1+2J); variável (A+D*1j)<br>
+  Para converter um tipo para inteiro usar as funções int(), para 
+  ponto flutuante float(), para complexo complex(). Essas funções 
+  devem ser usadas especialmente na entrada de dados, input() – que dá 
+  sempre um tipo str de cadeia de caracteres.<br>
+  O módulo NumPy (ver as referências), que deve ser instalado, permite 
+  o uso de uma grande variedade de tipos numéricos. Para definir uma variável 
+  tipo ponto flutuante de 32 bits, basta dar, p. ex.<br>
+  x = numpy.float32(1.0)</font></p>
+  <h4><font face="verdana">2.3 Tipo cadeia de caracteres (<i>string</i>)</font></h4>
+  <p><font face="verdana" size="2"><b><i>Exemplo</i></b>: 'tuv5xyz: ' &#8594; 'tuv5xyz: 
+    '; "tuv5xyz: " &#8594; 'tuv5xyz: '; 'tuv5x"yz: ' &#8594; 'tuv5x"yz: 
+    '; </font><font face="verdana" size="2"> Se é executado o comando Cad='Esta 
+    é uma cadeia' então Cad &#8594; 'Esta é uma cadeia'<br>
+    <b><i>Cadeia vazia</i></b>: '' (dois apóstrofes) &#8594; '' ou "" 
+    "" &#8594; ''. Atenção: " " &#8594; ' 
+    ' (um espaço em branco) <br>
+    <b><i>Indexação</i></b>: o 1º índice indica o elemento 
+    inicial, começando em 0; o 2º o final, começando em 1: 
+    CAD[0] &#8594; 'E'; Cad[5:10] &#8594; 'é uma]; Cad[10:] &#8594; 'é 
+    uma cadeia'<br>
+    <b><i>Concatenação</i></b> de cadeias: 'tuv5xyz: ' + Cad &#8594; 
+    'tuv5xyz: Esta é uma cadeia'; 2*Cad &#8594; 'Esta é uma cadeiaEsta 
+    é uma cadeia'.<br>
+    </font></p>
+  <h4><font face="verdana">2.4 Tipo <i>n</i>-pla ordenada (<i>tuple</i>)</font></h4>
+  <p><font face="verdana" size="2"><b><i>Exemplo</i></b>: Tup = (A, 5, 3.14, 'bla'); 
+    Tup &#8594; (1, 5, 3.14, 'bla'). (Para o valor de A ver o item 3 das observações.)<br>
+    <i><b>n-upla vazia</b></i>: ()<br>
+    </font><font face="verdana" size="2"><b><i>Indexação</i></b>: 
+    Tup[0] &#8594; 1; Tup[1:3] &#8594; (5, 3.14); Tup[2:] &#8594; ((3.14, 'bla'); 
+    2*Tup &#8594; (1, 5, 3.14, 'bla', 1, 5, 3.14, 'bla'). <br>
+    É <i>inválido</i> atribuir um valor a um elemento de uma tupla: 
+    Tup[1] = 10<br>
+    </font></p>
+  <h4><font face="verdana">2.5 Tipo lista (<i>list</i>)</font></h4>
+  
+<p><font face="verdana" size="2"><b><i>Exemplo</i></b>: L = [A, 5, 1.2, 'bla']<br>
+  <b><i>Lista vazia</i></b>: []<br>
+  <b><i>Indexação</i></b>: L[2] &#8594; 1.2; L[1:4] &#8594; [5, 1.2, 
+  'bla']. Note-se que os índices dos elementos vão de 0 a, digamos, 
+  <i>n</i>. L[i:j] indica os elementos começando no elemento de índice 
+  <i>i</i> e terminando no de índice <i>j</i>–1. L[5] &#8594; dá um erro 
+  pois não há elemento de índice 5. L[4] = 9 &#8594; dá o mesmo erro. Para 
+  adicionar mais um elemento (sempre no fim da lista): L = L + [9]; L &#8594; [1, 
+  5, 1.2, 'bla', 9]; L = L + [] não altera L.<br>
+  <b><i>Atribuição</i></b> a um elemento: é <i>válido</i> 
+  fazer L[3]=10; L &#8594; [1, 5, 1.2, 10].<br>
+  <i><b>Eliminação</b></i> de um elemento da lista: usa-se o comando 
+  <b>del</b>. Ex. <b>del </b>L[2]; L &#8594; [1, 5, 10]; <br>
+  </font></p>
+  <h4><font face="verdana">2.6 Tipo dicionário (<i>dictionary</i>)</font></h4>
+  
+<p><font face="verdana" size="2"><b><i>Exemplo</i></b>: Dic = {5:10, 3:'bla', 
+  'ble':'A', 'A':'8'}; Dic &#8594;{5: 10, 3: 'bla', 'ble': 'A', 'A': 8}<br>
+  <b><i>Indexação</i></b>: Dic[5] &#8594; 10; Dic[3] &#8594; 'bla'; 
+  Dic['ble'] &#8594; 1; Dic[3] &#8594; 'bla'; DIC['A'] &#8594; '8'<br>
+  Note-se que cada elemento de um dicionário é da forma <i>x</i>:<i>y</i>, 
+  onde <i>x </i> é o índice e <i>y</i> é o valor associado 
+  a esse índice. Índices ou valores que são alfabéticos 
+  devem estar entre apóstrofes ou aspas.<br>
+  </font><font face="verdana" size="2">Obtenção de <b><i>todos os 
+  índices</i></b> (<i>keys</i>): Dic.keys() &#8594; dict_keys([1, 'ble', 
+  3, 5])<br>
+  Obtenção de <b><i>todos os valores</i></b>: Dic.values() &#8594; 
+  dict_values([8, 1, 'bla', 10])<br>
+  dict_keys e dict_values não podem ser indexadas. Para se trabalhar com 
+  todos os índices ou os valores, pode-se transformá-los em listas 
+  e depois trabalhar com elas {MDG}:<br>
+  &nbsp;&nbsp;L = [x <b>for</b> x <b>in</b> Dic.keys()]; L &#8594; [5, 3, 'ble', 
+  1]<br>
+  &nbsp;&nbsp;L = [x <b>for</b> x <b>in</b> Dic.values()]; L &#8594; [10, 'bla', 
+  1, 8]</font></p>
+<h4><font face="verdana">2.7 Tipo conjunto (<i>set</i>)</font></h4>
+  <p><font face="verdana" size="2"><b><i>Exemplo</i></b>: S = {1, 'dois', 3, 'quatro'}; 
+    S &#8594; {3, 1, 'dois', 'quatro'} (Conjuntos não são ordenados 
+    e não podem ser indexados.)<br>
+    <i><b>Conjunto vazio</b></i>: {}<br>
+    <b><i>Usos</i></b>. <i>Número de elementos</i> (<i>cardinalidade</i>): 
+    len(S) &#8594; 4. <i>Pertinência</i>: 'dois' <b>in</b> S &#8594; True. 
+    <i>União</i>: S | {5} &#8594; {1, 3, 'dois', 5, 'quatro'} (S não 
+    mudou!). <i>Interseção</i>: S &amp; {1, 'dois'} &#8594; {1, 'dois'}. 
+    <i>Complementação</i>: S – {1, 'dois'} &#8594; {3, 'quatro'}. 
+    Testa <i>superconjunto próprio</i>: S &gt; {1, 'quatro'} &#8594; True. 
+    <i>Superconjunto</i>: &gt;=. <i>Subconjunto próprio</i>: &lt;. <i>Subconjunto</i>: 
+    &lt;=. <i>União exclusiva </i>(elimina os elementos comuns): S ^ {'dois', 
+    5} &#8594; {1, 3, 5, 'quatro'}<br>
+    Há dois tipos de conjuntos: <i>set</i>, em que seus elementos podem 
+    ser mudados, e <i>frozen</i></font><i><font face="verdana" size="2">set</font></i><font face="verdana" size="2"> 
+    que não pode ser mudado. A construção de um set é 
+    automática. Ex.: x = frozenset(({1, 2}); x.pop() &#8594; erro. Conjuntos 
+    internos de conjuntos têm que ser do tipo <i>frozenset</i>.</font></p>
+  
+<h4><font face="verdana">2.8 Tipo lista de intervalo de inteiros (<i>range</i>)</font></h4>
+<p><font face="verdana" size="2"><b><i>Padrão</i></b>: range(<i>m</i>, 
+  <i>n</i>, <i>k</i>), com <i>n</i> e <i>k</i> opcionais ou só <i>k</i> 
+  opcional, gerando os inteiros de uma lista <i>r</i> tal que <i>r</i>[<i>i</i>] 
+  = <i>m</i> + <i>k</i>*<i>i</i>, onde <i>i</i> &gt;= 0 e <i>i</i> &lt; abs(<i>n</i>)<br>
+    <b><i>Exemplos</i></b>: list(range(5)) &#8594; [0, 1, 2, 3, 4]; list(range(1, 
+    5)) &#8594; [1, 2, 3, 4]; list(range(0, 8, 2)) &#8594; [0, 2, 4, 6]; list(range(-1, 
+    -10, -2)) &#8594; [-1, -3, -5, -7, -9]<br>
+    Uso em comandos <b>for</b>: ver o comando no item 11 abaixo e no 2.5 acima.</font></p>
+  
+<h4><font face="verdana">2.9. Vetores e matrizes (<i>arrays</i>)</font></h4>
+  <font face="verdana" size="2"> 
+  <p>Ao contrário de quase todas as outras linguagens de programação, 
+    Python não tem o tipo <i>array</i>, pois os valores de variáveis 
+    podem ocupar tamanhos diversos. Para representar matrizes, usam-se listas, 
+    já que as mesmas podem ser indexadas como se fossem matrizes. Em outras 
+    linguagens, a declaração de um array produz a inicialização 
+    de seus valores, isto é, a declaração do array faz com 
+    que todos seus elementos passem a existir. Mas o mesmo não ocorre com 
+    as listas de Python; assim, é preciso adicinonar cada elemento novo, 
+    pela ordem. <br>
+    <b>Exemplos</b><br>
+    <b>1.</b> Para definir um vetor de 5 elementos, inicializando com valores 
+    0 (poderia ser outro qualquer, como I ou uma expressão): V=[0 <b>for</b> 
+    I <b>in</b> range(4)]; V &#8594; [0, 0, 0, 0]; note-se que V[4] não 
+    existe e não pode receber algum valor, como V[4]=0 ou V[4]=[0]. Para 
+    defini-lo: V=V+[0]. Para varrer todo um vetor de tamanho variável, 
+    use len(V) &#8594; 4 <br>
+    <b>2.</b> Para definir uma matriz bidimensional, constrói-se uma lista 
+    de listas: M=[[1, 2], [3, 4]]; M &#8594; [[1, 2], [3, 4]]; M[1][1] &#8594; 4; 
+    M[0][1] &#8594; 2; M[1][0] &#8594; 3. Inicialização, com vários 
+    valores, de uma matriz com 3 linhas e 4 colunas: <br>
+    M = [[I+J+1 <b>for</b> I <b>in</b> range(2)] <b>for</b> J <b>in</b> range(3)]; 
+    M &#8594; [[1, 2], [2, 3], [3, 4]]; M[2][1] &#8594; 4<br>
+    Para dimensões maiores, basta estender as receitas.</p>
+  </font>
+  <table width="94%" border="1">
+    <tbody><tr>
+      <td width="49%"><font face="verdana" size="2"> 
+        <p><b>3.</b> Para varrer todos elementos e exibir os seus valores:<br>
+          M=[[1, 2], [3, 4]]<br>
+          <b> for</b> I <b>in</b> M:<br>
+          &nbsp;&nbsp;&nbsp;<b>for</b> E <b>in</b> I:<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print (E) &#8594;<br>
+          1<br>
+          2<br>
+          3<br>
+          4</p>
+        <p><font face="verdana" size="2"><b>5. </b>Para obter linhas:<br>
+          <b>for</b> I <b>in</b> M:<br>
+          &nbsp;&nbsp;&nbsp;I &#8594;<br>
+          [1, 2]<br>
+          [3, 4]</font></p>
+        </font>
+        <p><font face="verdana" size="2"><b>6.</b> Para obter colunas:<br>
+          J=0<br>
+          J =[I[J] <b>for</b> I <b>in</b> [M]<br>
+          J &#8594;<br>
+          [1, 3]</font></p>
+        </td>
+      <td width="51%" valign="top"> 
+       <font face="verdana" size="2"> 
+      <p><b>4.</b> Para gerar uma matriz com valores 
+        crescentes:<br>
+        M=[]<br>
+        <b>for</b> I in range(2):<br>
+        &nbsp;&nbsp;&nbsp;M[I]=M[I]+[-1]<br>
+        M &#8594;<br>
+        [-1, -1]<br>
+        </p>
+      </font>
+     <font face="verdana" size="2">
+	    <p>J=1<br>
+        <b>for</b> I in range(2):<br>
+        &nbsp;&nbsp;&nbsp;M[I]=[J,J+1]<br>
+        &nbsp;&nbsp;&nbsp;J=J+2<br>
+        M &#8594;<br>
+        [[1, 2], [3, 4]] </p>
+      <p>{PC} Chamou a atenção para a inicialização 
+        do J</p>
+		</font>
+      <p><font face="verdana" size="2"><b>7.</b> Para aplicar uma função, 
+          p.ex. sqrt a todos os elementos de M:<br>
+          </font><font face="verdana" size="2">[[math.sqrt(x) <b>for</b> x <b>in</b> 
+          I] <b>for</b> I <b>in</b> M] &#8594;<br>
+          [[1.0, 1.4142135623730951], [1.7320508075688772, 2.0]] </font></p>
+      </td>
+    </tr>
+  </tbody></table>
+  <p><font face="verdana" size="2"><b>8.</b> Módulo para uso de matrizes<br>
+    O módulo NumPy permite o uso de vetores e matrizes como se fosse nas 
+    linguagens tradicionais. Supondo que ele está instalado, para ativá-lo 
+    e dar-lhe o nome interno de np dá-se <b>import</b> NumPy <b>as</b> 
+    np. Ver as referências para detalhes como usá-lo. </font></p>
+<h3><font face="verdana"><b><a name="OPE"></a>3. OPERADORES</b></font></h3>
+  <font face="verdana" size="2"> 
+  <table border="1" style="font-family: verdana;  font-size: 10pt;">
+    <tbody><tr> 
+      <td width="43"> 
+        <p align="center"><font size="3"><b>Op</b></font></p>
+      </td>
+      <td width="399"> 
+        <p align="center"><font size="3"><b>Significado e tipos dos operandos</b></font></p>
+      </td>
+      <td width="696"> 
+        <p align="center"><font size="3"><b>Exemplos</b></font></p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">+</p>
+      </td>
+      <td width="399"> 
+        
+      <p>Operador binário (com dois argumentos): soma de int, float, ou 
+        complex; concatenação de cadeias de caracteres (<i>strings</i>), de listas 
+        e de <i>n</i>-plas</p>
+      </td>
+      <td width="696"> 
+        <p>A+B &#8594; 3, D+E &#8594; 3.5; A+D &#8594; 2.2; (A+D*1j)+(E+C*1j) &#8594; 
+          (3.3+4.2j); <br>
+          G+H &#8594; 'abcdef'; (123, 'xyz') + ('L', '3.14') &#8594; (123, 'xyz', 
+          'L', 3.14)<br>
+          [1, 2] + [3] &#8594; [1, 2, 3]</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <div align="center">+</div>
+      </td>
+      <td width="399">Operador unário (com um argumento): sem efeito</td>
+      <td width="696">+A &#8594; 1</td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">–</p>
+      </td>
+      <td width="399"> 
+        <p>Operador binário de subtração de int, float ou complex; complementação 
+          de conjuntos</p>
+      </td>
+      <td width="696"> 
+        <p>C–B &#8594; 1; F–D &#8594; 2.2; F–A &#8594; 2.4</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <div align="center">–</div>
+      </td>
+      <td width="399">Operador unário de troca de sinal</td>
+      <td width="696">–A &#8594; –1 </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">*</p>
+      </td>
+      <td width="399"> 
+        <p>Multiplicação int, float ou complex</p>
+      </td>
+      <td width="696"> 
+        <p>B*C &#8594; 6; D*E &#8594; 2.76; B*D &#8594; 2.4; (A+D*1j)+(E+C*1j) &#8594; 
+          (3.3+4.2j)</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43" height="47"> 
+        <p align="center">/</p>
+      </td>
+      <td width="399" height="47"> 
+        <p>Divisão int, float, resulta float ou complex</p>
+      </td>
+      <td width="696" height="47"> 
+        <p>C/B &#8594; 1.5; F/E &#8594; 1.4782608695652175; C/D &#8594; 2.5; <br>
+          (A+D*1j)/(E+C*1j) &#8594; (0.41287613715885235-0.016794961511546552j)</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">//</p>
+      </td>
+      <td width="399"> 
+        <p>Divisão de int, resulta int, ou de float por int ou float só parte 
+          inteira</p>
+      </td>
+      <td width="696"> 
+        <p>C//B &#8594; 1; F//D &#8594; 2.0; F//B &#8594; 1.0; </p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">%</p>
+      </td>
+      <td width="399"> 
+        <p>Resto int da divisão de ints, parte inteira se divisão de floats</p>
+      </td>
+      <td width="696"> 
+        <p>C%B &#8594; 1; F//D &#8594; 2.0; F//B &#8594; 1.0</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43" height="21"> 
+        <p align="center">**</p>
+      </td>
+      <td width="399" height="21"> 
+        <p>Potenciação de int, float ou complex</p>
+      </td>
+      <td width="696" height="21"> 
+        <p>B**C &#8594; 8; B**D &#8594; 2.2973967099940698; D**B &#8594; 1.44; D**E 
+          &#8594; 1.5209567545525315; (1+1j)**2 &#8594; 2j; 27**(1/3) &#8594; 3 (raiz 
+          cúbica)</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">==</p>
+      </td>
+      <td width="399"> 
+        
+      <p>Testa igualdade de int, float complex ou string, resulta True (verdadeiro) 
+        ou False (ver tabela de operadores lógicos); com vários 
+        == em um só comando dá True somente se cada um<i></i> dos 
+        pares consecutivos for igual</p>
+      </td>
+      
+    <td width="696"> 
+      <p>B==A*2 &#8594; True; A==B &#8594; False; A==D &#8594; False; A==int(D) &#8594; 
+        True; (A+B*1j)==(1+2j) &#8594; True; G=='abc’ &#8594; True; G==H &#8594; 
+        False; 1==1==1 &#8594; True; 1==1==2 &#8594; False;</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">!=</p>
+      </td>
+      <td width="399"> 
+        <p>Diferente, idem </p>
+      </td>
+      
+    <td width="696"> 
+      <p>A!=B &#8594; True; A!=D &#8594; True; A!=int(D) &#8594; False; (1+2j)!=(2+2j) 
+        &#8594; True; <br>
+        G!=H &#8594; True; 1!=2!=3 &#8594; True; 1!=1!= 2 &#8594; False;</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">&gt;&nbsp;</p>
+      </td>
+      <td width="399"> 
+        <p>Maior do que, idem sem complex; testa superconjunto próprio</p>
+      </td>
+      
+    <td width="696"> 
+      <p>B&gt;A &#8594; True; A&gt;B &#8594; False; D&gt;A &#8594; True; E&gt;D &#8594; 
+        True; H&gt;G &#8594; True; 3&gt;2&gt;1 &#8594; True; 3&gt;2&gt;3 &#8594; 
+        False;</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">&lt;&nbsp;</p>
+      </td>
+      <td width="399"> 
+        <p>Menor do que, idem; subconjunto próprio</p>
+      </td>
+      <td width="696"> 
+        <p>A&lt;B &#8594; True; B&lt;A &#8594; False; etc.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">&gt;=</p>
+      </td>
+      <td width="399"> 
+        <p>Maior ou igual, idem; superconjunto</p>
+      </td>
+      <td width="696"> 
+        
+      <p>B&gt;=A &#8594; True; B&gt;=D &#8594; True; H&gt;=G True; etc.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">&lt;=</p>
+      </td>
+      <td width="399"> 
+        <p>Menor ou igual, idem; subconjunto</p>
+      </td>
+      <td width="696"> 
+        <p>B&lt;=A &#8594; False; etc.</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <div align="center">&amp;</div>
+      </td>
+      <td width="399">"e" bit a bit de valores binários, 
+        resultado decimal no IDLE; intersecção de conjuntos</td>
+      <td width="696">0b0101 &amp; 0b0001 &#8594; 1; bin(0b1100 &amp; 0b1010) 
+        &#8594; '0b1010' (na exibição corta os 0s à esquerda)</td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <div align="center">|</div>
+      </td>
+      <td width="399">"ou inclusivo" bit a bit, resultado 
+        decimal no IDLE; união de conjuntos</td>
+      <td width="696">bin(0b1100 | 0b1010) &#8594; '0b1110'</td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <div align="center">^</div>
+      </td>
+      <td width="399">"ou exclusivo" bit a bit. resultado 
+        decimal no IDLE; união exclusiva de conjuntos</td>
+      <td width="696"> bin(0b0110 ^ 0b1010) &#8594; '0b1100'</td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <div align="center">&gt;&gt;</div>
+      </td>
+      <td width="399">deslocamento bit a bit para a direita inserindo 
+        0s à esquerda (equivale a divisão por pow(2,n)</td>
+      <td width="696">J = 10; bin(J) &#8594; '0b1010'; bin(J&gt;&gt;1) 
+        &#8594; '0b101' (zeros à esquerda não são exibidos)</td>
+    </tr>
+    <tr> 
+      <td width="43" height="5"> 
+        <div align="center">&lt;&lt;</div>
+      </td>
+      <td width="399" height="5">deslocamento bit a bit para a esquerda inserindo 
+        0s à direita (equivale a divisão por pow(2,n)</td>
+      <td width="696" height="5">J = 10; bin(J) &#8594; '0b1010'; bin(J&lt;&lt;2) 
+        &#8594; '0b101000'</td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <div align="center"><b>is</b></div>
+      </td>
+      <td width="399">Teste de identidade de objetos</td>
+      <td width="696">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="43"><b>not is</b></td>
+      <td width="399">Teste de não identidade de objetos</td>
+      <td width="696">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="43" height="52"> 
+        <p align="center">=</p>
+      </td>
+      <td width="399" height="52"> 
+        <p>Atribuição simples ou múltipla, lado direito int, float, complex 
+          ou string; ambos os lados podem ser uma <i>n</i>-pla sem "(" 
+          e ")"</p>
+      </td>
+      <td width="696" height="52"> 
+        <p>A=1; A &#8594; 1; A=D; A &#8594; 1.2 (A mudou de int para float); <br>
+          J=(A+D*1j); J &#8594; (1+1.2j); J, I, K = 10, 20, B*30; I &#8594; 20; 
+          J, K &#8594; (10, 60)<br>
+          Troca de valores de variáveis: X, Y= 3, 4; X, Y= Y, X; X, Y &#8594; 
+          (4, 3)</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">+=</p>
+      </td>
+      <td width="399"> 
+        <p>x += y equivale a x = x + y</p>
+      </td>
+      <td width="696"> 
+        <p>J=1; J=+2; J &#8594; 3; J=(1+2j); J+=(2+3j); J &#8594; (3+5j)</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">–=</p>
+      </td>
+      <td width="399"> 
+        <p>x -= y equivale a x = x – y, inclusive de conjuntos</p>
+      </td>
+      <td width="696"> 
+        <p>J=3; J–=2; J &#8594; 1</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">*=</p>
+      </td>
+      <td width="399"> 
+        <p>x *= y equivale a x = x <inf>*</inf> y</p>
+      </td>
+      <td width="696"> 
+        <p>J=2; J*=3; J &#8594; 6</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="43"> 
+        <p align="center">/=</p>
+      </td>
+      <td width="399"> 
+        <p>x /= y equivale a x = x /y</p>
+      </td>
+      <td width="696"> 
+        <p>J=6; J/=3; J &#8594; 2.0</p>
+      </td>
+    </tr>
+    <tr style="mso-yfti-lastrow::yes"> 
+      <td width="43"> 
+        <div align="center">//=</div>
+      </td>
+      <td width="399">x // y equivale a x = x // y</td>
+      <td width="696">J=15; J//=4; J &#8594; 3; J=15.5; J//=3.7; J 
+        &#8594; 4.0</td>
+    </tr>
+    <tr style="mso-yfti-lastrow::yes"> 
+      <td width="43"> 
+        <p align="center">%=</p>
+      </td>
+      <td width="399"> 
+        <p>x %= y equivale a x = x%y</p>
+      </td>
+      <td width="696"> 
+        <p>J=6; J%=4; J &#8594; 2.0; J=6; J%=2; J &#8594; 0</p>
+      </td>
+    </tr>
+    <tr style="mso-yfti-lastrow::yes"> 
+      <td width="43"> 
+        <div align="center">**=</div>
+      </td>
+      <td width="399">x **= y equivale a x = x**y</td>
+      <td width="696">J=2; J**=3; J&#8594; 8 (Não disponível na 
+        versão 2 do Python)</td>
+    </tr>
+    <tr style="mso-yfti-lastrow::yes"> 
+      <td width="43"> 
+        <div align="center">&gt;&gt;=</div>
+      </td>
+      <td width="399">x &gt;&gt;= y equivale a x = x&gt;&gt;y</td>
+      <td width="696">J=0b1010; J&gt;&gt;=2; bin(J) &#8594; '0b10' (zeros à 
+        esquerda não são exibidos)</td>
+    </tr>
+    <tr style="mso-yfti-lastrow::yes"> 
+      <td width="43"> 
+        <div align="center">&lt;&lt;=</div>
+      </td>
+      <td width="399">x &lt;&lt;= y equivale a x = x&lt;&lt;y</td>
+      <td width="696">J=0b1010; J&lt;&lt;=2; bin(J) &#8594; '0b101000'</td>
+    </tr>
+    <tr style="mso-yfti-lastrow::yes"> 
+      <td width="43" height="11"> 
+        <div align="center">&amp;=</div>
+      </td>
+      <td width="399" height="11">x &amp;= y equivale a x = x&amp;y, inclusive de conjuntos</td>
+      <td width="696" height="11">J=0b1100; K=0b1010; J&amp;=K; bin(J) &#8594; '0b1000'</td>
+    </tr>
+    <tr style="mso-yfti-lastrow::yes"> 
+      <td width="43"> 
+        <div align="center">^=</div>
+      </td>
+      <td width="399">x ^= y equivale a x = x^y, inclusive de conjuntos</td>
+      <td width="696">J=0b1100; K=0b0110; J^=K; bin(J) &#8594; '0b1010'</td>
+    </tr>
+    <tr style="mso-yfti-lastrow::yes"> 
+      <td width="43"> 
+        <div align="center">|=</div>
+      </td>
+      <td width="399">x |= y equivale a x = x|y, inclusive de conjuntos</td>
+      <td width="696">J=0b1100; K=0b1010; J|=K; bin(J) &#8594; '0b1110'</td>
+    </tr>
+    <tr style="mso-yfti-lastrow::yes"> 
+      <td width="43"> 
+        <div align="center"><b>if</b></div>
+      </td>
+      <td width="399"> 
+        <p>Expressão condicional:<br>
+          x = Valor-se-True <b>if</b> Expressão-Lógica <b>else</b> 
+          Valor-se-False</p>
+      </td>
+      <td width="696">J = 1 <b>if</b> 4&gt;3 <b>else</b> 2 &#8594; 1<br>
+        J = 5 * (1 <b>if</b> B&lt;A <b>else</b> 3*A); &#8594; 15</td>
+    </tr>
+  </tbody></table>
+  <h3><a name="OPL"></a>4. OPERADORES LÓGICOS (BOOLEANOS)</h3>
+  <table width="87%" border="1" style="font-family: verdana;  font-size: 10pt;">
+    <tbody><tr> 
+      <td width="67" height="49"> 
+        <p align="center"><font size="3" face="verdana"><b>Op</b></font></p>
+      </td>
+      <td width="361" height="49"> 
+        <p align="center"><font size="3" face="verdana"><b>Significado</b></font></p>
+      </td>
+      <td width="705" height="49"> 
+        <p align="center"><font size="3" face="verdana"><b>Exemplos</b></font></p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="67">&nbsp;</td>
+      <td colspan="2">No que segue, supõe-se a execução 
+        prévia de L1T = <b>True</b>; L2T = <b>True</b>; L1F = <b>False</b>; 
+        L2F = <b>False</b> </td>
+    </tr>
+    <tr> 
+      <td width="67"><b>True</b></td>
+      <td width="361">Constante indicando "verdadeiro"</td>
+      <td width="705">Atenção: true não é 
+        aceito, dá erro de variável não definida</td>
+    </tr>
+    <tr> 
+      <td width="67"><b>False</b></td>
+      <td width="361">Constante indicando "falso"</td>
+      <td width="705">Idem para false; são considerados como 
+        <b>False</b>: <b>None</b>, 0, 0.0, 0j, ' ', (), [], {}; outros valores 
+        como <b>True</b></td>
+    </tr>
+    <tr> 
+      <td width="67"><b>not</b></td>
+      <td width="361">Negação: muda True para False 
+        e vice-versa</td>
+      <td width="705"><b>not</b> L1T &#8594; False; <b>not</b> L1F 
+        &#8594; True</td>
+    </tr>
+    <tr> 
+      <td width="67">x <b>or</b> y</td>
+      <td width="361">"ou" inclusivo; dá falso somente 
+        se x e y forem falsos </td>
+      <td width="705">L1T <b>or</b> L2T &#8594; True; L1T <b>or</b> 
+        L1F &#8594; True; L1F <b>or</b> L1T &#8594; True; L1F <b>or</b> L2F &#8594; 
+        False</td>
+    </tr>
+    <tr> 
+      <td width="67">x <b>and</b> y</td>
+      <td width="361">"e"; dá verdadeiro somente 
+        se x e y forem verdadeiros</td>
+      <td width="705">L1T <b>and</b> L2T &#8594; True; L1T <b>and</b> 
+        L1F &#8594; False; L1F <b>and</b> L1T &#8594; False; L1F <b>and</b> L2F 
+        &#8594; False</td>
+    </tr>
+    <tr> 
+      <td width="67">x <b>in</b> y</td>
+      
+    <td width="361">se x está na <i>string,</i> <i>n</i>-pla, 
+      lista ou conjunto y dá True, senão False</td>
+      
+    <td width="705"> 'a' in 'false' &#8594; True; 5 in (2, 5, 3) &#8594; 
+      True; 3 in [2, 5, 3] &#8594; True; 4 in [2, 5, 3] &#8594; False</td>
+    </tr>
+    <tr> 
+      <td width="67">x <b>not in</b> y</td>
+      <td width="361">Contrário de <b>in</b></td>
+      <td width="705">&nbsp;</td>
+    </tr>
+  </tbody></table>
+  <br>
+  <font face="verdana" size="2"> 
+  <p><b><font size="4"><a name="FNA"></a>5. FUNÇÕES NATIVAS </font></b> (tabela 
+    a ser complementada com mais significados e exemplos; <a href="https://www.ime.usp.br/~vwsetzer/://docs.python.org/2/library/functions.html">fonte</a>)</p>
+  
+<table border="1" style="font-family: verdana;  font-size: 10pt;">
+  <tbody><tr> 
+    <td width="99"> 
+      <p align="center"><font size="3"><b>Função</b></font></p>
+    </td>
+    <td width="354"> 
+      <p align="center"><font size="3"><b>Significado</b></font></p>
+    </td>
+    <td width="614"> 
+      <p align="center"><font size="3"><b>Exemplos</b></font></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>abs()</p>
+    </td>
+    <td width="354"> 
+      <p>Valor absoluto; módulo no caso de complexo</p>
+    </td>
+    <td width="614"> 
+      <p>abs(-1) &#8594; 1; abs (2) &#8594; 2; abs((1+2j)) &#8594; 2.23606797749979</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">x.add(y)</td>
+    <td width="354">Insere o elemento y no conjunto x</td>
+    <td width="614">x = {1, 2, 'três'}; x.add('quatro'); x &#8594; {1, 2, 
+      'quatro', 'três'}</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>all()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>any()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>basestring()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>bin()</p>
+    </td>
+    <td width="354"> 
+      <p>Converte um int em binário</p>
+    </td>
+    <td width="614"> 
+      <p>bin(B) &#8594; '0b10'; bin(20) &#8594; '0b10100' </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">x.bit_length()</td>
+    <td width="354">Comprimento de bits significativos do binário x</td>
+    <td width="614">0b101010.bit_length() &#8594; 6; 0b001010.bit_length() &#8594; 
+      4 </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>bool()</p>
+    </td>
+    <td width="354"> 
+      <p>Retorna True se o argumento é verdadeiro, False se não há argumento ou 
+        ele é falso</p>
+    </td>
+    <td width="614"> 
+      <p>bool(B&gt;A) &#8594; True; bool(C&gt;D) &#8594; False; bool() &#8594; False</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>bytearray()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>callable()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>chr()</p>
+    </td>
+    <td width="354"> 
+      <p>Caractere correspondente ao código ASCII do argumento (entre 0 e 255)</p>
+    </td>
+    <td width="614"> 
+      <p>chr(97) &#8594; 'a'; chr(150) &#8594; '\x96' (converteu para hexadecimal, 
+        pois não achou o caractere)</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>classmethod()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">clear(x)</td>
+    <td width="354">Remove todos os elementos do conjunto x</td>
+    <td width="614">x = {1, 2, 'três'}; x.clear(); x &#8594; set() ''''indica 
+      conjunto vazio''''; x |= {9}; x &#8594; {9}</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>cmp(x,y)</p>
+    </td>
+    <td width="354"> 
+      <p>Dá um int negativo se x&lt;y, 0 se x==y, positivo se x&gt;y</p>
+    </td>
+    <td width="614"> 
+      <p>Não disponível no IDLE 3.6.1</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>compile()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>complex(re,im)</p>
+    </td>
+    <td width="354"> 
+      <p>Converte em complexo com parte real re e imag. im</p>
+    </td>
+    <td width="614"> 
+      <p>complex(1) &#8594; (1+0j); complex(2.5) &#8594; (2.5+0j)</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">x.conjugate()</td>
+    <td width="354">Dá o conjugado do complexo x</td>
+    <td width="614">x = (1+2j); x.conjugate() &#8594; (1-2j)</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>delattr()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>dict()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99" height="22"> 
+      <p>dir()</p>
+    </td>
+    <td width="354" height="22">No IDLE lista o nome de todas as variáveis 
+      da sessão</td>
+    <td width="614" height="22"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">x.discard(y)</td>
+    <td width="354">Remove o elemento y do conjunto x, se y está em x</td>
+    <td width="614">x = {1, 2, 'três'}; x.discard('três'); x &#8594; 
+      {1, 2} </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>divmod(x,y)</p>
+    </td>
+    <td width="354"> 
+      <p>Dá a dupla ordenada (x // y, x % y)</p>
+    </td>
+    <td width="614"> 
+      <p>divmod (C,B) &#8594; (1,1), divmod (C,D) &#8594; (2.0, 0.6000000000000001)</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>enumerate()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>eval()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>execfile()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>file()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>filter(f, L)</p>
+    </td>
+    <td width="354"> 
+      <p>Aplica a função f a cada elemento da lista L, e resulta 
+        nos elementos de L para os quais f for <b>True</b></p>
+    </td>
+    <td width="614"> 
+      <p>Ver exemplo no item "notação lambda"</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>float()</p>
+    </td>
+    <td width="354"> 
+      <p>Converte para float</p>
+    </td>
+    <td width="614"> 
+      <p>float(B) &#8594; 2.0; </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">float.as_integer_ratio()</td>
+    <td width="354">Dá um par de inteiros cuja razão é o 
+      argumento</td>
+    <td width="614">float.as_integer_ratio(1.5) &#8594; (3,2)</td>
+  </tr>
+  <tr> 
+    <td width="99">float.is_integer()</td>
+    <td width="354">Dá True se o argumento for inteiro, False em caso contrário</td>
+    <td width="614">float.is_integer(1.5) &#8594; False; float.is_integer(3.0) 
+      &#8594; True</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>format()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp; </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>frozenset()</p>
+    </td>
+    <td width="354"> 
+      <p>Constroi um conjunto que não pode ser mudado</p>
+    </td>
+    <td width="614"> 
+      <p>x = frozenset({1, 2}); x &#8594; {1, 2}; x.pop() dá erro</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>getattr()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>globals()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>hasattr()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>hash()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>help()</p>
+    </td>
+    <td width="354"> 
+      <p>No modo interativo (IDLE), dá a documentação do argumento</p>
+    </td>
+    <td width="614"> 
+      <p>help(int)</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>hex()</p>
+    </td>
+    <td width="354"> 
+      <p>Converte um int para um hexadecimal</p>
+    </td>
+    <td width="614"> 
+      <p>hex (8) &#8594; '0x8'; hex (50) &#8594; '0x32'; hex(C) &#8594; '0x3'</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>id()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>input("mensagem")</p>
+    </td>
+    <td width="354"> 
+      <p>Espera o usuário dar uma entrada como se fosse uma <b>string, 
+        </b>seguida de<b> Enter.</b> Dá o valor da entrada de um dado em forma 
+        de <i>string</i>; pode exibir a mensagem ao ser executado, </p>
+    </td>
+    <td width="614"> 
+      <p>dia=input('Entre com o valor do dia:'); &#8594; "Entre com o valor 
+        do dia:" 20 <b>Enter</b> dia &#8594; '20' (como <i>string</i>); para 
+        calcular é preciso converter, p.ex. diaint=int(input('Entre...')) ou diaint=int(dia); 
+        diaint &#8594; 20</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>int()</p>
+    </td>
+    <td width="354"> 
+      <p>Converte para int</p>
+    </td>
+    <td width="614"> 
+      <p>int(D) &#8594; 1; int('123') &#8594; 123</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">x.isdisjoint(y)</td>
+    <td width="354">True se o conjunto x é disjunto do conjunto y, False 
+      em caso contrário</td>
+    <td width="614">{1, 2, 'três'}.isdisjoint({4, 'cinco'}) &#8594; True<br>
+      {1, 2, 'três'}.isdisjoint({2, 'cinco'}) &#8594; False</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>isinstance()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>issubclass()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>iter()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">s.join(x)</td>
+    <td width="354">Método da classe string. Concatena as partes da lista, 
+      tupla ou conjunto x, separando-as com a <i>string</i> s.</td>
+    <td width="614">SeparaComVirgulas = ','.join(['a', 'b', 'c']); SeparaComVírgulas 
+      &#8594; 'a,b,c'</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>len(x)</p>
+    </td>
+    <td width="354"> 
+      <p>Dá o número de elementos de uma <i>string</i>, <i>lista, n</i>-pla ou 
+        conjunto (neste caso, a cardinalidade)</p>
+    </td>
+    <td width="614"> 
+      <p>len(G) &#8594; 3; len((1,2,3,4)) &#8594; 4; len((A,B,G)) &#8594; 3; len([1,B,5,7]) 
+        &#8594; 4<br>
+        len({1, 2, 'três'}) &#8594; 3</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>list()</p>
+    </td>
+    <td width="354"> 
+      <p>Converte os elementos de uma <i>string</i> ou <i>n</i>-pla em lista; 
+        sem argumento dá a lista vazia</p>
+    </td>
+    <td width="614"> 
+      <p>list(G) &#8594; ['a', 'b', 'c']; list((1, 2, 3)) &#8594; [1, 2, 3]</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>locals()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>long()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>Não disponível no 3.61.1</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99" height="2">lower()</td>
+    <td width="354" height="2">Converte as letras uma <i>string</i> para minúsculas</td>
+    <td width="614" height="2">'BLA3#'.lower() &#8594; 'bla3#'; nome = input('Digite 
+      seu nome:').lower(); print(nome)</td>
+  </tr>
+  <tr> 
+    <td width="99">s.lstrip('c')</td>
+    <td width="354">Método da classe string. Elimina todos os caracteres 
+      c do começo da <i>string</i> s, ignorando brancos até c; se 
+      c é omitido, elimina os brancos no começo de s</td>
+    <td width="614">s='x y z'; s.lstrip('x') &#8594; s=('&nbsp;&nbsp;&nbsp;x y 
+      z&nbsp;&nbsp;&nbsp;)'; s.lstrip('x') &#8594; ' y z'; s.lstrip() &#8594; 'x 
+      y z';<br>
+      s=('&nbsp;&nbsp;&nbsp;x y z&nbsp;&nbsp;&nbsp;'); s.lstrip() &#8594; 'x y 
+      z&nbsp;&nbsp;&nbsp;'; s.lstrip(' x,') &#8594; 'y z&nbsp;&nbsp;&nbsp;'; s.lstrip('x 
+      y') &#8594; 'z&nbsp;&nbsp;&nbsp;' </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>map(f,L)</p>
+    </td>
+    <td width="354"> 
+      <p>Aplica a função f a cada elemento de uma lista L</p>
+    </td>
+    <td width="614"> 
+      <p>list (map (abs, [2,-3,4,-5])) &#8594; [2, 3, 4, 5] </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>max()</p>
+    </td>
+    <td width="354"> 
+      <p>Dá o maior dos elementos do argumento</p>
+    </td>
+    <td width="614"> 
+      <p>max (1,2,3) &#8594; 3; max (['a', 'b', 'c']) &#8594; 'c'; max ('a', 'b', 
+        'c') &#8594; 'c'; <br>
+        max (G) &#8594; 'c'</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>memoryview()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>min()</p>
+    </td>
+    <td width="354"> 
+      <p>Como max, para o menor</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>next()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>object()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>oct()</p>
+    </td>
+    <td width="354"> 
+      <p>Converte para octal</p>
+    </td>
+    <td width="614"> 
+      <p>oct(15) &#8594; '0o17'</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>open()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>ord()</p>
+    </td>
+    <td width="354"> 
+      <p>Contrário de chr</p>
+    </td>
+    <td width="614"> 
+      <p>ord ('a') &#8594; 97</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">x.pop()</td>
+    <td width="354">Dá e remove um elemento arbitrário do conjunto 
+      x</td>
+    <td width="614">x = {1, 2, 'três'}; x.pop(); x &#8594; 1; x &#8594; {2, 
+      'três'}</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>pow(x.y)</p>
+    </td>
+    <td width="354"> 
+      <p>Equivalente a x**y</p>
+    </td>
+    <td width="614"> 
+      <p>pow(2,3) &#8594; 8; pow(4,0.5) &#8594; 2.0; pow (4,-2) &#8594; 0.625</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>print()</p>
+    </td>
+    <td width="354"> 
+      <p>Saída de dados</p>
+    </td>
+    <td width="614"> 
+      <p>print(A,D) &#8594; 1 1.2; print ('A =',A) &#8594; A = 1; print ('A*3 =',A*3,'\nD 
+        =',D) &#8594; <br>
+        A*3 = 3<br>
+        D = 1.2</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>property()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">random</td>
+    <td width="354"> 
+      <p>Uma classe. Exige importar o módulo random. Algumas funções 
+        dessa classe:<br>
+        1. random.randint(a,b) retorna inteiro pseudo-aleatório entre a 
+        e b inclusive.<br>
+        2. random.random() dá o próximo aleatório em ponto 
+        flutuante entre 0.0 e 1.0<br>
+        3. random.uniform(a, b) idem entre a e b inclusive<br>
+        4. random.choice(x) dá aleatoriamente um elemento da lista x não 
+        vazia<br>
+        5. random.shuffle(x) ordena a lista x aleatoriamente</p>
+    </td>
+    <td width="614">Os resultados obtidos com o IDLE podem ser outros, dependendo 
+      da "semente":<br>
+      1. import random; random.randint(10, 100) &#8594; 12; random.randint(10, 
+      100) &#8594; 67<br>
+      2. random.random() &#8594; 0.05462293624556047; random.random() &#8594; 0.36903357168070205<br>
+      3. random.uniform(2,5) &#8594; 3.983840861586745<br>
+      4. random.choice([1,2,3,4,5])) &#8594; 3; random.choice([1,2,3,4,5])) &#8594; 
+      4 <br>
+      5. x=[1,2,3,4]; random.shuffle(x); x &#8594; [3, 1, 4, 2]; random.shuffle(x); 
+      x &#8594; [4, 1, 2, 3]</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>range()</p>
+    </td>
+    <td width="354"> 
+      <p>Cria virtualmente uma lista virtual</p>
+    </td>
+    <td width="614"> 
+      <p>range(C): equivale a [0, 1, 2]; range(1, 5) a [1, 2, 3, 4, 5]; <br>
+        range(0, 10, 3) a [0, 3, 6, 9]; range(0, -4, -1) a [0, -1, -2, -3]</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>raw_input()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>reduce()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>reload()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>repr()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>reversed()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">s.rstrip(c)</td>
+    <td width="354"> Idem a lstrip, elimina a string c à direita da string 
+      s </td>
+    <td width="614">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>round(x,n)</p>
+    </td>
+    <td width="354"> 
+      <p>x arredondado na n-ésima casa decimal; sem n arredonda para o 
+        inteiro</p>
+    </td>
+    <td width="614"> 
+      <p>round(3.5566,3) &#8594; 3.557; round(4.5555,3) &#8594; 4.555;<br>
+        round(3.5555) &#8594; 4; round(3.4555) &#8594; 3</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>set()</p>
+    </td>
+    <td width="354"> 
+      <p>Constroi um conjunto que pode ser mudado</p>
+    </td>
+    <td width="614"> 
+      <p> x = {1, 2, 'três'}; x &#8594; {1, 2, 'três'}; x.pop() &#8594; 
+        {1} </p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>setattr()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>slice()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">s.split(sep)</td>
+    <td width="354">Método da classe string. Gera uma lista com os elementos 
+      da <i>string</i> s separados pela <i>string</i> sep; se sep for omitido, 
+      usa branco como separador</td>
+    <td width="614">s='a,b,3'; s.split(') &#8594; ['a', 'b', '3']; s='x y z'; 
+      s.split() &#8594; ['x', 'y', 'z']</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>sorted()</p>
+    </td>
+    <td width="354"> 
+      <p>Ordena uma lista</p>
+    </td>
+    <td width="614"> 
+      <p>sorted ([1,4,2]) &#8594; [1, 2, 4]; sorted([B,A]) &#8594; [1,2]</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>staticmethod()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>str()</p>
+    </td>
+    <td width="354"> 
+      <p>Converte int ou float para string</p>
+    </td>
+    <td width="614"> 
+      <p>str(C) &#8594; '3'; str(D) &#8594; '1.2'</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">c.strip(s)</td>
+    <td width="354">Método da classe string. Dá a <i>string</i> s 
+      sem a <i>string</i> c no começo e no fim. Sem o c, considera brancos. 
+      Ver também lstrip e rstrip</td>
+    <td width="614">s = '&nbsp;&nbsp;&nbsp;x y z&nbsp;&nbsp;&nbsp;'; s.strip() 
+      &#8594; 'x y z'; s = 'xyxyzzzxyxyxy'; s.strip('xy') &#8594; 'zzz'</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>sum()</p>
+    </td>
+    <td width="354"> 
+      <p>Soma os elementos de uma lista, <i>n</i>-pla ou conjunto</p>
+    </td>
+    <td width="614"> 
+      <p>sum([A,B,C, 4, D]) &#8594; 11.2; sum((1,2,3)) &#8594; 6; sum ({1, 2, 3}) 
+        &#8594; 6</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>super()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="99">time.sleep(n)</td>
+    <td width="354">Interrompe a execução de um programa por n segundos. 
+      Exige a carga do móduo time: <b><br>
+      import</b> time</td>
+    <td width="614">&nbsp;</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>tuple()</p>
+    </td>
+    <td width="354"> 
+      <p>Dá uma lista ordenada</p>
+    </td>
+    <td width="614"> 
+      <p>tuple('abc') &#8594; ('a', 'b', 'c'); tuple([1, 2, 3]) &#8594; (1, 2, 3)</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>type()</p>
+    </td>
+    <td width="354"> 
+      <p>Se o argumento for uma variável, dá seu tipo; se for um 
+        objeto, o tipo do mesmo</p>
+    </td>
+    <td width="614"> 
+      <p>type (A) &#8594; &lt;class 'int'&gt;; type (D) &#8594; &lt;class 'float'&gt;; 
+        type (G) &#8594; &lt;class 'str'&gt;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99">upper()</td>
+    <td width="354">Converte as letras de uma <i>string</i> para maiúsculas</td>
+    <td width="614">'bla3#'.upper() &#8594; 'BLA3#'</td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>unichr()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>unicode()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>vars()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>xrange()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="99"> 
+      <p>zip()</p>
+    </td>
+    <td width="354"> 
+      <p>&nbsp;</p>
+    </td>
+    <td width="614"> 
+      <p>&nbsp;</p>
+    </td>
+  </tr>
+  <tr style="mso-yfti-lastrow::yes"> 
+    <td width="99"> 
+      <p>__import__()</p>
+    </td>
+    <td width="354"> 
+      <p>Importação de módulos. É o mesmo que o comando 
+        import.</p>
+    </td>
+    <td width="614"> 
+      <p>Ver <a href="https://docs.python.org/3/library/importlib.html">https://docs.python.org/3/library/importlib.html</a></p>
+    </td>
+  </tr>
+</tbody></table>
+  </font> 
+  <h3><font face="verdana"><a name="FMA"></a>6. ALGUMAS FUNÇÕES E CONSTANTES 
+    MATEMÁTICAS</font> </h3>
+  <p><font face="verdana" size="2">Para usar essas funções, é 
+    necessário executar no IDEL ou inserir em um programa o comando<b> 
+    import </b>math, que ativa o módulo (<i>module</i>) math, e preceder 
+    cada função de<b> </b>math<b>.</b>, p.ex. math.sqrt(4), math.e 
+    etc; os resultados são sempre do tipo float, a menos de observação 
+    em contrário. Para cálculos com números complexos, dar 
+    <b>import </b>cmath<b> </b>.</font></p>
+  <table width="75%" border="1" style="font-family: verdana;  font-size: 10pt;">
+    <tbody><tr> 
+      <td width="118"> 
+        <p align="center"><font size="2" face="verdana"><b>Função</b></font></p>
+      </td>
+      <td width="262"> 
+        <p align="center"><font size="2" face="verdana"><b>Significado</b></font></p>
+      </td>
+      <td width="594"> 
+        <p align="center"><font size="2" face="verdana"><b>Exemplos</b></font></p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="118">atan(x)</td>
+      <td width="262">Arcotangente, resultado em radianos</td>
+      <td width="594">math.atan(2) &#8594; 1.1071487177940904; 
+      </td>
+    </tr>
+    <tr> 
+      <td width="118">ceil(x)</td>
+      <td width="262">O menor inteiro &gt;= x</td>
+      <td width="594">math.ceil(4.7) &#8594; 5</td>
+    </tr>
+    <tr> 
+      <td width="118">cos(x)</td>
+      <td width="262">Cosseno, x em radianos</td>
+      <td width="594"> 
+        <p>math.cos(math.pi/2) &#8594; 6.123233995736766e-17 (devia ser zero; não 
+          é devido à aproximação); math.cos(math.pi) 
+          &#8594; -1.0</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="118">degrees(x)</td>
+      <td width="262">Converte x em graus para radianos</td>
+      <td width="594">math.degrees(math.pi) &#8594; 180.0</td>
+    </tr>
+    <tr> 
+      <td width="118">e</td>
+      <td width="262">A constante e</td>
+      <td width="594">math.e &#8594; 2.718281828459045</td>
+    </tr>
+    <tr> 
+      <td width="118">exp(x)</td>
+      <td width="262">e**x</td>
+      <td width="594">math.exp(1) &#8594; 2.718281828459045; math.exp(2) 
+        &#8594; 7.38905609893065 </td>
+    </tr>
+    <tr> 
+      <td width="118">factorial(x)</td>
+      <td width="262">Fatorial de x de tipo int, resultado int</td>
+      <td width="594">math.factorial(5) &#8594; 120</td>
+    </tr>
+    <tr> 
+      <td width="118">floor(x)</td>
+      <td width="262">Maior int &lt;= x</td>
+      <td width="594">math.floor(4.7) &#8594; 4</td>
+    </tr>
+    <tr> 
+      <td width="118">fsum</td>
+      <td width="262">Somatória</td>
+      <td width="594">Como a sum() da tabela Funçoes Nativas, mas arredondando</td>
+    </tr>
+    <tr> 
+      <td width="118">inf</td>
+      <td width="262">A constante infinito (maior número em float representável)</td>
+      <td width="594">math.inf &#8594; inf</td>
+    </tr>
+    <tr> 
+      <td width="118">log(x, base)</td>
+      <td width="262">Logaritmo de x na base (opcional); sem base dá o 
+        log na base e</td>
+      <td width="594">math.log(10) &#8594; 2.302585092994046; math.log(100,10) 
+        &#8594; 2.0</td>
+    </tr>
+    <tr> 
+      <td width="118">log10()</td>
+      <td width="262">Logaritmo na base 10</td>
+      <td width="594">math.log10(100) &#8594; 2.0; em geral mais precisa 
+        que math.log(x,10)</td>
+    </tr>
+    <tr> 
+      <td width="118">log2()</td>
+      <td width="262">Logaritmo na base 2</td>
+      <td width="594">math.log2(8) &#8594; 3.0</td>
+    </tr>
+    <tr> 
+      <td width="118">modf(x)</td>
+      <td width="262">Dá a parte decimal e a inteira de x</td>
+      <td width="594">math.modf(1.25) &#8594; (0.25, 1.0)</td>
+    </tr>
+    <tr> 
+      <td width="118">pi</td>
+      <td width="262">O número pi</td>
+      <td width="594">math.pi &#8594; 3.141592653589793 (ver exs. em 
+        sen, cos, tan)</td>
+    </tr>
+    <tr> 
+      <td width="118">radians(x)</td>
+      <td width="262">Converte x em radianos para graus</td>
+      <td width="594">math.radians(180) &#8594; 3.141592653589793</td>
+    </tr>
+    <tr> 
+      <td width="118">sin(x)</td>
+      <td width="262">Seno, x em radianos</td>
+      <td width="594">math.sin(math.pi/2) &#8594; 1.0; math.sin(math.pi) 
+        &#8594; 1.2246467991473532e-16 (devia ser zero; não é devido 
+        à aproximação) </td>
+    </tr>
+    <tr> 
+      <td width="118">sqrt()</td>
+      <td width="262">Raiz quadrada</td>
+      <td width="594">math.sqrt(4) &#8594; 2.0; math.sqrt(5.6) &#8594; 
+        2.3664319132398464</td>
+    </tr>
+    <tr> 
+      <td width="118">tan(x)</td>
+      <td width="262">Tangente, x em radianos</td>
+      <td width="594"> 
+        <p>math.tan(math.pi) &#8594; 1.2246467991473532e-16 (devia ser zero);<br>
+          math.tan(math.pi/2) &#8594; 1.633123935319537e+16 (representação 
+          do infinito)</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="118">trunc(x)</td>
+      <td width="262">Parte inteira de x</td>
+      <td width="594">math.trunc(3.5) &#8594; 3</td>
+    </tr>
+  </tbody></table>
+  </font> 
+  <h3><font face="verdana"><a name="OFU"></a></font><font face="verdana">7. 
+    OUTRAS FUNÇÕES</font></h3>
+  <font face="verdana" size="2"><font face="verdana" size="2"> 
+  
+<table width="75%" border="1" style="font-family: verdana;  font-size: 10pt;">
+  <tbody><tr> 
+    <td width="74"> 
+      <p align="center"><font size="3"><b>Função</b></font></p>
+    </td>
+    <td width="290"> 
+      <p align="center"><font size="3"><b>Significado</b></font></p>
+    </td>
+    <td width="610"> 
+      <p align="center"><font size="3"><b>Exemplos</b></font></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="74">append()</td>
+    <td width="290">Concatena uma lista a outra</td>
+    <td width="610">L=[]; L &#8594; []; L.append('a'); L &#8594; ['a']; 
+      L.append('bc'); L &#8594; ['a', 'bc']</td>
+  </tr>
+  <tr> 
+    <td width="74">exit()</td>
+    <td width="290">Encerra a execução de um programa</td>
+    <td width="610">Necessita o módulo sys, incorporado com 
+      <b>import</b> sys; uso da função: sys.exit()<br>
+      (Sugestão dada por Thiago Salgado scrimforever arroba_at gmail ponto 
+      com)</td>
+  </tr>
+</tbody></table>
+  </font> 
+  <p><font face="verdana"><a name="PRE"></a><b><font size="4">8. PRECEDÊNCIA 
+    (ORDEM DE EXECUÇÃO)</font></b> (<a href="http://www.tutorialspoint.com/python/operators_precedence_example.htm">fonte</a>) 
+    </font></p>
+  <table width="38%" border="1" style="font-family: verdana;  font-size: 10pt;">
+    <tbody><tr> 
+      <td width="58"> 
+        <p align="center"><font size="2" face="verdana"><b>Ordem</b></font></p>
+      </td>
+      <td width="224"> 
+        <p align="center"><font size="2" face="verdana"><b>Operador/função</b></font></p>
+      </td>
+      <td width="199"> 
+        <p align="center"><font size="2" face="verdana"><b>Exemplos</b></font></p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">1</div>
+      </td>
+      <td width="224">( ... )</td>
+      <td width="199">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">2</div>
+      </td>
+      <td width="224">função()</td>
+      <td width="199">abs(-5)+2 &#8594; 7</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">3</div>
+      </td>
+      <td width="224">+ e - unários</td>
+      <td width="199">-5-2 &#8594; -7; -(5-2) &#8594; -3</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">4</div>
+      </td>
+      <td width="224">*, /, % e //</td>
+      <td width="199">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">5</div>
+      </td>
+      <td width="224">+ e - binários (soma e subtração)</td>
+      <td width="199">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">6</div>
+      </td>
+      <td width="224">&amp; ("e" bit a bit)</td>
+      <td width="199">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">7</div>
+      </td>
+      <td width="224">| e ^ </td>
+      <td width="199">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">8</div>
+      </td>
+      <td width="224">&lt;=, &lt;, &gt;, &gt;=</td>
+      <td width="199">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">9</div>
+      </td>
+      <td width="224">=, %=, /=, //= e –= </td>
+      <td width="199">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">10</div>
+      </td>
+      <td width="224">+=, *= e **=</td>
+      <td width="199">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">11</div>
+      </td>
+      <td width="224"><b>in</b>, <b>not in</b></td>
+      <td width="199">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="58"> 
+        <div align="center">12</div>
+      </td>
+      <td width="224"><b>not</b>, <b>or</b>, <b>and</b></td>
+      <td width="199">&nbsp;</td>
+    </tr>
+  </tbody></table>
+  </font> 
+  <h3><font face="verdana"><b><a name="DFU"></a>9. DECLARAÇÃO E 
+    USO DE UMA FUNÇÃO</b></font></h3>
+  <table width="76%" border="1" style="font-family: verdana;  font-size: 10pt;">
+    <tbody><tr> 
+      <td width="422"> 
+        <p align="center"><font size="3" face="verdana"><b>Sintaxe</b></font></p>
+      </td>
+      <td width="308"> 
+        <p align="center"><font size="3" face="verdana"><b>Exemplos no IDLE</b></font></p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="422"> 
+        <p># Declaração (atenção para o alinhamento 
+          vertical)<br>
+          <b>def&nbsp;</b>nome-da-função (parâmetro-<i>1</i>, 
+          ..., parâmetro-<i>m</i>):<i><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;</i>&nbsp;comando-1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;comando-<i>n<br>
+          </i>próximo-comando</p>
+        
+      <p># Uso da função<br>
+        nome-da-função (argumento-<i>1</i>, ..., argumento-<i>m</i>)</p>
+      <p>No IDLE, é necessário dar uma linha em branco para encerrar 
+        a declaração de uma função (sobreo IDLE, ver 
+        o item 16 abaixo).</p>
+      </td>
+      <td width="308"> 
+        
+      <p><font face="courier new">&gt;&gt;&gt; <b>def</b>&nbsp;soma(a,b): # declaração<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> a+b<br>
+        &gt;&gt;&gt; soma(1,2) &#8594; # ativação<br>
+          3<br>
+          &gt;&gt;&gt; soma (A*3,D) &#8594;<br>
+          4.2</font></p>
+      </td>
+    </tr>
+  </tbody></table>
+  
+<p><font face="verdana" size="2">Na sequência de um programa, a declaração 
+  de uma função deve sempre vir <i>antes</i> de sua ativação.</font></p>
+<h3><font face="verdana"><b><a name="LAM"></a>10. NOTAÇÃO LAMBDA</b></font></h3>
+<p><font face="verdana" size="2">Essa notação permite que se declare 
+  uma função sem dar-lhe um nome, colocando-a em qualquer lugar 
+  em que uma função possa ser chamada.</font></p>
+<table width="76%" border="1" style="font-family: verdana;  font-size: 10pt;">
+  <tbody><tr> 
+    <td width="443"> 
+      <p align="center"><font size="3" face="verdana"><b>Sintaxe</b></font></p>
+    </td>
+    <td width="550"> 
+      <p align="center"><font size="3" face="verdana"><b>Exemplos no IDLE</b></font></p>
+    </td>
+  </tr>
+  <tr> 
+    <td width="443"> 
+      <p><b>lambda</b> lista-de-argumentos: função desses argumentos</p>
+      </td>
+    <td width="550"> 
+      <p><font face="courier new">&gt;&gt;&gt; y = lambda x: x**2<br>
+        &gt;&gt;&gt; y(8)&#8594;<br>
+        64</font></p>
+      <p><font face="courier new">&gt;&gt;&gt; min = lambda x,y: x if x &lt; y 
+        else y<br>
+        &gt;&gt;&gt; min (3,2) &#8594;<br>
+        2</font></p>
+      <p><font face="courier new">&gt;&gt;&gt; itens = [1, 2, 3, 4, 5];<br>
+        &gt;&gt;&gt; list(map(lambda x: x**2, items)) &#8594;<br>
+        [1, 4, 9, 16, 25]</font></p>
+      <p><font face="courier new">&gt;&gt;&gt; lista_de_nos = range(-5, 10)<br>
+        &gt;&gt;&gt; list(filter(lambda x: x &lt; 0, number_list)) &#8594;<br>
+        [-5, -4, -3, -2, -1]</font></p>
+      </td>
+  </tr>
+</tbody></table>
+<p>&nbsp;</p>
+<h3><font face="verdana"><b><a name="GLO"></a>11. IDENTIFICADORES GLOBAIS E LOCAIS</b></font></h3>
+  <p><font face="verdana" size="2">Um identificador declarado dentro de uma função 
+    é somente local a ela (válido dentro dela); declarado fora dela, 
+    em um escopo (isto é, espaço de validade) englobando diretamente 
+    a função ele é global, pode ser usado tanto fora como 
+    dentro dela. O uso de um identificador local evita muitos erros, pois só 
+    a função onde ele está declarado pode modificar seu valor; 
+    esse identificador fica "encapsulado" na função. Nesse 
+    sentido, o correto é passar valores para a função e obtê-los 
+    dela por meio de parâmetros na sua declaração (argumentos 
+    na sua ativação).</font> 
+  </p><p>
+  <table width="76%" border="1" style="font-family: verdana;  font-size: 10pt;">
+    <tbody><tr style="font-family: courier new;  font-size: 10pt;"> 
+      <td width="318" valign="top"> 
+        <p>&gt;&gt;&gt; <b>def</b> F():<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loc = 1 # local a F<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print (Loc, Glob)<br>
+          &gt;&gt;&gt; Glob = 2 # global a F<br>
+          &gt;&gt;&gt; F() &#8594;<br>
+          1 2<br>
+          &gt;&gt;&gt; Loc &#8594;<br>
+          Loc<br>
+          NameError: name 'Loc' is not defined</p>
+      </td>
+      <td width="412" valign="top"> 
+        <p>Para converter um identificador local em global:</p>
+        <p>&gt;&gt;&gt; <b>def</b> F():<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>global</b> 
+          Glob<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print 
+          (Glob)<br>
+          &gt;&gt;&gt; Glob=1<br>
+          &gt;&gt;&gt; F() &#8594;<br>
+          1</p>
+      </td>
+    </tr>
+	</tbody></table>
+    </p><p><font face="verdana" size="2">Uma 
+        função F2 pode ser declarada dentro de uma outra função 
+        F1. Nesse caso, F2 torna-se local a F1 e não pode ser ativada fora 
+        de F1:</font></p>
+	
+  <table border="1" width="747">
+    <tbody><tr style="font-family: courier new;  font-size: 10pt;"> 
+      <td height="125" valign="top"> 
+        <p>&gt;&gt;&gt; <b>def</b> F1():<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>def</b> F2(): # local 
+          a F1! <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LocF2 
+          = 1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print 
+          (LocF2)<br>
+          &gt;&gt;&gt; F2() &#8594;<br>
+          F2()<br>
+          NameError: name 'F2' is not defined</p>
+      </td>
+      <td height="125" valign="top"> 
+        <p>&gt;&gt;&gt; <b>def</b> F1():<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>def</b> F2():<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LocF2 
+          = 1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print 
+          (LocF2)<br>
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;F2() &#8594; # ativada dentro 
+          de F1<br>
+          &gt;&gt;&gt; F1()<br>
+          1 </p>
+      </td>
+    </tr>
+	</tbody></table>
+    
+  <p><font face="verdana" size="2">Se a função F2 estiver declarada 
+    dentro de F1, a declaração <b>nonlocal</b> faz com que uma variável 
+    V declarada em F2 passe a ter o escopo de F1, mas não é válida 
+    fora de F1. V tem que ter um valor atribuído a ela em F1<i> antes</i> 
+    da declaração <b>nonlocal</b>:</font></p>
+  <table border="1" style="font-family: courier new;  font-size: 10pt;" width="750">
+    <tbody><tr> 
+      <td height="125" valign="top">&gt;&gt;&gt; <b>def</b> F1():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;LocF2 = 1 # necessário!<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>def</b> F2():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>nonlocal</b> 
+        LocF2 <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LocF2 = "LocF2"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print ("Na F1:", LocF2)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F2()<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print ("Passou pela F2:", 
+        LocF2)<br>
+        &gt;&gt;&gt; F1() &#8594;<br>
+        Na F1: 1<br>
+        Passou pela F2: LocF2 </td>
+      <td height="125" valign="top">&gt;&gt;&gt; LocF2 = 1<br>
+        &gt;&gt;&gt; <b>def</b> F1():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>def</b> F2():<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>nonlocal</b> LocF2 <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LocF2 = "LocF2"<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print ("Na F1:", LocF2)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;F2()<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;print ("Passou pela F2:", LocF2) &#8594;<br>
+        SyntaxError: no binding for nonlocal 'LocF2' found</td>
+    </tr>
+  </tbody></table>
+  
+<h3><font face="verdana"><b><a name="CLA"></a>12. CLASSES </b></font></h3> 
+<div align="justify"> <font face="verdana" size="2"> 
+  <p>(Em construção.)</p>
+  <p>Classes podem ser conceitualmente encaradas como uma extensão das 
+    funções, e são usadas para se obter mais encapsulamento. 
+    Ao contrário das funções, as classes não contêm 
+    parâmetros; as classes podem conter declarações de variáveis, 
+    que se tornam locais a elas. Cada elemento declarado em uma classe é 
+    denominado "atributo" da classe, e é referenciado pelo nome 
+    da classe, um ponto e o nome do atributo. Como as funções, as 
+    classes devem ser definidas antes de serem usadas. As funções 
+    declaradas dentro de uma classe são denominadas <i>métodos</i>. 
+    Podem-se atribuir valores aos elementos de uma classe fora dela. Um classe 
+    pode ser atribuída a uma variável V; nesse caso V recebe uma instância da 
+    classe, um objeto com todas as propriedades da classe.</p>
+  </font> 
+  <table border="1" style="font-family: courier new;  font-size: 10pt;" width="538">
+    <tbody><tr> 
+      <td height="66">&gt;&gt;&gt; <b>class</b> C:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;""" Esta é 
+        uma clsse """ # Atributo implícito __doc__<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X = 1<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def FdeC (Y):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Y + 
+        1 
+        <p> &gt;&gt;&gt; C.X &#8594;<br>
+          1<br>
+          &gt;&gt;&gt; C.FdeC(2) &#8594;<br>
+          3<br>
+          &gt;&gt;&gt; C.X = 5<br>
+          &gt;&gt;&gt; C.X &#8594;<br>
+          5<br>
+          &gt;&gt;&gt; C.__doc__ &#8594;<br>
+          ' Esta é uma classe '<br>
+          &gt;&gt;&gt; ObjC = C # Instanciação: criação 
+          de um objeto <br>
+          &gt;&gt;&gt; ObjC.X &#8594;<br>
+          5</p>
+      </td>
+    </tr>
+  </tbody></table>
+  <h3><font face="verdana"><b><a name="COC"></a>13. COMANDOS COMPOSTOS E SIMPLES</b></font></h3>
+  <table width="76%" border="1" style="font-family: verdana;  font-size: 10pt;" height="144">
+    <tbody><tr> 
+      <td colspan="2"> 
+        <p align="center"><font size="3" face="verdana"><b>Sintaxe</b></font></p>
+      </td>
+      <td colspan="3"> 
+        <p align="center"><font size="3" face="verdana"><b>Exemplos </b></font> 
+          (testados no Azure, V. Ambientes abaixo)</p>
+      </td>
+    </tr>
+    <tr> 
+      <td height="170" colspan="2"> 
+        <p><b>Bloco</b> (de comandos):</p>
+        <p>Comando; Comando; ... ; Comando #todos na mesma linha</p>
+        <p>ou todos alinhados verticalmente à esquerda, ou em alguma coluna, 
+          se o bloco estiver imerso em algum comando</p>
+        <p>&nbsp;&nbsp;Comando<br>
+          &nbsp;&nbsp;Comando<br>
+          &nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;Comando </p>
+      </td>
+      <td valign="top" colspan="3" style="font-family: verdana;  font-size: 10pt;"> 
+        <font face="courier new"> 
+        <p><br>
+          <br>
+          J = 2; K = 3; M = 4; J,K,M &#8594; (2,3,4)<br>
+          <br>
+        </p>
+        <p>J=2<br>
+          K=3<br>
+          M=4<br>
+          J,K,M &#8594; (2,3,4)</p>
+        </font> </td>
+    </tr>
+    <tr> 
+      <td height="306" rowspan="2" colspan="2"> 
+        <p>Comando <b>if</b> de escolha lógica</p>
+        <p># atenção para o alinhamento vertical<br>
+          <font face="courier new"><b>if</b></font><b><font face="courier new"> 
+          </font></b><font face="courier new">Expressão Lógica:<br>
+          &nbsp;Bloco #qualquer coluna a partir da 2a. &nbsp;# em relação 
+          ao if<br>
+          <b>elif</b> Expressão Lógica: #opcional,<br>
+          &nbsp;# alinhado na mesma coluna que o <b>if</b><br>
+          &nbsp;Bloco #a partir de qualquer coluna<br>
+          <b>elif</b> Expressão Lógica: #opcional,<br>
+          &nbsp;# alinhado na mesma coluna que o <b>if</b><br>
+          &nbsp;Bloco #a partir de qualquer coluna <br>
+          &nbsp;&nbsp;&nbsp;<i>...<br>
+          </i><b>elif</b> Expressão Lógica: #opcional,&nbsp;<br>
+          &nbsp;# alinhado na mesma coluna que o <b>if</b><br>
+          &nbsp;Bloco<i> </i>#a partir de qualquer coluna<i><br>
+          </i><b>else</b>: """Opcional. No IDLE, o <b>else</b> 
+          deve começar na 1a. coluna; segue um só Comando ou (exclusivo) 
+          um Bloco com várias linhas começando na próxima 
+          a partir da 2a coluna em relação ao <b>else</b>"""<br>
+          Próximo-Comando #alinhado na coluna do <b>if</b></font></p>
+      </td>
+      <td valign="top" colspan="3"> 
+        <p><font face="courier new">J = 2; K = 3; L= 4 # válido para todos 
+          os exemplos seguintes</font></p>
+      </td>
+    </tr>
+    <tr> 
+      <td height="296" valign="top" colspan="2"> 
+        <p><font face="courier new"><b>if</b> J &lt; K: print(J); print(K)&#8594; 
+          <br>
+          2<br>
+          3 </font></p>
+        <p><font face="courier new"><b>if</b> K&gt;J : """ O ":" 
+          pode estar em <br>
+          &nbsp;&nbsp;&nbsp;qualquer coluna desta linha """<br>
+          &nbsp;&nbsp; N = J+3<br>
+          P = K+4<br>
+          N, P &#8594; (5,7) </font></p>
+        <p><font face="courier new">{PC} corrigiu o (5, 7)</font></p>
+        <p><font face="courier new"><b>if</b> K &lt; J: N=5<br>
+          <b>else:</b> N=6<br>
+          P=7<br>
+          N, P &#8594; (6,7)</font></p>
+        <p>&nbsp;</p>
+      </td>
+      <td height="296" valign="top" width="196"> 
+        <p><font face="courier new"><b>if</b> K &lt; J: &nbsp;N=5<br>
+          <b>elif</b> L&gt;K: N=6; P=9<br>
+          </font><font face="courier new">N, P &#8594; (6,9)</font></p>
+        <p><font face="courier new"><br>
+          <b>if</b> K&lt;J: N=5<br>
+          <b>elif</b> L&lt;K: N=6; N<br>
+          <b>elif</b> J&gt;K: <br>
+          &nbsp;&nbsp;&nbsp;N=7<br>
+          &nbsp;&nbsp; N<br>
+          <b>else</b>: &nbsp;N=8<br>
+          N<b> </b>&#8594; 8&nbsp;</font> 
+      </p></td>
+    </tr>
+    <tr> 
+      <td height="324" rowspan="2" colspan="2"> 
+        <p>Comando <b>while </b>de repetição da execução 
+          (malha de execução, <i>loop</i>) de um bloco de comandos</p>
+        <p><b>while</b> Expressão Lógica: Comando; """opcional:<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;um só comando! Ou (exclusivo!)"""<br>
+          &nbsp;&nbsp;&nbsp; Bloco """comandos alinhados verticalmente 
+          à<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;direita do w"""<br>
+          <b>else</b>: Bloco #numa só linha ou<br>
+          &nbsp;&nbsp;Bloco<br>
+          próximo comando</p>
+        <p>O comando <b>else</b> é executado quando a Expressão 
+          Lógica der valor <b>False</b><br>
+          O comando <b>break</b> interrompe a execução da malha 
+          de repetição e desvia para o próximo comando após 
+          o <b>while </b>com seu bloco. É conveniente usá-lo quando 
+          ocorre uma situação de exceção durante a 
+          execução da malha.</p>
+      </td>
+      <td valign="top" colspan="3"> 
+        <p><font face="Courier new">Atenção: ao usar o comando <b>while</b> 
+          no IDLE, ele é executado até o fim (até Epressão 
+          Lógica ficar com valor <b>False</b>) antes de se poder dar o 
+          próximo comando. <br>
+          L = 4</font></p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="150Valign=&quot;top&quot;"> 
+        <p><font face="courier new">M = 1<br>
+          <b>while</b> M&lt;L: M += 1;<br>
+          <b>&nbsp;&nbsp;&nbsp;print</b>(M) &#8594;<br>
+          4 </font><br>
+        </p>
+        <p><font face="Courier new">M = 1<br>
+          <b>while</b> M&lt;4:<br>
+          &nbsp;&nbsp;<b>print</b>(M)<br>
+          &nbsp;&nbsp;M += 1 &#8594;<br>
+          </font>1<br>
+          2<br>
+          3<br>
+          <font face="Courier new"><b>print</b>(10) &#8594;<br>
+          10 </font></p>
+      </td>
+      <td width="196Valign=&quot;top&quot;"> 
+        <p><font face="courier new">M = 1<br>
+          <b>while</b> M &lt; 4:<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;print(M)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;M += 2<br>
+          <b>else</b>: <b>print</b>(7);<b>print</b>(8) &#8594;<br>
+          1<br>
+          3 <br>
+          7<br>
+          8<br>
+          <b>print</b>(10) &#8594; </font><font face="courier new"><br>
+          10</font></p>
+      </td>
+      <td width="196Valign=&quot;top&quot;"> 
+        <p><font face="courier new"># Exemplo de malha de <br>
+          # execução infinita e <b><br>
+          # break</b></font></p>
+        <p><font face="courier new">I = 1<br>
+          L = []<br>
+          <b>while True</b>:<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;I = I + 1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;L.append(I)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if I &gt; 4:<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>break</b><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(I) &#8594;<br>
+          2<br>
+          3<br>
+          4<br>
+          print(L) &#8594;<br>
+          [2, 3, 4, 5, 6]</font></p>
+      </td>
+    </tr>
+    <!-- comentário -->
+  </tbody></table>
+  <table width="77%" border="1" style="font-family: verdana;  font-size: 10pt;">
+    <tbody><tr> 
+      <td width="33%" valign="top"> 
+        <p>Comando <b>for</b> de repetição </p>
+        <p><b>for</b> Lista de Variáveis <b>in</b> Lista de Expressões:<br>
+          &nbsp;&nbsp;&nbsp;Bloco<br>
+          <b>&nbsp;&nbsp;&nbsp;&nbsp;else</b>: #Opcional<br>
+          &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bloco</p>
+        <p>Os valores da Lista de Expressões são atribuídos 
+          às variáveis; para cada atribuição o Bloco 
+          do <b>for</b> é executado uma vez.</p>
+        <p>Quando a lista é esgotada, é executado o bloco do <b>else</b>, 
+          se este existir. </p>
+        <p>O comando break interrompe a execução da malha de repetição 
+          e vai para o próximo comando depois do <b>for</b>.</p>
+      </td>
+      <td width="33%" valign="top"> 
+        <p><font face="courier new"><b>for</b> I <b>in</b> range(3): #começa 
+          em 0!<br>
+          &nbsp;&nbsp;print(I) &#8594;<br>
+          0<br>
+          1<br>
+          2</font></p>
+        <p><b><font face="Courier new">for</font></b><font face="Courier new"> 
+          I <b>in</b> range(2,4): # começa em 2<br>
+          &nbsp;&nbsp;&nbsp;I # e termina em 3 (4-1)! &#8594;<br>
+          2<br>
+          3 <br>
+          </font> </p>
+        <p><font face="courier new">Frutas = ['caju','caqui','manga']<br>
+          <b>for</b> fruta <b>in</b> Frutas: <br>
+          &nbsp;&nbsp;&nbsp;print ('Fruta da vez:', fruta) &#8594;<br>
+          Fruta da vez: caju<br>
+          Fruta da vez: caqui<br>
+          Fruta da vez: manga</font></p>
+        <p><font face="courier new"><b>for</b> I <b>in</b> range(3):<br>
+          &nbsp;&nbsp;&nbsp; </font><font face="courier new">if I==2: <b>break</b><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;print(I) &#8594;<br>
+          0<br>
+          1</font><font face="courier new"><br>
+          </font></p>
+      </td>
+      <td width="34%" valign="top"> 
+        <p><font face="courier new"><b>for</b> letra <b>in</b> 'xyz':<br>
+          &nbsp;&nbsp;&nbsp;print ('Letra da vez:', letter) &#8594;<br>
+          Letra da vez: x<br>
+          Letra da vez: y<br>
+          Letra da vez: z</font></p>
+        <p><font face="courier new"><b>for</b> I <b>in</b> range(3): """"2 
+          <b>for</b>s encaixados""""<br>
+          &nbsp;&nbsp;&nbsp;<b>for</b> J <b>in</b> [2,'xy']: # e uso do <b>else</b><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print ('I =", I, 'J =", 
+          J]<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>else</b>: print ('Passou por 
+          aqui!') <br>
+          I = 0 J = 2<br>
+          I = 0 J = xy<br>
+          Passou por aqui! &#8594;<br>
+          I = 1 J = 2<br>
+          I = 1 J = xy<br>
+          Passou por aqui! <br>
+          I = 2 J = 2<br>
+          I = 2 J = xy</font></p>
+      </td>
+    </tr>
+  </tbody></table>
+  <table style="font-family: verdana;  font-size: 10pt;" width="77%" border="1">
+    <tbody><tr> 
+      <td colspan="2" border="1" valign="top">Uso do <b>for</b> em Varredura 
+        de estruturas</td>
+    </tr>
+    <tr> 
+      <td width="40%" border="1" valign="top" height="128"> 
+        <p><b>for</b> i <b>in</b> [1, 2, 3]: print (i) &#8594;<br>
+          1<br>
+          2<br>
+          3</p>
+        <p>&nbsp;</p>
+      </td>
+      <td colspan="2" valign="top" height="128"> 
+        <p><b>for</b> car <b>in</b> "123": print (car) &#8594;<br>
+          1<br>
+          2<br>
+          3 </p>
+        <p><b>for</b> indice <b>in</b> {'um':1, 'dois':2}: print (indice) &#8594;<br>
+          dois<br>
+          um </p>
+      </td>
+    </tr>
+  </tbody></table>
+  <table style="font-family: verdana;  font-size: 10pt;" width="77%" border="1">
+    <tbody><tr> 
+      <td colspan="3" border="1" valign="top">Comando <b>match...case</b> de 
+        escolha múltipla</td>
+    </tr>
+    <tr> 
+      <td width="40%" border="1" valign="top" height="242"> 
+        <p><b>match</b> Expressão:<br>
+          &nbsp;&nbsp;&nbsp;<b>case</b> Expressão1: código1 a executar 
+          se<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expressão tem mesmo valor 
+          que a Expressão1<br>
+          &nbsp;&nbsp;&nbsp;<b>case</b> Expressão2: código2 a executar 
+          se<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expressão tem mesmo valor 
+          que a Expressão2<br>
+          &nbsp;&nbsp;&nbsp;...<br>
+          &nbsp;&nbsp;&nbsp;<b>case</b> ExpressãoN: códigoN a executar 
+          se<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expressão tem mesmo valor 
+          que a ExpressãoN<br>
+          &nbsp;<b>&nbsp;&nbsp;&nbsp;case</b> <b>_</b>: código a executar 
+          se <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expressão1 ... ExpressãoN 
+          têm todas valores &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diferentes 
+          de Expressão; esse úlltimo <b>case </b>é &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opcional 
+        </p><p>&nbsp; 
+      </p></td>
+      <td colspan="2" valign="top" height="242" width="60%"> 
+        <p>Suponhamos que a variável Cor tenha um valor 'azul', ou verde', 
+          ou 'roxo', ou nenhum desses, e que se queira exibir o falor :</p>
+        <p><b>match</b> Cor:<br>
+          &nbsp;&nbsp;&nbsp;<b>case</b> 'azul'&nbsp;&nbsp;: Print ('A cor é 
+          azul')<br>
+          &nbsp;&nbsp;&nbsp;<b>case</b> 'verde': Print ('A cor é verde')<br>
+          &nbsp;&nbsp;&nbsp;<b>case</b> 'roxo'&nbsp;&nbsp;: Print ('A cor é 
+          roxa')<br>
+          &nbsp;&nbsp;&nbsp;<b>case</b> <b>_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>: 
+          Print (A cor não é nem azul, nem verde, nem roxo')</p>
+        <p>O comando <b>match</b> substitui com muitas vantagens um encadeamento 
+          de <b>if</b>'s quando se testa somente o valor de certa expressão:</p>
+        <p><b>if </b>&lt;Expressão&gt; = ... :<br>
+          <b>elif </b>&lt;Expressão&gt; = ... :<br>
+          <b>elif </b>&lt;Expressão&gt; = ... :<br>
+          ...<br>
+          <b>elif </b>&lt;Expressão&gt; = ... :<br>
+          <b>else</b> ...</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="40%" border="1" valign="top" height="242"> 
+        <p>Comando <b>try</b> de detecção de exceção 
+          (erro) </p>
+        <p><b>try:</b><br>
+          &nbsp;&nbsp;comando1<br>
+          <b>except:</b><br>
+          &nbsp;&nbsp;comando2<br>
+          <b>else:</b><br>
+          &nbsp;&nbsp;comando3<br>
+          <b>finall</b>y:<br>
+          &nbsp;&nbsp;comando4 </p>
+        <p>Esse comando verifica se algo em comando1 é indefinido, de modo 
+          que comando1 não pode ser executado. Se assim for, o comando2 
+          é executado, senão o comando <b>try ... except</b> é 
+          pulado. O comando <b>else:</b> é ocpional; o comando3 é 
+          executado se não houve algum erro no comando1. O comando <b>finally:</b> 
+          é opcional; o comando4 é executado independentemente de 
+          ter havido um erro no comando1. Como o nome diz, ele serve também 
+          para se testar se haverá um erro em comando1, antes que o erro 
+          ocorra e a execução pare. <br>
+          <br>
+          Pode-se encaixar um <b>try:</b> dentro de outro <b>try:</b></p>
+        <p>Veja <a href="https://www.w3schools.com/python/python_try_except.asp">muitos 
+          exemplos do <b>try</b></a><b>.</b></p>
+      </td>
+      <td colspan="2" valign="top" height="242" width="60%"> 
+        <p><b>try:</b><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;print (i)<br>
+          <b>except:</b><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;print ("Ocorreu um erro, provavelmente 
+          i não é definido")<br>
+          <br>
+          Nesse caso, a variável i não deve ter sido definida.</p>
+        <p>Suponha a existência de uma lista de nome L. Esse comando pode 
+          ser usado para verificar se o elemento L[j] não está na 
+          lista L , caso em que o valor de j for maior do que o índice 
+          do último elemento de L, ou negativo, cf. o item 2.5 acima:</p>
+        <p><b>try:</b><br>
+          &nbsp;&nbsp;&nbsp;A ==&nbsp;L[j]<br>
+          <b>except:</b><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;print (Erro: "L[", j, "] não 
+          está na lista"j)</p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="40%" border="1" valign="top" height="115"> 
+        <p><b>pass</b></p>
+        <p>Esse comando, que não é composto, inserido dentro de 
+          um outro, faz com que o sistema ignore esse outro. Ele é muito 
+          prático durante a elaboração de um programa. Ver 
+          o exemplo.<br>
+          <br>
+          Veja <a href="https://stackoverflow.com/questions/13886168/how-to-use-pass-statement">muitos 
+          exemplos do <b>pass</b></a>.</p>
+      </td>
+      <td colspan="2" valign="top" height="115" width="60%"> 
+        <p><b>def </b>UmaFuncao(x):<br>
+          &nbsp;&nbsp;&nbsp;<b>pass</b></p>
+        <p>O corpo de Uma Funcao ainda não foi programado, mas já 
+          se sabe que ele deverá sê-lo e a função ficará 
+          nesse trecho do programa. Com isso garante-se que o programa todo será 
+          executado; sem o <b>pass</b> ele não o seria, haveria um erro 
+          de sintaxe.</p>
+        <p>No 2º exemplo do <b>try</b> acima, se não é para 
+          ser feito nada se o L[j] não estiver na lista, pode-se usar</p>
+        <p><b>try:</b><br>
+          &nbsp;&nbsp;&nbsp;L[j]<br>
+          <b>except:</b><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<b>pass</b></p>
+      </td>
+    </tr>
+    <tr> 
+      <td width="40%" border="1" valign="top" height="350"> 
+        <p><b>raise</b> classe de uma exceção</p>
+        <p>Esse comando, que não é composto, força a ocorrência 
+          de um erro, e encerra a execução</p>
+        <p> Veja <a href="https://www.geeksforgeeks.org/python-raise-keyword/">descrição 
+          e exemplos do <b>raise</b></a>. Os exemplos à direita foram copiados 
+          dessa página.</p>
+        <p><b>raise</b> SystemExit("Mensagem")<br>
+          produz o término da execução do programa, exibindo 
+          a Mensagem)</p>
+      </td>
+      <td colspan="2" valign="top" height="350" width="60%"> 
+        <p>a = 5<br>
+          <b>if</b> a % 2 != 0:<br>
+          &nbsp;&nbsp;&nbsp;<b>raise</b> Exception("O número não 
+          pode ser um inteiro ímpar")<br>
+          &#8594;<br>
+          Traceback (most recent call last):<br>
+          &nbsp;&nbsp;&nbsp;File caminho do programa, line 4, in módulo<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raise Exception("O número 
+          não pode ser um inteiro ímpar")<br>
+          Exception: O número não pode ser um inteiro ímpar 
+        </p>
+        <p>No exemplo abaixo, testa-se se uma conversão de tipo é 
+          válida; ValueError é uma classe que produz a impressão 
+          de seu nome e do argumento:</p>
+        <p>s = 'jabuticaba''<br>
+          <b>try</b>:<br>
+          &nbsp;&nbsp;&nbsp;num = <b>int</b>(s)<br>
+          <b>except</b> ValueError:<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<b>raise</b> ValueError("Cadeia", 
+          s, "não pode ser convertida para inteiro")</p>
+        <p>No resultado, além das linhas do exemplo acima, aparece:<br>
+        </p>
+        <p>raise ValueError("Cadeia não pode ser convertida para inteiro")</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="40%" border="1" valign="top" height="285"> 
+        <p><b>yield</b> não é propriemente um comando. Deve ser 
+          usando dentro de uma função, gerando um resultado para 
+          a mesma. Pode ser repetido, gerando então uma lista com vários 
+          resultados quando a função é ativada, Ele não 
+          interrompe a execução da função, ao contrário 
+          de <b>return</b>, que retorna um só valor e encerra a execução 
+          da função. O <b>yield</b> pode ser colocado em vários 
+          locais dentro de uma função, e gerará o valor da 
+          função toda vez que for executado. Já o return 
+          também pode ocorrer em vários locais, mas se for executado 
+          encerra a execução da função. <br>
+        </p>
+        <p>O exemplo ao lado foi tirado <a href="https://horadecodar.com.br/python-para-que-serve-o-yield-quando-utilizar/">daqui</a>.</p>
+        <p>&nbsp;</p>
+      </td>
+      <td colspan="2" valign="top" height="285" width="60%"> 
+        <p><b>def</b> ParOuImpar(x):<br>
+          <b>&nbsp;&nbsp;&nbsp;<b></b>for</b> i in range(x):<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b></b>&nbsp;<b>if</b> (i % 2 == 0):<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b></b>&nbsp;<b>&nbsp;&nbsp;&nbsp;yield</b> 
+          'par'<br>
+          &nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;<b></b> else</b>:<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b></b><b>yield</b> 
+          'impar'<br>
+          y=ParOuImpar (5)<br>
+          <b>for</b> j in y:&nbsp;<b></b><br>
+          &nbsp;&nbsp;&nbsp;<b></b>print(j)&nbsp;&nbsp;&nbsp;&#8594;<br>
+          par<br>
+          impar<br>
+          par<br>
+          impar<br>
+          par</p>
+        </td>
+    </tr>
+  </tbody></table>
+  <h3> <font face="verdana"><b><a name="PAL"></a>14. PALAVRAS RESERVADAS </b></font></h3>
+  <font face="verdana" size="2&quot;"> 
+  <p>As seguintes palavras não podem ser usadas como nomes de identificadores 
+    (variáveis e funções):</p>
+  <table width="30%" border="1">
+    <tbody><tr> 
+      <td><font face="Courier new"><b>assert and as break class continue def del 
+        elif else except False finally for from global if import in lambda match 
+        None nonlocal not or pass is raise return True try while with yield</b> 
+        </font></td>
+    </tr>
+  </tbody></table>
+  </font><font face="verdana" size="2&quot;"></font> 
+  <h3><font face="verdana"><b><a name="REF"></a>15. REFERÊNCIAS</b></font></h3>
+  <div><font face="verdana" size="2"> 
+    <h3> <a name="TUT"></a>15.1 Tutoriais</h3>
+    </font> 
+    <ul>
+      <li><font face="verdana" size="2">Tutorial livre: <a href="https://www.educba.com/category/software-development/software-development-tutorials/python-tutorial/">www.educba.com/category/software-development/software-development-tutorials/python-tutorial/</a></font></li>
+      <li><font face="verdana" size="2">Tutorial em português da UFF (Python 
+        versão 2!): <a href="http://www.telecom.uff.br/pet/petws/downloads/tutoriais/python/tut_python_2k100127.pdf">www.telecom.uff.br/pet/petws/downloads/tutoriais/python/tut_python_2k100127.pdf</a> 
+        </font></li>
+      <li><font face="verdana" size="2">Tutorial "oficial": <a href="https://docs.python.org/3/tutorial">https://docs.python.org/3/tutorial</a></font></li>
+      <li><font face="verdana" size="2">Tutoriais sobre operadores: <a href="https://www.programiz.com/python-programming/operators">www.programiz.com/python-programming/operators</a>;<a href="https://www.tutorialspoint.com/python/python_basic_operators.htm"> 
+        https://www.tutorialspoint.com/python/python_basic_operators.htm</a> </font></li>
+      <li><font size="2" face="verdana">Tutorial sobre variáreis, constantes 
+        e tipos: <a href="https://www.tutorialspoint.com/python/python_variable_types.htm">www.tutorialspoint.com/python/python_variable_types.htm</a></font></li>
+      <li><font size="2" face="verdana">Tutorial sobre <a href="https://panda.ime.usp.br/pensepy/static/pensepy/09-Listas/listas.html">uso 
+        de listas</a> com muitos exemplos e testes de conhecimento</font></li>
+      <li><font size="2" face="verdana">Tutorial sobre o uso de matrizes (<i>arrays</i>): 
+        <a href="http://www.i-programmer.info/programming/python/3942-arrays-in-python.html">www.i-programmer.info/programming/python/3942-arrays-in-python.html</a></font></li>
+      <li><font face="verdana" size="2">Tutorial sobre o uso do módulo 
+        NumPy para uso de matrizes: <a href="http://www.i-programmer.info/programming/python/5785-advanced-python-arrays-introducing-numpy.html?start=1">	
+        www.i-programmer.info/programming/python/5785-advanced-python-arrays-introducing-numpy.html?start=1</a></font></li>
+      <li><font face="verdana" size="2">Tutorial sobre classes: <a href="https://docs.python.org/3/tutorial/classes.html"> 
+        https://docs.python.org/3/tutorial/classes.html</a></font></li>
+      <li><font face="verdana" size="2"> Tutorial sobre módulos: <a href="https://docs.python.org/3/tutorial/modules.html"> 
+        https://docs.python.org/3/tutorial/modules.html</a></font><font face="verdana" size="2"> 
+        </font></li>
+    </ul>
+    <font face="verdana" size="2"> 
+    <h3><a name="ORE"></a>15.2 Outras referências</h3>
+    </font> 
+    <ul>
+      <li> <font face="verdana" size="2"><a href="https://www.ime.usp.br/~vwsetzer/://docs.python.org/3/library/functions.html">https://docs.python.org/3/library/functions.html</a> 
+        (a tabela de funções nativas foi tirada da versão 
+        2)</font></li>
+      <li> <font face="verdana" size="2"><a href="https://ddi.ifi.lmu.de/probestudium/2012/ws-i-3d-programmierung/tutorials/python-referenzkarte">https://ddi.ifi.lmu.de/probestudium/2012/ws-i-3d-programmierung/tutorials/python-referenzkarte</a> 
+        (em inglês); essas folhas de consulta são chamadas de <i>Cheat 
+        Sheet </i>(cola); melhor seria <i>reference sheet</i>.</font></li>
+      <li><font face="verdana" size="2"><i>Cheat sheet</i> dirigida a administradores 
+        de redes, com lista de <i>libraries</i>, métodos e módulos, 
+        produzidas por PCWDSLD: <a href="https://www.pcwdld.com/python-cheat-sheet">www.pcwdld.com/python-cheat-sheet</a></font></li>
+      <li> <font face="verdana" size="2"><a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PythonForDataScience.pdf">https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PythonForDataScience.pdf</a> 
+        </font></li>
+      <li><font face="verdana" size="2"> Tipos: <a href="https://docs.python.org/3/library/stdtypes.html">https://docs.python.org/3/library/stdtypes.html</a> 
+        </font></li>
+      <li><font face="verdana" size="2"> Funções matemáticas: 
+        <a href="https://docs.python.org/2/library/math.html">https://docs.python.org/2/library/math.html</a> 
+        </font></li>
+      <li><font face="verdana" size="2"> Funções com números 
+        complexos: <a href="https://docs.python.org/3/library/cmath.html#module-cmath">https://docs.python.org/3/library/cmath.html#module-cmath</a> 
+        </font></li>
+      <li><font face="verdana" size="2"> Precedências: <a href="http://www.tutorialspoint.com/python/operators_precedence_example.htm">www.tutorialspoint.com/python/operators_precedence_example.htm</a> 
+        </font></li>
+      <li><font face="verdana" size="2"> Manual de referência: <a href="https://docs.python.org/3/">https://docs.python.org/3/</a> 
+        </font></li>
+      <li><font face="verdana" size="2"><i>Site</i> "oficial": <a href="https://www.python.org/">https://www.python.org/</a></font></li>
+      <li><font face="verdana" size="2">Grupo de discussão de Python no 
+        Brasil: <a href="https://python.org.br/">https://python.org.br/</a></font></li>
+      <li><font size="2" face="verdana">Livro: Nilo Ney Coutinho Menezes, <i>Introdução 
+        à Programação com Python: Algoritmos e lógica 
+        de programação para iniciantes</i>, 2ªed, Novate, 2018</font></li>
+    </ul>
+    <h3></h3>
+    <h3><font face="verdana"><b><a name="INS"></a>16. INSTALAÇÃO 
+      DO PYTHON E USO DO INTERPRETADOR IDLE E SEU EDITOR</b></font></h3>
+  </div>
+  </div>
+<div align="justify"> <font face="verdana" size="2&quot;"> 
+  <ol>
+    <li> 
+      <div align="justify"><font face="verdana" size="2&quot;"> 
+        <div><font face="verdana" size="2"><b>Instalação</b><br>
+          Para instalar o Python e usar o seu interpretador IDLE (<i>Integrated 
+          Develop and Learning</i>): <a href="https://www.python.org/downloads">https://www.python.org/downloads</a> 
+          . O IDLE permite digitarem-se programas; cada linha com um comando digitada 
+          no IDLE é executada imediatamente ao se encerrá-la com 
+          Enter. Experimente, por exemplo, com a sequência A = 5 Enter A 
+          Enter. O valor 5 de A será exibido.<br>
+          <br>
+          </font></div>
+        </font></div>
+    </li>
+    <li> <b>Uso do IDLE no Windows<br>
+      <br>
+      1.</b> Em meu W11, em 8/7/24 o Python 3.10.5 executável foi instalado 
+      automaticamente com o Python 3.12.4 no arquivo c:\Windows\py.exe. Para descobrir 
+      o caminho desse diretório, acione com o botão direito o ícone 
+      do Python se ele estiver na área de trabalho, ou na lista de programas 
+      preferidos do menu Iniciar, em seguida Propriedades, aba Atalho; o caminho 
+      está no campo Destino e pode ser copiado. No meu caso, para acionar 
+      o IDLE basta fazer uma busca do Windows com py., pois o caminho deve ter 
+      sido adicionado ao Path do Windows. <b>2. </b>Acionando o programa Python, 
+      aparece uma janela do IDLE, parecida com uma janela de <i>prompt </i>do 
+      Windows, aqui chamada "janela de comandos". Depois da carga aparece 
+      o <i>prompt</i> do Python, &gt;&gt;&gt; e se podem digitatr comandos da 
+      linguagem. Várias janelas de comandos podem ser abertas, ativando-se 
+      a Python mais de uma vez como descrito, permitindo copiar e colar de uma 
+      para outra. <b>3.</b> A edição de um comando na janela de 
+      comandos do Python segue o padrão do Windows. <b>5.<i> </i></b>É 
+      necessário digitar uma linha de cada vez, terminada com Enter. Note-se 
+      que ao terminar de digitar um comando, dando-se Enter o IDLE executa o comando 
+      e abre uma nova linha com &gt;&gt;&gt;. Se for um comando composto ou declaração 
+      de função, aparece ... na próxima linha, onde deve 
+      ser digitada a continuação. Para encerrar um comando composto 
+      ou declaração de função, é necessário 
+      dar linhas em branco, o que provoca a execução do comando 
+      composto, ou a função fica declarada, podendo ser usada posteriormente, 
+      aparecendo o &gt;&gt;&gt; novamente. <b>6. </b>Para carregar um programa 
+      em Python (extensão .py), use File --&gt; Open. <b>5. </b> Para fechar 
+      a janela de comandos, dê quit() ou, no início da próxima 
+      linha de comando, Ctrl+D. Estando em uma janela do IDLE, para eliminar todas 
+      as variáveis e identificadores criados com a última sessão/programa, 
+      e continuar com um novo programa, use no meu principal Shell &amp;raarr; 
+      Restart Shell. Aparece uma linha indicando esse Restart.<b> 7.</b> É 
+      possível ativar o IDLE diretamente de uma janela normal de <i>prompt</i> 
+      do Windows. Para isso, nessa janela desvie (com o comando &gt; cd nome do 
+      diretório) para o diretório onde está o executável 
+      da Python e dê o comando py. Se o py tiver sido inserido no PATH do 
+      Windows no <i>download</i> da Python, basta dar py em qualquer linha de 
+      comando numa janela de Prompt. A desvantagem de usar o Prompt do Windows 
+      é de se ter apemas as suas possibilidades arrevezadas de edição. 
+      Em uma janela do IDLE tem-se mais possibilidades, por exemplo ao digitar 
+      um comando <b>if</b> (se o : no fim da condição for esquecido, 
+      uma mensagem apontará isso) a próxima linha com <b>then</b> 
+      aparecerá já com tabulação. <b>8.</b> Para uma 
+      lista dos nomes das variáveis ativas no IDLE, use dir(). Para eliminar 
+      uma variável x (não estará mais disponível), 
+      use del (x). <br>
+      <br>
+    </li><li><b>Execução de um programa armazenado</b><br>
+      <br>
+      <b>1. </b>O IDLE tem um Editor que é ativado em uma janela separada. 
+      Para ativá-lo, no menu do IDLE acione File &amp;rarr; New File. É 
+      aberta uma janela em branco do Editor, onde se pode digitar um programa, 
+      tendo-se as facilidades de edição do IDLE e as do Windows. 
+      Ao se completar uma linha, o Enter obviamente não produz sua execução, 
+      ao contrário do IDLE.<b> 2. </b>Terminado o programa, é necessário 
+      armazená-lo usando no menu do editor File &amp;rarr; Save. Aparece 
+      o nome do arquivo na primeira linha, entre asteriscos, indicando que ele 
+      foi armazenado e o seu caminho. <b>3. </b>Se um programa está armazenado 
+      em um arquivo, no Editor pode-se carregá-lo acionando no seu menu 
+      File &amp;rarr; Open (isso pode ser feito também na janela do IDLE, 
+      que abre uma do Editor), sendo que o nome do arquivo deve ter a extensão 
+      .py . <b>4. </b>Em seguida, o programa que está no editor pode ser 
+      executado, ativando-se no menu do Editor Run &amp;rarr; Run Module. Esse 
+      comando limpa tudo o quee stava no no IDLE (variáveis, que deixam 
+      de existir, estado do programa anterior etc.), e exibe nele a mensagem === 
+      RESTART: caminho do arquivo com o programa que foi executado ===. <b>5. 
+      </b>Atenção: se no programa executado a variável A 
+      está com um valor, p.ex. 5, se numa linha do editor colocar-se A, 
+      ao executar o programa com Run Module não vai aparecer o valor de 
+      A logo na linha seguinte, como ocorreria se o programa estivesse na janela 
+      do IDLE. Isso é óbvio, pois inserindo-se um comando em uma 
+      linha do IDLE e dando Enter o comando é interpretado e executado. 
+      Ao se executar um programa completo da janela do Editor, não há 
+      essa interpretação comando a comando, dando seu resultado. 
+      Para se exibir o valor de A ao executar um programa que está no Editor 
+      é necessário inserir o comando print(A) ou print("A=", 
+      A). <b>6. </b>Para editar um programa fora do IDLE e do Editor, use o Bloco 
+      de Notas do Windows (ou copie o programa que foi editado em outro editor, 
+      para uma janela do Bloco de Notas). Ao armazenar o texto, para ser carregado 
+      no Editor, no campo Tipo escolha Todos os arquivos, em Codificação 
+      escolha UTF-8, coloque no nome a extensão .py e salve o programa. 
+      Uma outra possibilidade é salvar como .txt e depois mudar a extensão 
+      para .py. Para isso, use por exemplo o programa Total Commander, que eu 
+      uso em lugar do Windows Explorer, pois é muito mais prático, 
+      já que apresenta duas partes em uma janela, podendo-se mover ou copiar 
+      de uma parte para a outra, podem-se fazer buscas por nomes de arquivos ou 
+      diretórios, mudar extensões dos nomes etc.<br>
+      <br>
+    </li><li><b>Uso do depurador do IDLE (Debugger)</b><br>
+      <br>
+      Para detectar erros em um programa armazenado localmente, pode-se usar o 
+      Debugger do IDLE. Ver um excelente tutorial dele em<br>
+      <a href="https://www.cs.uky.edu/%7Ekeen/help/debug-tutorial/debug.html">www.cs.uky.edu/~keen/help/debug-tutorial/debug.html 
+      </a><br>
+      <b>1.</b> Carregue um programa no Editor (ver item 3 acima). <b>2.</b> Insira 
+      <i>breakpoints</i>, pontos de parada, em lugares onde se quer que a execução 
+      pare, por exemplo para se verificar o valor de variáveis ou a sequência 
+      de execução de comandos. Para isso, no Editor acione o botão 
+      direito do <i>mouse</i> na linha onde quer inserir um ponto de parada, e 
+      acione Set Breakpoint. Aparece uma tarja amarela na linha. Para se eliminar 
+      um ponto de parada, idem Clear Breakpoint. <b>3. </b>No Editor, acione Window 
+      &amp;rarr; Show Line Numbers; aparecem os números das linhas do programa, 
+      importante para se acompanhar o Debugger. <b>4.</b> No IDLE, acione Debug 
+      &amp;rarr; Debugger; aparece a mensagem DEBUG ON. Repetindo, desliga-se 
+      a execução do Debugger e aparece DEBUG OFF no IDLE. <b>5</b>. 
+      No Editor, acione Run &amp;rarr; Run Module; aparece uma janela Debug Control. 
+      Nela, abaixo dos <i>buttons</i> aparece o nome do programa e na área 
+      de trabalho uma linha com tarja azul com &gt; e no fim dela o número 
+      da linha onde foi inserido o ponto de parada onde a execução 
+      parou. <b>6</b>. Acionando o <i>button </i>Step o programa será executado 
+      linha a linha, sendo a atual trajada de cinza, <i>antes </i>de ser executada. 
+      Se a linha contiver uma atribuição de um valor a uma variável, 
+      depois da execução dessa linha essa variável é 
+      exibida na janela do Debugger e o valor que ela recebeu aparece na área 
+      Locals, juntamente com identificadores e valores de todas as variáveis 
+      que já receberam valor (assim pode-se conferir o que ocorrerá 
+      com a condição de comandos como o <b>if</b> e o <b>while</b>). 
+      Esse comando Step é talvez o mais util, pois permite se acompanhar 
+      toda a execuação. <b>7.</b> Acionando-se o <i>button</i> Go 
+      o programa é executado sem parar até o próximo ponto 
+      de parada. Assim, se houver dúvida sobre a execução 
+      de um trecho do programa, pode-se delimitá-lo com dois pontos de 
+      parada, desviar inicialmente para o primeiro com o Go, e daí em diante 
+      usar o Step; ao se atingir o segundo ponto, pode-se dar novamente o Go para 
+      ir para o ponto inicial da parada. <b>8.</b> Se houver a execução 
+      de uma função input(), o processo vai parar. É necessário 
+      ir à janela do IDLE e dar o valor solicitado e Enter. O valor dado, 
+      com a variável que recebeu a entrada, aparecem na seção 
+      Locals. <b>9. </b>Se ocorrer um erro durante a execução do 
+      programa, a mensagem aparecerá na janela do Debugger. <b>10.</b> 
+      O button Quit deve encerrar a execução do debugger. <b>11.</b> 
+      Ainda não descobri para que serve o <i>button</i> Out, talvez para 
+      desviar para o janela do Editor.<br>
+      <br>
+    </li>
+    <li><font face="verdana"><b><a name="CUR"></a>17. CURSO</b></font></li>
+  </ol>
+  </font></div>
+  
+<font face="verdana" size="2&quot;"> 
+  <ul>
+    <li> 
+      
+    <div><font face="verdana" size="2">Curso de Python em português no 
+      Coursera (grátis sem certificado), por Fábio Kon (IME-USP): 
+      <a href="https://www.coursera.org/learn/ciencia-computacao-python-conceitos">https://www.coursera.org/learn/ciencia-computacao-python-conceitos</a></font></div>
+    </li>
+    
+  <li><font face="verdana" size="2"><b>Atenção</b>: nesse curso 
+    o Prof. Kon dá exemplos nos quais ele edita um programa em um editor 
+    de textos, depois armazena-o por exemplo no arquivo de nome programa.py . 
+    Em seguida, ele ativa o interpretador da Python usando o comando ou algo parecido 
+    ...&gt; python35 programa.py . Ocorre que o IDLE usa a codificação 
+    de caracteres UTF-8, de modo que o texto do programa deve ser armazenado localmente 
+    nessa codificação, que em alguns editores de texto. No Windows, 
+    que normalmente usa a codificação Latin-1 (não aceita 
+    pelo IDLE), o Bloco de Notas tem essa opção, na opção 
+    Salvar como &#8594; Codificação e seleciona-se UTF-8. Idem para 
+    os programas que o curso exige serem enviados para o Coursera para serem executados 
+    e avaliados nesse sistema. Se isso não for feito, ao executar o programa 
+    aparece uma mensagem de erro de caractere não reconhecido.</font></li>
+  </ul>
+  </font> 
+  
+<h3><font face="verdana"><b><a name="AMB"></a>18. TEXTOS, AMBIENTES DE PROGRAMAÇÃO, 
+  DOCUMENTAÇÃO E FÓRUNS DE PROGRAMAÇÃO</b></font></h3>
+  
+<font face="verdana" size="2&quot;"> 
+<ul>
+  <li> 
+    <div><a href="https://wiki.python.org.br/AprendaProgramar">Livro de Luciano 
+      Ramalho</a></div>
+  </li>
+  <li><a href="https://www.spyder-ide.org/">Spyder</a>: ambiente de programação 
+    e depuração (IDE), que me foi fortemente recomendado por {AL} 
+    como sendo muito melhor do que o IDLE e o seu Editor 
+  </li><li> 
+    <div><font face="verdana" size="2"><a href="https://jupyter.org/">Jupyter</a>: 
+      permite programar, guardar e executar programas na nuvem do sistema usando 
+      um navegador (não é preciso instalar o IDLE), e escrever documentos</font></div>
+  </li>
+  <li><font face="verdana" size="2"><a href="https://blogs.technet.microsoft.com/machinelearning/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio/">Azure</a>: 
+    ambiente da Microsoft; inclui o Jupyter e provê recursos adicionais. 
+    Programas ficam em notebooks. Para criar um, entre em sua conta, acione Notebooks 
+    (no menu à esquerda) e depois + New (no canto inferior esquerdo). Em 
+    cada célula de um notebook é possível colocar um programa 
+    e modificá-lo; para executá-lo, selecione-o e dê Shift 
+    Enter. Uma variável ou função declarada em uma célula 
+    já executada é válida nas outras células. Aparentemente, 
+    não inclui o depurador (<i>debugger</i>) do IDL<font size="2&quot;">.</font></font></li>
+  <li><a href="https://www.jetbrains.com/pycharm/">PyCharm</a>, um ambiente de 
+    programação com versão <i>open source </i>(sem custo). 
+    {LF}</li>
+  <li><a href="https://www.anaconda.com/distribution/">Anaconda</a>, um ambiente 
+    <i>open source</i> de programação incluindo sistemas para <i>machine 
+    learning</i>.</li>
+  <li>Lista de <a href="https://python.org.br/comunidades-locais/">grupos de discussão</a> 
+    de Python, por estado.</li>
+  <li><a href="https://github.com/">GitHub</a> é um fórum, uma comunidade 
+    de programadores, onde os participantes inserem programas. Lá se encontra 
+    na íntegra o livro <i>Python Data Science Handbook</i> de Jake VanderPlas. 
+    {LF}</li>
+  <li><a href="https://python.org.br/eventos/">Eventos sobre Python</a></li>
+</ul>
+</font> 
+<h3><font face="verdana"><b><a name="AGR"></a>19. AGRADECIMENTOS</b></font></h3>
+<ul>
+  <li> 
+    <div align="justify"><font face="verdana" size="2&quot;"> Colaborações 
+      (fazer uma busca na página com as abreviaturas): {AL} Alexandre Leite; 
+      {LF} Luís Felipe Carvalho; {MDG} Marco Dimas Gubitoso; {PC} Paulo 
+      César Zandona Vieira achou 2 errinhos.</font></div>
+    <font face="verdana" size="2&quot;"> </font></li>
+</ul>
+<div align="justify"><font face="verdana" size="2&quot;">
+  <p>&nbsp;</p>
+  </font> </div>
+
+
+</body></html>

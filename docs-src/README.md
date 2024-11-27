@@ -16,25 +16,21 @@ My personal notes on language design, implementation, theory, internals, perform
 Please use the menu on the left of this page (or the drop-down menu if your screen is small) to access the pages on this web site. The following are just a few topics of interest.
 
 
-## Jupyter Notebooks
+## Works
 
-My random personal notes about curiosities that I collect over time.
-
+* [Python Cheat Sheet](python/cheatsheet/README.md) - my attempt to help build the cheat sheet by describing some functions and modules that are not yet in the sheet.
+* [Python](python/README.md) - my personal notes on Python-related topics that I find interesting.
 * [SoYouThinkYouKnowC.ipynb](c/SoYouThinkYouKnowC.ipynb) - based on [Excerpts that are difficult to read in C](https://wordsandbuttons.online/so_you_think_you_know_c.html).
+* [Moving Forth](Moving_Forth/README.md) - my personal notes on Brad Rodriguez's Moving Forth.
 
 
-## Fortran
+## Repositories
 
-My personal Fortran notes are in a repository:
+Work I develop in other repositories.
 
-* <https://github.com/efurlanm/fortran/>
+* [HPC](https://github.com/efurlanm/hpc/) - my personal High-Performance Computing (HPC) notes. Efficient language design and implementation are crucial for HPC because they directly impact the performance, scalability, and usability of HPC applications. Languages designed specifically for HPC, such as domain-specific languages (DSLs), can optimize parallelism, manage complex computations, and provide abstractions that simplify the development of high-performance code. Additionally, well-designed compilers and interpreters for these languages can further enhance performance by optimizing code execution on HPC systems.
 
-
-## Moving Forth
-
-My personal notes on Brad Rodriguez's Moving Forth.
-
-* [Webpage](Moving_Forth/README.md) | [Repository](http://github.com/efurlanm/ldi/tree/main/docs-src/Moving_Forth/)
+* [Fortran](https://github.com/efurlanm/fortran/) - my personal Fortran notes. Fortran, a high-level programming language, is historically linked to HPC due to its efficient handling of numerical and scientific computations. Its syntax and features are optimized for high performance, making it ideal for large-scale simulations and mathematical models in scientific research. Consequently, Fortran remains a staple in the HPC community for its unparalleled computational efficiency.
 
 
 ## Internals
