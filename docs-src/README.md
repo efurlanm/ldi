@@ -11,14 +11,14 @@
 Website: <http://efurlanm.github.io/ldi/>  
 Repository: <https://github.com/efurlanm/ldi/>*
  
-My personal notes on language design, implementation, theory, internals, performance, computer architecture, programming, applications, books, links, tips and tricks, excerpts, curiosities, and related topics.
+My personal notes on language design and implementation, and related topics such as programming, theory, internals, performance, computer architecture, applications, books, links, tips and tricks, snippets, trivia, and more.
 
-Please use the menu on the left of this page (or the drop-down menu if your screen is small) to access the pages on this web site. The following are just a few topics of interest.
+Please use the menu on the left of this page (or the drop-down menu if your screen is small) to access the pages on this web site. Below on this page are just a few topics of interest.
 
 
-## Works
+## Notes
 
-* [Python Cheat Sheet](python/cheatsheet/README.md) - my attempt to help build the cheat sheet by describing some functions and modules that are not yet in the sheet.
+* [Python Cheat Sheet](python/cheatsheet/README.md) - my attempt to contribute to the Python cheat sheet by describing some functions and modules that are not yet in the sheet.
 * [Python](python/README.md) - my personal notes on Python-related topics that I find interesting.
 * [SoYouThinkYouKnowC.ipynb](c/SoYouThinkYouKnowC.ipynb) - based on [Excerpts that are difficult to read in C](https://wordsandbuttons.online/so_you_think_you_know_c.html).
 * [Moving Forth](Moving_Forth/README.md) - my personal notes on Brad Rodriguez's Moving Forth.

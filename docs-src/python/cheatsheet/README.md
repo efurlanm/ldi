@@ -21,9 +21,4 @@
 
 * [python-folha-de-consulta-v17.2.html](python-folha-de-consulta-v17.2.html) - 2024-11-26 backup copy of the original document.
 
-## Resources
-
-* [Github Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-* [Google Docs Markdown](https://support.google.com/docs/answer/12014036?hl=en)
-* [Markdown for Jupyter notebooks cheatsheet](https://www.ibm.com/docs/en/watson-studio-local/1.2.3?topic=notebooks-markdown-jupyter-cheatsheet)
-* [MarkText Markdown editor](https://snapcraft.io/install/marktext/ubuntu)
+# 
