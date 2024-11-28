@@ -1,6 +1,6 @@
 # My personal notes on generating executables on selected architectures
 
-Repository: <https://github.com/efurlanm/ldi/docs-src/executables/>
+Repository: <https://github.com/efurlanm/ldi/src/executables/>
 
 
 ## Works

@@ -4,7 +4,7 @@ site_url: https://efurlanm.github.io/ldi/
 copyright: CC BY 4.0 License
 repo_name: LDI
 repo_url: http://github.com/efurlanm/ldi/
-docs_dir: docs-src
+docs_dir: src
 site_dir: docs
 theme:
     name: material

@@ -8,6 +8,10 @@
 
 * [Cheat Sheet](https://docs.google.com/document/d/1plg9g5vMVei8Xr-B9jydi2FfOlteiRP8VpnO0_t481Q/edit?usp=sharing) (in English, Google Docs format) - document converted to English using Google Translate, and edited manually. Include suggestions. Corrections are highlighted in yellow, suggestions are highlighted in red, and the old text is highlighted in gray.
 
+### Comments
+
+- Use Python 3 links like: <https://docs.python.org/3/library/functions.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp>. In the text there are links that point to version 2.
+
 ## History
 
 * **2024-11-26**
@@ -20,5 +24,3 @@
 ## Other files
 
 * [python-folha-de-consulta-v17.2.html](python-folha-de-consulta-v17.2.html) - 2024-11-26 backup copy of the original document.
-
-# 
